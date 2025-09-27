@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxig8broegcu5"]
+
+[ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/level.gd" id="1_knrxq"]
+[ext_resource type="PackedScene" uid="uid://b5qs66nsi6xge" path="res://scenes/components/unit_cube.tscn" id="2_007lt"]
+
+[node name="level" type="Node3D"]
+script = ExtResource("1_knrxq")
+
+[node name="UnitCube" parent="." instance=ExtResource("2_007lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="UnitCube2" parent="." instance=ExtResource("2_007lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="UnitCube3" parent="." instance=ExtResource("2_007lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="UnitCube4" parent="." instance=ExtResource("2_007lt")]
+
+[node name="UnitCube5" parent="." instance=ExtResource("2_007lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="UnitCube6" parent="." instance=ExtResource("2_007lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
