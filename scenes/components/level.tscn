@@ -1,24 +1,81 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxig8broegcu5"]
+[gd_scene load_steps=4 format=3 uid="uid://cxig8broegcu5"]
 
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/level.gd" id="1_knrxq"]
-[ext_resource type="PackedScene" uid="uid://b5qs66nsi6xge" path="res://scenes/components/unit_cube.tscn" id="2_007lt"]
+[ext_resource type="PackedScene" uid="uid://c8yi0x21oui6q" path="res://scenes/components/unit_cube.tscn" id="2_007lt"]
+[ext_resource type="PackedScene" uid="uid://c8yi0x21oui6q" path="res://scenes/components/Unit_Cube.tscn" id="2_grtfn"]
 
-[node name="level" type="Node3D"]
+[node name="level" type="Node3D" node_paths=PackedStringArray("Start", "End")]
 script = ExtResource("1_knrxq")
+Start = NodePath("UnitCube")
+End = NodePath("UnitCube15")
 
-[node name="UnitCube" parent="." instance=ExtResource("2_007lt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+[node name="UnitCube" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_grtfn")]
+paths = [NodePath("../UnitCube2")]
 
-[node name="UnitCube2" parent="." instance=ExtResource("2_007lt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-
-[node name="UnitCube3" parent="." instance=ExtResource("2_007lt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-
-[node name="UnitCube4" parent="." instance=ExtResource("2_007lt")]
-
-[node name="UnitCube5" parent="." instance=ExtResource("2_007lt")]
+[node name="UnitCube2" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_grtfn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+paths = [NodePath("../UnitCube"), NodePath("../UnitCube3")]
 
-[node name="UnitCube6" parent="." instance=ExtResource("2_007lt")]
+[node name="UnitCube3" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_grtfn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+paths = [NodePath("../UnitCube2"), NodePath("../UnitCube4")]
+
+[node name="UnitCube4" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_grtfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+paths = [NodePath("../UnitCube3"), NodePath("../UnitCube5")]
+
+[node name="UnitCube5" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_grtfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+paths = [NodePath("../UnitCube4"), NodePath("../UnitCube6")]
+
+[node name="UnitCube6" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_007lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+paths = [NodePath("../UnitCube7"), NodePath("../UnitCube5"), NodePath("../UnitCube16")]
+
+[node name="UnitCube7" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_007lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
+paths = [NodePath("../UnitCube6"), NodePath("../UnitCube8")]
+
+[node name="UnitCube8" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_007lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -5)
+paths = [NodePath("../UnitCube9"), NodePath("../UnitCube7")]
+
+[node name="UnitCube9" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_007lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+paths = [NodePath("../UnitCube8"), NodePath("../UnitCube10")]
+
+[node name="UnitCube10" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_007lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -7)
+paths = [NodePath("../UnitCube9"), NodePath("../UnitCube11")]
+
+[node name="UnitCube11" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_007lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
+paths = [NodePath("../UnitCube12"), NodePath("../UnitCube10")]
+
+[node name="UnitCube12" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_007lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -8)
+paths = [NodePath("../UnitCube13"), NodePath("../UnitCube11")]
+
+[node name="UnitCube13" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_007lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+paths = [NodePath("../UnitCube14"), NodePath("../UnitCube12")]
+
+[node name="UnitCube14" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_007lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -8)
+paths = [NodePath("../UnitCube13"), NodePath("../UnitCube15"), NodePath("../UnitCube17")]
+
+[node name="UnitCube15" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_007lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -8)
+paths = [NodePath("../UnitCube14")]
+
+[node name="UnitCube16" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_007lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
+paths = [NodePath("../UnitCube6"), NodePath("../UnitCube18")]
+
+[node name="UnitCube17" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_007lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -7)
+paths = [NodePath("../UnitCube14"), NodePath("../UnitCube18")]
+
+[node name="UnitCube18" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_007lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -6)
+paths = [NodePath("../UnitCube17"), NodePath("../UnitCube16")]
