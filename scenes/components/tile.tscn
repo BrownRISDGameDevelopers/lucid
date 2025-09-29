@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://caun6mhxmr543"]
+[gd_scene load_steps=7 format=3 uid="uid://caun6mhxmr543"]
 
 [ext_resource type="Script" uid="uid://83ywrfi8uw52" path="res://scripts/resources/tile.gd" id="1_6llsq"]
 [ext_resource type="Script" uid="uid://dipwhcd5pofak" path="res://scripts/static_body_3d.gd" id="2_q0k13"]
+[ext_resource type="Texture2D" uid="uid://defn03uoyh8p6" path="res://materials/PavingStones084_1K-JPG_Color.jpg" id="3_svtog"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hoq8d"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_6llsq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ht65u"]
+albedo_texture = ExtResource("3_svtog")
 
-[node name="UnitCube" type="Node3D"]
+[sub_resource type="BoxMesh" id="BoxMesh_6llsq"]
+material = SubResource("StandardMaterial3D_ht65u")
+
+[node name="Tile" type="Node3D"]
 script = ExtResource("1_6llsq")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -15,6 +20,7 @@ script = ExtResource("2_q0k13")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_hoq8d")
+debug_color = Color(0.1809377, 0.51587296, 1, 0.41960785)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("BoxMesh_6llsq")

@@ -4,7 +4,7 @@ extends Node3D
 
 @export var End : Tile
 
-@onready var Player : Node3D = $Player
+@onready var Player : CharacterBody3D = $Player
 
 var Current : Tile
 
@@ -19,37 +19,50 @@ func connect_signals():
 
 
 
-
-func _on_cube_clicked(cube: Tile) -> void:
-	print("kewb clicked")
-	var path = bfs(Current, cube)
+func move_player_along_path(path) -> void:
 	for p in path:	
 		var pos = p.get_pos()
 		var offset = pos - Current.get_pos()
 		Player.translate(offset)
 		await get_tree().create_timer(1).timeout
 		Current = p
+
+func color_path_red(path: Array[Tile]) -> void:
+	for p in path:
+		p.turn_red()
 	
-	
+func reset_path(path: Array[Tile]) -> void:
+	for p in path:
+		p.reset_material()
 
+func _on_cube_clicked(cube: Tile) -> void:
+	print("kewb clicked")
+	var path = bfs(Current, cube)
+	color_path_red(path)
+	move_player_along_path(path)
+	reset_path(path)
 
-
-func bfs(start, seek):
-	var q = [[start]]
-	var seen = []
+			##
+func bfs(start: Tile, seek) -> Array[Tile]:
+	print("Start %s" % start)
+	var q: Array = [[start]]            # nested generics not supported
+	var seen: Array[Tile] = []
 	while len(q) > 0:
-		var next = q.pop_front()
-		var new = next[-1]
+		var next: Array = q.pop_front()
+		var new: Tile = next[-1]
 		seen.append(new)
 		if new == seek:
-			print(next)
-			return next
+			var path: Array[Tile] = []
+			for e in next:
+				if e is Tile:
+					path.append(e)
+				else:
+					print("Non-Tile in path:", e)
+			return path
 		for q_append in new.paths:
-			if seen.has(q_append) == false:
+			if not seen.has(q_append):
 				q.append(next + [q_append])
-	return []
-			
-				
+	return [] as Array[Tile]
 		
 		
 		
