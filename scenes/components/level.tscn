@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxig8broegcu5"]
+[gd_scene load_steps=5 format=3 uid="uid://cxig8broegcu5"]
 
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/level.gd" id="1_knrxq"]
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/components/tile.tscn" id="2_grtfn"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="3_007lt"]
+[ext_resource type="PackedScene" uid="uid://db8dkkbf6h8lf" path="res://scenes/components/ladder.tscn" id="4_grtfn"]
 
 [node name="level" type="Node3D" node_paths=PackedStringArray("Start", "End")]
 script = ExtResource("1_knrxq")
@@ -70,7 +71,7 @@ paths = [NodePath("../UnitCube14")]
 
 [node name="UnitCube16" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_grtfn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
-paths = [NodePath("../UnitCube6"), NodePath("../UnitCube18")]
+paths = [NodePath("../UnitCube6"), NodePath("../UnitCube18"), NodePath("../Ladder")]
 
 [node name="UnitCube17" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_grtfn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -7)
@@ -90,3 +91,15 @@ transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.7071068, 0, -0.7071068, 0.7071
 
 [node name="Player" parent="." instance=ExtResource("3_007lt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Ladder" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("4_grtfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -5)
+paths = [NodePath("../Ladder2"), NodePath("../UnitCube16")]
+
+[node name="Ladder2" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("4_grtfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -5)
+paths = [NodePath("../Ladder"), NodePath("../Tile")]
+
+[node name="Tile" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_grtfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -5)
+paths = [NodePath("../Ladder2")]
