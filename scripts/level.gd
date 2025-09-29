@@ -4,7 +4,7 @@ extends Node3D
 
 @export var End : Tile
 
-@onready var Player : Node3D = $Player
+@onready var Player : CharacterBody3D = $Player
 
 var Current : Tile
 
@@ -20,7 +20,6 @@ func _ready():
 func connect_signals():
 	for child in get_children():
 		child.connect("cube_clicked", Callable(self, "_on_cube_clicked"))
-
 
 
 
@@ -41,28 +40,35 @@ func _physics_process(delta :float):
 		Current = target_tile
 		target_tile = path_queue.pop_front()
 	
+func color_path_red(path: Array[Tile]) -> void:
+	for p in path:
+		p.turn_red()
 	
-	
+func reset_path(path: Array[Tile]) -> void:
+	for p in path:
+		p.reset_material()
 
-
-
-func bfs(start, seek):
-	var q = [[start]]
-	var seen = []
+			##
+func bfs(start: Tile, seek) -> Array[Tile]:
+	print("Start %s" % start)
+	var q: Array = [[start]]            # nested generics not supported
+	var seen: Array[Tile] = []
 	while len(q) > 0:
-		var next = q.pop_front()
-		var new = next[-1]
+		var next: Array = q.pop_front()
+		var new: Tile = next[-1]
 		seen.append(new)
 		if new == seek:
-			print(next)
-			next.pop_front()
-			return next
+			var path: Array[Tile] = []
+			for e in next:
+				if e is Tile:
+					path.append(e)
+				else:
+					print("Non-Tile in path:", e)
+			return path
 		for q_append in new.paths:
-			if seen.has(q_append) == false:
+			if not seen.has(q_append):
 				q.append(next + [q_append])
-	return []
-			
-				
+	return [] as Array[Tile]
 		
 		
 		
