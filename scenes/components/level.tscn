@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxig8broegcu5"]
 
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/level.gd" id="1_knrxq"]
-[ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/components/Unit_Cube.tscn" id="2_grtfn"]
+[ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/components/tile.tscn" id="2_grtfn"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="3_007lt"]
 
 [node name="level" type="Node3D" node_paths=PackedStringArray("Start", "End")]
