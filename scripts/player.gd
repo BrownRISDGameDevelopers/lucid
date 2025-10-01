@@ -9,13 +9,6 @@ var path: Array[Tile]
 var actual_speed;
 @export var current: Tile
 
-func _ready() -> void:
-	print(current.name)
-
-func isWalking() -> bool:
-	return false
-
-
 func set_path(myPath: Array[Tile]):
 	gameManager.path_complete()
 	if myPath.size() == 0: return
@@ -24,10 +17,10 @@ func set_path(myPath: Array[Tile]):
 		path.pop_front()
 	
 	target_tile = myPath.pop_front()
-	update_speed()
+	_update_speed()
 	
 
-func update_speed():
+func _update_speed():
 	if target_tile:
 		actual_speed = (target_tile.get_pos() - current.get_pos()).length() * speedMultiplier
 	
@@ -53,4 +46,4 @@ func reached_tile(tile: Tile):
 #			We have reached the end of our path
 		gameManager.path_complete()
 	else:
-		update_speed()	
+		_update_speed()	

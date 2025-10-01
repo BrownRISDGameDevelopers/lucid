@@ -4,10 +4,8 @@
 extends Node3D
 class_name TileManager
 
-#Where the character spawns at the start of the level
 # The goal
 @export var End : Tile
-
 @onready var gameManager: GameManager = get_parent()
 
 var tiles_colored : Array[Tile] = []
