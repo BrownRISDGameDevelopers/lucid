@@ -51,19 +51,31 @@ func _on_cube_clicked(cube: Tile) -> void:
 	
 	if path_queue == []:
 		target_tile = path.pop_front()		
+		update_speed()
 
 	path_queue = path
 		
 
+func update_speed():
+#	idk this just updates the speed of the player between tiles
+	print(target_tile.get_pos())
+	print(Current.get_pos())
+	print(Player.global_position)
+	PlayerSpeed = (target_tile.get_pos() - Current.get_pos()).length() * 3
+	
+
+
 func _physics_process(delta :float):
 	if target_tile == null:
 		return
-	
+		
+# determine speed based on offset between tiles
+
 #	Move torward target tile
 	Player.global_position = Player.global_position.move_toward(target_tile.get_pos() + Vector3(0, 1, 0), delta * PlayerSpeed)
 	
 #	If we have reached the target tile
-	if Player.global_position == target_tile.get_pos() + Vector3(0, 1, 0):
+	if Player.global_position == target_tile.get_pos() + Vector3(0, 1, 0) or target_tile == Current:
 		tiles_walked_on.append(target_tile)
 #		Update the tile we're currently on
 		Current = target_tile
@@ -73,6 +85,8 @@ func _physics_process(delta :float):
 		if target_tile == null:
 #			We have reached the end of our path
 			path_complete()
+		else:
+			update_speed()
 
 # Things to do when we finish traversing along a path
 func path_complete() -> void:

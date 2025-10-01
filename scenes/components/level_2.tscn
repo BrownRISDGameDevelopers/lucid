@@ -5,10 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://yg6bul1ruiqr" path="res://scenes/components/flat.tscn" id="3_qmq3r"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="4_8r08h"]
 
-[node name="level" type="Node3D" node_paths=PackedStringArray("Start", "End")]
+[node name="level_2" type="Node3D" node_paths=PackedStringArray("Start")]
 script = ExtResource("1_c165l")
 Start = NodePath("Tile")
-End = NodePath("")
 
 [node name="levelCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.3071067, -0.64235055, 0.11084, 0, 1.283009, 0.11098618, -0.3071067, -0.64235055, 0.11084, 20.380001, 21.875, 29)
