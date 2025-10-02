@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://c808xpmkpwnxb"]
+
+[ext_resource type="PackedScene" uid="uid://xc11uvas1qot" path="res://scenes/components/level_2.tscn" id="1_nhcrd"]
+
+[node name="Level2Reorg" type="Node"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = -1
+anchor_right = 0.5564236
+anchor_bottom = 0.20216049
+offset_right = 512.0
+offset_bottom = 512.0
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1153, 643)
+render_target_update_mode = 4
+
+[node name="levelCamera2" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.70710677, -0.40860698, 0.57709646, 0, 0.8161376, 0.57785755, -0.70710677, -0.40860698, 0.57709646, 20.380001, 21.875, 29)
+cull_mask = 2
+projection = 1
+size = 15.018
+
+[node name="GameManager" parent="." instance=ExtResource("1_nhcrd")]

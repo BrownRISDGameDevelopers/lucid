@@ -14,8 +14,6 @@ class_name GameManager
 #to be the start of the level.
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass 
 
 # The player is the definitive source on the tile they are
 func get_current_tile() -> Tile:
