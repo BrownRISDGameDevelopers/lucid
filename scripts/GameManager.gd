@@ -3,13 +3,13 @@
 # Most importantly, it facilitates communication between the pathfinding (TileManager)
 # and the player (Player)
 
-extends Node3D
+extends Node
 
 class_name GameManager
 
 @onready var player : LucidPlayer = $Player
 
-@onready var tileManager: Node3D = $TileManager
+@onready var tileManager: Node = $TileManager
 #The tile that the player is currently on. Initialized by the TileManager
 #to be the start of the level.
 
@@ -39,6 +39,12 @@ func process_path_queue(path_queue: Array[Tile]):
 	tileManager.color_path_red(path_queue)
 #	TileManager: Issue with array size 0
 	tileManager.color_tile_blue(path_queue[-1])
+	
+func player_wants_to_flip(tile: Tile):
+	if (tile.gravity_path != null):
+		#	If the player has somewhere to go when we flip gravity, let it happen
+		player.flip()
+		pass
 	
 # This function is called by the Player whenever they reach a tile.
 func player_reached_tile(tile: Tile):

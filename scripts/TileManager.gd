@@ -1,7 +1,7 @@
 #The TileManager keeps track of Tiles in the level. It handles pathfinding
 #and detecting clicks on Tiles.
 
-extends Node3D
+extends Node
 class_name TileManager
 
 # The goal
@@ -50,6 +50,9 @@ func path_complete() -> void:
 func reset_tiles(tiles: Array[Tile]) -> void:
 	for t in tiles:
 		t.reset_material()
+
+
+
 
 			##
 func bfs(start: Tile, seek) -> Array[Tile]:

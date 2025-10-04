@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjww51lyyclv5"]
+
+[ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="1_s2q6t"]
+[ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="2_gjpay"]
+[ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/components/tile.tscn" id="2_xidfi"]
+[ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="3_gjpay"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_s2q6t")
+
+[node name="TileManager" type="Node" parent="."]
+script = ExtResource("2_gjpay")
+
+[node name="Tile" parent="TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("2_xidfi")]
+transform = Transform3D(0.9999636, 0.0074456134, -0.004174209, -0.007414335, 0.9999447, 0.0074613392, 0.0042295177, -0.007430136, 0.99996346, 0, -9.536743e-07, -4.7683716e-07)
+paths = [NodePath("")]
+
+[node name="levelCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.70710677, -0.40860698, 0.57709646, 0, 0.8161376, 0.57785755, -0.70710677, -0.40860698, 0.57709646, 18.455, 18.15, 18.87)
+cull_mask = 1048573
+projection = 1
+size = 15.018
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.7071068, 0, -0.7071068, 0.70710677, 0, 7, 5)
+
+[node name="Player" parent="." node_paths=PackedStringArray("current") instance=ExtResource("3_gjpay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+current = NodePath("../TileManager/Tile")
