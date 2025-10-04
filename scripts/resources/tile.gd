@@ -14,12 +14,11 @@ func my_static_body3d_clicked():
 	
 func get_pos():
 	return point.global_position
-
-
+	
 func _ready():
 	var mesh = $StaticBody3D/MeshInstance3D
 	original_mat = mesh.get_active_material(0)
-
+	
 func turn_red():
 	var mesh = $StaticBody3D/MeshInstance3D
 	if original_mat:
