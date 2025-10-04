@@ -44,6 +44,10 @@ func process_path_queue(path_queue: Array[Tile]):
 func player_reached_tile(tile: Tile):
 	tileManager.color_tile_orange(tile)
 
-# This function is called by the Player whenever they're given a new path.
-func path_complete():
-	tileManager.path_complete()
+# This function is called by the Player whenever they finish a path or they're given a new path.
+func path_complete(tile: Tile):
+	tileManager.path_complete(tile)
+	
+# Switch the scene to the next scene; depending on how we implement this, we may want to change etr to take in a string of the scene we're changing to
+func end_tile_reached():
+	get_tree().change_scene_to_file("res://scenes/components/level_2.tscn")

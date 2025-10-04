@@ -37,6 +37,27 @@ size = 15.018
 [node name="GameManager" type="Node3D" parent="."]
 script = ExtResource("1_afqjt")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
+visible = false
+
+[node name="Control" type="Control" parent="GameManager/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="GameManager/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(28.759998, 16.200003)
+color = Color(0.74945015, 0.9485516, 0.8714247, 1)
+
+[node name="CanvasGroup" type="CanvasGroup" parent="GameManager/CanvasLayer"]
+
 [node name="TileManager" type="Node3D" parent="GameManager" node_paths=PackedStringArray("End")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.7071068, 0, -0.7071068, 0.70710677, 0, 7, 5)
 script = ExtResource("2_7461g")

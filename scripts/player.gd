@@ -10,15 +10,15 @@ var actual_speed;
 @export var current: Tile
 
 func set_path(myPath: Array[Tile]):
-	gameManager.path_complete()
+	gameManager.path_complete(current)
 	if myPath.size() == 0: return
 	path = myPath;
+	
 	if (path[0] == current):
 		path.pop_front()
-	
 	target_tile = myPath.pop_front()
-	_update_speed()
 	
+	_update_speed()
 
 func _update_speed():
 	if target_tile:
@@ -44,6 +44,6 @@ func reached_tile(tile: Tile):
 	target_tile = path.pop_front()
 	if target_tile == null:
 #			We have reached the end of our path
-		gameManager.path_complete()
+		gameManager.path_complete(current)
 	else:
 		_update_speed()	

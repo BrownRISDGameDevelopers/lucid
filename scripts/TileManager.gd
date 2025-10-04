@@ -43,9 +43,15 @@ func color_path_red(path: Array[Tile]) -> void:
 		tiles_colored.append(p)
 
 # Things to do when we finish traversing along a path
-func path_complete() -> void:
+func path_complete(tile: Tile) -> void:
 	reset_tiles(tiles_colored)
+	end_tile_reached(tile)
 	
+# Check if the tile reached is the End tile
+func end_tile_reached(tile: Tile) -> void:
+	if End == tile:
+		print("end tile reached")
+		gameManager.end_tile_reached()
 
 func reset_tiles(tiles: Array[Tile]) -> void:
 	for t in tiles:

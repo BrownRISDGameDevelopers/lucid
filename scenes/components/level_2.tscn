@@ -14,6 +14,10 @@ transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.7071068, 0, -0.7071068, 0.7071
 script = ExtResource("1_c165l")
 End = NodePath("Tile5")
 
+[node name="differentiable" parent="TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("2_po0ob")]
+transform = Transform3D(0.9998753, 0.0098194955, -0.012372953, -0.012517539, 0.014804274, -0.9998121, -0.009634502, 0.9998422, 0.0149252415, 0.024889655, 3.533425, -15.5223465)
+paths = [NodePath("../Tile2")]
+
 [node name="Tile" parent="TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("2_po0ob")]
 transform = Transform3D(0.9999636, 0.0074456134, -0.004174209, -0.008233447, 0.7123216, -0.701805, -0.0022520062, 0.7018138, 0.71235687, 0, -1.4142134, -8.485282)
 paths = [NodePath("../Tile2")]
@@ -128,5 +132,4 @@ transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.7071068, 0, -0.7071068, 0.7071
 
 [node name="Player" parent="." node_paths=PackedStringArray("current") instance=ExtResource("4_8r08h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-speedMultiplier = 3
 current = NodePath("../TileManager/Tile")
