@@ -5,9 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="3_007lt"]
 [ext_resource type="PackedScene" uid="uid://db8dkkbf6h8lf" path="res://scenes/components/ladder.tscn" id="4_grtfn"]
 
-[node name="level" type="Node3D" node_paths=PackedStringArray("Start", "End")]
+[node name="level" type="Node3D" node_paths=PackedStringArray("End")]
 script = ExtResource("1_knrxq")
-Start = NodePath("UnitCube")
 End = NodePath("UnitCube15")
 
 [node name="UnitCube" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("2_grtfn")]
