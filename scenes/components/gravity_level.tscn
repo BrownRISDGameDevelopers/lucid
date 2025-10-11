@@ -1,0 +1,126 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2lmyucq8r4dk"]
+
+[ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="1_hgg0b"]
+[ext_resource type="Script" uid="uid://dfw405aqqwl5d" path="res://scenes/components/viewport_manager.gd" id="1_k4xfj"]
+[ext_resource type="PackedScene" uid="uid://ckgiy1aoqvyxd" path="res://scenes/tiles/BGTile.tscn" id="1_tn4m2"]
+[ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="2_6467g"]
+[ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="4_k4xfj"]
+[ext_resource type="PackedScene" uid="uid://bdbaus0a0yg6g" path="res://scenes/tiles/FGTile.tscn" id="5_6467g"]
+
+[node name="GravityLevel" type="Node"]
+
+[node name="ViewportManager" type="Node" parent="." node_paths=PackedStringArray("viewports")]
+script = ExtResource("1_k4xfj")
+viewports = [NodePath("Foreground/SubViewport"), NodePath("PlayerViewport/SubViewport"), NodePath("BackgroundViewport/SubViewport")]
+
+[node name="BackgroundViewport" type="SubViewportContainer" parent="ViewportManager"]
+anchors_preset = -1
+anchor_right = 1.001
+anchor_bottom = 1.0
+offset_right = -0.15209961
+offset_bottom = -5.0
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="ViewportManager/BackgroundViewport"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1153, 643)
+render_target_update_mode = 4
+
+[node name="Background" type="Camera3D" parent="ViewportManager/BackgroundViewport/SubViewport"]
+transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 18.455, 18.15, 18.87)
+cull_mask = 1
+projection = 1
+size = 15.018
+
+[node name="PlayerViewport" type="SubViewportContainer" parent="ViewportManager"]
+anchors_preset = -1
+anchor_right = 0.5564236
+anchor_bottom = 0.20216049
+offset_right = 512.0
+offset_bottom = 512.0
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="ViewportManager/PlayerViewport"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1153, 643)
+render_target_update_mode = 4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ViewportManager/PlayerViewport/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.7071068, 0, -0.7071068, 0.70710677, 0, 7, 5)
+layers = 7
+
+[node name="PlayerCamera" type="Camera3D" parent="ViewportManager/PlayerViewport/SubViewport"]
+transform = Transform3D(0.70710677, -0.40860698, 0.57709646, 0, 0.8161376, 0.57785755, -0.70710677, -0.40860698, 0.57709646, 18.455, 18.15, 18.87)
+cull_mask = 2
+projection = 1
+current = true
+size = 15.018
+
+[node name="Foreground" type="SubViewportContainer" parent="ViewportManager"]
+anchors_preset = -1
+anchor_right = 0.5564236
+anchor_bottom = 0.20216049
+offset_right = 512.0
+offset_bottom = 512.0
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="ViewportManager/Foreground"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1153, 643)
+render_target_update_mode = 4
+
+[node name="ForegroundCamera" type="Camera3D" parent="ViewportManager/Foreground/SubViewport"]
+transform = Transform3D(0.70710677, -0.40860698, 0.57709646, 0, 0.8161376, 0.57785755, -0.70710677, -0.40860698, 0.57709646, 18.455, 18.15, 18.87)
+cull_mask = 4
+projection = 1
+current = true
+size = 15.018
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_hgg0b")
+
+[node name="TileManager" type="Node" parent="GameManager"]
+script = ExtResource("2_6467g")
+
+[node name="BG1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("1_tn4m2")]
+neighbors = [NodePath("../BG2")]
+
+[node name="BG2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("1_tn4m2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+neighbors = [NodePath("../BG1"), NodePath("../BG3")]
+
+[node name="BG3" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("1_tn4m2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+neighbors = [NodePath("../BG2"), NodePath("../BackgroundTile4")]
+
+[node name="BackgroundTile4" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("1_tn4m2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+neighbors = [NodePath("../BG3"), NodePath("../BackgroundTile5")]
+
+[node name="BackgroundTile5" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("1_tn4m2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+neighbors = [NodePath("../BackgroundTile4")]
+gravity_path = NodePath("../ForegroundTile")
+
+[node name="ForegroundTile" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("5_6467g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5, 0)
+neighbors = [NodePath("../ForegroundTile2")]
+gravity_path = NodePath("../BackgroundTile5")
+
+[node name="ForegroundTile2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_6467g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, 0)
+neighbors = [NodePath("../ForegroundTile"), NodePath("../ForegroundTile3")]
+
+[node name="ForegroundTile3" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_6467g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 5, 0)
+neighbors = [NodePath("../ForegroundTile2")]
+
+[node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("4_k4xfj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+current = NodePath("../TileManager/BG1")

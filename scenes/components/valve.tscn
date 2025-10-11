@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dah0lpoyhtvug"]
+
+[ext_resource type="Script" uid="uid://qi3q7addgjmh" path="res://scripts/valve.gd" id="1_yr303"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_h7264"]
+height = 4.02
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_85wf7"]
+height = 4.02
+
+[node name="Valve" type="StaticBody3D"]
+script = ExtResource("1_yr303")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_h7264")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_85wf7")

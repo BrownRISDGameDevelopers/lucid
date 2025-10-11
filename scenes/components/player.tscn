@@ -24,6 +24,3 @@ shape = SubResource("CapsuleShape3D_jorle")
 layers = 2
 material_override = SubResource("StandardMaterial3D_sjsxr")
 mesh = SubResource("CapsuleMesh_6mmc7")
-
-[node name="tilePos" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

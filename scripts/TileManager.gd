@@ -1,7 +1,7 @@
 #The TileManager keeps track of Tiles in the level. It handles pathfinding
 #and detecting clicks on Tiles.
 
-extends Node3D
+extends Node
 class_name TileManager
 
 # The goal
@@ -17,9 +17,14 @@ func _ready():
 
 # Tell my children (which should only be Tiles!) to tell me if they are clicked
 func connect_signals():
+	var at_least_one_tile = false
 	for child in get_children():
 		if child is Tile:
+			print("Tile Manager Detects Tile")
 			child.connect("cube_clicked", Callable(self, "_on_cube_clicked"))
+			at_least_one_tile = true
+	if not at_least_one_tile:
+		print("ERROR: TILEMANAGER HAS NO CHILDREN WHO ARE TILES")
 
 
 func _on_cube_clicked(cube: Tile) -> void:
@@ -57,6 +62,9 @@ func reset_tiles(tiles: Array[Tile]) -> void:
 	for t in tiles:
 		t.reset_material()
 
+
+
+
 			##
 func bfs(start: Tile, seek) -> Array[Tile]:
 	print("Start %s" % start)
@@ -74,7 +82,7 @@ func bfs(start: Tile, seek) -> Array[Tile]:
 				else:
 					print("Non-Tile in path:", e)
 			return path
-		for q_append in new.paths:
+		for q_append in new.neighbors:
 			if not seen.has(q_append):
 				q.append(next + [q_append])
 	return [] as Array[Tile]
