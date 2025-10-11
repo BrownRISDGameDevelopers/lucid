@@ -2,9 +2,9 @@ extends Node3D
 
 class_name Tile
 
-@export var paths : Array[Tile] = []
+@export var neighbors : Array[Tile] = []
 
-@export var is_upside_down : bool = false
+@export var is_foreground : bool = false
 
 # The tile that we go to if we press Spacebar (if any)
 @export var gravity_path : Tile
@@ -16,10 +16,11 @@ var original_mat : Material
 signal cube_clicked(this_cube)
 
 func my_static_body3d_clicked():
+	print("Tile: my_static_body3d_clicked")
 	emit_signal("cube_clicked", self)
 
 func get_my_active_edge_pos() -> Vector3:
-	if (is_upside_down):
+	if (is_foreground):
 #		We want to return the bottom edge of the tile
 		return point.global_position + Vector3(0,-1,0)
 	else:
@@ -34,10 +35,9 @@ func _ready():
 func set_visiblity_layers():
 	var mesh = $StaticBody3D/MeshInstance3D
 	original_mat = mesh.get_active_material(0)
-	if (is_upside_down):
+	if (is_foreground):
 	# 	If this tile is in the FOREGROUND (infront of the player)
 	#	Set the CULL LAYER TO 3
-		print("set visibility flase")
 		mesh.set_layer_mask_value(3,true)
 		mesh.set_layer_mask_value(1,false)
 	else:

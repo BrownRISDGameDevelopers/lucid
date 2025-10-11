@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfwdcjs51c2dm"]
+
+[ext_resource type="Script" uid="uid://83ywrfi8uw52" path="res://scripts/resources/tile.gd" id="1_2v877"]
+[ext_resource type="Script" uid="uid://dipwhcd5pofak" path="res://scripts/static_body_3d.gd" id="2_stk8e"]
+[ext_resource type="Texture2D" uid="uid://defn03uoyh8p6" path="res://materials/PavingStones084_1K-JPG_Color.jpg" id="3_2xyf5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7x5kd"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vd0gy"]
+albedo_texture = ExtResource("3_2xyf5")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2dfsf"]
+material = SubResource("StandardMaterial3D_vd0gy")
+size = Vector2(1, 1)
+
+[node name="Flat" type="Node3D"]
+script = ExtResource("1_2v877")
+metadata/_custom_type_script = "uid://83ywrfi8uw52"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+script = ExtResource("2_stk8e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_7x5kd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_2dfsf")
+
+[node name="transform" type="Node3D" parent="."]
