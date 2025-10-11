@@ -6,11 +6,11 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hoq8d"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ht65u"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6dap"]
 albedo_texture = ExtResource("3_svtog")
 
 [sub_resource type="BoxMesh" id="BoxMesh_6llsq"]
-material = SubResource("StandardMaterial3D_ht65u")
+material = SubResource("StandardMaterial3D_y6dap")
 
 [node name="Tile" type="Node3D"]
 script = ExtResource("1_6llsq")
