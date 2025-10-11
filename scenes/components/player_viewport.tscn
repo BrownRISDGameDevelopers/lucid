@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cokpuxh0kfwgl"]
+[gd_scene load_steps=0 format=3 uid="uid://cokpuxh0kfwgl"]
 
 [node name="player_viewport" type="SubViewportContainer"]
 anchors_preset = -1
