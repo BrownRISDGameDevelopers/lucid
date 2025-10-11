@@ -66,14 +66,18 @@ func flip():
 
 func _input(event):
 	if event.is_action_pressed("flip_gravity"):
+		print("flip graV")
 		gameManager.player_wants_to_flip(current)
+	if event.is_action_pressed("rotate_node"):
+		print("rotate_node")
+		gameManager.player_wants_to_rotate(current)
 
 
 func reached_tile(tile: Tile):
 #	Tell the gameManager we reached a tile (so it can tell the tileManager)	
 	print("Reached tile. Player Position:")
 	print(position)
-	print("Player rotation")
+	#print("Player rotation")
 	print(rotation_degrees)
 	
 	gameManager.player_reached_tile(target_tile)

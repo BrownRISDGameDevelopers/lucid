@@ -45,6 +45,13 @@ func player_wants_to_flip(tile: Tile):
 		#	If the player has somewhere to go when we flip gravity, let it happen
 		player.flip()
 		pass
+		
+func player_wants_to_rotate(tile: Tile):
+	if (tile.rotation_path != null):
+		
+		if (tile.pivot):
+			print("rotating")
+			tile.pivot.rotate_children(5)
 	
 # This function is called by the Player whenever they reach a tile.
 func player_reached_tile(tile: Tile):

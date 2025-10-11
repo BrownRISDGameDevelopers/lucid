@@ -9,6 +9,10 @@ class_name Tile
 # The tile that we go to if we press Spacebar (if any)
 @export var gravity_path : Tile
 
+@export var rotation_path : Array[Tile]
+
+@export var pivot : Pivot
+
 @onready var point = $transform
 var original_mat : Material
 
@@ -71,3 +75,22 @@ func reset_material():
 	var mesh = $StaticBody3D/MeshInstance3D
 	if original_mat:
 		mesh.set_surface_override_material(0, original_mat)
+		
+func rotate_around_pivot(pivot: Vector3, axis: Vector3, angle_rad: float) -> void:
+	# Translate so pivot is at origin
+	var relative_pos = self.global_position - pivot
+	# Create a rotation transform around the axis
+	print("pivot origin: ", relative_pos)
+	var rotation = Transform3D(Basis(axis, angle_rad), Vector3.ZERO)
+	# Apply rotation
+	relative_pos = rotation * relative_pos
+	# Move back to pivot position
+	self.global_position = pivot + relative_pos
+	
+	print("node pos: ", self.global_position)
+	# Rotate the node itself so its orientation changes
+	
+	
+	
+	
+	self.rotate(axis, angle_rad)
