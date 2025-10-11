@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c808xpmkpwnxb"]
+[gd_scene load_steps=6 format=3 uid="uid://cjbepl88dos8o"]
 
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="1_gdhsp"]
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="2_t7oti"]
@@ -42,105 +42,80 @@ transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.7071068, 0, -0.7071068, 0.7071
 script = ExtResource("2_t7oti")
 End = NodePath("Tile5")
 
-[node name="Tile" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(0.9999636, 0.0074456134, -0.004174209, -0.008233447, 0.7123216, -0.701805, -0.0022520062, 0.7018138, 0.71235687, 0, -1.4142134, -8.485282)
-paths = [NodePath("../Tile2")]
 
-[node name="Tile2" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile2" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, 0, -2.1213202, -7.7781754)
-paths = [NodePath("../Tile3"), NodePath("../Tile")]
 
-[node name="Tile3" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile3" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, 0, -2.828427, -7.0710683)
-paths = [NodePath("../Tile2"), NodePath("../Tile4")]
 
-[node name="Tile4" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile4" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, 0, -3.535534, -6.3639617)
-paths = [NodePath("../Tile3"), NodePath("../Tile6")]
 
-[node name="Tile5" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile5" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -1, -9.192389, -6.3639617)
-paths = [NodePath("../Tile7")]
 
-[node name="Tile7" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile7" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -2, -9.192389, -6.3639617)
-paths = [NodePath("../Tile5"), NodePath("../Tile17")]
 
-[node name="Tile17" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile17" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -3, -9.192389, -6.3639617)
-paths = [NodePath("../Tile7"), NodePath("../Tile18")]
 
-[node name="Tile18" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile18" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -4, -9.192389, -6.3639617)
-paths = [NodePath("../Tile17"), NodePath("../Flat")]
 
-[node name="Tile6" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile6" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -1, -3.535534, -6.3639617)
-paths = [NodePath("../Tile19"), NodePath("../Tile4")]
 
-[node name="Tile19" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile19" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -2, -3.535534, -6.3639617)
-paths = [NodePath("../Tile6"), NodePath("../Tile20")]
 
-[node name="Tile20" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile20" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -3, -3.535534, -6.3639617)
-paths = [NodePath("../Tile19"), NodePath("../Tile21")]
 
-[node name="Tile21" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile21" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -4, -3.535534, -6.3639617)
-paths = [NodePath("../Tile20"), NodePath("../Tile22")]
 
-[node name="Tile22" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile22" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -5, -3.535534, -6.3639617)
-paths = [NodePath("../Tile21"), NodePath("../Tile23")]
 
-[node name="Tile23" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile23" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -5, -4.2426405, -5.6568546)
-paths = [NodePath("../Tile22"), NodePath("../Tile24")]
 
-[node name="Tile24" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile24" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -5, -4.9497476, -4.949748)
-paths = [NodePath("../Tile23"), NodePath("../Tile25")]
 
-[node name="Tile25" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile25" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -5, -5.6568546, -4.2426414)
-paths = [NodePath("../Tile24"), NodePath("../Tile26")]
 
-[node name="Tile26" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile26" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -5, -6.363961, -3.5355344)
-paths = [NodePath("../Tile25"), NodePath("../Tile27")]
 
-[node name="Tile27" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile27" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -5, -7.071068, -2.8284278)
-paths = [NodePath("../Tile26"), NodePath("../Tile28")]
 
-[node name="Tile28" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile28" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -5, -7.7781744, -2.1213212)
-paths = [NodePath("../Tile27"), NodePath("../Tile29")]
 
-[node name="Tile29" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile29" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -5, -8.485282, -1.4142141)
-paths = [NodePath("../Tile28"), NodePath("../Tile30")]
 
-[node name="Tile30" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile30" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -5, -9.192389, -0.70710754)
-paths = [NodePath("../Tile29"), NodePath("../Tile31")]
 
-[node name="Tile31" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile31" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -4, -9.192389, -0.70710754)
-paths = [NodePath("../Tile30"), NodePath("../Tile32")]
 
-[node name="Tile32" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile32" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -3, -9.192389, -0.70710754)
-paths = [NodePath("../Tile31"), NodePath("../Tile33")]
 
-[node name="Tile33" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("3_4dl7j")]
+[node name="Tile33" parent="GameManager/TileManager" instance=ExtResource("3_4dl7j")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -2, -9.192389, -0.70710754)
-paths = [NodePath("../Tile32"), NodePath("../Flat")]
 
-[node name="Flat" parent="GameManager/TileManager" node_paths=PackedStringArray("paths") instance=ExtResource("4_t1xur")]
+[node name="Flat" parent="GameManager/TileManager" instance=ExtResource("4_t1xur")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -1, -8.838836, -0.35355377)
-paths = [NodePath("../Tile33"), NodePath("../Tile18")]
 
 [node name="Flat2" parent="GameManager/TileManager" instance=ExtResource("4_t1xur")]
 transform = Transform3D(1, 0, 0, 0, -0.7071069, -0.7071067, 0, 0.7071067, -0.7071069, -1, -9.545941, -0.35355377)

@@ -20,7 +20,8 @@ func get_current_tile() -> Tile:
 	return player.current;
 
 func move_player(path: Array[Tile]):
-	player.set_path(path)
+	player.set_path(path)	
+
 
 # Called by TileManager. Contains the path that the TileManager wants the player
 # to traverse.
@@ -30,8 +31,8 @@ func process_path_queue(path_queue: Array[Tile]):
 #	Our TileManager has found a valid path for us. 
 	
 #	Do we want to do go down the path that the TileManager found?
-#	For now, yes, always.
-
+#	Does the Player want us to?
+	if (player.deny_new_path): return
 #	Tell the player to dump whatever they're doing and go down this new path.
 	player.set_path(path_queue.duplicate(true))
 	
@@ -41,6 +42,7 @@ func process_path_queue(path_queue: Array[Tile]):
 	tileManager.color_tile_blue(path_queue[-1])
 	
 func player_wants_to_flip(tile: Tile):
+	if (player.player_busy()): return
 	if (tile.gravity_path != null):
 		#	If the player has somewhere to go when we flip gravity, let it happen
 		player.flip()

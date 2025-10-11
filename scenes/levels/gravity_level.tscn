@@ -1,16 +1,16 @@
 [gd_scene load_steps=7 format=3 uid="uid://d2lmyucq8r4dk"]
 
-[ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="1_hgg0b"]
-[ext_resource type="Script" uid="uid://dfw405aqqwl5d" path="res://scenes/components/viewport_manager.gd" id="1_k4xfj"]
-[ext_resource type="PackedScene" uid="uid://ckgiy1aoqvyxd" path="res://scenes/tiles/BGTile.tscn" id="1_tn4m2"]
-[ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="2_6467g"]
-[ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="4_k4xfj"]
-[ext_resource type="PackedScene" uid="uid://bdbaus0a0yg6g" path="res://scenes/tiles/FGTile.tscn" id="5_6467g"]
+[ext_resource type="Script" uid="uid://dfw405aqqwl5d" path="res://scenes/components/viewport_manager.gd" id="1_qsrxk"]
+[ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_2bvl2"]
+[ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="3_rw1a3"]
+[ext_resource type="PackedScene" uid="uid://ckgiy1aoqvyxd" path="res://scenes/tiles/BGTile.tscn" id="4_mrqvb"]
+[ext_resource type="PackedScene" uid="uid://bdbaus0a0yg6g" path="res://scenes/tiles/FGTile.tscn" id="5_5mclm"]
+[ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="6_0xry8"]
 
 [node name="GravityLevel" type="Node"]
 
 [node name="ViewportManager" type="Node" parent="." node_paths=PackedStringArray("viewports")]
-script = ExtResource("1_k4xfj")
+script = ExtResource("1_qsrxk")
 viewports = [NodePath("Foreground/SubViewport"), NodePath("PlayerViewport/SubViewport"), NodePath("BackgroundViewport/SubViewport")]
 
 [node name="BackgroundViewport" type="SubViewportContainer" parent="ViewportManager"]
@@ -83,44 +83,44 @@ current = true
 size = 15.018
 
 [node name="GameManager" type="Node" parent="."]
-script = ExtResource("1_hgg0b")
+script = ExtResource("2_2bvl2")
 
 [node name="TileManager" type="Node" parent="GameManager"]
-script = ExtResource("2_6467g")
+script = ExtResource("3_rw1a3")
 
-[node name="BG1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("1_tn4m2")]
+[node name="BG1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_mrqvb")]
 neighbors = [NodePath("../BG2")]
 
-[node name="BG2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("1_tn4m2")]
+[node name="BG2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_mrqvb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 neighbors = [NodePath("../BG1"), NodePath("../BG3")]
 
-[node name="BG3" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("1_tn4m2")]
+[node name="BG3" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_mrqvb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 neighbors = [NodePath("../BG2"), NodePath("../BackgroundTile4")]
 
-[node name="BackgroundTile4" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("1_tn4m2")]
+[node name="BackgroundTile4" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_mrqvb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 neighbors = [NodePath("../BG3"), NodePath("../BackgroundTile5")]
 
-[node name="BackgroundTile5" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("1_tn4m2")]
+[node name="BackgroundTile5" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("4_mrqvb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 neighbors = [NodePath("../BackgroundTile4")]
 gravity_path = NodePath("../ForegroundTile")
 
-[node name="ForegroundTile" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("5_6467g")]
+[node name="ForegroundTile" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("5_5mclm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5, 0)
 neighbors = [NodePath("../ForegroundTile2")]
 gravity_path = NodePath("../BackgroundTile5")
 
-[node name="ForegroundTile2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_6467g")]
+[node name="ForegroundTile2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_5mclm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, 0)
 neighbors = [NodePath("../ForegroundTile"), NodePath("../ForegroundTile3")]
 
-[node name="ForegroundTile3" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_6467g")]
+[node name="ForegroundTile3" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_5mclm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 5, 0)
 neighbors = [NodePath("../ForegroundTile2")]
 
-[node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("4_k4xfj")]
+[node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("6_0xry8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 current = NodePath("../TileManager/BG1")
