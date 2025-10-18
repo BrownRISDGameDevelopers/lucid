@@ -59,11 +59,18 @@ size = 15.018
 
 [node name="SpotLight3D" type="SpotLight3D" parent="ViewportManager/PlayerViewport/SubViewport/PlayerCamera" node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, -2.9802322e-08, 0, 0, 1, 0, 0, 0)
-light_energy = 30.0
+light_color = Color(0.99905807, 1, 0.95402247, 1)
+light_energy = 100.0
 spot_range = 44.0
 spot_angle = 6.3498807
 script = ExtResource("2_le8jq")
 player = NodePath("../../../../../GameManager/Player")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ViewportManager/PlayerViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.7071068, 0, -0.7071068, 0.70710677, 0, 7, 5)
+layers = 7
+light_color = Color(0.18532953, 0.00027677589, 0.2917376, 1)
+light_energy = 0.5
 
 [node name="Foreground" type="SubViewportContainer" parent="ViewportManager"]
 anchors_preset = -1
