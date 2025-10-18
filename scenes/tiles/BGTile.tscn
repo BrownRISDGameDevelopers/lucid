@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckgiy1aoqvyxd"]
+[gd_scene load_steps=11 format=3 uid="uid://ckgiy1aoqvyxd"]
 
 [ext_resource type="Script" uid="uid://83ywrfi8uw52" path="res://scripts/resources/tile.gd" id="1_pmhmj"]
+[ext_resource type="Texture2D" uid="uid://uxuc1s4bier6" path="res://icon.svg" id="2_bdtb6"]
 [ext_resource type="Script" uid="uid://dipwhcd5pofak" path="res://scripts/static_body_3d.gd" id="2_dcvwf"]
 [ext_resource type="Texture2D" uid="uid://defn03uoyh8p6" path="res://materials/PavingStones084_1K-JPG_Color.jpg" id="3_2iacn"]
+[ext_resource type="Script" uid="uid://bjtvfdtkadntu" path="res://scenes/tiles/editor_helper.gd" id="4_rsste"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hoq8d"]
 
@@ -12,8 +14,17 @@ albedo_texture = ExtResource("3_2iacn")
 [sub_resource type="BoxMesh" id="BoxMesh_6llsq"]
 material = SubResource("StandardMaterial3D_ht65u")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sxdrx"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bdtb6"]
+material = SubResource("StandardMaterial3D_sxdrx")
+radius = 0.1
+height = 0.2
+
 [node name="BackgroundTile" type="Node3D"]
 script = ExtResource("1_pmhmj")
+texture = ExtResource("2_bdtb6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 script = ExtResource("2_dcvwf")
@@ -27,3 +38,8 @@ mesh = SubResource("BoxMesh_6llsq")
 
 [node name="transform" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="transform"]
+mesh = SubResource("SphereMesh_bdtb6")
+skeleton = NodePath("../..")
+script = ExtResource("4_rsste")
