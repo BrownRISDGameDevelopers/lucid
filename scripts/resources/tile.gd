@@ -19,13 +19,15 @@ class_name Tile
 # The tile that we go to if we press Spacebar (if any)
 @export var gravity_path : Tile
 
+# the tile where, if we reach this tile at the end of BFS, the player will teleport to
+@export var teleport_tile: Tile
+
 @onready var point = $transform
 var original_mat : Material
 
-
 signal cube_clicked(this_cube)
 
-
+# this is called from this Tile's StaticBody3D's script, static_body_3d.gd
 func my_static_body3d_clicked():
 	emit_signal("cube_clicked", self)
 

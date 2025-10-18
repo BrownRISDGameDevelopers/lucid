@@ -14,18 +14,18 @@ var tiles_colored : Array[Tile] = []
 func _ready():
 	connect_signals()
 
-
 # Tell my children (which should only be Tiles!) to tell me if they are clicked
 func connect_signals():
 	var at_least_one_tile = false
 	for child in get_children():
 		if child is Tile:
 			print("Tile Manager Detects Tile")
+			# when cube_clicked signal is emitted from the tile,
+			# call _on_cube_clicked() to start up bfs
 			child.connect("cube_clicked", Callable(self, "_on_cube_clicked"))
 			at_least_one_tile = true
 	if not at_least_one_tile:
 		print("ERROR: TILEMANAGER HAS NO CHILDREN WHO ARE TILES")
-
 
 func _on_cube_clicked(cube: Tile) -> void:
 	print("TileManager: Cube " + cube.name + "clicked")
@@ -51,13 +51,9 @@ func color_path_red(path: Array[Tile]) -> void:
 func path_complete() -> void:
 	reset_tiles(tiles_colored)
 	
-
 func reset_tiles(tiles: Array[Tile]) -> void:
 	for t in tiles:
 		t.reset_material()
-
-
-
 
 			##
 func bfs(start: Tile, seek) -> Array[Tile]:

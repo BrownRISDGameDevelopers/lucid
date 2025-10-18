@@ -46,7 +46,6 @@ func set_path(myPath: Array[Tile]):
 	target_tile = myPath.pop_front()
 	_update_speed()
 	
-
 func _update_speed():
 	if target_tile:
 		actual_speed = ((target_tile.get_my_active_edge_pos()) - current.get_my_active_edge_pos()).length() * speedMultiplier
@@ -74,7 +73,6 @@ func player_busy() -> bool:
 #	If any of these are true, we are busy
 	return (deny_new_path || target_tile || path)
 
-
 # Called by the game manager; tells us to switch gravity
 func flip():
 	print("flip")
@@ -89,7 +87,6 @@ func flip():
 func _input(event):
 	if event.is_action_pressed("flip_gravity"):
 		gameManager.player_wants_to_flip(current)
-
 
 func reached_tile(tile: Tile):
 	print("Reached tile")
@@ -107,7 +104,12 @@ func reached_tile(tile: Tile):
 #		Update our target to the next element in our path
 	target_tile = path.pop_front()
 	if target_tile == null:
-#			We have reached the end of our path
+		# We have reached the end of our path
 		gameManager.path_complete()
+		if tile.teleport_tile:
+			# this is teleport tile
+			print("teleported!")
+			global_position = tile.teleport_tile.get_my_active_edge_pos() + player_offset
+			current = tile.teleport_tile
 	else:
 		_update_speed()	

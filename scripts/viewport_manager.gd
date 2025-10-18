@@ -12,6 +12,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			var hit := _raycast_from_camera(cam, screen_pos)
 			if hit:
 				print("Viewport:", vp.name, "Camera:", cam.name, "Hit:", hit.collider.name)
+				# this collider is the 
 				if hit.collider.has_method("on_cube_click"):
 					print("Has method on_cube_click")
 					hit.collider.on_cube_click()
