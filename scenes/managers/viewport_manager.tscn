@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=3 uid="uid://qik6lcaqekwf"]
+
+[ext_resource type="Script" uid="uid://dfw405aqqwl5d" path="res://scripts/viewport_manager.gd" id="1_8qylh"]
+
+[node name="ViewportManager" type="Node" node_paths=PackedStringArray("viewports")]
+script = ExtResource("1_8qylh")
+viewports = [NodePath("Foreground/SubViewport"), NodePath("PlayerViewport/SubViewport"), NodePath("BackgroundViewport/SubViewport")]
+
+[node name="BackgroundViewport" type="SubViewportContainer" parent="."]
+anchors_preset = -1
+anchor_right = 1.001
+anchor_bottom = 1.0
+offset_right = -0.15209961
+offset_bottom = -5.0
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="BackgroundViewport"]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Background" type="Camera3D" parent="BackgroundViewport/SubViewport"]
+transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 18.455, 18.15, 18.87)
+cull_mask = 1
+projection = 1
+size = 15.018
+
+[node name="PlayerViewport" type="SubViewportContainer" parent="."]
+anchors_preset = -1
+anchor_right = 0.5564236
+anchor_bottom = 0.20216049
+offset_right = 512.0
+offset_bottom = 512.0
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="PlayerViewport"]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="PlayerViewport/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.7071068, 0, -0.7071068, 0.70710677, 0, 7, 5)
+layers = 7
+
+[node name="PlayerCamera" type="Camera3D" parent="PlayerViewport/SubViewport"]
+transform = Transform3D(0.70710677, -0.40860698, 0.57709646, 0, 0.8161376, 0.57785755, -0.70710677, -0.40860698, 0.57709646, 18.455, 18.15, 18.87)
+cull_mask = 2
+projection = 1
+current = true
+size = 15.018
+
+[node name="Foreground" type="SubViewportContainer" parent="."]
+anchors_preset = -1
+anchor_right = 0.5564236
+anchor_bottom = 0.20216049
+offset_right = 512.0
+offset_bottom = 512.0
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="Foreground"]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="ForegroundCamera" type="Camera3D" parent="Foreground/SubViewport"]
+transform = Transform3D(0.70710677, -0.40860698, 0.57709646, 0, 0.8161376, 0.57785755, -0.70710677, -0.40860698, 0.57709646, 18.455, 18.15, 18.87)
+cull_mask = 4
+projection = 1
+current = true
+size = 15.018

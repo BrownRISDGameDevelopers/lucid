@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Lucid"
-run/main_scene="uid://dwly1mxpolmqa"
+run/main_scene="uid://d2lmyucq8r4dk"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="uid://b8u0flfhqivst"
 
