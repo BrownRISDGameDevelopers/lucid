@@ -4,8 +4,7 @@
 extends Node
 class_name TileManager
 
-# The goal
-@export var End : Tile
+
 @onready var gameManager: GameManager = get_parent()
 
 var tiles_colored : Array[Tile] = []

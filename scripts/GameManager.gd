@@ -10,8 +10,14 @@ class_name GameManager
 @onready var player : LucidPlayer = $Player
 
 @onready var tileManager: Node = $TileManager
+
+
+@export var endTile: Tile
 #The tile that the player is currently on. Initialized by the TileManager
 #to be the start of the level.
+
+func _ready() -> void:
+	assert (endTile != null)
 
 # Called when the node enters the scene tree for the first time.
 
@@ -51,6 +57,16 @@ func player_wants_to_flip(tile: Tile):
 # This function is called by the Player whenever they reach a tile.
 func player_reached_tile(tile: Tile):
 	tileManager.color_tile_orange(tile)
+	if (endTile == tile):
+		execute_end_routine()
+@onready var fade_out: Control = $FadeOut
+
+# Called when the player reaches the goal
+func execute_end_routine():
+	print("End routine")
+	fade_out.do_fade_out()
+	
+	
 
 # This function is called by the Player whenever they're given a new path.
 func path_complete():

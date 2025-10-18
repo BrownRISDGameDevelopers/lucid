@@ -1,18 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2lmyucq8r4dk"]
+[gd_scene load_steps=10 format=3 uid="uid://d2lmyucq8r4dk"]
 
+[ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="1_2bvl2"]
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_qsrxk"]
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_2bvl2"]
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="3_rw1a3"]
 [ext_resource type="PackedScene" uid="uid://ckgiy1aoqvyxd" path="res://scenes/tiles/BGTile.tscn" id="4_mrqvb"]
-[ext_resource type="PackedScene" path="res://scenes/tiles/FGTile.tscn" id="5_5mclm"]
+[ext_resource type="PackedScene" uid="uid://e4i70visgaeq" path="res://scenes/tiles/FGTile.tscn" id="5_5mclm"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="6_0xry8"]
+[ext_resource type="PackedScene" uid="uid://cyw7cdjci5gg2" path="res://scenes/components/fade_out.tscn" id="8_rw1a3"]
+[ext_resource type="PackedScene" uid="uid://lnkcoak4t5ik" path="res://scenes/levels/cutscene_1.tscn" id="9_mrqvb"]
 
 [node name="GravityLevel" type="Node"]
 
 [node name="ViewportManager" parent="." instance=ExtResource("1_qsrxk")]
 
-[node name="GameManager" type="Node" parent="."]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile")]
 script = ExtResource("2_2bvl2")
+endTile = NodePath("TileManager/ForegroundTile3")
 
 [node name="TileManager" type="Node" parent="GameManager"]
 script = ExtResource("3_rw1a3")
@@ -61,3 +65,11 @@ cull_mask = 4
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("6_0xry8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 current = NodePath("../TileManager/BG1")
+
+[node name="FadeOut" parent="GameManager" instance=ExtResource("8_rw1a3")]
+mouse_behavior_recursive = 1
+next_scene = ExtResource("9_mrqvb")
+
+[node name="FadeIn" parent="GameManager" instance=ExtResource("1_2bvl2")]
+mouse_filter = 1
+mouse_behavior_recursive = 1

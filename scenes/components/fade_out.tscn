@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyw7cdjci5gg2"]
+
+[ext_resource type="Script" uid="uid://chw4nkvhqamic" path="res://scripts/fade_out.gd" id="1_fpaf0"]
+[ext_resource type="Texture2D" uid="uid://b86440y6dqgbt" path="res://art_assets/placeholder_cutscene.png" id="2_brh5x"]
+[ext_resource type="PackedScene" uid="uid://d2lmyucq8r4dk" path="res://scenes/levels/gravity_level.tscn" id="2_vhvdp"]
+
+[sub_resource type="Animation" id="Animation_sd4ik"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlaceholderCutscene/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1kq18"]
+resource_name = "new_animation"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlaceholderCutscene/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fpaf0"]
+resource_name = "fade_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlaceholderCutscene/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4tibb"]
+_data = {
+&"RESET": SubResource("Animation_sd4ik"),
+&"fade_in": SubResource("Animation_1kq18"),
+&"fade_out": SubResource("Animation_fpaf0")
+}
+
+[node name="FadeOut" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("1_fpaf0")
+next_scene = ExtResource("2_vhvdp")
+
+[node name="PlaceholderCutscene" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(582.8889, 327.5)
+scale = Vector2(0.600926, 0.6009259)
+texture = ExtResource("2_brh5x")
+
+[node name="ColorRect" type="ColorRect" parent="PlaceholderCutscene"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -966.0
+offset_top = -543.0
+offset_right = -966.0
+offset_bottom = -543.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4tibb")
+}
