@@ -10,14 +10,10 @@ class_name Tile
 	set(value):
 		cull_mask = value
 		print(cull_mask)
-		
-@export var texture : Material:
-	set(newTexture):
-		texture = newTexture
-		_apply_texture()
 	
 # The tile that we go to if we press Spacebar (if any)
 @export var gravity_path : Tile
+
 
 @onready var point = $transform
 var original_mat : Material
@@ -61,13 +57,4 @@ func reset_material():
 	var mesh = $StaticBody3D/MeshInstance3D
 	if original_mat:
 		mesh.set_surface_override_material(0, original_mat)
-		
-func _apply_texture():
-	if not mesh_instance:
-		return
-	var mat := mesh_instance.material_override
-	if not (mat is StandardMaterial3D):
-		mat = StandardMaterial3D.new()
-		mesh_instance.material_override = mat
-	mat.albedo_texture = texture
 		

@@ -1,21 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://ckgiy1aoqvyxd"]
+[gd_scene load_steps=10 format=3 uid="uid://ckgiy1aoqvyxd"]
 
 [ext_resource type="Script" uid="uid://83ywrfi8uw52" path="res://scripts/resources/tile.gd" id="1_pmhmj"]
 [ext_resource type="Script" uid="uid://dipwhcd5pofak" path="res://scripts/static_body_3d.gd" id="2_dcvwf"]
 [ext_resource type="Texture2D" uid="uid://defn03uoyh8p6" path="res://materials/PavingStones084_1K-JPG_Color.jpg" id="3_2iacn"]
-[ext_resource type="Script" uid="uid://bjtvfdtkadntu" path="res://scripts/editor_helper.gd" id="4_rsste"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rsste"]
+[ext_resource type="Script" path="res://scripts/editor_helper.gd" id="4_rsste"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hoq8d"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bdtb6"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ht65u"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rsste"]
 albedo_texture = ExtResource("3_2iacn")
 
-[sub_resource type="BoxMesh" id="BoxMesh_6llsq"]
-material = SubResource("StandardMaterial3D_ht65u")
+[sub_resource type="BoxMesh" id="BoxMesh_bdtb6"]
+material = SubResource("StandardMaterial3D_rsste")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sxdrx"]
 albedo_color = Color(0, 0, 0, 1)
@@ -27,7 +23,6 @@ height = 0.2
 
 [node name="BackgroundTile" type="Node3D"]
 script = ExtResource("1_pmhmj")
-texture = SubResource("StandardMaterial3D_rsste")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 script = ExtResource("2_dcvwf")
@@ -37,8 +32,7 @@ shape = SubResource("BoxShape3D_hoq8d")
 debug_color = Color(0.1809377, 0.51587296, 1, 0.41960785)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-material_override = SubResource("StandardMaterial3D_bdtb6")
-mesh = SubResource("BoxMesh_6llsq")
+mesh = SubResource("BoxMesh_bdtb6")
 
 [node name="transform" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
