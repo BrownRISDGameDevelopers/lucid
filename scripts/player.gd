@@ -54,12 +54,7 @@ func _update_speed():
 
 func look_at_tile(tile: Tile):
 	var dir = tile.get_my_active_edge_pos() - global_transform.origin
-	if (tile.is_foreground):
-#		The tile is an "upside down tile"
-		rotation.y = atan2(dir.x, dir.z)
-	else:
-#		The tile is on the floor
-		rotation.y = atan2(dir.x, dir.z)
+	rotation.y = atan2(dir.x, dir.z)
 		
 func _physics_process(delta :float):
 	if (target_tile == null):

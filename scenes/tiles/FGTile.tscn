@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdbaus0a0yg6g"]
+[gd_scene load_steps=9 format=3 uid="uid://bdbaus0a0yg6g"]
 
 [ext_resource type="Script" uid="uid://83ywrfi8uw52" path="res://scripts/resources/tile.gd" id="1_3fqw5"]
 [ext_resource type="Script" uid="uid://dipwhcd5pofak" path="res://scripts/static_body_3d.gd" id="2_vox2n"]
@@ -11,6 +11,14 @@ albedo_texture = ExtResource("3_diq26")
 
 [sub_resource type="BoxMesh" id="BoxMesh_6llsq"]
 material = SubResource("StandardMaterial3D_ht65u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sxdrx"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_km5un"]
+material = SubResource("StandardMaterial3D_sxdrx")
+radius = 0.1
+height = 0.2
 
 [node name="ForegroundTile" type="Node3D"]
 script = ExtResource("1_3fqw5")
@@ -29,3 +37,6 @@ mesh = SubResource("BoxMesh_6llsq")
 
 [node name="transform" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="transform"]
+mesh = SubResource("SphereMesh_km5un")

@@ -109,17 +109,20 @@ neighbors = [NodePath("../BackgroundTile4")]
 gravity_path = NodePath("../ForegroundTile")
 
 [node name="ForegroundTile" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("5_5mclm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5, 0)
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 4, 5, 0)
 neighbors = [NodePath("../ForegroundTile2")]
+cull_mask = 4
 gravity_path = NodePath("../BackgroundTile5")
 
 [node name="ForegroundTile2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_5mclm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, 0)
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 5, 5, 0)
 neighbors = [NodePath("../ForegroundTile"), NodePath("../ForegroundTile3")]
+cull_mask = 4
 
 [node name="ForegroundTile3" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_5mclm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 5, 0)
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 6, 5, 0)
 neighbors = [NodePath("../ForegroundTile2")]
+cull_mask = 4
 
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("6_0xry8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
