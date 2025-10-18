@@ -185,11 +185,11 @@ neighbors = [NodePath("../dTile2"), NodePath("../dTile4"), NodePath("../dTile6")
 
 [node name="dTile4" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_jegex")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, -12)
-neighbors = [NodePath("../dTile3"), NodePath("../dTile5"), null]
+neighbors = [NodePath("../dTile3"), NodePath("../dTile5"), NodePath("../stair1")]
 
 [node name="dTile5" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_jegex")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, -12)
-neighbors = [NodePath("../dTile4"), NodePath("../dTile6")]
+neighbors = [NodePath("../dTile4"), NodePath("../dTile6"), NodePath("../stair2")]
 
 [node name="dTile6" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_jegex")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, -13)
@@ -213,11 +213,11 @@ neighbors = [NodePath("../dTile5"), NodePath("../stair1"), NodePath("../stair3")
 
 [node name="stair3" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("9_4wxga")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 2, -10)
-neighbors = [NodePath("../stair2"), NodePath("../stair4"), null]
+neighbors = [NodePath("../stair2"), NodePath("../stair4"), NodePath("../eTile11")]
 
 [node name="stair4" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("9_4wxga")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 2, -10)
-neighbors = [NodePath("../stair1"), NodePath("../stair3"), null]
+neighbors = [NodePath("../stair1"), NodePath("../stair3"), NodePath("../eTile1")]
 
 [node name="eTile1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_jegex")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -9)
@@ -262,7 +262,7 @@ gravity_path = NodePath("../fTile1")
 
 [node name="eTile11" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_jegex")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -9)
-neighbors = [NodePath("../eTile1"), NodePath("../eTile12")]
+neighbors = [NodePath("../eTile1"), NodePath("../eTile12"), NodePath("../stair3")]
 
 [node name="eTile12" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_jegex")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -8)

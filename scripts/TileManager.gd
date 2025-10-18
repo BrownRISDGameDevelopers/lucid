@@ -10,7 +10,6 @@ class_name TileManager
 
 var tiles_colored : Array[Tile] = []
 
-
 func _ready():
 	connect_signals()
 
@@ -62,6 +61,10 @@ func bfs(start: Tile, seek) -> Array[Tile]:
 	var seen: Array[Tile] = []
 	while len(q) > 0:
 		var next: Array = q.pop_front()
+		# with stairs, "new" is null
+		# does that mean that it is not treated as part of the path
+		# or is this an issue with how eveything is linked together?
+		
 		var new: Tile = next[-1]
 		seen.append(new)
 		if new == seek:
@@ -72,9 +75,11 @@ func bfs(start: Tile, seek) -> Array[Tile]:
 				else:
 					print("Non-Tile in path:", e)
 			return path
-		for q_append in new.neighbors:
-			if not seen.has(q_append):
-				q.append(next + [q_append])
+		if new: # this check prevents a null-pointer error when player selects a tile
+			# that cannot be traversed to from their position
+			for q_append in new.neighbors:
+				if not seen.has(q_append):
+					q.append(next + [q_append])
 	return [] as Array[Tile]
 		
 		
