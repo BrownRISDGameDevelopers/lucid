@@ -47,11 +47,9 @@ func player_wants_to_flip(tile: Tile):
 		pass
 		
 func player_wants_to_rotate(tile: Tile):
-	if (tile.rotation_path != null):
-		
-		if (tile.pivot):
-			print("rotating")
-			tile.pivot.rotate_children(5)
+	if (tile.trigger_pivot):
+		print("rotating")
+		tile.pivot.rotate_children()
 	
 # This function is called by the Player whenever they reach a tile.
 func player_reached_tile(tile: Tile):
