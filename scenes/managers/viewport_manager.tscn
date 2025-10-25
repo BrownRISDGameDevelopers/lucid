@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://qik6lcaqekwf"]
 
-[ext_resource type="Script" path="res://scripts/viewport_manager.gd" id="1_8qylh"]
+[ext_resource type="Script" uid="uid://dfw405aqqwl5d" path="res://scripts/viewport_manager.gd" id="1_8qylh"]
 [ext_resource type="Texture2D" uid="uid://crrx30twyd5wr" path="res://materials/placeholder_background.jpeg" id="2_rkljn"]
 [ext_resource type="PackedScene" uid="uid://x34f43g4beul" path="res://scenes/components/film_grain.tscn" id="3_0tlnb"]
 

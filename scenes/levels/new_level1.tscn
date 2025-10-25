@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_othtp"]
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="3_k0ysw"]
 [ext_resource type="PackedScene" uid="uid://ckgiy1aoqvyxd" path="res://scenes/tiles/BGTile.tscn" id="4_jegex"]
-[ext_resource type="PackedScene" uid="uid://bdbaus0a0yg6g" path="res://scenes/tiles/FGTile.tscn" id="5_ha53k"]
+[ext_resource type="PackedScene" uid="uid://e4i70visgaeq" path="res://scenes/tiles/FGTile.tscn" id="5_ha53k"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="6_4wxga"]
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="6_ha53k"]
 [ext_resource type="PackedScene" uid="uid://c4hedq5osxf2b" path="res://scenes/tiles/stairs.tscn" id="9_4wxga"]
@@ -18,8 +18,9 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -4.5, -4.5)
 visible = false
 
-[node name="GameManager" type="Node" parent="."]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile")]
 script = ExtResource("2_othtp")
+endTile = NodePath("TileManager/kTile16")
 
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("6_4wxga")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1.5, 12)
