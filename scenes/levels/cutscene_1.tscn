@@ -20,7 +20,9 @@ texture = ExtResource("1_cffnb")
 centered = false
 
 [node name="FadeOut" parent="." instance=ExtResource("3_52bew")]
+visible = false
 layout_mode = 1
+next_scene_path = "res://scenes/levels/gravity_level.tscn"
 
 [node name="FadeIn" parent="." instance=ExtResource("5_064fv")]
 layout_mode = 1
