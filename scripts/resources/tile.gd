@@ -24,6 +24,8 @@ class_name Tile
 # Upward face
 @onready var point: Node3D = $transform
 
+@export var active : bool = true
+
 
 var original_mat : Material
 
@@ -102,7 +104,12 @@ func rotate_around_pivot(pivot_vec: Vector3, axis: Vector3, angle_rad: float) ->
 	# Rotate the node itself so its orientation changes
 	
 	self.rotate(axis, angle_rad)
-	update_point_to_up_face()
+
+func deactivate():
+	self.active = false
+
+func activate():
+	self.active = true
 
 
 func update_point_to_up_face():

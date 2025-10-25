@@ -12,19 +12,20 @@ var tiles_colored : Array[Tile] = []
 
 
 func _ready():
-	connect_signals()
+	connect_signals(self)
 
 
 # Tell my children (which should only be Tiles!) to tell me if they are clicked
-func connect_signals():
-	var at_least_one_tile = false
-	for child in get_children():
+#made this recursive :)
+func connect_signals(node):
+	for child in node.get_children():
 		if child is Tile:
 			print("Tile Manager Detects Tile")
 			child.connect("cube_clicked", Callable(self, "_on_cube_clicked"))
-			at_least_one_tile = true
-	if not at_least_one_tile:
-		print("ERROR: TILEMANAGER HAS NO CHILDREN WHO ARE TILES")
+		connect_signals(child)
+		
+			
+	
 
 
 func _on_cube_clicked(cube: Tile) -> void:
@@ -84,7 +85,7 @@ func bfs(start: Tile, seek) -> Array[Tile]:
 			print(path)
 			return path
 		for q_append in new.neighbors:
-			if not seen.has(q_append):
+			if not seen.has(q_append) && q_append.active:
 				q.append(next + [q_append])
 	return [] as Array[Tile]
 		

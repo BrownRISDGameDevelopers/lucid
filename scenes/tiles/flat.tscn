@@ -25,7 +25,6 @@ script = ExtResource("2_stk8e")
 shape = SubResource("BoxShape3D_7x5kd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-layers = 4
 mesh = SubResource("PlaneMesh_2dfsf")
 
 [node name="transform" type="Node3D" parent="."]
