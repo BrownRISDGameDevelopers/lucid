@@ -31,10 +31,6 @@ class_name Tile
 
 # If true, the player can press R to trigger the pivot. A pivot trigger should not be rotatable.
 @export var trigger_pivot: bool = false
-
-# If true, on rotation this tile will toggle between visible/invisible
-@export var ghost: bool
-
 # Upward face
 @onready var point: Node3D = $transform
 

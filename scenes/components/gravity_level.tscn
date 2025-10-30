@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://djs6428fi7hfu"]
 
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="1_hgg0b"]
-[ext_resource type="Script" path="res://scenes/components/viewport_manager.gd" id="1_k4xfj"]
+[ext_resource type="Script" path="res://scripts/viewport_manager.gd" id="1_k4xfj"]
 [ext_resource type="PackedScene" uid="uid://ckgiy1aoqvyxd" path="res://scenes/tiles/BGTile.tscn" id="1_tn4m2"]
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="2_6467g"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="4_k4xfj"]

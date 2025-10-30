@@ -13,6 +13,7 @@ class_name GameManager
 
 
 @export var endTile: Tile
+
 #The tile that the player is currently on. Initialized by the TileManager
 #to be the start of the level.
 

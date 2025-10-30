@@ -97,17 +97,11 @@ func reached_tile(tile: Tile):
 	print("Reached tile")
 	deny_new_path = false
 #	Tell the gameManager we reached a tile (so it can tell the tileManager)	
-<<<<<<< HEAD
-	#print("Reached tile. Player Position:")
-	#print(position)
-	#print("Player rotation")
-	#print(rotation_degrees)
-=======
+
 	print("Reached tile. Player Position:")
 	print(position)
 	#print("Player rotation")
 	print(rotation_degrees)
->>>>>>> rotation
 	
 	gameManager.player_reached_tile(target_tile)
 
@@ -116,17 +110,13 @@ func reached_tile(tile: Tile):
 #		Update our target to the next element in our path
 	target_tile = path.pop_front()
 	if target_tile == null:
-<<<<<<< HEAD
 		# We have reached the end of our path
-		gameManager.path_complete()
 		if tile.teleport_tile:
 			# this is teleport tile
 			print("teleported!")
 			global_position = tile.teleport_tile.get_my_active_edge_pos() + player_offset
 			current = tile.teleport_tile
-=======
 #			We have reached the end of our path
 		gameManager.path_complete(current)
->>>>>>> rotation
 	else:
 		_update_speed()	

@@ -32,12 +32,33 @@ render_target_update_mode = 4
 
 [node name="Background" type="Camera3D" parent="BackgroundViewport/SubViewport"]
 transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 18.455, 18.15, 18.87)
-cull_mask = 1
+cull_mask = 16
 projection = 1
 size = 15.018
 
 [node name="TextureRect" type="TextureRect" parent="BackgroundViewport"]
 layout_mode = 2
+
+[node name="ExtraViewport" type="SubViewportContainer" parent="."]
+anchors_preset = -1
+anchor_right = 1.001
+anchor_bottom = 1.0
+offset_right = -0.15209961
+offset_bottom = -5.0
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="ExtraViewport"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1153, 643)
+render_target_update_mode = 4
+
+[node name="Background" type="Camera3D" parent="ExtraViewport/SubViewport"]
+transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 18.455, 18.15, 18.87)
+cull_mask = 8
+projection = 1
+size = 15.018
 
 [node name="ViewportBehindPlayer" type="SubViewportContainer" parent="."]
 anchors_preset = -1
