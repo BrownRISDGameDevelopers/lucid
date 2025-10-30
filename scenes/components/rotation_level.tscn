@@ -14,6 +14,27 @@
 script = ExtResource("1_ahucx")
 viewports = [NodePath("Foreground/SubViewport"), NodePath("PlayerViewport/SubViewport"), NodePath("BackgroundViewport/SubViewport")]
 
+[node name="BackBackground" type="SubViewportContainer" parent="ViewportManager"]
+anchors_preset = -1
+anchor_right = 1.001
+anchor_bottom = 1.0
+offset_right = -0.15209961
+offset_bottom = -5.0
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="ViewportManager/BackBackground"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1153, 643)
+render_target_update_mode = 4
+
+[node name="Background" type="Camera3D" parent="ViewportManager/BackBackground/SubViewport"]
+transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 18.455, 18.15, 18.87)
+cull_mask = 8
+projection = 1
+size = 15.018
+
 [node name="BackgroundViewport" type="SubViewportContainer" parent="ViewportManager"]
 anchors_preset = -1
 anchor_right = 1.001
@@ -92,90 +113,64 @@ End = NodePath("1")
 
 [node name="1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_sqj14")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, 2, -4, 0)
-neighbors = [NodePath("../2")]
-is_foreground = false
-trigger_pivot = false
-ghost = false
-
-[node name="2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_sqj14")]
-transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, 1, -4, 0)
-neighbors = [NodePath("../1"), NodePath("../Pivot/3")]
-is_foreground = false
-trigger_pivot = false
-ghost = false
+neighbors = [NodePath("../Pivot/2")]
 
 [node name="Pivot" type="Node3D" parent="GameManager/TileManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
 script = ExtResource("6_o20wi")
 
-[node name="3" parent="GameManager/TileManager/Pivot" node_paths=PackedStringArray("neighbors", "pivot") instance=ExtResource("4_sqj14")]
+[node name="3" parent="GameManager/TileManager/Pivot" node_paths=PackedStringArray("rotation_path", "pivot") instance=ExtResource("4_sqj14")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, 0, 0, 0)
-neighbors = [NodePath("../../2"), NodePath("../4")]
-is_foreground = false
+rotation_path_bool = true
+rotation_path = [NodePath("../2"), NodePath("../4")]
 pivot = NodePath("..")
-trigger_pivot = false
-ghost = false
 
-[node name="4" parent="GameManager/TileManager/Pivot" node_paths=PackedStringArray("neighbors", "pivot") instance=ExtResource("4_sqj14")]
+[node name="4" parent="GameManager/TileManager/Pivot" node_paths=PackedStringArray("rotation_path", "pivot") instance=ExtResource("4_sqj14")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, 0, 1, 0)
-neighbors = [NodePath("../3"), NodePath("../5")]
-is_foreground = false
+rotation_path_bool = true
+rotation_path = [NodePath("../3"), NodePath("../5")]
 pivot = NodePath("..")
-trigger_pivot = false
-ghost = false
 
-[node name="5" parent="GameManager/TileManager/Pivot" node_paths=PackedStringArray("neighbors", "pivot") instance=ExtResource("4_sqj14")]
+[node name="5" parent="GameManager/TileManager/Pivot" node_paths=PackedStringArray("rotation_path", "pivot") instance=ExtResource("4_sqj14")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, 0, 2, 0)
-neighbors = [NodePath("../4"), NodePath("../6")]
-is_foreground = false
+rotation_path_bool = true
+rotation_path = [NodePath("../4"), NodePath("../6")]
 pivot = NodePath("..")
-trigger_pivot = false
-ghost = false
 
-[node name="6" parent="GameManager/TileManager/Pivot" node_paths=PackedStringArray("neighbors", "pivot") instance=ExtResource("4_sqj14")]
+[node name="6" parent="GameManager/TileManager/Pivot" node_paths=PackedStringArray("rotation_path", "pivot") instance=ExtResource("4_sqj14")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, 0, 3, 0)
-neighbors = [NodePath("../5"), NodePath("../7")]
-is_foreground = false
+rotation_path_bool = true
+rotation_path = [NodePath("../5"), NodePath("../7")]
 pivot = NodePath("..")
-trigger_pivot = false
-ghost = false
 
-[node name="7" parent="GameManager/TileManager/Pivot" node_paths=PackedStringArray("neighbors", "pivot") instance=ExtResource("4_sqj14")]
+[node name="7" parent="GameManager/TileManager/Pivot" node_paths=PackedStringArray("neighbors", "rotation_path", "pivot") instance=ExtResource("4_sqj14")]
 transform = Transform3D(0.99999976, 0, 0, 0, 0.9999998, 0, 0, 0, 1.0000001, 0, 4, 0)
-neighbors = [NodePath("../6"), NodePath("../8")]
-is_foreground = false
+neighbors = [NodePath("../8")]
+rotation_path_bool = true
+rotation_path = [NodePath("../8"), NodePath("../6")]
 pivot = NodePath("..")
-trigger_pivot = false
-ghost = false
 
 [node name="8" parent="GameManager/TileManager/Pivot" node_paths=PackedStringArray("neighbors", "pivot") instance=ExtResource("4_sqj14")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, -1, 4, 0)
 neighbors = [NodePath("../7"), NodePath("../9")]
-is_foreground = false
 pivot = NodePath("..")
-trigger_pivot = false
-ghost = false
 
 [node name="9" parent="GameManager/TileManager/Pivot" node_paths=PackedStringArray("neighbors", "pivot") instance=ExtResource("4_sqj14")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, -2, 4, 0)
 neighbors = [NodePath("../8"), NodePath("../10")]
-is_foreground = false
 pivot = NodePath("..")
-trigger_pivot = false
-ghost = false
 
 [node name="10" parent="GameManager/TileManager/Pivot" node_paths=PackedStringArray("neighbors", "rotation_path", "pivot") instance=ExtResource("4_sqj14")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, -3, 4, 0)
 neighbors = [NodePath("../9"), NodePath("../11")]
-is_foreground = false
+rotation_path_bool = true
 rotation_path = [NodePath("../23Top"), NodePath("../9")]
 pivot = NodePath("..")
-trigger_pivot = false
-ghost = false
 
 [node name="23Top" parent="GameManager/TileManager/Pivot" node_paths=PackedStringArray("neighbors", "rotation_path", "pivot") instance=ExtResource("6_dc5sm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 8)
 neighbors = [NodePath("../../22")]
+rotation_path_bool = true
 rotation_path = [NodePath("../../22"), NodePath("../10")]
 pivot = NodePath("..")
 trigger_pivot = true
@@ -184,90 +179,64 @@ trigger_pivot = true
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.5, 4, 8)
 ghost = true
 
+[node name="MeshInstance3D" parent="GameManager/TileManager/Pivot/23SideGhost/StaticBody3D" index="1"]
+layers = 8
+
 [node name="11" parent="GameManager/TileManager/Pivot" node_paths=PackedStringArray("neighbors", "rotation_path") instance=ExtResource("4_sqj14")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, -4, 4, 0)
 neighbors = [NodePath("../10"), NodePath("../../12")]
-is_foreground = false
+rotation_path_bool = true
 rotation_path = [NodePath("../../12")]
-trigger_pivot = false
-ghost = false
+
+[node name="2" parent="GameManager/TileManager/Pivot" node_paths=PackedStringArray("neighbors", "rotation_path") instance=ExtResource("4_sqj14")]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, 1, 0, 0)
+neighbors = [NodePath("../../1")]
+rotation_path_bool = true
+rotation_path = [NodePath("../../1"), NodePath("../3")]
 
 [node name="12" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_sqj14")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, -4, 0, 1)
 neighbors = [NodePath("../Pivot/11"), NodePath("../13")]
-is_foreground = false
-trigger_pivot = false
-ghost = false
 
 [node name="13" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_sqj14")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, -4, 0, 2)
 neighbors = [NodePath("../12"), NodePath("../14")]
-is_foreground = false
-trigger_pivot = false
-ghost = false
 
 [node name="14" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_sqj14")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, -4, 0, 3)
 neighbors = [NodePath("../13"), NodePath("../15")]
-is_foreground = false
-trigger_pivot = false
-ghost = false
 
 [node name="15" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_sqj14")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, -4, 0, 4)
 neighbors = [NodePath("../14"), NodePath("../16")]
-is_foreground = false
-trigger_pivot = false
-ghost = false
 
 [node name="16" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_sqj14")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, -4, 0, 5)
 neighbors = [NodePath("../15"), NodePath("../17")]
-is_foreground = false
-trigger_pivot = false
-ghost = false
 
 [node name="17" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_sqj14")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, -4, 0, 6)
 neighbors = [NodePath("../16"), NodePath("../18")]
-is_foreground = false
-trigger_pivot = false
-ghost = false
 
 [node name="18" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_sqj14")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, -4, 0, 7)
 neighbors = [NodePath("../17"), NodePath("../19")]
-is_foreground = false
-trigger_pivot = false
-ghost = false
 
 [node name="19" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_sqj14")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, -4, 0, 8)
 neighbors = [NodePath("../18"), NodePath("../20")]
-is_foreground = false
-trigger_pivot = false
-ghost = false
 
 [node name="20" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_sqj14")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, -3, 0, 8)
 neighbors = [NodePath("../19"), NodePath("../21")]
-is_foreground = false
-trigger_pivot = false
-ghost = false
 
 [node name="21" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_sqj14")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, -2, 0, 8)
 neighbors = [NodePath("../20"), NodePath("../22")]
-is_foreground = false
-trigger_pivot = false
-ghost = false
 
 [node name="22" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_sqj14")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999996, -1, 0, 8)
 neighbors = [NodePath("../21"), NodePath("../Pivot/23Top")]
-is_foreground = false
-trigger_pivot = false
-ghost = false
 
 [node name="23Side" parent="GameManager/TileManager" instance=ExtResource("6_dc5sm")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 8.5)
@@ -275,3 +244,5 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("6_8nfbw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -8.940697e-08)
 current = NodePath("../TileManager/Pivot/7")
+
+[editable path="GameManager/TileManager/Pivot/23SideGhost"]

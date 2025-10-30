@@ -30,6 +30,7 @@ func connect_signals(node):
 
 func _on_cube_clicked(cube: Tile) -> void:
 	print("TileManager: Cube " + cube.name + "clicked")
+	print(cube.neighbors)
 	var path: Array[Tile] = bfs(gameManager.get_current_tile(), cube)
 	if path.size() > 0:
 		gameManager.process_path_queue(path.duplicate(true))

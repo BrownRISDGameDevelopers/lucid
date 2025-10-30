@@ -14,9 +14,6 @@ material = SubResource("StandardMaterial3D_ht65u")
 
 [node name="Tile" type="Node3D"]
 script = ExtResource("1_6llsq")
-is_foreground = null
-trigger_pivot = null
-ghost = null
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 script = ExtResource("2_q0k13")

@@ -35,7 +35,7 @@ func rotation_completed():
 			child.update_point_to_up_face()
 			child.activate()
 	for child in children:
-		if (child.rotation_path):
+		if (child.rotation_path_bool):
 			var temp = child.neighbors
 			child.neighbors = child.rotation_path
 			child.rotation_path = temp

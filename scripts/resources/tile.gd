@@ -10,6 +10,8 @@ class_name Tile
 @export var gravity_path : Tile
 
 # The neighbors if connected via a rotatable pivot
+@export var rotation_path_bool : bool = false
+
 @export var rotation_path: Array[Tile]
 
 # The pivot
@@ -52,16 +54,6 @@ func _ready():
 func set_visiblity_layers():
 	var mesh = $StaticBody3D/MeshInstance3D
 	original_mat = mesh.get_active_material(0)
-	if (is_foreground):
-	# 	If this tile is in the FOREGROUND (infront of the player)
-	#	Set the CULL LAYER TO 3
-		mesh.set_layer_mask_value(3,true)
-		mesh.set_layer_mask_value(1,false)
-	else:
-	#	If this tile is in the BACKGROUND (behind the player)
-	#	SET THE CULL LAYER TO 1
-		mesh.set_layer_mask_value(1,true)
-		mesh.set_layer_mask_value(3,false)	
 
 func turn_red():
 	var mesh = $StaticBody3D/MeshInstance3D
