@@ -53,6 +53,11 @@ func player_wants_to_flip(tile: Tile):
 		#	If the player has somewhere to go when we flip gravity, let it happen
 		player.flip()
 		pass
+		
+func player_wants_to_rotate(tile: Tile):
+	if (tile.trigger_pivot && !tile.pivot.rotation_busy):
+		print("rotating")
+		tile.pivot.rotate_children()
 	
 # This function is called by the Player whenever they reach a tile.
 func player_reached_tile(tile: Tile):
@@ -68,6 +73,10 @@ func execute_end_routine():
 	
 	
 
-# This function is called by the Player whenever they're given a new path.
-func path_complete():
-	tileManager.path_complete()
+# This function is called by the Player whenever they finish a path or they're given a new path.
+func path_complete(tile: Tile):
+	tileManager.path_complete(tile)
+	
+# Switch the scene to the next scene; depending on how we implement this, we may want to change etr to take in a string of the scene we're changing to
+func end_tile_reached():
+	get_tree().change_scene_to_file("res://scenes/components/level_2.tscn")

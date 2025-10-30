@@ -10,23 +10,25 @@ class_name TileManager
 var tiles_colored : Array[Tile] = []
 
 func _ready():
-	connect_signals()
+	connect_signals(self)
 
 # Tell my children (which should only be Tiles!) to tell me if they are clicked
-func connect_signals():
-	var at_least_one_tile = false
-	for child in get_children():
+#made this recursive :)
+func connect_signals(node):
+	for child in node.get_children():
 		if child is Tile:
 			print("Tile Manager Detects Tile")
 			# when cube_clicked signal is emitted from the tile,
 			# call _on_cube_clicked() to start up bfs
 			child.connect("cube_clicked", Callable(self, "_on_cube_clicked"))
-			at_least_one_tile = true
-	if not at_least_one_tile:
-		print("ERROR: TILEMANAGER HAS NO CHILDREN WHO ARE TILES")
+		connect_signals(child)
+		
+			
+	
 
 func _on_cube_clicked(cube: Tile) -> void:
 	print("TileManager: Cube " + cube.name + "clicked")
+	print(cube.neighbors)
 	var path: Array[Tile] = bfs(gameManager.get_current_tile(), cube)
 	if path.size() > 0:
 		gameManager.process_path_queue(path.duplicate(true))
@@ -46,9 +48,16 @@ func color_path_red(path: Array[Tile]) -> void:
 		tiles_colored.append(p)
 
 # Things to do when we finish traversing along a path
-func path_complete() -> void:
+func path_complete(tile: Tile) -> void:
 	reset_tiles(tiles_colored)
+	end_tile_reached(tile)
 	
+# Check if the tile reached is the End tile
+func end_tile_reached(tile: Tile) -> void:
+	if End == tile:
+		print("end tile reached")
+		gameManager.end_tile_reached()
+
 func reset_tiles(tiles: Array[Tile]) -> void:
 	for t in tiles:
 		t.reset_material()
@@ -73,12 +82,19 @@ func bfs(start: Tile, seek) -> Array[Tile]:
 					path.append(e)
 				else:
 					print("Non-Tile in path:", e)
+			print(path)
 			return path
+<<<<<<< HEAD
 		if new: # this check prevents a null-pointer error when player selects a tile
 			# that cannot be traversed to from their position
 			for q_append in new.neighbors:
 				if not seen.has(q_append):
 					q.append(next + [q_append])
+=======
+		for q_append in new.neighbors:
+			if not seen.has(q_append) && q_append.active:
+				q.append(next + [q_append])
+>>>>>>> rotation
 	return [] as Array[Tile]
 		
 		

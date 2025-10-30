@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwljy66p0xad6"]
+
+[ext_resource type="PackedScene" uid="uid://da8vdhx0p3ht6" path="res://scenes/components/player_viewport.tscn" id="1_kf4wk"]
+[ext_resource type="PackedScene" uid="uid://bgnydvgaeqi34" path="res://scenes/levels/level_stairs_test.tscn" id="2_qjxdo"]
+
+[node name="Node" type="Node"]
+
+[node name="player_viewport" parent="." instance=ExtResource("1_kf4wk")]
+
+[node name="GameManager" parent="." instance=ExtResource("2_qjxdo")]

@@ -37,15 +37,16 @@ var actual_speed;
 
 # Tells the player to walk the path supplied. Called by the GameManager
 func set_path(myPath: Array[Tile]):
-	gameManager.path_complete()
+	gameManager.path_complete(current)
 	if myPath.size() == 0: return
 	path = myPath;
+	
 	if (path[0] == current):
 		path.pop_front()
-	
 	target_tile = myPath.pop_front()
-	_update_speed()
 	
+	_update_speed()
+
 func _update_speed():
 	if target_tile:
 		actual_speed = ((target_tile.get_my_active_edge_pos()) - current.get_my_active_edge_pos()).length() * speedMultiplier
@@ -86,16 +87,27 @@ func flip():
 	
 func _input(event):
 	if event.is_action_pressed("flip_gravity"):
+		print("flip graV")
 		gameManager.player_wants_to_flip(current)
+	if event.is_action_pressed("rotate_node"):
+		print("rotate_node")
+		gameManager.player_wants_to_rotate(current)
 
 func reached_tile(tile: Tile):
 	print("Reached tile")
 	deny_new_path = false
 #	Tell the gameManager we reached a tile (so it can tell the tileManager)	
+<<<<<<< HEAD
 	#print("Reached tile. Player Position:")
 	#print(position)
 	#print("Player rotation")
 	#print(rotation_degrees)
+=======
+	print("Reached tile. Player Position:")
+	print(position)
+	#print("Player rotation")
+	print(rotation_degrees)
+>>>>>>> rotation
 	
 	gameManager.player_reached_tile(target_tile)
 
@@ -104,6 +116,7 @@ func reached_tile(tile: Tile):
 #		Update our target to the next element in our path
 	target_tile = path.pop_front()
 	if target_tile == null:
+<<<<<<< HEAD
 		# We have reached the end of our path
 		gameManager.path_complete()
 		if tile.teleport_tile:
@@ -111,5 +124,9 @@ func reached_tile(tile: Tile):
 			print("teleported!")
 			global_position = tile.teleport_tile.get_my_active_edge_pos() + player_offset
 			current = tile.teleport_tile
+=======
+#			We have reached the end of our path
+		gameManager.path_complete(current)
+>>>>>>> rotation
 	else:
 		_update_speed()	
