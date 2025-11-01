@@ -77,7 +77,7 @@ func bfs(start: Tile, seek) -> Array[Tile]:
 					print("Non-Tile in path:", e)
 			return path
 		for q_append in new.neighbors:
-			if not seen.has(q_append):
+			if not seen.has(q_append) and q_append.neighbors.has(new):
 				q.append(next + [q_append])
 	return [] as Array[Tile]
 		
