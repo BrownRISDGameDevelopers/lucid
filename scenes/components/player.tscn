@@ -1,21 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://8rycyialk58q"]
+[gd_scene load_steps=11 format=3 uid="uid://8rycyialk58q"]
 
 [ext_resource type="Script" uid="uid://cpy7na4wds2ea" path="res://scripts/player.gd" id="1_6mmc7"]
+[ext_resource type="PackedScene" uid="uid://ky4t6l8m7gou" path="res://art_assets/player/Lucid_MC.fbx" id="2_acvb7"]
 [ext_resource type="Texture2D" uid="uid://dy88eslvpktop" path="res://materials/player_sprite.png" id="2_h3cwf"]
+[ext_resource type="Animation" uid="uid://dne5uaovq277" path="res://art_assets/player/animations/idle.res" id="3_ypwcc"]
+[ext_resource type="Animation" uid="uid://bdmx1xc448qb7" path="res://art_assets/player/animations/jump.res" id="4_2l1sc"]
+[ext_resource type="Animation" uid="uid://b35pkucm4ugy6" path="res://art_assets/player/animations/land.res" id="5_fgeo0"]
+[ext_resource type="Animation" uid="uid://blxuh72svfmc0" path="res://art_assets/player/animations/walk.res" id="6_lkd77"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jorle"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjsxr"]
 albedo_texture = ExtResource("2_h3cwf")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3cwf"]
-albedo_texture = ExtResource("2_h3cwf")
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_6mmc7"]
-material = SubResource("StandardMaterial3D_h3cwf")
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_684k0"]
+_data = {
+&"idle": ExtResource("3_ypwcc"),
+&"jump": ExtResource("4_2l1sc"),
+&"land": ExtResource("5_fgeo0"),
+&"walk": ExtResource("6_lkd77")
+}
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_6mmc7")
+
+[node name="AnimationManager" type="Node3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_jorle")
@@ -23,4 +32,14 @@ shape = SubResource("CapsuleShape3D_jorle")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
 layers = 2
 material_override = SubResource("StandardMaterial3D_sjsxr")
-mesh = SubResource("CapsuleMesh_6mmc7")
+
+[node name="Player_Animated" type="Node3D" parent="CollisionShape3D"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+
+[node name="Lucid_MC" parent="CollisionShape3D/Player_Animated" instance=ExtResource("2_acvb7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CollisionShape3D/Player_Animated/Lucid_MC"]
+libraries = {
+&"standards": SubResource("AnimationLibrary_684k0")
+}
