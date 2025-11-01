@@ -23,14 +23,20 @@ mouse_behavior_recursive = 1
 next_scene_path = "res://scenes/levels/cutscene_1.tscn"
 
 [node name="FadeIn" parent="GameManager" instance=ExtResource("1_2bvl2")]
+visible = false
 mouse_filter = 1
 mouse_behavior_recursive = 1
 
 [node name="TileManager" type="Node" parent="GameManager"]
 script = ExtResource("3_rw1a3")
 
+[node name="BG0" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_mrqvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+neighbors = [NodePath("../BG1")]
+texture = null
+
 [node name="BG1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_mrqvb")]
-neighbors = [NodePath("../BG2")]
+neighbors = [NodePath("../BG2"), NodePath("../BG0")]
 texture = null
 
 [node name="BG2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_mrqvb")]

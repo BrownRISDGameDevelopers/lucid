@@ -1,12 +1,30 @@
-[gd_scene load_steps=11 format=3 uid="uid://8rycyialk58q"]
+[gd_scene load_steps=16 format=3 uid="uid://8rycyialk58q"]
 
 [ext_resource type="Script" uid="uid://cpy7na4wds2ea" path="res://scripts/player.gd" id="1_6mmc7"]
+[ext_resource type="Script" uid="uid://celj810o2oupe" path="res://scenes/components/animation_manager.gd" id="2_2l1sc"]
 [ext_resource type="PackedScene" uid="uid://ky4t6l8m7gou" path="res://art_assets/player/Lucid_MC.fbx" id="2_acvb7"]
 [ext_resource type="Texture2D" uid="uid://dy88eslvpktop" path="res://materials/player_sprite.png" id="2_h3cwf"]
 [ext_resource type="Animation" uid="uid://dne5uaovq277" path="res://art_assets/player/animations/idle.res" id="3_ypwcc"]
 [ext_resource type="Animation" uid="uid://bdmx1xc448qb7" path="res://art_assets/player/animations/jump.res" id="4_2l1sc"]
 [ext_resource type="Animation" uid="uid://b35pkucm4ugy6" path="res://art_assets/player/animations/land.res" id="5_fgeo0"]
 [ext_resource type="Animation" uid="uid://blxuh72svfmc0" path="res://art_assets/player/animations/walk.res" id="6_lkd77"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ypwcc"]
+animation = &"standards/walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2l1sc"]
+animation = &"standards/idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fgeo0"]
+animation = &"standards/jump"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_lkd77"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ypwcc")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_2l1sc")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_fgeo0")
+blend_point_2/pos = Vector2(0, 0.8)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jorle"]
 
@@ -25,6 +43,13 @@ _data = {
 script = ExtResource("1_6mmc7")
 
 [node name="AnimationManager" type="Node3D" parent="."]
+script = ExtResource("2_2l1sc")
+
+[node name="AnimationTree" type="AnimationTree" parent="AnimationManager"]
+root_node = NodePath("../../CollisionShape3D/Player_Animated/Lucid_MC")
+tree_root = SubResource("AnimationNodeBlendSpace2D_lkd77")
+anim_player = NodePath("../../CollisionShape3D/Player_Animated/Lucid_MC/AnimationPlayer")
+parameters/blend_position = Vector2(0.42617798, 0.10313904)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_jorle")

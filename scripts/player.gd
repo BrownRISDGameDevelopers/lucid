@@ -5,16 +5,17 @@ class_name LucidPlayer
 extends CharacterBody3D
 
 @onready var animation_player: AnimationPlayer = $CollisionShape3D/Player_Animated/Lucid_MC/AnimationPlayer
+@onready var animation_manager: Node3D = $AnimationManager
 
 # The properties that the physics process is interpolating toward
 var target_tile: Tile
 
-const DIR_TO_LOOK = {
-	SOUTHEAST = 90,
-	SOUTHWEST = 0,
-	NORTHEAST = 180,
-	NORTHWEST = 270
-}
+#const DIR_TO_LOOK = {
+	#SOUTHEAST = 90,
+	#SOUTHWEST = 0,
+	#NORTHEAST = 180,
+	#NORTHWEST = 270
+#}
 
 var target_rotation : Vector3 = Vector3(0,0,0)
 
@@ -37,7 +38,7 @@ var path: Array[Tile]
 @onready var gameManager: GameManager = get_parent();
 @export var speedMultiplier = 3;
 
-var actual_speed;
+var actual_speed = 0;
 @export var current: Tile
 
 # Tells the player to walk the path supplied. Called by the GameManager
@@ -57,20 +58,21 @@ func _update_speed():
 		actual_speed = ((target_tile.get_my_active_edge_pos()) - current.get_my_active_edge_pos()).length() * speedMultiplier
 	
 
+
 func look_at_tile(tile: Tile):
+	print("Player: Look at Tile")
 	var dir = tile.get_my_active_edge_pos() - global_transform.origin
 	var target_rot = atan2(dir.x, dir.z)
 	rotation.y = lerp_angle(rotation.y, target_rot, 0.1)
 
 func _physics_process(delta :float):
 	if (target_tile == null):
+		#actual_speed = 0
 		return
 		# Move toward target tile
 		
-	if (!deny_new_look):
+	if (!deny_new_path):
 		look_at_tile(target_tile)
-	else:
-		deny_new_look = false
 	
 	global_position = global_position.move_toward(target_tile.get_my_active_edge_pos() + player_offset, delta * actual_speed)
 	
@@ -92,6 +94,7 @@ func flip():
 	player_offset.y = -player_offset.y
 	
 #	Rotate the player: this flips the animation
+	animation_manager.do_flip()
 	rotation_degrees.x -= 180
 	
 	deny_new_path = true
