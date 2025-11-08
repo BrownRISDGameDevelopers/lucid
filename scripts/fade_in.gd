@@ -9,7 +9,10 @@ func _unhandled_input(event: InputEvent) -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	animation_player.animation_finished.connect(_on_animation_finished)
-	print("Animation starting...")
+	play_fade_in()
+
+func play_fade_in() -> void:
+	print("Animation Player: play_fade_in")
 	animation_player.play("fade_in")
 
 # I have no idea what this argument is

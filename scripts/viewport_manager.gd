@@ -7,7 +7,7 @@ func _ready() -> void:
 	pass
 
 func _input(event: InputEvent) -> void:
-	print("ViewportManager: I got an input")
+	#print("ViewportManager: I got an input")
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var screen_pos: Vector2 = event.position
 		for vp in viewports:
