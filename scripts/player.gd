@@ -17,14 +17,15 @@ var target_tile: Tile
 	#NORTHWEST = 270
 #}
 
-var target_rotation : Vector3 = Vector3(0,0,0)
-
 
 # This is the difference between the player's global_position and their feet (i love feet)
 var player_offset: Vector3 = Vector3(0,1,0)
 
 # Is the player upside down/on a foreground tile?
 var is_flipped: bool = false
+
+# The speed at which the player moves while flipping
+var flip_speed: float = 3
 
 # Suppress all movement while we are flipping. Checked by the GameManager
 # before a path is assigned.
@@ -95,7 +96,6 @@ func flip():
 	
 #	Rotate the player: this flips the animation
 	animation_manager.do_flip()
-	rotation_degrees.x -= 180
 	
 	deny_new_path = true
 	
@@ -103,6 +103,9 @@ func flip():
 	deny_new_look = true
 
 	target_tile = current.gravity_path
+	
+	actual_speed = flip_speed
+
 	
 func _input(event):
 	if event.is_action_pressed("flip_gravity"):

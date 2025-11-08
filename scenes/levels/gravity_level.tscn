@@ -56,15 +56,27 @@ texture = null
 
 [node name="BackgroundTile5" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("4_mrqvb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-neighbors = [NodePath("../BackgroundTile4")]
+neighbors = [NodePath("../BackgroundTile4"), NodePath("../BackgroundTile6")]
 texture = null
 gravity_path = NodePath("../ForegroundTile")
 
+[node name="BackgroundTile6" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("4_mrqvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
+neighbors = [NodePath("../BackgroundTile5")]
+texture = null
+gravity_path = NodePath("../ForegroundTile4")
+
 [node name="ForegroundTile" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("5_5mclm")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 4, 5, 0)
-neighbors = [NodePath("../ForegroundTile2")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 4, 9, 0)
+neighbors = [NodePath("../ForegroundTile2"), NodePath("../ForegroundTile4")]
 cull_mask = 4
 gravity_path = NodePath("../BackgroundTile5")
+
+[node name="ForegroundTile4" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("5_5mclm")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.7484555e-07, 0, 1.7484555e-07, 1, 4, 5, 4.9999995)
+neighbors = [NodePath("../ForegroundTile")]
+cull_mask = 4
+gravity_path = NodePath("../BackgroundTile6")
 
 [node name="ForegroundTile2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_5mclm")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 5, 5, 0)
@@ -77,5 +89,5 @@ neighbors = [NodePath("../ForegroundTile2")]
 cull_mask = 4
 
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("6_0xry8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(0.9999925, -0.0038746211, 0, 0.0038746211, 0.9999925, 0, 0, 0, 1, 0, 1.5, 0)
 current = NodePath("../TileManager/BG1")
