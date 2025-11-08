@@ -106,10 +106,20 @@ func reached_tile(tile: Tile):
 	if target_tile == null:
 		# We have reached the end of our path
 		gameManager.path_complete()
-		if tile.teleport_tile:
+		if current.teleport_tile:
 			# this is teleport tile
 			print("teleported!")
 			global_position = tile.teleport_tile.get_my_active_edge_pos() + player_offset
 			current = tile.teleport_tile
+			
+		if current is HollowTile:
+			# this is hollow tile
+			var current_hollow: HollowTile
+			current_hollow = current as HollowTile
+			if current_hollow.hollow_path:
+				print("falling")
+				deny_new_path = true
+				target_tile = current_hollow.hollow_path
+				
 	else:
 		_update_speed()	

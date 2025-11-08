@@ -59,6 +59,7 @@ func player_reached_tile(tile: Tile):
 	tileManager.color_tile_orange(tile)
 	if (endTile == tile):
 		execute_end_routine()
+
 @onready var fade_out: Control = $FadeOut
 
 # Called when the player reaches the goal
