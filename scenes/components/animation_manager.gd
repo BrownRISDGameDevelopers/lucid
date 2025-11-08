@@ -6,6 +6,14 @@ var spin_direction = -1
 var to_spin = false
 var flipping = false
 
+#You may have looked at this code becasue
+#the player was rotating while on a moving tile.
+#That is because the code currently doesn't look at
+#player.locked_path.
+#Luckily, the fix is easy.  In _physics_process, there
+#are two commented out and statements, add them and it should
+#fix it
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -17,26 +25,29 @@ func _physics_process(delta: float) -> void:
 	
 	var target_blend = Vector2(0, 0)
 	
-	if (player.target_tile != null and !player.deny_new_path):
+	if (player.target_tile != null and !player.deny_new_path): #and !player.locked_path
 		target_blend = Vector2(-1, 0)
 	elif (player.deny_new_path and flipping):
 		target_blend = Vector2(0, 1)
 	else:
 		target_blend = Vector2(1, 0)
 
-	
-	if (player.deny_new_path):
+
+	if (player.deny_new_path): # and !player.locked_path
 		if (flipping):
 			var flip_speed = player.actual_speed
 			player._update_speed()
 			var distance = player.actual_speed / player.speedMultiplier
 			player.actual_speed = flip_speed
+			# The -2 here comes from the player position offset
 			flip_rotate(PI * delta * flip_speed / (distance - 2))
 		pass
 	if (!player.deny_new_path and flipping):
+		# Ends the flip
 		flipping = false
 		player.visible = true
 		if (player.is_flipped):
+			# Snaps the player's rotation to upright
 			player.rotation.x = PI
 			spin_direction = 1
 			player.rotation.y += PI
@@ -77,6 +88,7 @@ func flip_rotate(rot_speed: float) -> void:
 			# Make sure we don't land invisible
 			flip_rotate(rot_speed)
 		else:
+			# Resets to the first half of the flip
 			spin_direction *= -1
 			player.rotation.x = PI/2
 			player.rotation.y -= PI
