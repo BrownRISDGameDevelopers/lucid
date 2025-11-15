@@ -1,0 +1,201 @@
+[gd_scene load_steps=12 format=3 uid="uid://dsql2ku6shn8p"]
+
+[ext_resource type="Script" uid="uid://bxs480mltj3u5" path="res://ui/main_menu.gd" id="1_0dkrt"]
+
+[sub_resource type="Gradient" id="Gradient_t7e0r"]
+colors = PackedColorArray(0.010486343, 0.15014434, 0.34580842, 1, 0.41153762, 0.2974254, 0.8709969, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0dkrt"]
+gradient = SubResource("Gradient_t7e0r")
+fill_from = Vector2(0.496875, 0.3125)
+fill_to = Vector2(0.50625, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gl0q7"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0, 0, 0, 0.2901961)
+shadow_size = 5
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0dkrt"]
+bg_color = Color(0.5290907, 0.75441784, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0, 0, 0, 0.2901961)
+shadow_size = 5
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t7e0r"]
+bg_color = Color(0.7617459, 0.8579384, 0.9791197, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0, 0, 0, 0.2901961)
+shadow_size = 5
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t7e0r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wk0pr"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.7723269, 0.89401114, 0.97418517, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmr83"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.3459457, 0.34594572, 0.3459457, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8uxxo"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.44306326, 0.6117295, 0.7724022, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ei257"]
+
+[node name="mainmenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0dkrt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_0dkrt")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -265.0
+offset_top = 89.0
+offset_right = 265.0
+offset_bottom = 352.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3137255)
+theme_override_constants/shadow_offset_y = 8
+theme_override_font_sizes/font_size = 95
+text = "LUCID
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -68.0
+offset_right = 180.0
+offset_bottom = 193.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_gl0q7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0dkrt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t7e0r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t7e0r")
+text = "Start"
+
+[node name="settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_gl0q7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0dkrt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t7e0r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t7e0r")
+text = "Settings"
+
+[node name="tutorial" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_gl0q7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0dkrt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t7e0r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t7e0r")
+text = "Tutorial"
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -139.0
+offset_top = 21.0
+offset_right = -23.0
+offset_bottom = 65.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_wk0pr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rmr83")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8uxxo")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ei257")
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/start" to="." method="_on_lvlchoice_pressed"]
+[connection signal="pressed" from="VBoxContainer/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
