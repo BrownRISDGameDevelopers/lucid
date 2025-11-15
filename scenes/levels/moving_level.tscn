@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dc2gstuysvbw5"]
+[gd_scene load_steps=10 format=3 uid="uid://dc2gstuysvbw5"]
 
 [ext_resource type="Script" uid="uid://dfw405aqqwl5d" path="res://scenes/components/viewport_manager.gd" id="1_7fopn"]
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_85aqy"]
@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://chrmyh0ov3ucn" path="res://scenes/tiles/moving_tile.tscn" id="5_ae6pk"]
 [ext_resource type="PackedScene" uid="uid://bdbaus0a0yg6g" path="res://scenes/tiles/FGTile.tscn" id="5_rxndl"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="6_luxvi"]
-[ext_resource type="PackedScene" uid="uid://clqij1hraesmk" path="res://scenes/tiles/tile_array_2d_row.tscn" id="6_p3iiq"]
+[ext_resource type="Script" uid="uid://d3oeagq24crur" path="res://scripts/move_goal.gd" id="7_7g605"]
+[ext_resource type="PackedScene" uid="uid://b8nhwpsguopu5" path="res://scenes/components/move_goal.tscn" id="7_tof08"]
 
 [node name="GravityLevel" type="Node"]
 
@@ -110,32 +111,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 neighbors = [NodePath("../BackgroundTile4"), NodePath("../MovingTile")]
 gravity_path = NodePath("../ForegroundTile")
 
-[node name="MovingTile" parent="GameManager/TileManager" node_paths=PackedStringArray("goals", "goal", "neighbor_sets", "neighbors") instance=ExtResource("5_ae6pk")]
+[node name="MovingTile" parent="GameManager/TileManager" node_paths=PackedStringArray("goals", "goal", "neighbors") instance=ExtResource("5_ae6pk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 1)
-goals = [NodePath("../Marker3D2"), NodePath("../Marker3D3")]
-goal = NodePath("../Marker3D1")
-neighbor_sets = NodePath("TileArray2DRow")
+goals = [NodePath("../MoveGoal3"), NodePath("../MoveGoal2")]
+goal = NodePath("../MoveGoal")
 neighbors = [NodePath("../BackgroundTile5")]
 
-[node name="TileArray2DRow" parent="GameManager/TileManager/MovingTile" node_paths=PackedStringArray("next") instance=ExtResource("6_p3iiq")]
-next = NodePath("TileArray2DRow2")
-
-[node name="TileArray2DRow2" parent="GameManager/TileManager/MovingTile/TileArray2DRow" node_paths=PackedStringArray("row") instance=ExtResource("6_p3iiq")]
-row = [NodePath("../../../BG1")]
-
-[node name="Marker3D1" type="Marker3D" parent="GameManager/TileManager"]
+[node name="MoveGoal" type="Marker3D" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 1)
+script = ExtResource("7_7g605")
+neighbors = [NodePath("../BackgroundTile5")]
+metadata/_custom_type_script = "uid://d3oeagq24crur"
 
-[node name="Marker3D2" type="Marker3D" parent="GameManager/TileManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 4)
-
-[node name="Marker3D3" type="Marker3D" parent="GameManager/TileManager"]
+[node name="MoveGoal2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("7_tof08")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+neighbors = [NodePath("../BG1")]
+gravity_path = NodePath("../ForegroundTile")
+
+[node name="MoveGoal3" parent="GameManager/TileManager" instance=ExtResource("7_tof08")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2, 1)
 
 [node name="ForegroundTile" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("5_rxndl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 1)
 neighbors = [NodePath("../ForegroundTile2")]
-gravity_path = NodePath("../BackgroundTile5")
+gravity_path = NodePath("../MovingTile")
 
 [node name="ForegroundTile2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_rxndl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, 0)

@@ -94,10 +94,12 @@ func look_at_tile(tile: Tile):
 		rotation.y = atan2(dir.x, dir.z)
 		
 func _physics_process(delta :float):
+	print(current.global_position)
 	if (target_tile == null):
 		return
 		# Move toward target tile
 	look_at_tile(target_tile)
+
 	
 	global_position = global_position.move_toward(target_tile.get_my_active_edge_pos() + player_offset, delta * actual_speed)
 	
@@ -114,7 +116,6 @@ func player_busy() -> bool:
 
 # Called by the game manager; tells us to switch gravity
 func flip():
-	print("flip")
 	is_flipped = !is_flipped
 #	flip the player's offset
 	#print(player_offset)
@@ -122,6 +123,8 @@ func flip():
 	#print(player_offset)
 	deny_new_path = true
 	target_tile = current.gravity_path
+	print(target_tile)
+	_update_speed()
 	
 func _input(event):
 	if event.is_action_pressed("flip_gravity"):
