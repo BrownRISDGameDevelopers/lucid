@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://dc2gstuysvbw5"]
+[gd_scene load_steps=11 format=3 uid="uid://dc2gstuysvbw5"]
 
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_7g605"]
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_85aqy"]
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="3_l4eas"]
 [ext_resource type="PackedScene" uid="uid://chrmyh0ov3ucn" path="res://scenes/tiles/moving_tile.tscn" id="5_ae6pk"]
-[ext_resource type="PackedScene" uid="uid://bdbaus0a0yg6g" path="res://scenes/tiles/FGTile.tscn" id="5_rxndl"]
+[ext_resource type="PackedScene" uid="uid://e4i70visgaeq" path="res://scenes/tiles/FGTile.tscn" id="5_rxndl"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="6_luxvi"]
-[ext_resource type="Script" path="res://scripts/move_goal.gd" id="7_7g605"]
+[ext_resource type="Script" uid="uid://d3oeagq24crur" path="res://scripts/move_goal.gd" id="7_7g605"]
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="7_p3iiq"]
-[ext_resource type="PackedScene" uid="uid://umnnwb00nj1e" path="res://scenes/components/move_goal.tscn" id="7_tof08"]
+[ext_resource type="PackedScene" uid="uid://b8nhwpsguopu5" path="res://scenes/components/move_goal.tscn" id="7_tof08"]
+[ext_resource type="PackedScene" uid="uid://do48gbwqu8jmc" path="res://scenes/tiles/button.tscn" id="9_tof08"]
 
 [node name="GravityLevel" type="Node"]
 
@@ -25,6 +26,7 @@ script = ExtResource("3_l4eas")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 1)
 goals = [NodePath("../MoveGoal2"), NodePath("../MoveGoal3")]
 goal = NodePath("../MoveGoal")
+activation_cond = 2
 
 [node name="MoveGoal" type="Marker3D" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 1)
@@ -39,9 +41,10 @@ gravity_path = NodePath("../ForegroundTile")
 [node name="MoveGoal3" parent="GameManager/TileManager" instance=ExtResource("7_tof08")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2, 1)
 
-[node name="ForegroundTile" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_rxndl")]
+[node name="ForegroundTile" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("5_rxndl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 1)
 neighbors = [NodePath("../ForegroundTile2")]
+gravity_path = NodePath("../MovingTile")
 
 [node name="ForegroundTile2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_rxndl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, 0)
@@ -70,6 +73,24 @@ neighbors = [NodePath("../Tile3"), NodePath("../Tile5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 neighbors = [NodePath("../Tile4"), NodePath("../MovingTile")]
 
+[node name="Button2" parent="GameManager/TileManager" node_paths=PackedStringArray("moving_tile", "goal") instance=ExtResource("9_tof08")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 1)
+moving_tile = NodePath("../MovingTile")
+goal = NodePath("../MoveGoal2")
+
+[node name="Button3" parent="GameManager/TileManager" node_paths=PackedStringArray("moving_tile", "goal") instance=ExtResource("9_tof08")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2, 2)
+moving_tile = NodePath("../MovingTile")
+goal = NodePath("../MoveGoal3")
+
+[node name="Button" parent="GameManager/TileManager" node_paths=PackedStringArray("moving_tile", "goal") instance=ExtResource("9_tof08")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 1)
+moving_tile = NodePath("../MovingTile")
+goal = NodePath("../MoveGoal")
+
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("6_luxvi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 current = NodePath("../TileManager/Tile")
+
+[connection signal="button_pressed" from="GameManager/TileManager/Button2" to="GameManager/TileManager/MovingTile" method="_on_button_2_button_pressed"]
+[connection signal="button_pressed" from="GameManager/TileManager/Button" to="GameManager/TileManager/MovingTile" method="_on_button_button_pressed"]

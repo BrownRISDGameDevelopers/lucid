@@ -142,9 +142,8 @@ func flip():
 	deny_new_look = true
 
 	target_tile = current.gravity_path
-	print(target_tile)
-	_update_speed()
 	
+	print(target_tile)
 	actual_speed = flip_speed
 	
 func _input(event):

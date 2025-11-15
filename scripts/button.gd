@@ -1,15 +1,20 @@
-extends Node3D
+@warning_ignore("missing_tool")
+extends Tile
 
-class_name Interactable
+#The assigned moving tile
+@export var moving_tile : Tile
+#The assigned position of the moving tile
+@export var goal : MoveGoal
 
-@export var tile : Tile
-@onready var gameManager: GameManager = get_parent()
+@onready var gameManager: GameManager = get_parent().get_parent();
 
-signal button_clicked(this_button)
+signal button_pressed()
 
-
+func _ready():
+	connect("button_pressed", Callable(moving_tile, "button_pressed"))
 
 func my_static_body3d_clicked():
-	if tile == gameManager.get_current_tile():
-		emit_signal("button_clicked", self)
-		print("Button clicked")
+	if (moving_tile.goal == goal):
+		moving_tile.my_static_body3d_clicked()
+		if (gameManager.get_current_tile() == moving_tile):
+			emit_signal("button_pressed")
