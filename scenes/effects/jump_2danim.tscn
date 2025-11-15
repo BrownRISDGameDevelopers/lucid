@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://bfpqoowgykr8a"]
+
+[ext_resource type="Script" uid="uid://c3324galephe6" path="res://jump_2_danim.gd" id="1_yllwr"]
+[ext_resource type="Texture2D" uid="uid://d2x52s0bakobf" path="res://art_assets/Jump_2D_Sprite_Sheet.png" id="2_cl674"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxs41"]
+atlas = ExtResource("2_cl674")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isytu"]
+atlas = ExtResource("2_cl674")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqe76"]
+atlas = ExtResource("2_cl674")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vpoa"]
+atlas = ExtResource("2_cl674")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cus5"]
+atlas = ExtResource("2_cl674")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g751t"]
+atlas = ExtResource("2_cl674")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmlb0"]
+atlas = ExtResource("2_cl674")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gaasj"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxs41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isytu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqe76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vpoa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cus5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g751t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmlb0")
+}],
+"loop": false,
+"name": &"new_animation",
+"speed": 6.0
+}]
+
+[node name="Control" type="Node3D"]
+script = ExtResource("1_yllwr")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_gaasj")
+animation = &"new_animation"
+frame = 6
+frame_progress = 1.0
