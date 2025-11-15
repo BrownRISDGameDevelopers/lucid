@@ -1,0 +1,261 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxj7kbihudvih"]
+
+[ext_resource type="PackedScene" uid="uid://mgyl0ib1thmg" path="res://scripts/resources/Level1_BaseLayout_V2.fbx" id="1_jlpbf"]
+[ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="2_vmesg"]
+
+[node name="Level1" type="Node3D"]
+
+[node name="Level1_BaseLayout_V2" parent="." instance=ExtResource("1_jlpbf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -4, 0)
+
+[node name="aT1" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -2.5, 16.5)
+neighbors = [NodePath("../aT2")]
+texture = null
+
+[node name="aT2" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -2.5, 15.5)
+neighbors = [NodePath("../aT1"), NodePath("../aT3")]
+texture = null
+
+[node name="aT3" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -2.5, 14.5)
+neighbors = [NodePath("../aT2"), NodePath("../aT4")]
+texture = null
+
+[node name="aT4" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -2.5, 13.5)
+neighbors = [NodePath("../aT3"), NodePath("../aT5")]
+texture = null
+
+[node name="aT5" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -2.5, 12.5)
+neighbors = [NodePath("../aT4"), NodePath("../aT6")]
+texture = null
+
+[node name="aT6" parent="." node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -2.5, 11.5)
+neighbors = [NodePath("../aT5")]
+texture = null
+gravity_path = NodePath("../bT1")
+
+[node name="bT1" parent="." node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 2.5, 8.5)
+neighbors = [NodePath("../bT2")]
+texture = null
+gravity_path = NodePath("../aT6")
+
+[node name="bT2" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 2.5, 7.5)
+neighbors = [NodePath("../bT1"), NodePath("../bT3")]
+texture = null
+
+[node name="bT3" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 2.5, 6.5)
+neighbors = [NodePath("../bT2"), NodePath("../bT4")]
+texture = null
+
+[node name="bT4" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 2.5, 5.5)
+neighbors = [NodePath("../bT3"), NodePath("../bT5")]
+texture = null
+
+[node name="bT5" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 2.5, 4.5)
+neighbors = [NodePath("../bT4"), NodePath("../bT6")]
+texture = null
+
+[node name="bT6" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 2.5, 3.5)
+neighbors = [NodePath("../bT5")]
+texture = null
+
+[node name="cT1" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 1.5, 7.5)
+neighbors = [NodePath("../cT2"), NodePath("../cT14")]
+texture = null
+
+[node name="cT2" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 1.5, 6.5)
+neighbors = [NodePath("../cT1"), NodePath("../cT3"), NodePath("../cT13")]
+texture = null
+
+[node name="cT3" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 1.5, 5.5)
+neighbors = [NodePath("../cT2"), NodePath("../cT4"), NodePath("../cT12")]
+texture = null
+
+[node name="cT4" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 1.5, 4.5)
+neighbors = [NodePath("../cT3"), NodePath("../cT5"), NodePath("../cT11")]
+texture = null
+
+[node name="cT5" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 1.5, 3.5)
+neighbors = [NodePath("../cT4"), NodePath("../cT6"), NodePath("../cT10")]
+texture = null
+
+[node name="cT6" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 1.5, 2.5)
+neighbors = [NodePath("../cT5"), NodePath("../cT7"), NodePath("../cT9")]
+texture = null
+
+[node name="cT7" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 1.5, 1.5)
+neighbors = [NodePath("../cT6"), NodePath("../cT8")]
+texture = null
+
+[node name="cT8" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.5, 1.5)
+neighbors = [NodePath("../cT7"), NodePath("../cT21"), NodePath("../cT9")]
+texture = null
+
+[node name="cT9" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.5, 2.5)
+neighbors = [NodePath("../cT6"), NodePath("../cT8"), NodePath("../cT10"), NodePath("../cT20")]
+texture = null
+
+[node name="cT10" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.5, 3.5)
+neighbors = [NodePath("../cT9"), NodePath("../cT11"), NodePath("../cT5"), NodePath("../cT19")]
+texture = null
+
+[node name="cT11" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.5, 4.5)
+neighbors = [NodePath("../cT4"), NodePath("../cT10"), NodePath("../cT12"), NodePath("../cT18")]
+texture = null
+
+[node name="cT12" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.5, 5.5)
+neighbors = [NodePath("../cT3"), NodePath("../cT11"), NodePath("../cT13"), NodePath("../cT17")]
+texture = null
+
+[node name="cT13" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.5, 6.5)
+neighbors = [NodePath("../cT2"), NodePath("../cT12"), NodePath("../cT14"), NodePath("../cT16")]
+texture = null
+
+[node name="cT14" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.5, 7.5)
+neighbors = [NodePath("../cT1"), NodePath("../cT13"), NodePath("../cT15")]
+texture = null
+
+[node name="cT15" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1.5, 7.5)
+neighbors = [NodePath("../cT14"), NodePath("../cT16")]
+texture = null
+
+[node name="cT16" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1.5, 6.5)
+neighbors = [NodePath("../cT15"), NodePath("../cT17"), NodePath("../cT13")]
+texture = null
+
+[node name="cT17" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1.5, 5.5)
+neighbors = [NodePath("../cT16"), NodePath("../cT18"), NodePath("../cT12")]
+texture = null
+
+[node name="cT18" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1.5, 4.5)
+neighbors = [NodePath("../cT17"), NodePath("../cT19"), NodePath("../cT11")]
+texture = null
+
+[node name="cT19" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1.5, 3.5)
+neighbors = [NodePath("../cT18"), NodePath("../cT20"), NodePath("../cT10")]
+texture = null
+
+[node name="cT20" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1.5, 2.5)
+neighbors = [NodePath("../cT19"), NodePath("../cT21"), NodePath("../cT9")]
+texture = null
+
+[node name="cT21" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1.5, 1.5)
+neighbors = [NodePath("../cT20"), NodePath("../cT8")]
+texture = null
+
+[node name="cT22" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1.5, 1.5)
+neighbors = [NodePath("../cT20"), NodePath("../cT8")]
+texture = null
+
+[node name="cT23" parent="." instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1.5, 1.5)
+texture = null
+
+[node name="cT24" parent="." instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0.5, 1.5)
+texture = null
+
+[node name="cT25" parent="." instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0.5, 2.5)
+texture = null
+
+[node name="cT26" parent="." instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0.5, 3.5)
+texture = null
+
+[node name="cT27" parent="." instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0.5, 4.5)
+texture = null
+
+[node name="cT28" parent="." instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0.5, 5.5)
+texture = null
+
+[node name="cT29" parent="." instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0.5, 6.5)
+texture = null
+
+[node name="cT30" parent="." instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0.5, 7.5)
+texture = null
+
+[node name="cT31" parent="." instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0.5, 7.5)
+texture = null
+
+[node name="cT32" parent="." instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0.5, 7.5)
+texture = null
+
+[node name="cT33" parent="." instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -0.5, 7.5)
+texture = null
+
+[node name="cT34" parent="." instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, -0.5, 7.5)
+texture = null
+
+[node name="cT35" parent="." instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, -0.5, 7.5)
+texture = null
+
+[node name="cT36" parent="." instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, -0.5, 6.5)
+texture = null
+
+[node name="cT37" parent="." instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, -0.5, 5.5)
+texture = null
+
+[node name="cT38" parent="." instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, -0.5, 4.5)
+texture = null
+
+[node name="cT39" parent="." instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, -0.5, 3.5)
+texture = null
+
+[node name="cT40" parent="." instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, -0.5, 2.5)
+texture = null
+
+[node name="cT41" parent="." instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, -0.5, 1.5)
+texture = null
+
+[node name="cT42" parent="." instance=ExtResource("2_vmesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, -0.5, 1.5)
+texture = null
