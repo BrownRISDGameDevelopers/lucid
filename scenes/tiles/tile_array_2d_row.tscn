@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://clqij1hraesmk"]
+
+[ext_resource type="Script" uid="uid://d2m72qvko67ur" path="res://scripts/resources/TileArray2D.gd" id="1_obf2c"]
+
+[node name="TileArray2DRow" type="Node"]
+script = ExtResource("1_obf2c")

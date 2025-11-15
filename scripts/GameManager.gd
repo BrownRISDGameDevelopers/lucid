@@ -26,6 +26,7 @@ func _ready() -> void:
 func get_current_tile() -> Tile:
 	return player.current;
 
+# Move's a player to a position
 func move_player(path: Array[Tile]):
 	player.set_path(path)	
 
@@ -39,7 +40,7 @@ func process_path_queue(path_queue: Array[Tile]):
 	
 #	Do we want to do go down the path that the TileManager found?
 #	Does the Player want us to?
-	if (player.deny_new_path): return
+	if (player.deny_new_path || player.locked_path): return
 #	Tell the player to dump whatever they're doing and go down this new path.
 	player.set_path(path_queue.duplicate(true))
 	
@@ -72,8 +73,6 @@ func execute_end_routine():
 	print("End routine")
 	fade_out.do_fade_out()
 	
-	
-
 # This function is called by the Player whenever they finish a path or they're given a new path.
 func path_complete(tile: Tile):
 	tileManager.path_complete(tile)
@@ -81,3 +80,14 @@ func path_complete(tile: Tile):
 # Switch the scene to the next scene; depending on how we implement this, we may want to change etr to take in a string of the scene we're changing to
 func end_tile_reached():
 	get_tree().change_scene_to_file("res://scenes/components/level_2.tscn")
+# This function is called by the Player whenever they're given a new path.
+func path_complete():
+	tileManager.path_complete()
+
+# Attaches the player's movement to a tile, useful for moving
+func lock_player(tile: Tile, speed: int):
+	player.lock_movement(tile, speed)
+
+# Resets player's movement access
+func unlock_player():
+	player.unlock_movement()
