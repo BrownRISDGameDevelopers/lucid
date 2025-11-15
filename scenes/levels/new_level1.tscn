@@ -90,20 +90,15 @@ size = 15.018
 script = ExtResource("2_8duvu")
 
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("4_54w8x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1.5, 12)
-current = NodePath("../TileManager/aTile1")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, 12)
+current = NodePath("")
 
 [node name="TileManager" type="Node" parent="GameManager"]
 script = ExtResource("3_5wbid")
 
-[node name="aTile1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_x5dpk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -3, 12)
-neighbors = [NodePath("../aTile2")]
-texture = null
-
 [node name="aTile2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_x5dpk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -3, 11)
-neighbors = [NodePath("../aTile1"), NodePath("../aTile3")]
+neighbors = [NodePath(""), NodePath("../aTile3")]
 texture = null
 
 [node name="aTile3" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("4_x5dpk")]
@@ -216,7 +211,7 @@ neighbors = [NodePath("../cTile14"), NodePath("../cTile16"), NodePath("../cTile1
 
 [node name="cTile16" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("8_lwt37")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 1)
-neighbors = [NodePath("../cTile15"), NodePath("../aTile1"), NodePath("../cTile17")]
+neighbors = [NodePath("../cTile15"), NodePath(""), NodePath("../cTile17")]
 
 [node name="cTile17" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("8_lwt37")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 1)
@@ -224,7 +219,7 @@ neighbors = [NodePath("../cTile18"), NodePath("../cTile19"), NodePath("../cTile1
 
 [node name="cTile18" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("8_lwt37")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 2)
-neighbors = [NodePath("../aTile1"), NodePath("../aTile3"), NodePath("../cTile5"), NodePath("../cTile17")]
+neighbors = [NodePath(""), NodePath("../aTile3"), NodePath("../cTile5"), NodePath("../cTile17")]
 
 [node name="cTile19" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("8_lwt37")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
@@ -581,3 +576,7 @@ neighbors = [NodePath("../kTile14"), NodePath("../kTile16"), NodePath("../kTile2
 [node name="kTile16" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("8_lwt37")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1, 3)
 neighbors = [NodePath("../kTile15"), NodePath("../kTile1")]
+
+[node name="Tile" parent="." instance=ExtResource("4_x5dpk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -2, 12)
+texture = null
