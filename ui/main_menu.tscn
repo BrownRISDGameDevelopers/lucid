@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bxs480mltj3u5" path="res://ui/main_menu.gd" id="1_0dkrt"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t7e0r"]
-load_path = "res://.godot/imported/blue_background.png-5b0bf4eeaf07fafd7f5f56f63e8cd6f6.ctex"
+[sub_resource type="Gradient" id="Gradient_t7e0r"]
+colors = PackedColorArray(0.010486343, 0.15014434, 0.34580842, 1, 0.41153762, 0.2974254, 0.8709969, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0dkrt"]
-texture = SubResource("CompressedTexture2D_t7e0r")
-modulate_color = Color(0.577008, 0.57700855, 0.577008, 1)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0dkrt"]
+gradient = SubResource("Gradient_t7e0r")
+fill_from = Vector2(0.496875, 0.3125)
+fill_to = Vector2(0.50625, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gl0q7"]
 bg_color = Color(1, 1, 1, 1)
@@ -88,14 +89,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0dkrt")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_0dkrt")
+texture = SubResource("GradientTexture2D_0dkrt")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

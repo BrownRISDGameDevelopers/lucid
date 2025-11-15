@@ -15,6 +15,10 @@ run/main_scene="uid://d2lmyucq8r4dk"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="uid://b8u0flfhqivst"
 
+[autoload]
+
+ChangeScene="*res://ui/change_scene.tscn"
+
 [input]
 
 flip_gravity={

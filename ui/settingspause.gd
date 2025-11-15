@@ -17,8 +17,8 @@ func _on_fullscreen_toggled(button_pressed) -> void:
 
 
 func _on_main_menu_pressed() -> void:
-	get_tree().change_scene_to_file("res://ui/main_menu.tscn")
+	ChangeScene.change_scene(ChangeScene.mainmenu)
 
 
 func _on_exit_pressed() -> void:
-	get_tree().quit()
+	ChangeScene.change_scene(ChangeScene.level1)
