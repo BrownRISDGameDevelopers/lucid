@@ -1,5 +1,4 @@
 extends Tile
-class_name MovingTile
 
 # The list of positions that the tile cycles through.
 # On initiation, set this to the list of positions that
@@ -34,6 +33,7 @@ var moving = false;
 
 
 func _ready():
+	neighbors = goal._get_neighbors()
 	if activation_cond == activation.WAIT:
 		connect("move_complete", _on_move_complete)
 		wait_loop()

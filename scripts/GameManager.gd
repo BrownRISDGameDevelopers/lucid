@@ -80,9 +80,6 @@ func path_complete(tile: Tile):
 # Switch the scene to the next scene; depending on how we implement this, we may want to change etr to take in a string of the scene we're changing to
 func end_tile_reached():
 	get_tree().change_scene_to_file("res://scenes/components/level_2.tscn")
-# This function is called by the Player whenever they're given a new path.
-func path_complete():
-	tileManager.path_complete()
 
 # Attaches the player's movement to a tile, useful for moving
 func lock_player(tile: Tile, speed: int):

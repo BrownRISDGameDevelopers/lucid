@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=3 uid="uid://blmjcvukywngg"]
+
+[ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="1_l37oo"]
+[ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="2_qpwj6"]
+[ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="3_ibugp"]
+[ext_resource type="PackedScene" uid="uid://yg6bul1ruiqr" path="res://scenes/tiles/flat.tscn" id="4_8qukl"]
+[ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="5_3p04p"]
+
+[node name="GameManager2" type="Node3D"]
+script = ExtResource("1_l37oo")
+
+[node name="TileManager" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.7071068, 0, -0.7071068, 0.70710677, 0, 7, 5)
+script = ExtResource("2_qpwj6")
+
+[node name="Tile" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(0.9999636, 0.0074456134, -0.004174209, -0.008233447, 0.7123216, -0.701805, -0.0022520062, 0.7018138, 0.71235687, 0, -1.4142134, -8.485282)
+
+[node name="Tile2" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, 0, -2.1213202, -7.7781754)
+
+[node name="Tile3" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, 0, -2.828427, -7.0710683)
+
+[node name="Tile4" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, 0, -3.535534, -6.3639617)
+
+[node name="Tile5" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -1, -9.192389, -6.3639617)
+
+[node name="Tile7" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -2, -9.192389, -6.3639617)
+
+[node name="Tile17" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -3, -9.192389, -6.3639617)
+
+[node name="Tile18" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -4, -9.192389, -6.3639617)
+
+[node name="Tile6" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -1, -3.535534, -6.3639617)
+
+[node name="Tile19" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -2, -3.535534, -6.3639617)
+
+[node name="Tile20" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -3, -3.535534, -6.3639617)
+
+[node name="Tile21" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -4, -3.535534, -6.3639617)
+
+[node name="Tile22" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -5, -3.535534, -6.3639617)
+
+[node name="Tile23" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -5, -4.2426405, -5.6568546)
+
+[node name="Tile24" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -5, -4.9497476, -4.949748)
+
+[node name="Tile25" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -5, -5.6568546, -4.2426414)
+
+[node name="Tile26" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -5, -6.363961, -3.5355344)
+
+[node name="Tile27" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -5, -7.071068, -2.8284278)
+
+[node name="Tile28" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -5, -7.7781744, -2.1213212)
+
+[node name="Tile29" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -5, -8.485282, -1.4142141)
+
+[node name="Tile30" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -5, -9.192389, -0.70710754)
+
+[node name="Tile31" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -4, -9.192389, -0.70710754)
+
+[node name="Tile32" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -3, -9.192389, -0.70710754)
+
+[node name="Tile33" parent="TileManager" instance=ExtResource("3_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -2, -9.192389, -0.70710754)
+
+[node name="Flat" parent="TileManager" instance=ExtResource("4_8qukl")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.7071068, 0, 0.7071068, 0.70710677, -1, -8.838836, -0.35355377)
+
+[node name="Flat2" parent="TileManager" instance=ExtResource("4_8qukl")]
+transform = Transform3D(1, 0, 0, 0, -0.7071069, -0.7071067, 0, 0.7071067, -0.7071069, -1, -9.545941, -0.35355377)
+
+[node name="levelCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.3071067, -0.64235055, 0.11084, 0, 1.283009, 0.11098618, -0.3071067, -0.64235055, 0.11084, 20.380001, 21.875, 29)
+cull_mask = 1048573
+projection = 1
+size = 15.018
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.7071068, 0, -0.7071068, 0.70710677, 0, 7, 5)
+
+[node name="Player" parent="." node_paths=PackedStringArray("current") instance=ExtResource("5_3p04p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+current = NodePath("../TileManager/Tile")
