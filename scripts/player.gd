@@ -87,6 +87,8 @@ func player_busy() -> bool:
 #	If any of these are true, we are busy
 	return (deny_new_path || target_tile || path)
 
+@onready var JumpEffectScene := preload("res://scenes/effects/jump_2danim.tscn")
+
 # Called by the game manager; tells us to switch gravity
 func flip():
 	print("flip")
@@ -94,6 +96,11 @@ func flip():
 #	flip the player's offset: This lets us walk on the bottom of tiles.
 	player_offset.y = -player_offset.y
 	
+#	Jump animation
+	var e = JumpEffectScene.instantiate()
+	e.tree_entered.connect(func(): print("entered"))
+	get_parent().add_child(e)
+
 #	Rotate the player: this flips the animation
 	animation_manager.do_flip()
 	
