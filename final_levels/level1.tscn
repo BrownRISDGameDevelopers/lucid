@@ -22,9 +22,11 @@ script = ExtResource("2_pfj77")
 endTile = NodePath("TileManager/dT2")
 
 [node name="FadeIn" parent="GameManager" instance=ExtResource("3_emcwx")]
+visible = false
 metadata/_edit_use_anchors_ = true
 
 [node name="FadeOut" parent="GameManager" instance=ExtResource("4_ckpgr")]
+visible = false
 metadata/_edit_use_anchors_ = true
 
 [node name="TileManager" type="Node" parent="GameManager"]
