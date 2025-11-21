@@ -14,6 +14,8 @@ class_name GameManager
 
 @export var endTile: Tile
 
+@export var clamp : bool = false
+
 #The tile that the player is currently on. Initialized by the TileManager
 #to be the start of the level.
 
@@ -34,7 +36,7 @@ func move_player(path: Array[Tile]):
 # Called by TileManager. Contains the path that the TileManager wants the player
 # to traverse.
 func process_path_queue(path_queue: Array[Tile]):
-	if path_queue == null or path_queue.size() == 0:
+	if path_queue == null or path_queue.size() == 0 or (clamp == true and path_queue.size() > 4):
 		return
 #	Our TileManager has found a valid path for us. 
 	
@@ -51,7 +53,9 @@ func process_path_queue(path_queue: Array[Tile]):
 	
 func player_wants_to_flip(tile: Tile):
 	if (player.player_busy()): return
-	if (tile.gravity_path != null):
+	#The second condition checks if the destination has the current tile
+	#as the gravity path and is only here for moving tiles with gravity paths
+	if (tile.gravity_path != null and tile.gravity_path.gravity_path == tile):
 		#	If the player has somewhere to go when we flip gravity, let it happen
 		player.flip()
 		pass

@@ -1,5 +1,6 @@
 extends Tile
 
+
 # The list of positions that the tile cycles through.
 # On initiation, set this to the list of positions that
 # WITHOUT includiong the starting position.  List these
@@ -9,7 +10,7 @@ extends Tile
 # The starting position
 @export var goal : MoveGoal
 
-enum activation {CLICK, WAIT}
+enum activation {CLICK, WAIT, BUTTON_PRESSED}
 
 signal move_complete()
 
@@ -51,9 +52,6 @@ func my_static_body3d_clicked():
 	else:
 		emit_signal("cube_clicked", self)
 
-# This function makes the tile start moving to it's next position
-# if the player is on the tile, it will force the player to move
-# with itself until this motion is complete
 
 func wait_loop():
 	await get_tree().create_timer(3.0).timeout
@@ -66,6 +64,13 @@ func _on_move_complete():
 func _on_move_complete_stop():
 	return
 
+func button_pressed():
+	if activation_cond == activation.BUTTON_PRESSED:
+		activate()
+
+# This function makes the tile start moving to it's next position
+# if the player is on the tile, it will force the player to move
+# with itself until this motion is complete
 func activate():
 	#emit_signal("tile_moving", self)
 	

@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_2bvl2"]
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="3_rw1a3"]
 [ext_resource type="PackedScene" uid="uid://ckgiy1aoqvyxd" path="res://scenes/tiles/BGTile.tscn" id="4_mrqvb"]
-[ext_resource type="PackedScene" uid="uid://e4i70visgaeq" path="res://scenes/tiles/FGTile.tscn" id="5_5mclm"]
+[ext_resource type="PackedScene" uid="uid://bdbaus0a0yg6g" path="res://scenes/tiles/FGTile.tscn" id="5_5mclm"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="6_0xry8"]
 [ext_resource type="PackedScene" uid="uid://cyw7cdjci5gg2" path="res://scenes/components/fade_out.tscn" id="8_rw1a3"]
 
@@ -16,6 +16,7 @@
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile")]
 script = ExtResource("2_2bvl2")
 endTile = NodePath("TileManager/ForegroundTile3")
+clamp = true
 
 [node name="FadeOut" parent="GameManager" instance=ExtResource("8_rw1a3")]
 visible = false

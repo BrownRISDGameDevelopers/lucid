@@ -6,13 +6,6 @@ var spin_direction = -1
 var to_spin = false
 var flipping = false
 
-#You may have looked at this code becasue
-#the player was rotating while on a moving tile.
-#That is because the code currently doesn't look at
-#player.locked_path.
-#Luckily, the fix is easy.  In _physics_process, there
-#are two commented out and statements, add them and it should
-#fix it
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,7 +18,7 @@ func _physics_process(delta: float) -> void:
 	
 	var target_blend = Vector2(0, 0)
 	
-	if (player.target_tile != null and !player.deny_new_path): #and !player.locked_path
+	if (player.target_tile != null and !player.deny_new_path and !player.locked_path):
 		target_blend = Vector2(-1, 0)
 	elif (player.deny_new_path and flipping):
 		target_blend = Vector2(0, 1)
@@ -33,7 +26,7 @@ func _physics_process(delta: float) -> void:
 		target_blend = Vector2(1, 0)
 
 
-	if (player.deny_new_path): # and !player.locked_path
+	if (player.deny_new_path and !player.locked_path):
 		if (flipping):
 			var flip_speed = player.actual_speed
 			player._update_speed()
