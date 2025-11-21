@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d4cka55p8sgn2"]
+[gd_scene load_steps=16 format=3 uid="uid://d4cka55p8sgn2"]
 
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_iimn0"]
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_r3bwv"]
@@ -6,31 +6,35 @@
 [ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="4_iqxcs"]
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="5_08fey"]
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="7_jsijq"]
+[ext_resource type="Script" uid="uid://uxltb4grdhg5" path="res://scenes/levels/waterfall_manager.gd" id="8_fwk0t"]
 [ext_resource type="ArrayMesh" uid="uid://c0q4k2k2ea4nu" path="res://art_assets/waterfall/Bottom_Water_3.obj" id="8_iimn0"]
+[ext_resource type="Shader" uid="uid://cheo1scjtllak" path="res://scenes/levels/waterfall.gdshader" id="8_iqxcs"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="8_tk7bx"]
-[ext_resource type="Material" path="res://art_assets/waterfall/water_material.tres" id="9_r3bwv"]
+[ext_resource type="Texture2D" uid="uid://b4h2d7jfrl7eu" path="res://art_assets/waterfall/Water_Texture_Refined.png" id="9_08fey"]
 [ext_resource type="Script" uid="uid://c3oftxqubawdr" path="res://scenes/levels/water_movement.gd" id="10_0crih"]
+[ext_resource type="ArrayMesh" uid="uid://ogdss2tn0qlr" path="res://art_assets/waterfall/Top_Water_3.obj" id="12_08fey"]
 
-[sub_resource type="Shader" id="Shader_0crih"]
-code = "shader_type spatial;
-
-uniform float cutoff : hint_range(0.0, 1.0) = 1.0; // 1 = fully visible, 0 = fully hidden
-uniform float height_min = 0.0;
-uniform float height_max = 5.0;
-
-void fragment() {
-    float h = (VERTEX.y - height_min) / (height_max - height_min);
-    float mask = step(cutoff, h);
-    ALBEDO *= mask;
-    ALPHA = mask;
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0crih"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_08fey"]
 render_priority = 0
-shader = SubResource("Shader_0crih")
-shader_parameter/cutoff = 1.0
-shader_parameter/height_min = 0.0
-shader_parameter/height_max = 5.0
+shader = ExtResource("8_iqxcs")
+shader_parameter/cutoff = 0.0
+shader_parameter/reverse = true
+shader_parameter/height_min = 7.7
+shader_parameter/height_max = 14.0
+shader_parameter/waterfall_texture = ExtResource("9_08fey")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iqxcs"]
+render_priority = 0
+shader = ExtResource("8_iqxcs")
+shader_parameter/cutoff = 0.0
+shader_parameter/reverse = true
+shader_parameter/height_min = 2.0
+shader_parameter/height_max = 7.0
+shader_parameter/waterfall_texture = ExtResource("9_08fey")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
 
 [node name="GravityLevel" type="Node"]
 
@@ -76,9 +80,25 @@ neighbors = [NodePath("../Tile3"), NodePath("../Tile5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 neighbors = [NodePath("../Tile4")]
 
-[node name="BottomWater3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4, -6.4, -6.4)
-material_override = ExtResource("9_r3bwv")
-material_overlay = SubResource("ShaderMaterial_0crih")
-mesh = ExtResource("8_iimn0")
+[node name="WaterfallManager" type="Node" parent="." node_paths=PackedStringArray("topWaterfall", "bottomWaterfall")]
+script = ExtResource("8_fwk0t")
+topWaterfall = NodePath("TopWater")
+bottomWaterfall = NodePath("BottomWater")
+
+[node name="TopWater" type="MeshInstance3D" parent="WaterfallManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.45, -7.4, -6.4)
+material_override = SubResource("ShaderMaterial_08fey")
+mesh = ExtResource("12_08fey")
+skeleton = NodePath("../..")
 script = ExtResource("10_0crih")
+height_min = 7.7
+height_max = 14.0
+
+[node name="BottomWater" type="MeshInstance3D" parent="WaterfallManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4, -6.4, -6.4)
+material_override = SubResource("ShaderMaterial_iqxcs")
+mesh = ExtResource("8_iimn0")
+skeleton = NodePath("../..")
+script = ExtResource("10_0crih")
+height_min = 2.0
+height_max = 7.0

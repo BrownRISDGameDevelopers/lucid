@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://de3snstjk6qtu"]
+
+[ext_resource type="Shader" uid="uid://cheo1scjtllak" path="res://scenes/levels/waterfall.gdshader" id="1_2adqt"]
+[ext_resource type="Texture2D" uid="uid://b4h2d7jfrl7eu" path="res://art_assets/waterfall/Water_Texture_Refined.png" id="2_hbmim"]
+[ext_resource type="ArrayMesh" uid="uid://c0q4k2k2ea4nu" path="res://art_assets/waterfall/Bottom_Water_3.obj" id="3_n8o4v"]
+[ext_resource type="Script" uid="uid://c3oftxqubawdr" path="res://scenes/levels/water_movement.gd" id="4_6wo5q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iqxcs"]
+render_priority = 0
+shader = ExtResource("1_2adqt")
+shader_parameter/cutoff = 0.0
+shader_parameter/reverse = true
+shader_parameter/height_min = 0.0
+shader_parameter/height_max = 8.0
+shader_parameter/waterfall_texture = ExtResource("2_hbmim")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="BottomWater3" type="MeshInstance3D"]
+material_override = SubResource("ShaderMaterial_iqxcs")
+mesh = ExtResource("3_n8o4v")
+script = ExtResource("4_6wo5q")
