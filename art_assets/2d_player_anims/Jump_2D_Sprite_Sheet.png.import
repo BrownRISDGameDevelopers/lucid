@@ -2,17 +2,33 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<<< Updated upstream:art_assets/2d_player_anims/Jump_2D_Sprite_Sheet.png.import
 uid="uid://d2x52s0bakobf"
 path.s3tc="res://.godot/imported/Jump_2D_Sprite_Sheet.png-96998f398d5c5f3fb27c25ffc3455edb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
+========
+uid="uid://c6xtwadtvagxv"
+path.s3tc="res://.godot/imported/FOR_GODOT_level1_final_0.png-e3bb2873754571ce93468cb723bb8866.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "c4b575b7297e952d5ede7b9b3e3f5830"
+>>>>>>>> Stashed changes:art_assets/level_assets/FOR_GODOT_level1_final_0.png.import
 }
 
 [deps]
 
+<<<<<<<< Updated upstream:art_assets/2d_player_anims/Jump_2D_Sprite_Sheet.png.import
 source_file="res://art_assets/2d_player_anims/Jump_2D_Sprite_Sheet.png"
 dest_files=["res://.godot/imported/Jump_2D_Sprite_Sheet.png-96998f398d5c5f3fb27c25ffc3455edb.s3tc.ctex"]
+========
+source_file="res://art_assets/level_assets/FOR_GODOT_level1_final_0.png"
+dest_files=["res://.godot/imported/FOR_GODOT_level1_final_0.png-e3bb2873754571ce93468cb723bb8866.s3tc.ctex"]
+>>>>>>>> Stashed changes:art_assets/level_assets/FOR_GODOT_level1_final_0.png.import
 
 [params]
 
@@ -24,7 +40,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

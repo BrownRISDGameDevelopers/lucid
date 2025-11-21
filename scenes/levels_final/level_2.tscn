@@ -1,3 +1,31 @@
-[gd_scene format=3 uid="uid://dms5klekyhy1y"]
+[gd_scene load_steps=5 format=3 uid="uid://dms5klekyhy1y"]
+
+[ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="1_b8m43"]
+[ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="1_js46f"]
+[ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="2_l37hd"]
+[ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="4_k76nu"]
 
 [node name="Level2" type="Node"]
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_b8m43")
+metadata/_custom_type_script = "uid://bwe2vxf3k3ib0"
+
+[node name="TileManager" type="Node" parent="GameManager"]
+script = ExtResource("2_l37hd")
+metadata/_custom_type_script = "uid://cldm2bo1qftlf"
+
+[node name="Tile" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("1_js46f")]
+neighbors = [NodePath("../Tile2"), NodePath("../Tile3")]
+
+[node name="Tile2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("1_js46f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+neighbors = [NodePath("../Tile")]
+
+[node name="Tile3" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("1_js46f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+neighbors = [NodePath("../Tile")]
+
+[node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("4_k76nu")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1, 1)
+current = NodePath("../TileManager/Tile2")

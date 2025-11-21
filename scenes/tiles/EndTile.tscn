@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6mavwkns3dkt"]
+
+[ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="1_wdpmm"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6ida6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4uwdq"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wdpmm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wdpmm"]
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0)
+
+[node name="EndTile" type="Node3D"]
+
+[node name="Tile" parent="." instance=ExtResource("1_wdpmm")]
+
+[node name="Tile2" parent="." instance=ExtResource("1_wdpmm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.48000002, 8.742277e-08, 4.8149274e-15, 0, -4.3711385e-08, 1.26, 4.1962934e-08, 0.99999994, 5.507635e-08, 0, 1, -0.5)
+gi_mode = 0
+mesh = SubResource("PlaneMesh_6ida6")
+surface_material_override/0 = SubResource("StandardMaterial3D_4uwdq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(6.556708e-08, -1, 4.371139e-08, -1.5, -4.371139e-08, 0, 5.732056e-15, -8.742278e-08, -0.5, -0.5, 1, -1)
+mesh = SubResource("PlaneMesh_wdpmm")
+surface_material_override/0 = SubResource("StandardMaterial3D_wdpmm")
