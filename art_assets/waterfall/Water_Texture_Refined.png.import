@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2x52s0bakobf"
-path.s3tc="res://.godot/imported/Jump_2D_Sprite_Sheet.png-5face55f775583614e6584d8fe41f078.s3tc.ctex"
+uid="uid://b4h2d7jfrl7eu"
+path.s3tc="res://.godot/imported/Water_Texture_Refined.png-cfae96381b859ccc9cddc7d4f2f04c0b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://art_assets/Jump_2D_Sprite_Sheet.png"
-dest_files=["res://.godot/imported/Jump_2D_Sprite_Sheet.png-5face55f775583614e6584d8fe41f078.s3tc.ctex"]
+source_file="res://art_assets/waterfall/Water_Texture_Refined.png"
+dest_files=["res://.godot/imported/Water_Texture_Refined.png-cfae96381b859ccc9cddc7d4f2f04c0b.s3tc.ctex"]
 
 [params]
 
@@ -24,7 +24,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

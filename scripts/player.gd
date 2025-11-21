@@ -10,13 +10,6 @@ extends CharacterBody3D
 # The properties that the physics process is interpolating toward
 var target_tile: Tile
 
-#const DIR_TO_LOOK = {
-	#SOUTHEAST = 90,
-	#SOUTHWEST = 0,
-	#NORTHEAST = 180,
-	#NORTHWEST = 270
-#}
-
 
 # This is the difference between the player's global_position and their feet (i love feet)
 var player_offset: Vector3 = Vector3(0,1,0)
@@ -66,6 +59,10 @@ func set_path(myPath: Array[Tile]):
 		
 	_update_speed()
 
+
+func _ready() -> void:
+	assert(current != null)
+
 # Forces the player to a target at a given speed, locking down movement until complete
 func lock_movement(tile: Tile, speed: int):
 	if  !player_busy():
@@ -98,7 +95,6 @@ func look_at_tile(tile: Tile):
 	rotation.y = lerp_angle(rotation.y, target_rot, 0.1)
 
 func _physics_process(delta :float):
-	print(current.global_position)
 	if (target_tile == null):
 		#actual_speed = 0
 		return

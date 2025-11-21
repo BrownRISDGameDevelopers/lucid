@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bfpqoowgykr8a"]
 
 [ext_resource type="Script" uid="uid://c3324galephe6" path="res://jump_2_danim.gd" id="1_yllwr"]
-[ext_resource type="Texture2D" uid="uid://d2x52s0bakobf" path="res://art_assets/Jump_2D_Sprite_Sheet.png" id="2_cl674"]
+[ext_resource type="Texture2D" uid="uid://d2x52s0bakobf" path="res://art_assets/2d_player_anims/Jump_2D_Sprite_Sheet.png" id="2_cl674"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vxs41"]
 atlas = ExtResource("2_cl674")
