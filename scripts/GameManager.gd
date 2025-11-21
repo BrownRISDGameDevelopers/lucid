@@ -53,7 +53,9 @@ func process_path_queue(path_queue: Array[Tile]):
 	
 func player_wants_to_flip(tile: Tile):
 	if (player.player_busy()): return
-	if (tile.gravity_path != null):
+	#The second condition checks if the destination has the current tile
+	#as the gravity path and is only here for moving tiles with gravity paths
+	if (tile.gravity_path != null and tile.gravity_path.gravity_path == tile):
 		#	If the player has somewhere to go when we flip gravity, let it happen
 		player.flip()
 		pass

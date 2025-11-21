@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://do48gbwqu8jmc"]
 
 [ext_resource type="Script" uid="uid://dipwhcd5pofak" path="res://scripts/static_body_3d.gd" id="1_gpd8i"]
-[ext_resource type="Script" uid="uid://ceswyojo8w7fl" path="res://scenes/components/button.gd" id="1_mytah"]
+[ext_resource type="Script" uid="uid://ceswyojo8w7fl" path="res://scripts/button.gd" id="1_mytah"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mytah"]
 
