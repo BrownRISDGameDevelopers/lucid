@@ -150,15 +150,13 @@ func _input(event):
 		print("rotate_node")
 		gameManager.player_wants_to_rotate(current)
 
+
+@onready var TpEffectScene := preload("res://scenes/effects/teleport_2danim.tscn")
+
 func reached_tile(tile: Tile):
 	print("Reached tile")
 	deny_new_path = false
 #	Tell the gameManager we reached a tile (so it can tell the tileManager)	
-
-	print("Reached tile. Player Position:")
-	print(position)
-	#print("Player rotation")
-	print(rotation_degrees)
 	
 	gameManager.player_reached_tile(target_tile)
 
@@ -170,7 +168,11 @@ func reached_tile(tile: Tile):
 	if target_tile == null:
 		# We have reached the end of our path
 		if tile.teleport_tile:
-			# this is teleport tile
+			var e = TpEffectScene.instantiate()
+			e.position = global_position + Vector3(0,0.5,0)
+			#e.position = position + Vector3(0,-0.5,0)
+			get_parent().add_child(e)
+			
 			print("teleported!")
 			global_position = tile.teleport_tile.get_my_active_edge_pos() + player_offset
 			current = tile.teleport_tile

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bfpqoowgykr8a"]
 
-[ext_resource type="Script" path="res://jump_2_danim.gd" id="1_yllwr"]
+[ext_resource type="Script" uid="uid://c3324galephe6" path="res://jump_2_danim.gd" id="1_yllwr"]
 [ext_resource type="Texture2D" uid="uid://dthagx2c60ivg" path="res://art_assets/2d_player_anims/Jump_2D_Sprite_Sheet.png" id="2_cl674"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vxs41"]
@@ -33,11 +33,6 @@ region = Rect2(600, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gaasj"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vxs41")
@@ -72,5 +67,3 @@ script = ExtResource("1_yllwr")
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_gaasj")
 animation = &"new_animation"
-frame = 6
-frame_progress = 1.0
