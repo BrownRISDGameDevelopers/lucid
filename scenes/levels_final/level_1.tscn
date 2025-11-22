@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b6mavwkns3dkt" path="res://scenes/tiles/EndTile.tscn" id="8_t3jqk"]
 [ext_resource type="PackedScene" uid="uid://j8h3rmyib35u" path="res://art_assets/level_assets/level_1/FOR_GODOT_level1_final.fbx" id="9_jgjp7"]
 
-[node name="Level1" type="Node"]
+[node name="Level2" type="Node"]
 script = ExtResource("1_nfb17")
 
 [node name="ViewportManager" parent="." instance=ExtResource("1_2vk4a")]
@@ -46,6 +46,7 @@ transform = Transform3D(0.70710677, -0.40860698, 0.57709646, 0, 0.8161376, 0.577
 size = 20.0
 
 [node name="UI" type="CanvasLayer" parent="ViewportManager"]
+visible = false
 
 [node name="Settings" parent="ViewportManager/UI" instance=ExtResource("4_4mmjp")]
 

@@ -39,3 +39,15 @@ func _input(event: InputEvent) -> void:
 			topWaterfall.stop_waterfall()
 		if (flowOver):
 			flowOver.deactivate()
+			
+func toggle_waterfall():
+	if canToggle:
+		canToggle = false
+		if !topWaterfall.flowing:
+			print("Start the waterfall")
+			topWaterfall.start_waterfall()
+		else:
+			print("end the waterfall")
+			topWaterfall.stop_waterfall()
+		if (flowOver):
+			flowOver.deactivate()
