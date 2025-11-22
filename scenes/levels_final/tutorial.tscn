@@ -1,0 +1,378 @@
+[gd_scene load_steps=11 format=3 uid="uid://bl5elqblk7exp"]
+
+[ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_s6r6f"]
+[ext_resource type="Texture2D" uid="uid://chvtf8swwgnhb" path="res://art_assets/backgrounds/level_0_bg.jpg" id="2_4f1wj"]
+[ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_qxoke"]
+[ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="3_4f1wj"]
+[ext_resource type="PackedScene" uid="uid://cyw7cdjci5gg2" path="res://scenes/components/fade_out.tscn" id="4_3yli5"]
+[ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="5_benmj"]
+[ext_resource type="PackedScene" uid="uid://dgc5d2rygfjws" path="res://art_assets/level_assets/tutorial/Lucid_Tutorial_StaticPieces.fbx" id="6_khtfd"]
+[ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="7_8cbr6"]
+[ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="8_n4811"]
+[ext_resource type="PackedScene" uid="uid://di6pbm4alu27" path="res://art_assets/level_assets/tutorial/Lucid_Tutorial_MovingPiece.fbx" id="8_qxoke"]
+
+[node name="Tutorial" type="Node"]
+
+[node name="ViewportManager" parent="." instance=ExtResource("1_s6r6f")]
+
+[node name="PlaceholderBackground" parent="ViewportManager/BackgroundViewport" index="0"]
+texture = ExtResource("2_4f1wj")
+
+[node name="Background" parent="ViewportManager/BackgroundViewport/SubViewport" index="0"]
+transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 18, 23, 18.87)
+size = 19.0
+
+[node name="Background" parent="ViewportManager/ExtraViewport/SubViewport" index="0"]
+transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 18, 23, 18.87)
+size = 19.0
+
+[node name="Background" parent="ViewportManager/ViewportBehindPlayer/SubViewport" index="0"]
+transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 18, 23, 18.87)
+size = 19.0
+
+[node name="PlayerCamera" parent="ViewportManager/PlayerViewport/SubViewport" index="1"]
+transform = Transform3D(0.70710677, -0.40860698, 0.57709646, 0, 0.8161376, 0.57785755, -0.70710677, -0.40860698, 0.57709646, 18, 23, 18.87)
+size = 19.0
+
+[node name="ForegroundCamera" parent="ViewportManager/Foreground/SubViewport" index="0"]
+transform = Transform3D(0.70710677, -0.40860698, 0.57709646, 0, 0.8161376, 0.57785755, -0.70710677, -0.40860698, 0.57709646, 18, 23, 18.87)
+size = 19.0
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile")]
+script = ExtResource("2_qxoke")
+endTile = NodePath("TileManager/grp1/Tile10")
+metadata/_custom_type_script = "uid://bwe2vxf3k3ib0"
+
+[node name="FadeIn" parent="GameManager" instance=ExtResource("3_4f1wj")]
+metadata/_edit_use_anchors_ = true
+
+[node name="FadeOut" parent="GameManager" instance=ExtResource("4_3yli5")]
+visible = false
+next_scene_path = "res://scenes/levels_final/cutscene_2.tscn"
+
+[node name="TileManager" type="Node" parent="GameManager"]
+script = ExtResource("5_benmj")
+metadata/_custom_type_script = "uid://cldm2bo1qftlf"
+
+[node name="Lucid_Tutorial_StaticPieces" parent="GameManager/TileManager" instance=ExtResource("6_khtfd")]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -0.5, -0.5, 0.5)
+
+[node name="grp1" type="Node3D" parent="GameManager/TileManager"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -0.5, -0.5, 0.5)
+
+[node name="Tile2" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.015, 0.005, -0.005)
+neighbors = [null, NodePath("../Tile3")]
+
+[node name="Tile3" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.024999999, 0.005, -0.005)
+neighbors = [NodePath("../Tile2"), NodePath("../Tile4")]
+
+[node name="Tile4" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.035, 0.005, -0.005)
+neighbors = [NodePath("../Tile3"), NodePath("../Tile5")]
+
+[node name="Tile5" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.044999998, 0.005, -0.005)
+neighbors = [NodePath("../Tile4"), NodePath("../Tile6")]
+
+[node name="Tile6" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.054999996, 0.005, -0.005)
+neighbors = [NodePath("../Tile5"), NodePath("../Tile8")]
+
+[node name="Tile7" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.065, 0.005, -0.015)
+neighbors = [NodePath("../Tile8"), NodePath("../Tile10")]
+
+[node name="Tile8" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.065, 0.005, -0.005)
+neighbors = [NodePath("../Tile7"), NodePath("../Tile6"), NodePath("../Tile9"), NodePath("../Tile11")]
+
+[node name="Tile9" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.065, 0.005, 0.005)
+neighbors = [NodePath("../Tile8"), NodePath("../Tile12")]
+
+[node name="Tile10" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.075, 0.005, -0.015)
+neighbors = [NodePath("../Tile7"), NodePath("../Tile11"), NodePath("../Tile15")]
+
+[node name="Tile11" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.075, 0.005, -0.005)
+neighbors = [NodePath("../Tile10"), NodePath("../Tile8"), NodePath("../Tile14"), NodePath("../Tile12")]
+
+[node name="Tile12" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.075, 0.005, 0.005)
+neighbors = [NodePath("../Tile11"), NodePath("../Tile13"), NodePath("../Tile9")]
+
+[node name="Tile13" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.085, 0.005, 0.005)
+neighbors = [NodePath("../Tile12"), NodePath("../Tile14")]
+
+[node name="Tile14" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.085, 0.005, -0.005)
+neighbors = [NodePath("../Tile11"), NodePath("../Tile13"), NodePath("../Tile15")]
+
+[node name="Tile15" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.085, 0.005, -0.015)
+neighbors = [NodePath("../Tile14"), NodePath("../Tile10")]
+
+[node name="grp2" type="Node3D" parent="GameManager/TileManager"]
+
+[node name="Tile16" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 5)
+neighbors = [NodePath("../Tile17")]
+
+[node name="Tile17" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5)
+neighbors = [NodePath("../Tile16"), NodePath("../Tile18")]
+
+[node name="Tile18" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 5)
+neighbors = [NodePath("../Tile17"), NodePath("../Tile19")]
+
+[node name="Tile19" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 5)
+neighbors = [NodePath("../Tile18"), NodePath("../Tile20")]
+
+[node name="Tile20" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 5)
+neighbors = [NodePath("../Tile19"), NodePath("../Tile21")]
+
+[node name="Tile21" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 4)
+neighbors = [NodePath("../Tile20"), NodePath("../Tile22")]
+
+[node name="Tile22" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 3)
+neighbors = [NodePath("../Tile21"), NodePath("../Tile23")]
+
+[node name="Tile23" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 2)
+neighbors = [NodePath("../Tile22"), NodePath("../Tile24")]
+
+[node name="Tile24" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 2)
+neighbors = [NodePath("../Tile23"), NodePath("../Tile25")]
+
+[node name="Tile25" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 2)
+neighbors = [NodePath("../Tile24"), NodePath(".")]
+
+[node name="Tile26" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 2)
+neighbors = [NodePath("../Tile25"), NodePath("../Tile27")]
+
+[node name="Tile27" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 2)
+neighbors = [NodePath("../Tile26"), NodePath("../Tile28")]
+
+[node name="Tile28" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 2)
+neighbors = [NodePath("../Tile27"), NodePath("../Tile29")]
+
+[node name="Tile29" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 2)
+neighbors = [NodePath("../Tile28"), NodePath("../Tile30")]
+
+[node name="Tile30" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 1)
+neighbors = [NodePath("../Tile29"), NodePath("../Tile31")]
+
+[node name="Tile31" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 0)
+neighbors = [NodePath("../Tile30"), NodePath("../Tile32")]
+
+[node name="Tile32" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -1)
+neighbors = [NodePath("../Tile31"), NodePath("../Tile33")]
+
+[node name="Tile33" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -2)
+neighbors = [NodePath("../Tile32"), NodePath("../Tile34")]
+
+[node name="Tile34" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -3)
+neighbors = [NodePath("../Tile33"), NodePath("../Tile35")]
+
+[node name="Tile35" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -4)
+neighbors = [NodePath("../Tile34"), NodePath("../Tile36")]
+
+[node name="Tile36" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -4)
+neighbors = [NodePath("../Tile35"), NodePath("../Tile37")]
+
+[node name="Tile37" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -4)
+neighbors = [NodePath("../Tile36")]
+gravity_path = NodePath("../../grp4/Tile43")
+
+[node name="grp3" type="Node3D" parent="GameManager/TileManager"]
+
+[node name="Tile38" parent="GameManager/TileManager/grp3" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4)
+neighbors = [NodePath("../Tile39")]
+gravity_path = NodePath("../../grp4/Tile40")
+
+[node name="Tile39" parent="GameManager/TileManager/grp3" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -4)
+neighbors = [NodePath("../Tile38")]
+
+[node name="grp4" type="Node3D" parent="GameManager/TileManager"]
+
+[node name="Tile40" parent="GameManager/TileManager/grp4" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 4, -4)
+neighbors = [NodePath("../Tile41")]
+gravity_path = NodePath("../../grp3/Tile38")
+
+[node name="Tile41" parent="GameManager/TileManager/grp4" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4, -4)
+neighbors = [NodePath("../Tile42"), NodePath("../Tile40")]
+
+[node name="Tile42" parent="GameManager/TileManager/grp4" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 4, -4)
+neighbors = [NodePath("../Tile43"), NodePath("../Tile41")]
+
+[node name="Tile43" parent="GameManager/TileManager/grp4" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, -4)
+neighbors = [NodePath("../Tile42")]
+gravity_path = NodePath("../../grp2/Tile37")
+
+[node name="grp5" type="Node3D" parent="GameManager/TileManager"]
+
+[node name="Tile44" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -5)
+neighbors = [NodePath("../Tile45")]
+
+[node name="Tile45" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6)
+neighbors = [NodePath("../Tile44"), NodePath("../Tile46")]
+
+[node name="Tile46" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -7)
+neighbors = [NodePath("../Tile45"), NodePath("../Tile47")]
+
+[node name="Tile47" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8)
+neighbors = [NodePath("../Tile46"), NodePath("../Tile48")]
+
+[node name="Tile48" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -9)
+neighbors = [NodePath("../Tile47"), NodePath("../Tile49")]
+
+[node name="Tile49" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -9)
+neighbors = [NodePath("../Tile48"), NodePath("../Tile50")]
+
+[node name="Tile50" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -9)
+neighbors = [NodePath("../Tile49"), NodePath("../Tile51")]
+
+[node name="Tile51" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -10)
+neighbors = [NodePath("../Tile50"), NodePath("../Tile52")]
+
+[node name="Tile52" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -11)
+neighbors = [NodePath("../Tile51"), NodePath("../Tile53")]
+
+[node name="Tile53" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -12)
+neighbors = [NodePath("../Tile52"), NodePath("../Tile54")]
+
+[node name="Tile54" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -12)
+neighbors = [NodePath("../Tile53"), NodePath("../Tile55")]
+
+[node name="Tile55" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -12)
+neighbors = [NodePath("../Tile54"), NodePath("../Tile56")]
+
+[node name="Tile56" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -12)
+neighbors = [NodePath("../Tile55"), NodePath("../Tile57")]
+
+[node name="Tile57" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -12)
+neighbors = [NodePath("../Tile56"), NodePath("../Tile58")]
+
+[node name="Tile58" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -12)
+neighbors = [NodePath("../Tile60"), NodePath("../Tile57")]
+
+[node name="Tile59" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -11)
+neighbors = [NodePath("../Tile60"), NodePath("../Tile62")]
+
+[node name="Tile60" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -12)
+neighbors = [NodePath("../Tile59"), NodePath("../Tile58"), NodePath("../Tile61"), NodePath("../Tile65")]
+
+[node name="Tile61" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -13)
+neighbors = [NodePath("../Tile60"), NodePath("../Tile67")]
+
+[node name="Tile62" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -11)
+neighbors = [NodePath("../Tile59"), NodePath("../Tile63"), NodePath("../Tile65")]
+
+[node name="Tile63" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -11)
+neighbors = [NodePath("../Tile64"), NodePath("../Tile62")]
+
+[node name="Tile64" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -12)
+neighbors = [NodePath("../Tile63"), NodePath("../Tile65"), NodePath("../Tile66")]
+
+[node name="Tile65" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -12)
+neighbors = [NodePath("../Tile64"), NodePath("../Tile62"), NodePath("../Tile60"), NodePath("../Tile67")]
+
+[node name="Tile66" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -13)
+neighbors = [NodePath("../Tile67"), NodePath("../Tile64")]
+
+[node name="Tile67" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -13)
+neighbors = [NodePath("../Tile66"), NodePath("../Tile65"), NodePath("../Tile61")]
+
+[node name="Lucid_Tutorial_MovingPiece" parent="GameManager/TileManager" instance=ExtResource("8_qxoke")]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -0.5, -0.5, 0.5)
+visible = false
+
+[node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("8_n4811")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -14, 1, -12)
+current = NodePath("../TileManager/grp5/Tile64")
+
+[node name="tile" parent="." node_paths=PackedStringArray("rotation_path") instance=ExtResource("7_8cbr6")]
+rotation_path = [NodePath("../GameManager/TileManager/grp1/Tile2"), NodePath("../tile2")]
+
+[node name="tile2" parent="." node_paths=PackedStringArray("rotation_path") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+rotation_path = [NodePath("../tile"), NodePath("../Tile3")]
+
+[node name="Tile3" parent="." node_paths=PackedStringArray("rotation_path") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+rotation_path = [NodePath("../tile2"), NodePath("../Tile4")]
+
+[node name="Tile4" parent="." node_paths=PackedStringArray("rotation_path") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+rotation_path = [NodePath("../Tile3"), NodePath("../Tile5")]
+
+[node name="Tile5" parent="." node_paths=PackedStringArray("rotation_path") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+rotation_path = [NodePath("../Tile4"), NodePath("../Tile6")]
+
+[node name="Tile6" parent="." node_paths=PackedStringArray("rotation_path") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, 0)
+rotation_path = [NodePath("../Tile5"), NodePath("../Tile7")]
+
+[node name="Tile7" parent="." node_paths=PackedStringArray("rotation_path") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, 0)
+rotation_path = [NodePath("../Tile6"), NodePath("../Tile8")]
+
+[node name="Tile8" parent="." node_paths=PackedStringArray("rotation_path") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, 0)
+rotation_path = [NodePath("../Tile7"), NodePath("../GameManager/TileManager/grp2/Tile16")]
+
+[editable path="ViewportManager"]

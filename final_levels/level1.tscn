@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cyw7cdjci5gg2" path="res://scenes/components/fade_out.tscn" id="4_ckpgr"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="4_xjx6m"]
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="5_ueqys"]
-[ext_resource type="PackedScene" uid="uid://j8h3rmyib35u" path="res://art_assets/level_assets/FOR_GODOT_level1_final.fbx" id="9_pfj77"]
+[ext_resource type="PackedScene" uid="uid://j8h3rmyib35u" path="res://art_assets/level_assets/level_1/FOR_GODOT_level1_final.fbx" id="9_pfj77"]
 
 [node name="Level1" type="Node3D"]
 
