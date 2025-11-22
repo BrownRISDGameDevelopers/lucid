@@ -18,6 +18,8 @@ config/icon="uid://b8u0flfhqivst"
 [autoload]
 
 ChangeScene="*res://ui/change_scene.tscn"
+MusicController="*res://music/MusicController.tscn"
+Settingspause="*res://scenes/levels_final/settingspause.tscn"
 
 [input]
 
@@ -47,4 +49,5 @@ stop_waterfall_debug={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/quality/msaa_3d=3
 occlusion_culling/use_occlusion_culling=true

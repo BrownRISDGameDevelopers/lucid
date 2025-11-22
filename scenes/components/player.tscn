@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://8rycyialk58q"]
+[gd_scene load_steps=13 format=3 uid="uid://8rycyialk58q"]
 
 [ext_resource type="Script" uid="uid://cpy7na4wds2ea" path="res://scripts/player.gd" id="1_6mmc7"]
 [ext_resource type="Script" uid="uid://celj810o2oupe" path="res://scenes/components/animation_manager.gd" id="2_2l1sc"]
 [ext_resource type="PackedScene" uid="uid://ky4t6l8m7gou" path="res://art_assets/player/Lucid_MC.fbx" id="2_acvb7"]
-[ext_resource type="Texture2D" uid="uid://dy88eslvpktop" path="res://materials/player_sprite.png" id="2_h3cwf"]
 [ext_resource type="Animation" uid="uid://dne5uaovq277" path="res://art_assets/player/animations/idle.res" id="3_ypwcc"]
 [ext_resource type="Animation" uid="uid://bdmx1xc448qb7" path="res://art_assets/player/animations/jump.res" id="4_2l1sc"]
 [ext_resource type="Animation" uid="uid://8fxiidv8ngqq" path="res://art_assets/player/animations/land.res" id="5_fgeo0"]
@@ -26,9 +25,6 @@ blend_point_1/pos = Vector2(1, 0)
 blend_point_2/node = SubResource("AnimationNodeAnimation_fgeo0")
 blend_point_2/pos = Vector2(0, 0.8)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjsxr"]
-albedo_texture = ExtResource("2_h3cwf")
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_684k0"]
 _data = {
 &"idle": ExtResource("3_ypwcc"),
@@ -48,11 +44,6 @@ root_node = NodePath("../../Player_Animated/Lucid_MC")
 tree_root = SubResource("AnimationNodeBlendSpace2D_lkd77")
 anim_player = NodePath("../../Player_Animated/Lucid_MC/AnimationPlayer")
 parameters/blend_position = Vector2(0.42617798, 0.10313904)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-layers = 2
-material_override = SubResource("StandardMaterial3D_sjsxr")
-skeleton = NodePath("")
 
 [node name="Player_Animated" type="Node3D" parent="."]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, -0.255, 0)
