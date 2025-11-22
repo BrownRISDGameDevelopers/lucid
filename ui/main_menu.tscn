@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dsql2ku6shn8p"]
+[gd_scene load_steps=16 format=3 uid="uid://dsql2ku6shn8p"]
 
 [ext_resource type="Script" uid="uid://bxs480mltj3u5" path="res://ui/main_menu.gd" id="1_0dkrt"]
 [ext_resource type="Texture2D" uid="uid://bndlj2s87xl5m" path="res://ui/art assets/Title Screen No Text small.png" id="2_ei257"]
@@ -9,44 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://cba7vvv78sm2" path="res://ui/art assets/credits-default.png" id="7_arv2f"]
 [ext_resource type="Texture2D" uid="uid://bmv56uasukpxj" path="res://ui/art assets/credits-pressed.png" id="8_5klac"]
 [ext_resource type="Texture2D" uid="uid://dh5d8yct0hf1g" path="res://ui/art assets/credits-hover.png" id="9_lsdqh"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wk0pr"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.7723269, 0.89401114, 0.97418517, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmr83"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.3459457, 0.34594572, 0.3459457, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8uxxo"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.44306326, 0.6117295, 0.7724022, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ei257"]
+[ext_resource type="Texture2D" uid="uid://maok35liyi1c" path="res://ui/art assets/settings-default.png" id="10_0nobx"]
+[ext_resource type="Texture2D" uid="uid://suyivns58xk3" path="res://ui/art assets/settings-pressed.png" id="11_iyrh0"]
+[ext_resource type="Texture2D" uid="uid://cyv0rvt3qid6r" path="res://ui/art assets/settings-hover.png" id="12_8jgmr"]
+[ext_resource type="Texture2D" uid="uid://cfa8r4v5hydty" path="res://ui/art assets/exit-default.png" id="13_q75kt"]
+[ext_resource type="Texture2D" uid="uid://cmhguu4tfgo88" path="res://ui/art assets/exit-pressed.png" id="14_0i0gl"]
+[ext_resource type="Texture2D" uid="uid://dge23a6qahj5g" path="res://ui/art assets/exit-hover.png" id="15_jqly5"]
 
 [node name="mainmenu" type="Control"]
 layout_mode = 3
@@ -76,61 +44,48 @@ anchor_right = 0.4310345
 anchor_bottom = 0.31635803
 texture = ExtResource("3_p8ri8")
 expand_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.048611112
-anchor_top = 0.19907407
-anchor_right = 0.6293403
-anchor_bottom = 0.95679015
+anchor_left = -0.041232638
+anchor_top = -0.3757716
+anchor_right = 0.71918404
+anchor_bottom = 1.3371913
+offset_left = 162.5
+offset_top = 543.5
+offset_right = 162.5
+offset_bottom = 543.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 12
-metadata/_edit_use_anchors_ = true
+scale = Vector2(0.2, 0.2)
+theme_override_constants/separation = 0
 
 [node name="PLAY" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_ubpvv")
 texture_pressed = ExtResource("5_arv2f")
 texture_hover = ExtResource("6_5klac")
-stretch_mode = 3
 
 [node name="CREDITS" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("7_arv2f")
 texture_pressed = ExtResource("8_5klac")
 texture_hover = ExtResource("9_lsdqh")
-stretch_mode = 3
 
-[node name="PLAY3" type="TextureButton" parent="VBoxContainer"]
+[node name="SETTINGS" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("4_ubpvv")
-texture_pressed = ExtResource("5_arv2f")
-texture_hover = ExtResource("6_5klac")
-stretch_mode = 3
+texture_normal = ExtResource("10_0nobx")
+texture_pressed = ExtResource("11_iyrh0")
+texture_hover = ExtResource("12_8jgmr")
 
-[node name="Exit" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -154.0
-offset_top = 76.0
-offset_right = -38.0
-offset_bottom = 120.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_wk0pr")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_rmr83")
-theme_override_styles/hover = SubResource("StyleBoxFlat_8uxxo")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ei257")
-text = "Exit"
+[node name="EXIT" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("13_q75kt")
+texture_pressed = ExtResource("14_0i0gl")
+texture_hover = ExtResource("15_jqly5")
 
 [connection signal="pressed" from="VBoxContainer/PLAY" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="VBoxContainer/CREDITS" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="VBoxContainer/SETTINGS" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/EXIT" to="." method="_on_exit_pressed"]
