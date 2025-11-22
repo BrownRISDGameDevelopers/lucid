@@ -5,4 +5,7 @@
 [node name="MusicController" type="Node"]
 script = ExtResource("1_0sxdn")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="SfxStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0

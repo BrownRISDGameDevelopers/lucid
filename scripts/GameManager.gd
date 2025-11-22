@@ -28,9 +28,10 @@ func _ready() -> void:
 func get_current_tile() -> Tile:
 	return player.current;
 
-# Move's a player to a position
-func move_player(path: Array[Tile]):
-	player.set_path(path)	
+## Moves a player to a position. Called MAYBE by moving tile.
+#func move_player(path: Array[Tile]):
+	#MusicController.play_tile_select()
+	#player.set_path(path)	
 
 
 # Called by TileManager. Contains the path that the TileManager wants the player
@@ -43,6 +44,10 @@ func process_path_queue(path_queue: Array[Tile]):
 #	Do we want to do go down the path that the TileManager found?
 #	Does the Player want us to?
 	if (player.deny_new_path || player.locked_path): return
+	
+#	Play the sound effect!
+	MusicController.play_tile_select()
+	
 #	Tell the player to dump whatever they're doing and go down this new path.
 	player.set_path(path_queue.duplicate(true))
 	
@@ -57,6 +62,7 @@ func player_wants_to_flip(tile: Tile):
 	#as the gravity path and is only here for moving tiles with gravity paths
 	if (tile.gravity_path != null and tile.gravity_path.gravity_path == tile):
 		#	If the player has somewhere to go when we flip gravity, let it happen
+		MusicController.play_jump()
 		player.flip()
 		pass
 		

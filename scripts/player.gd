@@ -174,6 +174,8 @@ func reached_tile(tile: Tile):
 			get_parent().add_child(e)
 			
 			print("teleported!")
+			MusicController.play_teleport()
+			await get_tree().create_timer(0.2).timeout
 			global_position = tile.teleport_tile.get_my_active_edge_pos() + player_offset
 			current = tile.teleport_tile
 #			We have reached the end of our path
