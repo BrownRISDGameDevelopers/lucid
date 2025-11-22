@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=19 format=3 uid="uid://g11i01j86edi"]
-=======
-[gd_scene load_steps=15 format=3 uid="uid://bl5elqblk7exp"]
->>>>>>> Stashed changes
+[gd_scene load_steps=20 format=3 uid="uid://bl5elqblk7exp"]
 
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_s6r6f"]
 [ext_resource type="Texture2D" uid="uid://chvtf8swwgnhb" path="res://art_assets/backgrounds/level_0_bg.jpg" id="2_4f1wj"]
@@ -21,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ch8q07lt0wpsl" path="res://scenes/tiles/SubtractEndTile.tscn" id="9_8cbr6"]
 [ext_resource type="Script" uid="uid://f3yj2hoadgke" path="res://art_assets/level_assets/tutorial/rotator.gd" id="11_benmj"]
 [ext_resource type="Texture2D" uid="uid://cpoke4eilx4e4" path="res://ui/tutorial/floor-indicator-default.png" id="14_8cbr6"]
-[ext_resource type="Script" uid="uid://c16bb3duxww08" path="res://scenes/levels_final/tutorial_popup_manager.gd" id="14_x4wrt"]
+[ext_resource type="Script" path="res://scenes/levels_final/tutorial_popup_manager.gd" id="14_x4wrt"]
 [ext_resource type="Texture2D" uid="uid://d4bl34f3rohwe" path="res://ui/tutorial/button-indicator-default.png" id="17_4tfe6"]
 
 [node name="Tutorial" type="Node"]
@@ -49,7 +45,6 @@ size = 19.0
 transform = Transform3D(0.70710677, -0.40860698, 0.57709646, 0, 0.8161376, 0.57785755, -0.70710677, -0.40860698, 0.57709646, 18, 23, 18.87)
 size = 19.0
 
-<<<<<<< Updated upstream
 [node name="film_grain" parent="ViewportManager" index="6"]
 offset_left = -37.0
 offset_top = 27.0
@@ -66,10 +61,7 @@ position = Vector2(479, 221)
 scale = Vector2(0.19092044, 0.19092046)
 texture = ExtResource("4_r242y")
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile")]
-=======
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile", "endPath")]
->>>>>>> Stashed changes
 script = ExtResource("2_qxoke")
 endTile = NodePath("TileManager/grp1/EndTile")
 endPath = [NodePath("TileManager/grp1/EndTile"), NodePath("TileManager/grp1/EndTile/EndPathTile")]
