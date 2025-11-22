@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://lnkcoak4t5ik"]
 
-[ext_resource type="Script" uid="uid://2teijjct5xyg" path="res://scripts/cutscene_1.gd" id="1_7727v"]
-[ext_resource type="Texture2D" uid="uid://b86440y6dqgbt" path="res://art_assets/placeholder_cutscene.png" id="1_cffnb"]
+[ext_resource type="Script" path="res://scripts/cutscene_1.gd" id="1_7727v"]
+[ext_resource type="Texture2D" uid="uid://ci1514doe0fjx" path="res://art_assets/cutscene_imgs/lucid lv 1 cutscene.png" id="2_ncq23"]
 [ext_resource type="PackedScene" uid="uid://cyw7cdjci5gg2" path="res://scenes/components/fade_out.tscn" id="3_52bew"]
 [ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="5_064fv"]
 
@@ -15,14 +15,14 @@ grow_vertical = 2
 script = ExtResource("1_7727v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.600926, 0.600926)
-texture = ExtResource("1_cffnb")
+scale = Vector2(1.0046225, 1.0046225)
+texture = ExtResource("2_ncq23")
 centered = false
 
 [node name="FadeOut" parent="." instance=ExtResource("3_52bew")]
 visible = false
 layout_mode = 1
-next_scene_path = "res://scenes/levels/gravity_level.tscn"
+next_scene_path = "res://scenes/levels_final/level_2.tscn"
 
 [node name="FadeIn" parent="." instance=ExtResource("5_064fv")]
 layout_mode = 1

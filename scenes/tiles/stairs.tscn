@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4hedq5osxf2b"]
+[gd_scene load_steps=8 format=3 uid="uid://c4hedq5osxf2b"]
 
 [ext_resource type="Script" uid="uid://83ywrfi8uw52" path="res://scripts/resources/tile.gd" id="1_401o1"]
 [ext_resource type="Script" uid="uid://dipwhcd5pofak" path="res://scripts/static_body_3d.gd" id="2_m8te4"]
 [ext_resource type="Texture2D" uid="uid://defn03uoyh8p6" path="res://materials/PavingStones084_1K-JPG_Color.jpg" id="3_8gxih"]
+[ext_resource type="Script" path="res://scripts/editor_node.gd" id="4_cpd6k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b02mj"]
 albedo_texture = ExtResource("3_8gxih")
@@ -22,6 +23,7 @@ script = ExtResource("2_m8te4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("PrismMesh_m8te4")
+script = ExtResource("4_cpd6k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_8gxih")

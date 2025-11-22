@@ -1,15 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://dms5klekyhy1y"]
+[gd_scene load_steps=8 format=3 uid="uid://dms5klekyhy1y"]
 
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="1_b8m43"]
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="1_js46f"]
+[ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_n1n45"]
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="2_l37hd"]
+[ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="3_hyymd"]
+[ext_resource type="PackedScene" uid="uid://cyw7cdjci5gg2" path="res://scenes/components/fade_out.tscn" id="4_38kho"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="4_k76nu"]
 
 [node name="Level2" type="Node"]
 
-[node name="GameManager" type="Node" parent="."]
+[node name="ViewportManager" parent="." instance=ExtResource("1_n1n45")]
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile")]
 script = ExtResource("1_b8m43")
+endTile = NodePath("TileManager/Tile3")
 metadata/_custom_type_script = "uid://bwe2vxf3k3ib0"
+
+[node name="FadeIn" parent="GameManager" instance=ExtResource("3_hyymd")]
+
+[node name="FadeOut" parent="GameManager" instance=ExtResource("4_38kho")]
+visible = false
+next_scene_path = "res://scenes/levels_final/cutscene_2.tscn"
 
 [node name="TileManager" type="Node" parent="GameManager"]
 script = ExtResource("2_l37hd")
@@ -29,3 +41,5 @@ neighbors = [NodePath("../Tile")]
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("4_k76nu")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1, 1)
 current = NodePath("../TileManager/Tile2")
+
+[editable path="ViewportManager"]

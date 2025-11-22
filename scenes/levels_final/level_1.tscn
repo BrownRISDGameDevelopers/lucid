@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cdqy8xr822ecb"]
+[gd_scene load_steps=12 format=3 uid="uid://cdqy8xr822ecb"]
 
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_2vk4a"]
+[ext_resource type="Texture2D" uid="uid://bu11ytrhfxyxk" path="res://art_assets/backgrounds/level_1_bg.jpg" id="2_stil2"]
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_t3jqk"]
 [ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="3_jgjp7"]
 [ext_resource type="PackedScene" uid="uid://cyw7cdjci5gg2" path="res://scenes/components/fade_out.tscn" id="4_stil2"]
@@ -15,6 +16,9 @@
 
 [node name="ViewportManager" parent="." instance=ExtResource("1_2vk4a")]
 
+[node name="PlaceholderBackground" parent="ViewportManager/BackgroundViewport" index="0"]
+texture = ExtResource("2_stil2")
+
 [node name="Background" parent="ViewportManager/BackgroundViewport/SubViewport" index="0"]
 transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 18, 22, 22)
 size = 20.0
@@ -26,6 +30,9 @@ size = 20.0
 [node name="Background" parent="ViewportManager/ViewportBehindPlayer/SubViewport" index="0"]
 transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 18, 22, 22)
 size = 20.0
+
+[node name="DirectionalLight3D" parent="ViewportManager/PlayerViewport/SubViewport" index="0"]
+light_color = Color(0.99403566, 0.69904417, 0.74489295, 1)
 
 [node name="PlayerCamera" parent="ViewportManager/PlayerViewport/SubViewport" index="1"]
 transform = Transform3D(0.70710677, -0.40860698, 0.57709646, 0, 0.8161376, 0.57785755, -0.70710677, -0.40860698, 0.57709646, 18, 22, 22)
@@ -40,12 +47,11 @@ script = ExtResource("2_t3jqk")
 endTile = NodePath("TileManager/EndTile/Tile2")
 
 [node name="FadeIn" parent="GameManager" instance=ExtResource("3_jgjp7")]
-visible = false
 metadata/_edit_use_anchors_ = true
 
 [node name="FadeOut" parent="GameManager" instance=ExtResource("4_stil2")]
 visible = false
-next_scene_path = "res:://levelscutscene_1.tscn"
+next_scene_path = "res://scenes/levels_final/cutscene_1.tscn"
 metadata/_edit_use_anchors_ = true
 
 [node name="TileManager" type="Node" parent="GameManager"]

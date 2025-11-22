@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb3f0fsvu32be"]
+
+[ext_resource type="Script" path="res://scripts/cutscene_1.gd" id="1_oq0st"]
+[ext_resource type="Texture2D" uid="uid://bbxjx6u5m3c6k" path="res://art_assets/backgrounds/cutscene_level1-2.png" id="2_xfhhf"]
+[ext_resource type="PackedScene" uid="uid://cyw7cdjci5gg2" path="res://scenes/components/fade_out.tscn" id="3_8rfww"]
+[ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="4_ddbfu"]
+
+[node name="Cutscene2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oq0st")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.906815, 0.906815)
+texture = ExtResource("2_xfhhf")
+centered = false
+
+[node name="FadeOut" parent="." instance=ExtResource("3_8rfww")]
+visible = false
+layout_mode = 1
+next_scene_path = "res://scenes/levels_final/level_3.tscn"
+
+[node name="FadeIn" parent="." instance=ExtResource("4_ddbfu")]
+layout_mode = 1

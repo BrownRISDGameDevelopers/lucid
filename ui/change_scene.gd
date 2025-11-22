@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const level1 = ("res://scenes/levels/new_level1.tscn")
+const level1 = ("res://scenes/levels_final/level_1.tscn")
 const settingsmain = ("res://ui/settingsmain.tscn")
 const mainmenu = ("res://ui/main_menu.tscn")
 
