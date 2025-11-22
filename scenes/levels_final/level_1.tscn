@@ -658,7 +658,7 @@ surface_material_override/0 = null
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 14.5, -2.5, -2.5000005)
 
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("8_hect5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -1, 16.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -1.755, 16.5)
 current = NodePath("../TileManager/aT1")
 
 [editable path="ViewportManager"]

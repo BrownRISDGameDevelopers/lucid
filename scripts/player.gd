@@ -4,15 +4,14 @@
 class_name LucidPlayer
 extends CharacterBody3D
 
-@onready var animation_player: AnimationPlayer = $CollisionShape3D/Player_Animated/Lucid_MC/AnimationPlayer
+@onready var animation_player: AnimationPlayer = $Player_Animated/Lucid_MC/AnimationPlayer
 @onready var animation_manager: Node3D = $AnimationManager
 
 # The properties that the physics process is interpolating toward
 var target_tile: Tile
 
-
 # This is the difference between the player's global_position and their feet (i love feet)
-var player_offset: Vector3 = Vector3(0,1,0)
+var player_offset: Vector3 = Vector3(0,0.245,0)
 
 # Is the player upside down/on a foreground tile?
 var is_flipped: bool = false
@@ -126,7 +125,8 @@ func flip():
 #	Jump animation
 	if (is_flipped):
 		var e = JumpEffectScene.instantiate()
-		e.position = position + Vector3(0,-0.5,0)
+		e.position = position - player_offset
+			#e.position = position + Vector3(0,-0.5,0)
 		get_parent().add_child(e)
 	
 #	Rotate the player: this flips the animation

@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://8rycyialk58q"]
+[gd_scene load_steps=15 format=3 uid="uid://8rycyialk58q"]
 
 [ext_resource type="Script" uid="uid://cpy7na4wds2ea" path="res://scripts/player.gd" id="1_6mmc7"]
-[ext_resource type="Script" path="res://scenes/components/animation_manager.gd" id="2_2l1sc"]
+[ext_resource type="Script" uid="uid://celj810o2oupe" path="res://scenes/components/animation_manager.gd" id="2_2l1sc"]
 [ext_resource type="PackedScene" uid="uid://ky4t6l8m7gou" path="res://art_assets/player/Lucid_MC.fbx" id="2_acvb7"]
 [ext_resource type="Texture2D" uid="uid://dy88eslvpktop" path="res://materials/player_sprite.png" id="2_h3cwf"]
 [ext_resource type="Animation" uid="uid://dne5uaovq277" path="res://art_assets/player/animations/idle.res" id="3_ypwcc"]
@@ -26,8 +26,6 @@ blend_point_1/pos = Vector2(1, 0)
 blend_point_2/node = SubResource("AnimationNodeAnimation_fgeo0")
 blend_point_2/pos = Vector2(0, 0.8)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jorle"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjsxr"]
 albedo_texture = ExtResource("2_h3cwf")
 
@@ -46,25 +44,23 @@ script = ExtResource("1_6mmc7")
 script = ExtResource("2_2l1sc")
 
 [node name="AnimationTree" type="AnimationTree" parent="AnimationManager"]
-root_node = NodePath("../../CollisionShape3D/Player_Animated/Lucid_MC")
+root_node = NodePath("../../Player_Animated/Lucid_MC")
 tree_root = SubResource("AnimationNodeBlendSpace2D_lkd77")
-anim_player = NodePath("../../CollisionShape3D/Player_Animated/Lucid_MC/AnimationPlayer")
+anim_player = NodePath("../../Player_Animated/Lucid_MC/AnimationPlayer")
 parameters/blend_position = Vector2(0.42617798, 0.10313904)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_jorle")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 layers = 2
 material_override = SubResource("StandardMaterial3D_sjsxr")
+skeleton = NodePath("")
 
-[node name="Player_Animated" type="Node3D" parent="CollisionShape3D"]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+[node name="Player_Animated" type="Node3D" parent="."]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, -0.255, 0)
 
-[node name="Lucid_MC" parent="CollisionShape3D/Player_Animated" instance=ExtResource("2_acvb7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, 0)
+[node name="Lucid_MC" parent="Player_Animated" instance=ExtResource("2_acvb7")]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CollisionShape3D/Player_Animated/Lucid_MC"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player_Animated/Lucid_MC"]
 libraries = {
 &"standards": SubResource("AnimationLibrary_684k0")
 }
