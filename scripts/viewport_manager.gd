@@ -1,3 +1,4 @@
+class_name ViewportManager
 extends Node
 
 @export var viewports: Array[Viewport] = []  # top → bottom
@@ -5,6 +6,13 @@ extends Node
 func _ready() -> void:
 #	Set the fadeIn & fadeout visibility to true on runtime because otherwise editor is black
 	pass
+
+
+# We need information about the camera in order to place the animation correctly
+# at the mouse position
+@onready var background: Camera3D = $BackgroundViewport/SubViewport/Background
+func getCamera() -> Camera3D:
+	return background
 
 func _input(event: InputEvent) -> void:
 	#print("ViewportManager: I got an input")

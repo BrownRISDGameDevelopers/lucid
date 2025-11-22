@@ -33,7 +33,17 @@ func get_current_tile() -> Tile:
 	#MusicController.play_tile_select()
 	#player.set_path(path)	
 
+@onready var onClickAnim := preload("res://scenes/effects/onClick_anim.tscn")
+@onready var viewport_manager: ViewportManager = $"../ViewportManager"
+func add_animation_at_cursor():
+	var e = onClickAnim.instantiate()
 
+	var mouse_pos = get_viewport().get_mouse_position()
+	e.position = mouse_pos
+
+	get_parent().add_child(e)
+
+	
 # Called by TileManager. Contains the path that the TileManager wants the player
 # to traverse.
 func process_path_queue(path_queue: Array[Tile]):
@@ -47,7 +57,7 @@ func process_path_queue(path_queue: Array[Tile]):
 	
 #	Play the sound effect!
 	MusicController.play_tile_select()
-	
+	add_animation_at_cursor()
 #	Tell the player to dump whatever they're doing and go down this new path.
 	player.set_path(path_queue.duplicate(true))
 	
