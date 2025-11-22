@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cdqy8xr822ecb"]
+[gd_scene load_steps=14 format=3 uid="uid://cdqy8xr822ecb"]
 
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_2vk4a"]
 [ext_resource type="Script" uid="uid://bgq1ie1r30gq" path="res://scenes/levels_final/level_1.gd" id="1_nfb17"]
 [ext_resource type="Texture2D" uid="uid://bu11ytrhfxyxk" path="res://art_assets/backgrounds/level_1_bg.jpg" id="2_stil2"]
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_t3jqk"]
 [ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="3_jgjp7"]
+[ext_resource type="PackedScene" uid="uid://g4k7x44fsrpf" path="res://scenes/levels_final/settingspause.tscn" id="4_4mmjp"]
 [ext_resource type="PackedScene" uid="uid://cyw7cdjci5gg2" path="res://scenes/components/fade_out.tscn" id="4_stil2"]
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="5_nfb17"]
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="6_4mmjp"]
@@ -46,7 +47,10 @@ size = 20.0
 
 [node name="UI" type="CanvasLayer" parent="ViewportManager"]
 
+[node name="Settings" parent="ViewportManager/UI" instance=ExtResource("4_4mmjp")]
+
 [node name="PauseButton" type="Button" parent="ViewportManager/UI"]
+process_mode = 3
 offset_left = 1047.0
 offset_top = 19.0
 offset_right = 1129.0
