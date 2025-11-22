@@ -1,10 +1,22 @@
 [gd_scene load_steps=6 format=3 uid="uid://du60ib3hbv1kx"]
 
-[ext_resource type="Script" uid="uid://lyi758c6ewbv" path="res://scenes/levels_final/settingspause.gd" id="1_b8pat"]
 [ext_resource type="Texture2D" uid="uid://cjyp7v1dckp01" path="res://ui/art assets/Settings Screen No Buttons.png" id="2_m0i2a"]
 [ext_resource type="Texture2D" uid="uid://cxtaonypetc4i" path="res://ui/art assets/back-default.png" id="3_ilyw4"]
 [ext_resource type="Texture2D" uid="uid://1lkghm61kdik" path="res://ui/art assets/back-pressed.png" id="4_r8jwa"]
 [ext_resource type="Texture2D" uid="uid://db52oltir2h3q" path="res://ui/art assets/back-hover.png" id="5_wjslg"]
+
+[sub_resource type="GDScript" id="GDScript_v5kg8"]
+script/source = "extends Control
+
+func _on_volume_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(0, value)
+	
+func _on_sfx_volume_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(0, value)
+	
+func _on_back_pressed() -> void:
+	ChangeScene.change_scene(ChangeScene.mainmenu)
+"
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -13,7 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_b8pat")
+script = SubResource("GDScript_v5kg8")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

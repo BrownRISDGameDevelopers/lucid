@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cdqy8xr822ecb"]
+[gd_scene load_steps=17 format=3 uid="uid://cdqy8xr822ecb"]
 
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_2vk4a"]
 [ext_resource type="Script" uid="uid://bgq1ie1r30gq" path="res://scenes/levels_final/level_1.gd" id="1_nfb17"]
@@ -6,9 +6,13 @@
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_t3jqk"]
 [ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="3_jgjp7"]
 [ext_resource type="PackedScene" uid="uid://cyw7cdjci5gg2" path="res://scenes/components/fade_out.tscn" id="4_stil2"]
+[ext_resource type="PackedScene" uid="uid://3ap6eu053dhg" path="res://scenes/levels_final/pause.tscn" id="5_i5pa6"]
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="5_nfb17"]
+[ext_resource type="Texture2D" uid="uid://pd1fwedsft5o" path="res://ui/pause assets/resume-default.png" id="5_tlcqo"]
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="6_4mmjp"]
+[ext_resource type="Texture2D" uid="uid://vifefvfylqng" path="res://ui/pause assets/resume-pressed.png" id="6_h7g5c"]
 [ext_resource type="PackedScene" uid="uid://c4hedq5osxf2b" path="res://scenes/tiles/stairs.tscn" id="7_i5pa6"]
+[ext_resource type="Texture2D" uid="uid://yqv10ljstfhk" path="res://ui/pause assets/resume-hover.png" id="7_lhfvd"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="8_hect5"]
 [ext_resource type="PackedScene" path="res://scenes/tiles/EndTile.tscn" id="8_t3jqk"]
 [ext_resource type="PackedScene" uid="uid://j8h3rmyib35u" path="res://art_assets/level_assets/level_1/FOR_GODOT_level1_final.fbx" id="9_jgjp7"]
@@ -59,7 +63,6 @@ transform = Transform3D(0.70710677, -0.40860698, 0.57709646, 0, 0.8161376, 0.577
 size = 20.0
 
 [node name="UI" type="CanvasLayer" parent="ViewportManager"]
-visible = false
 
 [node name="Settings" parent="ViewportManager/UI"]
 _import_path = NodePath("")
@@ -72,14 +75,30 @@ physics_interpolation_mode = 0
 auto_translate_mode = 0
 editor_description = ""
 script = null
+[node name="PauseMenu" parent="ViewportManager/UI" instance=ExtResource("5_i5pa6")]
 
 [node name="PauseButton" type="Button" parent="ViewportManager/UI"]
-process_mode = 3
-offset_left = 1047.0
-offset_top = 19.0
-offset_right = 1129.0
-offset_bottom = 52.0
-text = "Pause"
+offset_left = 1068.0
+offset_top = 22.0
+offset_right = 1123.0
+offset_bottom = 53.0
+text = "Pause
+"
+
+[node name="ResumeButton" type="TextureButton" parent="ViewportManager/UI"]
+process_mode = 2
+anchors_preset = -1
+anchor_right = 0.859375
+anchor_bottom = 0.9382716
+offset_left = 481.99997
+offset_top = 146.0
+offset_right = 482.0
+offset_bottom = 146.0
+scale = Vector2(0.19, 0.19)
+texture_normal = ExtResource("5_tlcqo")
+texture_pressed = ExtResource("6_h7g5c")
+texture_hover = ExtResource("7_lhfvd")
+metadata/_edit_use_anchors_ = true
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile", "endPath")]
 script = ExtResource("2_t3jqk")
@@ -718,6 +737,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -1.755, 16.5)
 current = NodePath("../TileManager/aT1")
 
 [connection signal="pressed" from="ViewportManager/UI/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="ViewportManager/UI/ResumeButton" to="." method="_on_resume_button_pressed"]
 
 [editable path="ViewportManager"]
 [editable path="GameManager/TileManager/EndTile"]
