@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cax08tfqs7f5j"
-path.s3tc="res://.godot/imported/FOR_GODOT_level1_final_0.png-e3bb2873754571ce93468cb723bb8866.s3tc.ctex"
+uid="uid://cjeayrgecbtd6"
+path.s3tc="res://.godot/imported/Lucid_Tutorial_MovingPiece_0.png-a71c855803cf8848de726f3838c1ea6e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "abef3ba8c35e803fb6d79171eb12b098"
+}
 
 [deps]
 
-source_file="res://art_assets/level_assets/FOR_GODOT_level1_final_0.png"
-dest_files=["res://.godot/imported/FOR_GODOT_level1_final_0.png-e3bb2873754571ce93468cb723bb8866.s3tc.ctex"]
+source_file="res://art_assets/level_assets/tutorial/Lucid_Tutorial_MovingPiece_0.png"
+dest_files=["res://.godot/imported/Lucid_Tutorial_MovingPiece_0.png-a71c855803cf8848de726f3838c1ea6e.s3tc.ctex"]
 
 [params]
 

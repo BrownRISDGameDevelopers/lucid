@@ -4,6 +4,8 @@ class_name Pivot
 
 @export var rotate_by := 90
 
+@export var big_mesh : Composite
+
 var rotation_time := 2
 
 # if true, rotate clockwise, if false, counterclockwise
@@ -44,14 +46,16 @@ func rotation_completed():
 
 
 func _physics_process(delta: float):
+
 	if rotation_busy:
 		var to_rotate = delta/rotation_time * rotate_by
+		var rotate_direction = Vector3.LEFT if direction else Vector3.RIGHT
+		var angle = deg_to_rad(to_rotate)	
 		for child in children:
-			if (child.pivot && !child.trigger_pivot):
+			if ((child.pivot && !child.trigger_pivot) || child is not Tile):
 				print("rotating child")
-				var angle = deg_to_rad(to_rotate)
-				var rotate_direction = Vector3.LEFT if direction else Vector3.RIGHT
 				child.rotate_around_pivot(self.global_position, rotate_direction, angle)
+		big_mesh.rotate_around_pivot(self.global_position, rotate_direction, angle)
 		rotated += to_rotate
 		if rotated == rotate_by:
 			rotation_completed()

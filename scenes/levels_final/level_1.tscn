@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c4hedq5osxf2b" path="res://scenes/tiles/stairs.tscn" id="7_i5pa6"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="8_hect5"]
 [ext_resource type="PackedScene" uid="uid://b6mavwkns3dkt" path="res://scenes/tiles/EndTile.tscn" id="8_t3jqk"]
-[ext_resource type="PackedScene" uid="uid://j8h3rmyib35u" path="res://art_assets/level_assets/FOR_GODOT_level1_final.fbx" id="9_jgjp7"]
+[ext_resource type="PackedScene" uid="uid://j8h3rmyib35u" path="res://art_assets/level_assets/level_1/FOR_GODOT_level1_final.fbx" id="9_jgjp7"]
 
 [node name="Level1" type="Node"]
 
