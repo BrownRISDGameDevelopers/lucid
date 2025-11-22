@@ -118,18 +118,20 @@ neighbors = [NodePath("../bT2"), NodePath("../bT4")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -11.5, 2.5, 5.5)
 neighbors = [NodePath("../bT3"), NodePath("../bT5")]
 
-[node name="bT5" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
+[node name="bT5" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -11.5, 2.5, 4.5)
 neighbors = [NodePath("../bT4"), NodePath("../bT6")]
+gravity_path = NodePath("../cT1")
 
 [node name="bT6" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -11.5, 2.5, 3.5)
 neighbors = [NodePath("../bT5")]
 gravity_path = NodePath("../cT2")
 
-[node name="cT1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
+[node name="cT1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 1.5, 7.5)
 neighbors = [NodePath("../cT2"), NodePath("../cT14")]
+gravity_path = NodePath("../bT5")
 
 [node name="cT2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 1.5, 6.5)
@@ -139,6 +141,7 @@ gravity_path = NodePath("../bT6")
 [node name="cT3" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 1.5, 5.5)
 neighbors = [NodePath("../cT2"), NodePath("../cT4"), NodePath("../cT12")]
+active = false
 
 [node name="cT4" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 1.5, 4.5)
@@ -151,10 +154,12 @@ neighbors = [NodePath("../cT4"), NodePath("../cT6"), NodePath("../cT10")]
 [node name="cT6" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 1.5, 2.5)
 neighbors = [NodePath("../cT5"), NodePath("../cT7"), NodePath("../cT9")]
+active = false
 
-[node name="cT7" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
+[node name="cT7" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "teleport_tile") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 1.5, 1.5)
 neighbors = [NodePath("../cT6"), NodePath("../cT8")]
+teleport_tile = NodePath("../dT2")
 
 [node name="cT8" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.5, 1.5)
@@ -184,15 +189,13 @@ neighbors = [NodePath("../cT2"), NodePath("../cT12"), NodePath("../cT14"), NodeP
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.5, 7.5)
 neighbors = [NodePath("../cT1"), NodePath("../cT13"), NodePath("../cT15")]
 
-[node name="cT15" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "teleport_tile") instance=ExtResource("6_4mmjp")]
+[node name="cT15" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1.5, 7.5)
 neighbors = [NodePath("../cT14"), NodePath("../cT16")]
-teleport_tile = NodePath("../dT1")
 
-[node name="cT16" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "teleport_tile") instance=ExtResource("6_4mmjp")]
+[node name="cT16" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1.5, 6.5)
 neighbors = [NodePath("../cT15"), NodePath("../cT17"), NodePath("../cT13")]
-teleport_tile = NodePath("../kT1")
 
 [node name="cT17" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1.5, 5.5)
@@ -248,14 +251,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0.5, 7.5)
 [node name="cT32" parent="GameManager/TileManager" instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0.5, 7.5)
 
-[node name="dT1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_4mmjp")]
+[node name="dT1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 3.5, -10.5)
 neighbors = [NodePath("../dT2"), NodePath("../dT4")]
-gravity_path = NodePath("../cT15")
+active = false
 
-[node name="dT2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
+[node name="dT2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "teleport_tile") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3.5, -10.5)
 neighbors = [NodePath("../dT1"), NodePath("../dT3")]
+teleport_tile = NodePath("../cT7")
 
 [node name="dT3" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3.5, -9.5)
@@ -431,18 +435,20 @@ gravity_path = NodePath("../eT13")
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 6.5, 3.5, -2.5)
 neighbors = [NodePath("../fT1"), NodePath("../fT3")]
 
-[node name="fT3" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
+[node name="fT3" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 7.5, 3.5, -2.5)
 neighbors = [NodePath("../fT2"), NodePath("../fT4")]
+gravity_path = NodePath("../gT1")
 
 [node name="fT4" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 8.5, 3.5, -2.5)
 neighbors = [NodePath("../fT3")]
 gravity_path = NodePath("../gT20")
 
-[node name="gT1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
+[node name="gT1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1.5, -1.5)
 neighbors = [NodePath("../gT2"), NodePath("../gT20")]
+gravity_path = NodePath("../fT3")
 
 [node name="gT2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1.5, -0.5)
@@ -476,9 +482,10 @@ neighbors = [NodePath("../gT7"), NodePath("../gT9"), NodePath("../gT13")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1.5, 6.5)
 neighbors = [NodePath("../gT8"), NodePath("../gT10"), NodePath("../gT12")]
 
-[node name="gT10" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
+[node name="gT10" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1.5, 7.5)
 neighbors = [NodePath("../gT9"), NodePath("../gT11")]
+gravity_path = NodePath("../hT2")
 
 [node name="gT11" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 1.5, 7.5)
@@ -504,6 +511,7 @@ neighbors = [NodePath("../gT6"), NodePath("../gT16"), NodePath("../gT14")]
 [node name="gT16" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 1.5, 2.5)
 neighbors = [NodePath("../gT5"), NodePath("../gT17"), NodePath("../gT15")]
+active = false
 
 [node name="gT17" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 1.5, 1.5)
@@ -527,9 +535,10 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 9.5,
 neighbors = [NodePath("../hT2")]
 gravity_path = NodePath("../gT11")
 
-[node name="hT2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
+[node name="hT2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 8.5, 16.5, 7.5)
 neighbors = [NodePath("../hT1"), NodePath("../hT3")]
+gravity_path = NodePath("../gT10")
 
 [node name="hT3" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 7.5, 16.5, 7.5)
@@ -587,13 +596,15 @@ neighbors = [NodePath("../jT1"), NodePath("../jT3")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -2.5, 1.5, 4.5)
 neighbors = [NodePath("../jT2"), NodePath("../jT4")]
 
-[node name="jT4" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
+[node name="jT4" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -2.5, 1.5, 5.5)
 neighbors = [NodePath("../jT3"), NodePath("../jT5")]
+gravity_path = NodePath("../kT16")
 
-[node name="jT5" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
+[node name="jT5" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -2.5, 1.5, 6.5)
 neighbors = [NodePath("../jT4"), NodePath("../jT6")]
+gravity_path = NodePath("../kT15")
 
 [node name="jT6" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -2.5, 1.5, 7.5)
@@ -615,6 +626,7 @@ neighbors = [NodePath("../kT2"), NodePath("../kT4"), NodePath("../kT14")]
 [node name="kT4" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, 10.5)
 neighbors = [NodePath("../kT3"), NodePath("../kT5"), NodePath("../kT13")]
+active = false
 
 [node name="kT5" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, 11.5)
@@ -653,13 +665,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 9.5)
 neighbors = [NodePath("../kT13"), NodePath("../kT15"), NodePath("../kT3")]
 gravity_path = NodePath("../jT6")
 
-[node name="kT15" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
+[node name="kT15" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 8.5)
 neighbors = [NodePath("../kT14"), NodePath("../kT16"), NodePath("../kT2")]
+gravity_path = NodePath("../jT5")
 
-[node name="kT16" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
+[node name="kT16" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 7.5)
 neighbors = [NodePath("../kT15"), NodePath("../kT1")]
+gravity_path = NodePath("../jT4")
 
 [node name="EndTile" parent="GameManager/TileManager" instance=ExtResource("8_t3jqk")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5, -0.5, 14.5)
