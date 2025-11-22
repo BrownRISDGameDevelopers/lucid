@@ -83,28 +83,28 @@ neighbors = [NodePath("../aT5")]
 gravity_path = NodePath("../bT1")
 
 [node name="bT1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_4mmjp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 2.5, 8.5)
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -11.5, 2.5, 8.5)
 neighbors = [NodePath("../bT2")]
 gravity_path = NodePath("../aT6")
 
 [node name="bT2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 2.5, 7.5)
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -11.5, 2.5, 7.5)
 neighbors = [NodePath("../bT1"), NodePath("../bT3")]
 
 [node name="bT3" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 2.5, 6.5)
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -11.5, 2.5, 6.5)
 neighbors = [NodePath("../bT2"), NodePath("../bT4")]
 
 [node name="bT4" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 2.5, 5.5)
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -11.5, 2.5, 5.5)
 neighbors = [NodePath("../bT3"), NodePath("../bT5")]
 
 [node name="bT5" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 2.5, 4.5)
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -11.5, 2.5, 4.5)
 neighbors = [NodePath("../bT4"), NodePath("../bT6")]
 
 [node name="bT6" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_4mmjp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 2.5, 3.5)
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -11.5, 2.5, 3.5)
 neighbors = [NodePath("../bT5")]
 gravity_path = NodePath("../cT2")
 

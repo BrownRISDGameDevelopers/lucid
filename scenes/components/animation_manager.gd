@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 			var distance = player.actual_speed / player.speedMultiplier
 			player.actual_speed = flip_speed
 			# The -2 here comes from the player position offset
-			flip_rotate(PI * delta * flip_speed / (distance - 2))
+			flip_rotate(PI * delta * flip_speed / (distance - 2 * player.player_offset.y))
 		pass
 	if (!player.deny_new_path and flipping):
 		# Ends the flip
