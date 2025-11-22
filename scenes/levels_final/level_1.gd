@@ -1,6 +1,6 @@
 extends Node
 #
-#@onready var settings_pause := $ViewportManager/UI/SettingsPause
+@onready var settings_pause := $ViewportManager/UI/Settings
 #
 func _ready() -> void:
 	#process_mode = Node.PROCESS_MODE_PAUSABLE

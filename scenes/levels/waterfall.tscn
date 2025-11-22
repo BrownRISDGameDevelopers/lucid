@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d4cka55p8sgn2"]
+[gd_scene load_steps=17 format=3 uid="uid://d4cka55p8sgn2"]
 
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_iimn0"]
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_r3bwv"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="4_iqxcs"]
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="5_08fey"]
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="7_jsijq"]
+[ext_resource type="PackedScene" uid="uid://do48gbwqu8jmc" path="res://scenes/tiles/button.tscn" id="7_vqocm"]
 [ext_resource type="Script" uid="uid://uxltb4grdhg5" path="res://scenes/levels/waterfall_manager.gd" id="8_fwk0t"]
 [ext_resource type="ArrayMesh" uid="uid://c0q4k2k2ea4nu" path="res://art_assets/waterfall/Bottom_Water_3.obj" id="8_iimn0"]
 [ext_resource type="Shader" uid="uid://cheo1scjtllak" path="res://scenes/levels/waterfall.gdshader" id="8_iqxcs"]
@@ -60,6 +61,13 @@ current = NodePath("../TileManager/Tile")
 
 [node name="TileManager" type="Node" parent="GameManager"]
 script = ExtResource("5_08fey")
+
+[node name="Button" parent="GameManager/TileManager" node_paths=PackedStringArray("target_tile", "gameManager", "waterfall") instance=ExtResource("7_vqocm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+target_tile = NodePath("../Tile")
+buttonType = 2
+gameManager = NodePath("../..")
+waterfall = NodePath("../../../WaterfallManager")
 
 [node name="Tile" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_jsijq")]
 neighbors = [NodePath("../Tile2")]

@@ -1,5 +1,10 @@
 extends Control
 
+func resume():
+	get_tree().paused = false
+	
+func pause():
+	get_tree().paused = true
 
 func _on_volume_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(0, value)
@@ -19,6 +24,10 @@ func _on_fullscreen_toggled(button_pressed) -> void:
 func _on_main_menu_pressed() -> void:
 	ChangeScene.change_scene(ChangeScene.mainmenu)
 
+func _on_resume_pressed() -> void:
+	resume()
 
-func _on_exit_pressed() -> void:
-	ChangeScene.change_scene(ChangeScene.level1)
+func _on_restart_pressed() -> void:
+	resume()
+	get_tree().reload_current_scene()
+	

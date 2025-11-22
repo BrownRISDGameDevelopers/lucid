@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://dcoc3w4o43wj2"]
 
-[ext_resource type="Script" uid="uid://c3324galephe6" path="res://jump_2_danim.gd" id="1_tb7t1"]
+[ext_resource type="Script" uid="uid://c3324galephe6" path="res://scripts/3d_anim_consumable.gd" id="1_tb7t1"]
 [ext_resource type="Texture2D" uid="uid://bqnpprgfccq4l" path="res://art_assets/2d_player_anims/teleport_2d_sprite_sheet.png" id="2_vfs0x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmwiv"]
@@ -81,7 +81,7 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Control" type="Node3D"]
+[node name="Control2" type="Node3D"]
 script = ExtResource("1_tb7t1")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]

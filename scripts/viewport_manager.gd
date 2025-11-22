@@ -1,10 +1,20 @@
+class_name ViewportManager
 extends Node
 
 @export var viewports: Array[Viewport] = []  # top → bottom
+@export var background: Texture2D  # Drag your image here in the Inspector
+@onready var background_rect: TextureRect = $TextureRect
 
 func _ready() -> void:
 #	Set the fadeIn & fadeout visibility to true on runtime because otherwise editor is black
-	pass
+	if background:
+		background_rect.texture = background
+		
+# We need information about the camera in order to place the animation correctly
+# at the mouse position
+@onready var background_camera: Camera3D = $BackgroundViewport/SubViewport/Background
+func getCamera() -> Camera3D:
+	return background_camera
 
 func _input(event: InputEvent) -> void:
 	#print("ViewportManager: I got an input")
