@@ -17,7 +17,7 @@ var player_offset: Vector3 = Vector3(0,0.245,0)
 var is_flipped: bool = false
 
 # The speed at which the player moves while flipping
-@export var flip_speed: float = 3
+@export var flip_speed: float = 5
 
 # Suppress all movement while we are flipping. Checked by the GameManager
 # before a path is assigned.
