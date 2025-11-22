@@ -81,9 +81,10 @@ offset_right = 1129.0
 offset_bottom = 52.0
 text = "Pause"
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile", "endPath")]
 script = ExtResource("2_t3jqk")
-endTile = NodePath("TileManager/EndTile/Tile2")
+endTile = NodePath("TileManager/EndTile/Tile")
+endPath = [NodePath("TileManager/EndTile/Tile"), NodePath("TileManager/EndTile/Tile2")]
 
 [node name="FadeIn" parent="GameManager" instance=ExtResource("3_jgjp7")]
 visible = false
@@ -708,9 +709,6 @@ neighbors = [NodePath("../Tile2"), NodePath("../../kT9"), NodePath("../../kT7")]
 
 [node name="Tile2" parent="GameManager/TileManager/EndTile" index="1" node_paths=PackedStringArray("neighbors")]
 neighbors = [NodePath("../Tile")]
-
-[node name="MeshInstance3D2" parent="GameManager/TileManager/EndTile" index="3"]
-surface_material_override/0 = null
 
 [node name="FOR_GODOT_level1_final" parent="GameManager/TileManager/EndTile" instance=ExtResource("9_jgjp7")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 14.5, -2.5, -2.5000005)

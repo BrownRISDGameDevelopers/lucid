@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream:scenes/levels/level_1.tscn
 [gd_scene load_steps=13 format=3 uid="uid://dda4ee17crqbx"]
+=======
+[gd_scene load_steps=12 format=3 uid="uid://cdqy8xr822ecb"]
+>>>>>>> Stashed changes:art_assets/player/level_1.tscn
 
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_2vk4a"]
 [ext_resource type="Script" uid="uid://bgq1ie1r30gq" path="res://scenes/levels_final/level_1.gd" id="1_nfb17"]
@@ -11,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://c4hedq5osxf2b" path="res://scenes/tiles/stairs.tscn" id="7_i5pa6"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="8_hect5"]
 [ext_resource type="PackedScene" uid="uid://b6mavwkns3dkt" path="res://scenes/tiles/EndTile.tscn" id="8_t3jqk"]
-[ext_resource type="PackedScene" uid="uid://j8h3rmyib35u" path="res://art_assets/level_assets/level_1/FOR_GODOT_level1_final.fbx" id="9_jgjp7"]
 
 [node name="Level1" type="Node"]
 script = ExtResource("1_nfb17")
@@ -55,7 +58,7 @@ text = "Pause"
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile")]
 script = ExtResource("2_t3jqk")
-endTile = NodePath("TileManager/EndTile/Tile2")
+endTile = NodePath("TileManager/EndTile")
 
 [node name="FadeIn" parent="GameManager" instance=ExtResource("3_jgjp7")]
 offset_left = -2.0
@@ -622,11 +625,14 @@ neighbors = [NodePath("../kT5"), NodePath("../kT7"), NodePath("../kT11")]
 
 [node name="kT7" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, 13.5)
-neighbors = [NodePath("../kT6"), NodePath("../EndTile/Tile"), NodePath("../kT10")]
+neighbors = [NodePath("../kT6"), null, NodePath("../kT10")]
+
+[node name="EndTile" parent="GameManager/TileManager" instance=ExtResource("8_t3jqk")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5, -0.5, 14.5)
 
 [node name="kT9" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 14.5)
-neighbors = [NodePath("../EndTile/Tile"), NodePath("../kT10")]
+neighbors = [null, NodePath("../kT10")]
 
 [node name="kT10" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_4mmjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 13.5)
@@ -657,26 +663,10 @@ neighbors = [NodePath("../kT14"), NodePath("../kT16"), NodePath("../kT2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 7.5)
 neighbors = [NodePath("../kT15"), NodePath("../kT1")]
 
-[node name="EndTile" parent="GameManager/TileManager" instance=ExtResource("8_t3jqk")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5, -0.5, 14.5)
-
-[node name="Tile" parent="GameManager/TileManager/EndTile" index="0" node_paths=PackedStringArray("neighbors")]
-neighbors = [NodePath("../Tile2"), NodePath("../../kT9"), NodePath("../../kT7")]
-
-[node name="Tile2" parent="GameManager/TileManager/EndTile" index="1" node_paths=PackedStringArray("neighbors")]
-neighbors = [NodePath("../Tile")]
-
-[node name="MeshInstance3D2" parent="GameManager/TileManager/EndTile" index="3"]
-surface_material_override/0 = null
-
-[node name="FOR_GODOT_level1_final" parent="GameManager/TileManager/EndTile" instance=ExtResource("9_jgjp7")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 14.5, -2.5, -2.5000005)
-
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("8_hect5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -1.755, 16.5)
-current = NodePath("../TileManager/aT1")
+current = NodePath("../TileManager/kT9")
 
 [connection signal="pressed" from="ViewportManager/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 
 [editable path="ViewportManager"]
-[editable path="GameManager/TileManager/EndTile"]

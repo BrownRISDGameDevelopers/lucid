@@ -13,6 +13,7 @@ class_name GameManager
 
 
 @export var endTile: Tile
+@export var endPath: Array[Tile]
 
 @export var clamp : bool = false
 
@@ -92,6 +93,7 @@ func player_reached_tile(tile: Tile):
 # Called when the player reaches the goal
 func execute_end_routine():
 	print("End routine")
+	player.set_path(endPath)
 	fade_out.do_fade_out()
 	
 # This function is called by the Player whenever they finish a path or they're given a new path.

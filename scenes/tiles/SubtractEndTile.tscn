@@ -1,0 +1,71 @@
+[gd_scene load_steps=13 format=3 uid="uid://ch8q07lt0wpsl"]
+
+[ext_resource type="Script" uid="uid://83ywrfi8uw52" path="res://scripts/resources/tile.gd" id="1_k06pp"]
+[ext_resource type="Script" uid="uid://dipwhcd5pofak" path="res://scripts/static_body_3d.gd" id="2_gue5e"]
+[ext_resource type="Texture2D" uid="uid://defn03uoyh8p6" path="res://materials/PavingStones084_1K-JPG_Color.jpg" id="3_poawd"]
+[ext_resource type="Script" uid="uid://bxnbdtrsvlbhm" path="res://scripts/editor_node.gd" id="4_2euc1"]
+[ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="5_an17e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hoq8d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ht65u"]
+albedo_texture = ExtResource("3_poawd")
+
+[sub_resource type="BoxMesh" id="BoxMesh_6llsq"]
+material = SubResource("StandardMaterial3D_ht65u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4u2tw"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_i68x6"]
+material = SubResource("StandardMaterial3D_4u2tw")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_khtfd"]
+size = Vector2(3, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8cbr6"]
+blend_mode = 2
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[node name="EndTile" type="Node3D" node_paths=PackedStringArray("neighbors")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+script = ExtResource("1_k06pp")
+neighbors = [NodePath(""), NodePath(""), NodePath("")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+script = ExtResource("2_gue5e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_hoq8d")
+debug_color = Color(0.1809377, 0.51587296, 1, 0.41960785)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_6llsq")
+script = ExtResource("4_2euc1")
+
+[node name="transform" type="Node3D" parent="."]
+transform = Transform3D(0.9637822, 0.26490036, -0.030850563, -0.26265994, 0.9628792, 0.062237415, 0.04619207, -0.05188011, 0.99758446, 0, 0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="transform"]
+mesh = SubResource("SphereMesh_i68x6")
+script = ExtResource("4_2euc1")
+
+[node name="EndPathTile" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("5_an17e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.97609687)
+neighbors = [NodePath(""), NodePath(""), NodePath("")]
+
+[node name="SubtractSide" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.0981467e-08, 0.99999994, -4.8149274e-15, -2.0981467e-08, 1.9106853e-15, 1.26, 0.48000002, 4.3711385e-08, 5.507635e-08, 0.7369461, 1, -1.055809)
+gi_mode = 0
+mesh = SubResource("PlaneMesh_khtfd")
+surface_material_override/0 = SubResource("StandardMaterial3D_8cbr6")
+
+[node name="SubtractTop" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.643665e-08, 0, 1.2599999, 0, 0.48, 0, -0.60480005, 0, -5.5076345e-08, 0.36443853, 2.1970882, -1.1251245)
+gi_mode = 0
+mesh = SubResource("PlaneMesh_khtfd")
+skeleton = NodePath("../SubtractSide")
+surface_material_override/0 = SubResource("StandardMaterial3D_8cbr6")

@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=19 format=3 uid="uid://g11i01j86edi"]
+=======
+[gd_scene load_steps=15 format=3 uid="uid://bl5elqblk7exp"]
+>>>>>>> Stashed changes
 
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_s6r6f"]
 [ext_resource type="Texture2D" uid="uid://chvtf8swwgnhb" path="res://art_assets/backgrounds/level_0_bg.jpg" id="2_4f1wj"]
@@ -14,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="8_n4811"]
 [ext_resource type="PackedScene" uid="uid://di6pbm4alu27" path="res://art_assets/level_assets/tutorial/Lucid_Tutorial_MovingPiece.fbx" id="8_qxoke"]
 [ext_resource type="Script" uid="uid://b2oer3vrrxc4p" path="res://scripts/pivot.gd" id="9_3yli5"]
+[ext_resource type="PackedScene" uid="uid://ch8q07lt0wpsl" path="res://scenes/tiles/SubtractEndTile.tscn" id="9_8cbr6"]
 [ext_resource type="Script" uid="uid://f3yj2hoadgke" path="res://art_assets/level_assets/tutorial/rotator.gd" id="11_benmj"]
 [ext_resource type="Texture2D" uid="uid://cpoke4eilx4e4" path="res://ui/tutorial/floor-indicator-default.png" id="14_8cbr6"]
 [ext_resource type="Script" uid="uid://c16bb3duxww08" path="res://scenes/levels_final/tutorial_popup_manager.gd" id="14_x4wrt"]
@@ -44,6 +49,7 @@ size = 19.0
 transform = Transform3D(0.70710677, -0.40860698, 0.57709646, 0, 0.8161376, 0.57785755, -0.70710677, -0.40860698, 0.57709646, 18, 23, 18.87)
 size = 19.0
 
+<<<<<<< Updated upstream
 [node name="film_grain" parent="ViewportManager" index="6"]
 offset_left = -37.0
 offset_top = 27.0
@@ -61,8 +67,12 @@ scale = Vector2(0.19092044, 0.19092046)
 texture = ExtResource("4_r242y")
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile")]
+=======
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile", "endPath")]
+>>>>>>> Stashed changes
 script = ExtResource("2_qxoke")
-endTile = NodePath("TileManager/grp1/Tile10")
+endTile = NodePath("TileManager/grp1/EndTile")
+endPath = [NodePath("TileManager/grp1/EndTile"), NodePath("TileManager/grp1/EndTile/EndPathTile")]
 metadata/_custom_type_script = "uid://bwe2vxf3k3ib0"
 
 [node name="FadeIn" parent="GameManager" instance=ExtResource("3_4f1wj")]
@@ -101,7 +111,7 @@ neighbors = [NodePath("../Tile5"), NodePath("../Tile8")]
 
 [node name="Tile7" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.065, 0.005, -0.015)
-neighbors = [NodePath("../Tile8"), NodePath("../Tile10")]
+neighbors = [NodePath("../Tile8"), NodePath("../EndTile")]
 
 [node name="Tile8" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.065, 0.005, -0.005)
@@ -111,13 +121,13 @@ neighbors = [NodePath("../Tile7"), NodePath("../Tile6"), NodePath("../Tile9"), N
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.065, 0.005, 0.005)
 neighbors = [NodePath("../Tile8"), NodePath("../Tile12")]
 
-[node name="Tile10" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+[node name="EndTile" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("9_8cbr6")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.075, 0.005, -0.015)
-neighbors = [NodePath("../Tile7"), NodePath("../Tile11"), NodePath("../Tile15")]
+neighbors = [NodePath("../Tile11"), NodePath("../Tile7"), NodePath("../Tile15")]
 
 [node name="Tile11" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.075, 0.005, -0.005)
-neighbors = [NodePath("../Tile10"), NodePath("../Tile8"), NodePath("../Tile14"), NodePath("../Tile12")]
+neighbors = [NodePath("../EndTile"), NodePath("../Tile8"), NodePath("../Tile14"), NodePath("../Tile12")]
 
 [node name="Tile12" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.075, 0.005, 0.005)
@@ -133,7 +143,7 @@ neighbors = [NodePath("../Tile11"), NodePath("../Tile13"), NodePath("../Tile15")
 
 [node name="Tile15" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.085, 0.005, -0.015)
-neighbors = [NodePath("../Tile14"), NodePath("../Tile10")]
+neighbors = [NodePath("../Tile14"), NodePath("../EndTile")]
 
 [node name="grp2" type="Node3D" parent="GameManager/TileManager"]
 
@@ -461,3 +471,5 @@ scale = Vector2(0.19527364, 0.19527362)
 texture = ExtResource("3_sowk6")
 
 [editable path="ViewportManager"]
+[editable path="GameManager/TileManager/Lucid_Tutorial_StaticPieces"]
+[editable path="GameManager/TileManager/grp1/EndTile"]
