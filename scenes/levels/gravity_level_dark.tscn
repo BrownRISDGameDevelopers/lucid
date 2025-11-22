@@ -102,3 +102,5 @@ cull_mask = 4
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("8_gg2l2")]
 transform = Transform3D(0.9999925, -0.0038746211, 0, 0.0038746211, 0.9999925, 0, 0, 0, 1, 0, 1.5, 0)
 current = NodePath("../TileManager/BG1")
+
+[editable path="ViewportDark"]

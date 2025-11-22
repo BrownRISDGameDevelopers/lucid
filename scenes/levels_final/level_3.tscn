@@ -1,20 +1,38 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyxclfcuei44u"]
+[gd_scene load_steps=13 format=3 uid="uid://cyxclfcuei44u"]
 
-[ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_cji7n"]
+[ext_resource type="PackedScene" uid="uid://cvkfyvc7onhn4" path="res://scenes/managers/Viewport_Dark.tscn" id="1_cji7n"]
+[ext_resource type="Script" uid="uid://m8mjd0u88aow" path="res://scripts/player_tracker.gd" id="1_g01up"]
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_g01up"]
 [ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="3_ni4vp"]
 [ext_resource type="PackedScene" uid="uid://cyw7cdjci5gg2" path="res://scenes/components/fade_out.tscn" id="4_a5a75"]
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="5_a1djg"]
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="6_6dlra"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="7_0co5s"]
+[ext_resource type="ArrayMesh" uid="uid://dt80ir60oa3np" path="res://art_assets/level_assets/level_3/Level3_Moving1.obj" id="8_6dlra"]
+[ext_resource type="ArrayMesh" uid="uid://cv4fuf72w3nlr" path="res://art_assets/level_assets/level_3/Level3_Moving2.obj" id="9_0co5s"]
+[ext_resource type="ArrayMesh" uid="uid://1cqdul2vt828" path="res://art_assets/level_assets/level_3/Level3_Moving3.obj" id="10_esljl"]
+[ext_resource type="ArrayMesh" uid="uid://bqo6hj4muo4pm" path="res://art_assets/level_assets/level_3/Level3_Static.obj" id="11_frfm7"]
 
 [node name="Level3" type="Node"]
 
-[node name="ViewportManager" parent="." instance=ExtResource("1_cji7n")]
+[node name="SpotLight3D" type="SpotLight3D" parent="." node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 18, 18)
+light_energy = 30.0
+spot_range = 44.0
+spot_angle = 6.0
+script = ExtResource("1_g01up")
+player = NodePath("../GameManager/Player")
+
+[node name="ViewportDark" parent="." instance=ExtResource("1_cji7n")]
+
+[node name="Background" parent="ViewportDark/ViewportBehindPlayer/SubViewport" index="0"]
+transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 17.86, 20.72, 15.125)
+size = 22.0
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile")]
 script = ExtResource("2_g01up")
 endTile = NodePath("TileManager/Tile3")
+clamp = true
 metadata/_custom_type_script = "uid://bwe2vxf3k3ib0"
 
 [node name="FadeIn" parent="GameManager" instance=ExtResource("3_ni4vp")]
@@ -29,18 +47,35 @@ script = ExtResource("5_a1djg")
 metadata/_custom_type_script = "uid://cldm2bo1qftlf"
 
 [node name="Tile" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_6dlra")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 12.5, 6.5)
 neighbors = [NodePath("../Tile2"), NodePath("../Tile3")]
 
 [node name="Tile2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_6dlra")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 12.5, 6.5)
 neighbors = [NodePath("../Tile")]
 
 [node name="Tile3" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_6dlra")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 12.5, 6.5)
 neighbors = [NodePath("../Tile")]
 
+[node name="Level3Moving1" type="MeshInstance3D" parent="GameManager/TileManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+mesh = ExtResource("8_6dlra")
+
+[node name="Level3Moving2" type="MeshInstance3D" parent="GameManager/TileManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 9)
+mesh = ExtResource("9_0co5s")
+
+[node name="Level3Moving3" type="MeshInstance3D" parent="GameManager/TileManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 9)
+mesh = ExtResource("10_esljl")
+
+[node name="Level3Static" type="MeshInstance3D" parent="GameManager/TileManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+mesh = ExtResource("11_frfm7")
+
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("7_0co5s")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1, 1)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -8.5, 12.5, 6.5)
 current = NodePath("../TileManager/Tile2")
 
-[editable path="ViewportManager"]
+[editable path="ViewportDark"]
