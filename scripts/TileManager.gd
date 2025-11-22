@@ -75,7 +75,7 @@ func bfs(start: Tile, seek) -> Array[Tile]:
 			return path
 		if new: # this check prevents a null-pointer error when player selects a tile
 			for q_append in new.neighbors:
-				if not seen.has(q_append) && q_append.active && q_append.neighbors.has(new):
+				if not seen.has(q_append) && q_append.active && new.active && q_append.neighbors.has(new):
 					q.append(next + [q_append])
 	return [] as Array[Tile]
 		
