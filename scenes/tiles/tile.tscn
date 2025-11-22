@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://83ywrfi8uw52" path="res://scripts/resources/tile.gd" id="1_6llsq"]
 [ext_resource type="Script" uid="uid://dipwhcd5pofak" path="res://scripts/static_body_3d.gd" id="2_q0k13"]
 [ext_resource type="Texture2D" uid="uid://defn03uoyh8p6" path="res://materials/PavingStones084_1K-JPG_Color.jpg" id="3_svtog"]
-[ext_resource type="Script" path="res://scripts/editor_node.gd" id="4_4u2tw"]
+[ext_resource type="Script" uid="uid://bxnbdtrsvlbhm" path="res://scripts/editor_node.gd" id="4_4u2tw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hoq8d"]
 

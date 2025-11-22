@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bl5elqblk7exp"]
+[gd_scene load_steps=13 format=3 uid="uid://bl5elqblk7exp"]
 
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_s6r6f"]
 [ext_resource type="Texture2D" uid="uid://chvtf8swwgnhb" path="res://art_assets/backgrounds/level_0_bg.jpg" id="2_4f1wj"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="7_8cbr6"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="8_n4811"]
 [ext_resource type="PackedScene" uid="uid://di6pbm4alu27" path="res://art_assets/level_assets/tutorial/Lucid_Tutorial_MovingPiece.fbx" id="8_qxoke"]
+[ext_resource type="Script" uid="uid://b2oer3vrrxc4p" path="res://scripts/pivot.gd" id="9_3yli5"]
+[ext_resource type="Script" uid="uid://f3yj2hoadgke" path="res://art_assets/level_assets/tutorial/rotator.gd" id="11_benmj"]
 
 [node name="Tutorial" type="Node"]
 
@@ -118,13 +120,9 @@ neighbors = [NodePath("../Tile14"), NodePath("../Tile10")]
 
 [node name="grp2" type="Node3D" parent="GameManager/TileManager"]
 
-[node name="Tile16" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 5)
-neighbors = [NodePath("../Tile17")]
-
 [node name="Tile17" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5)
-neighbors = [NodePath("../Tile16"), NodePath("../Tile18")]
+neighbors = [NodePath("../../pivt/Tile16"), NodePath("../Tile18")]
 
 [node name="Tile18" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 5)
@@ -156,7 +154,7 @@ neighbors = [NodePath("../Tile23"), NodePath("../Tile25")]
 
 [node name="Tile25" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 2)
-neighbors = [NodePath("../Tile24"), NodePath(".")]
+neighbors = [NodePath("../Tile24"), NodePath("../Tile26")]
 
 [node name="Tile26" parent="GameManager/TileManager/grp2" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 2)
@@ -211,12 +209,8 @@ gravity_path = NodePath("../../grp4/Tile43")
 
 [node name="Tile38" parent="GameManager/TileManager/grp3" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4)
-neighbors = [NodePath("../Tile39")]
+neighbors = [NodePath("../../pivt/Tile39")]
 gravity_path = NodePath("../../grp4/Tile40")
-
-[node name="Tile39" parent="GameManager/TileManager/grp3" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -4)
-neighbors = [NodePath("../Tile38")]
 
 [node name="grp4" type="Node3D" parent="GameManager/TileManager"]
 
@@ -240,13 +234,9 @@ gravity_path = NodePath("../../grp2/Tile37")
 
 [node name="grp5" type="Node3D" parent="GameManager/TileManager"]
 
-[node name="Tile44" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -5)
-neighbors = [NodePath("../Tile45")]
-
 [node name="Tile45" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6)
-neighbors = [NodePath("../Tile44"), NodePath("../Tile46")]
+neighbors = [NodePath("../../pivt/Tile44"), NodePath("../Tile46")]
 
 [node name="Tile46" parent="GameManager/TileManager/grp5" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -7)
@@ -336,43 +326,76 @@ neighbors = [NodePath("../Tile67"), NodePath("../Tile64")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -13)
 neighbors = [NodePath("../Tile66"), NodePath("../Tile65"), NodePath("../Tile61")]
 
-[node name="Lucid_Tutorial_MovingPiece" parent="GameManager/TileManager" instance=ExtResource("8_qxoke")]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -0.5, -0.5, 0.5)
-visible = false
+[node name="pivt" type="Node3D" parent="GameManager/TileManager"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+script = ExtResource("9_3yli5")
+
+[node name="tile" parent="GameManager/TileManager/pivt" node_paths=PackedStringArray("rotation_path", "pivot") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+rotation_path = [NodePath("../../grp1/Tile2"), NodePath("../tile2")]
+pivot = NodePath("..")
+
+[node name="tile2" parent="GameManager/TileManager/pivt" node_paths=PackedStringArray("rotation_path", "pivot") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0.01, 0)
+rotation_path = [NodePath("../tile"), NodePath("../Tile3")]
+pivot = NodePath("..")
+
+[node name="Tile3" parent="GameManager/TileManager/pivt" node_paths=PackedStringArray("rotation_path", "pivot") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0.019999998, 0)
+rotation_path = [NodePath("../tile2"), NodePath("../Tile4")]
+pivot = NodePath("..")
+
+[node name="Tile4" parent="GameManager/TileManager/pivt" node_paths=PackedStringArray("rotation_path", "pivot") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0.03, 0)
+rotation_path = [NodePath("../Tile3"), NodePath("../Tile5")]
+pivot = NodePath("..")
+
+[node name="Tile5" parent="GameManager/TileManager/pivt" node_paths=PackedStringArray("neighbors", "rotation_path", "pivot") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0.04, 0)
+neighbors = [NodePath("../Tile44"), NodePath("../Tile6")]
+rotation_path = [NodePath("../Tile4"), NodePath("../Tile6")]
+pivot = NodePath("..")
+
+[node name="Tile6" parent="GameManager/TileManager/pivt" node_paths=PackedStringArray("neighbors", "rotation_path", "pivot") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -0.01, 0.04, 0)
+neighbors = [NodePath("../Tile5"), NodePath("../Tile7")]
+rotation_path = [NodePath("../Tile5"), NodePath("../Tile7")]
+pivot = NodePath("..")
+
+[node name="Tile7" parent="GameManager/TileManager/pivt" node_paths=PackedStringArray("neighbors", "rotation_path", "pivot") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -0.02, 0.04, 0)
+neighbors = [NodePath("../Tile6"), NodePath("../Tile8")]
+rotation_path = [NodePath("../Tile6"), NodePath("../Tile8")]
+pivot = NodePath("..")
+
+[node name="Tile8" parent="GameManager/TileManager/pivt" node_paths=PackedStringArray("neighbors", "rotation_path", "pivot") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -0.029999997, 0.04, 0)
+neighbors = [NodePath("../Tile7"), NodePath("../Tile39")]
+rotation_path = [NodePath("../Tile7"), NodePath("../Tile16")]
+pivot = NodePath("..")
+
+[node name="Tile16" parent="GameManager/TileManager/pivt" node_paths=PackedStringArray("neighbors", "rotation_path", "pivot") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -0.04, 0, 0.049999997)
+neighbors = [NodePath("../../grp2/Tile17")]
+rotation_path_bool = true
+rotation_path = [NodePath("../../grp2/Tile17"), NodePath("../Tile8")]
+pivot = NodePath("..")
+trigger_pivot = true
+
+[node name="Tile44" parent="GameManager/TileManager/pivt" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -0.04, 0, -0.049999993)
+neighbors = [NodePath("../../grp5/Tile45"), NodePath("../Tile5")]
+
+[node name="Tile39" parent="GameManager/TileManager/pivt" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -0.07999999, 0, -0.04)
+neighbors = [NodePath("../../grp3/Tile38"), NodePath("../Tile8")]
+
+[node name="Lucid_Tutorial_MovingPiece" parent="GameManager/TileManager/pivt" instance=ExtResource("8_qxoke")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005, -0.005, 0.005)
+script = ExtResource("11_benmj")
 
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("8_n4811")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -14, 1, -12)
 current = NodePath("../TileManager/grp5/Tile64")
-
-[node name="tile" parent="." node_paths=PackedStringArray("rotation_path") instance=ExtResource("7_8cbr6")]
-rotation_path = [NodePath("../GameManager/TileManager/grp1/Tile2"), NodePath("../tile2")]
-
-[node name="tile2" parent="." node_paths=PackedStringArray("rotation_path") instance=ExtResource("7_8cbr6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-rotation_path = [NodePath("../tile"), NodePath("../Tile3")]
-
-[node name="Tile3" parent="." node_paths=PackedStringArray("rotation_path") instance=ExtResource("7_8cbr6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-rotation_path = [NodePath("../tile2"), NodePath("../Tile4")]
-
-[node name="Tile4" parent="." node_paths=PackedStringArray("rotation_path") instance=ExtResource("7_8cbr6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-rotation_path = [NodePath("../Tile3"), NodePath("../Tile5")]
-
-[node name="Tile5" parent="." node_paths=PackedStringArray("rotation_path") instance=ExtResource("7_8cbr6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
-rotation_path = [NodePath("../Tile4"), NodePath("../Tile6")]
-
-[node name="Tile6" parent="." node_paths=PackedStringArray("rotation_path") instance=ExtResource("7_8cbr6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, 0)
-rotation_path = [NodePath("../Tile5"), NodePath("../Tile7")]
-
-[node name="Tile7" parent="." node_paths=PackedStringArray("rotation_path") instance=ExtResource("7_8cbr6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, 0)
-rotation_path = [NodePath("../Tile6"), NodePath("../Tile8")]
-
-[node name="Tile8" parent="." node_paths=PackedStringArray("rotation_path") instance=ExtResource("7_8cbr6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, 0)
-rotation_path = [NodePath("../Tile7"), NodePath("../GameManager/TileManager/grp2/Tile16")]
 
 [editable path="ViewportManager"]

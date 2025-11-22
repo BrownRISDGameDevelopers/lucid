@@ -5,98 +5,61 @@
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="3_d4w6o"]
 [ext_resource type="PackedScene" uid="uid://db8dkkbf6h8lf" path="res://scenes/tiles/ladder.tscn" id="4_mbbpy"]
 
-[node name="level" type="Node3D" node_paths=PackedStringArray("End")]
+[node name="level" type="Node3D"]
 script = ExtResource("1_xb4v1")
-End = NodePath("UnitCube15")
 
 [node name="UnitCube" parent="." instance=ExtResource("2_urvlt")]
-rotation_path_bool = null
-active = null
 
 [node name="UnitCube2" parent="." instance=ExtResource("2_urvlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-rotation_path_bool = null
-active = null
 
 [node name="UnitCube3" parent="." instance=ExtResource("2_urvlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
-rotation_path_bool = null
-active = null
 
 [node name="UnitCube4" parent="." instance=ExtResource("2_urvlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
-rotation_path_bool = null
-active = null
 
 [node name="UnitCube5" parent="." instance=ExtResource("2_urvlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
-rotation_path_bool = null
-active = null
 
 [node name="UnitCube6" parent="." instance=ExtResource("2_urvlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
-rotation_path_bool = null
-active = null
 
 [node name="UnitCube7" parent="." instance=ExtResource("2_urvlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
-rotation_path_bool = null
-active = null
 
 [node name="UnitCube8" parent="." instance=ExtResource("2_urvlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -5)
-rotation_path_bool = null
-active = null
 
 [node name="UnitCube9" parent="." instance=ExtResource("2_urvlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
-rotation_path_bool = null
-active = null
 
 [node name="UnitCube10" parent="." instance=ExtResource("2_urvlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -7)
-rotation_path_bool = null
-active = null
 
 [node name="UnitCube11" parent="." instance=ExtResource("2_urvlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
-rotation_path_bool = null
-active = null
 
 [node name="UnitCube12" parent="." instance=ExtResource("2_urvlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -8)
-rotation_path_bool = null
-active = null
 
 [node name="UnitCube13" parent="." instance=ExtResource("2_urvlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
-rotation_path_bool = null
-active = null
 
 [node name="UnitCube14" parent="." instance=ExtResource("2_urvlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -8)
-rotation_path_bool = null
-active = null
 
 [node name="UnitCube15" parent="." instance=ExtResource("2_urvlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -8)
-rotation_path_bool = null
-active = null
 
 [node name="UnitCube16" parent="." instance=ExtResource("2_urvlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
-rotation_path_bool = null
-active = null
 
 [node name="UnitCube17" parent="." instance=ExtResource("2_urvlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -7)
-rotation_path_bool = null
-active = null
 
 [node name="UnitCube18" parent="." instance=ExtResource("2_urvlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -6)
-rotation_path_bool = null
-active = null
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.70710677, -0.40860704, 0.5770964, 0, 0.8161376, 0.5778576, -0.70710677, -0.40860704, 0.5770964, 5.38, 5.875, 0)
@@ -112,21 +75,9 @@ speedMultiplier = null
 
 [node name="Ladder" parent="." instance=ExtResource("4_mbbpy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -5)
-is_foreground = null
-rotation_path_bool = null
-trigger_pivot = null
-ghost = null
-active = null
 
 [node name="Ladder2" parent="." instance=ExtResource("4_mbbpy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -5)
-is_foreground = null
-rotation_path_bool = null
-trigger_pivot = null
-ghost = null
-active = null
 
 [node name="Tile" parent="." instance=ExtResource("2_urvlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -5)
-rotation_path_bool = null
-active = null

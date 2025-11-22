@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="4_sqj14"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="6_8nfbw"]
 [ext_resource type="PackedScene" uid="uid://yg6bul1ruiqr" path="res://scenes/tiles/flat.tscn" id="6_dc5sm"]
-[ext_resource type="Script" uid="uid://b2oer3vrrxc4p" path="res://scripts/pivot.gd" id="6_o20wi"]
+[ext_resource type="Script" path="res://scripts/pivot.gd" id="6_o20wi"]
 
 [node name="RotationLevel" type="Node"]
 
