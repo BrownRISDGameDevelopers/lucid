@@ -11,7 +11,7 @@
 [ext_resource type="Shader" uid="uid://cheo1scjtllak" path="res://scenes/levels/waterfall.gdshader" id="8_iqxcs"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="8_tk7bx"]
 [ext_resource type="Texture2D" uid="uid://b4h2d7jfrl7eu" path="res://art_assets/waterfall/Water_Texture_Refined.png" id="9_08fey"]
-[ext_resource type="Script" uid="uid://c3oftxqubawdr" path="res://scenes/levels/water_movement.gd" id="10_0crih"]
+[ext_resource type="Script" path="res://scenes/levels/water_movement.gd" id="10_0crih"]
 [ext_resource type="ArrayMesh" uid="uid://ogdss2tn0qlr" path="res://art_assets/waterfall/Top_Water_3.obj" id="12_08fey"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_08fey"]
@@ -80,10 +80,11 @@ neighbors = [NodePath("../Tile3"), NodePath("../Tile5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 neighbors = [NodePath("../Tile4")]
 
-[node name="WaterfallManager" type="Node" parent="." node_paths=PackedStringArray("topWaterfall", "bottomWaterfall")]
+[node name="WaterfallManager" type="Node" parent="." node_paths=PackedStringArray("topWaterfall", "bottomWaterfall", "flowOver")]
 script = ExtResource("8_fwk0t")
 topWaterfall = NodePath("TopWater")
 bottomWaterfall = NodePath("BottomWater")
+flowOver = NodePath("../GameManager/TileManager/Tile4")
 
 [node name="TopWater" type="MeshInstance3D" parent="WaterfallManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.45, -7.4, -6.4)

@@ -3,7 +3,6 @@ extends Control
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _unhandled_input(event: InputEvent) -> void:
-	print("stealing input")
 	pass
 
 # Called when the node enters the scene tree for the first time.

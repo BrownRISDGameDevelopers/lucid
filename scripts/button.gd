@@ -1,20 +1,39 @@
 @warning_ignore("missing_tool")
 extends Tile
 
-#The assigned moving tile
-@export var moving_tile : Tile
-#The assigned position of the moving tile
-@export var goal : MoveGoal
+enum b_activation {ROTATE, MOVE}
 
-@onready var gameManager: GameManager = get_parent().get_parent();
+
+#The assigned moving tile
+
+@export var target_tile : Tile
+
+@export var move_tile : Tile
+
+@export var buttonType : b_activation
+
+@export var gameManager: GameManager
 
 signal button_pressed()
 
 func _ready():
-	connect("button_pressed", Callable(moving_tile, "button_pressed"))
+	if buttonType == b_activation.ROTATE:
+		connect("button_pressed", _on_r_button_click)
+	if buttonType == b_activation.MOVE:
+		connect("button_pressed", _on_m_button_click)
 
 func my_static_body3d_clicked():
-	if (moving_tile.goal == goal):
-		moving_tile.my_static_body3d_clicked()
-		if (gameManager.get_current_tile() == moving_tile):
-			emit_signal("button_pressed")
+	target_tile.my_static_body3d_clicked()
+	
+	#if (gameManager.get_current_tile() == target_tile):
+	#	emit_signal("button_pressed")
+	if (gameManager.get_current_tile() == target_tile):
+		print("ROTATING?")
+		emit_signal("button_pressed")
+
+func _on_r_button_click():
+	gameManager.player_wants_to_rotate(self)
+
+func _on_m_button_click():
+	move_tile.activate()
+	

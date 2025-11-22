@@ -2,6 +2,10 @@ extends Node
 
 @export var topWaterfall : Waterfall
 @export var bottomWaterfall : Waterfall
+@export var flowOver: Tile
+
+#Used to tell if the waterfall is busy changing flow states
+@onready var canToggle = true
 
 # The purpose of this script is to tell the bottom waterfall when the top
 # waterfall finishes.
@@ -9,16 +13,29 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#reactivates movement
+	if (flowOver):
+		topWaterfall.activation_finish.connect(func(): flowOver.activate())
+	#makes the water in the waterfalls fall
 	topWaterfall.activation_finish.connect(func(): bottomWaterfall.start_waterfall())
 	topWaterfall.shutoff_finish.connect(func(): bottomWaterfall.stop_waterfall())
+	#Reenables toggleability when the waterfall finishes falling
+	bottomWaterfall.shutoff_finish.connect(func(): canToggle = true)
+	bottomWaterfall.activation_finish.connect(func(): canToggle = true)
+
+
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("stop_waterfall_debug"):
+	if event.is_action_pressed("stop_waterfall_debug") and canToggle:
+		canToggle = false
 		if !topWaterfall.flowing:
 			print("Start the waterfall")
 			topWaterfall.start_waterfall()
 		else:
 			print("end the waterfall")
 			topWaterfall.stop_waterfall()
+		if (flowOver):
+			flowOver.deactivate()

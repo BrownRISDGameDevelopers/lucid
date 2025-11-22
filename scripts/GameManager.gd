@@ -67,6 +67,7 @@ func player_wants_to_flip(tile: Tile):
 		pass
 		
 func player_wants_to_rotate(tile: Tile):
+	print("want to rotate?")
 	if (tile.trigger_pivot && !tile.pivot.rotation_busy):
 		print("rotating")
 		tile.pivot.rotate_children()
