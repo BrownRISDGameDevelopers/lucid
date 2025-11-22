@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bl5elqblk7exp"]
+[gd_scene load_steps=14 format=3 uid="uid://bl5elqblk7exp"]
 
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_s6r6f"]
 [ext_resource type="Texture2D" uid="uid://chvtf8swwgnhb" path="res://art_assets/backgrounds/level_0_bg.jpg" id="2_4f1wj"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="5_benmj"]
 [ext_resource type="PackedScene" uid="uid://dgc5d2rygfjws" path="res://art_assets/level_assets/tutorial/Lucid_Tutorial_StaticPieces.fbx" id="6_khtfd"]
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="7_8cbr6"]
+[ext_resource type="Script" uid="uid://ceswyojo8w7fl" path="res://scripts/button.gd" id="8_khtfd"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="8_n4811"]
 [ext_resource type="PackedScene" uid="uid://di6pbm4alu27" path="res://art_assets/level_assets/tutorial/Lucid_Tutorial_MovingPiece.fbx" id="8_qxoke"]
 [ext_resource type="Script" uid="uid://b2oer3vrrxc4p" path="res://scripts/pivot.gd" id="9_3yli5"]
@@ -388,13 +389,11 @@ rotation_path_bool = true
 rotation_path = [NodePath("../Tile7"), NodePath("../Tile16")]
 pivot = NodePath("..")
 
-[node name="Tile16" parent="GameManager/TileManager/pivt" node_paths=PackedStringArray("neighbors", "rotation_path", "pivot") instance=ExtResource("7_8cbr6")]
+[node name="Tile16" parent="GameManager/TileManager/pivt" node_paths=PackedStringArray("neighbors", "rotation_path") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -0.035, 0.005, 0.044999994)
 neighbors = [NodePath("../../grp2/Tile17")]
 rotation_path_bool = true
 rotation_path = [NodePath("../../grp2/Tile17"), NodePath("../Tile8")]
-pivot = NodePath("..")
-trigger_pivot = true
 
 [node name="Tile44" parent="GameManager/TileManager/pivt" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -0.035, 0.005, -0.054999992)
@@ -406,6 +405,15 @@ neighbors = [NodePath("../../grp3/Tile38"), NodePath("../Tile8")]
 
 [node name="Lucid_Tutorial_MovingPiece" parent="GameManager/TileManager/pivt" instance=ExtResource("8_qxoke")]
 script = ExtResource("11_benmj")
+
+[node name="button" parent="GameManager/TileManager/pivt" node_paths=PackedStringArray("target_tile", "gameManager", "pivot") instance=ExtResource("7_8cbr6")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -0.145, 0.015, -0.005)
+script = ExtResource("8_khtfd")
+target_tile = NodePath("../../grp2/Tile31")
+buttonType = 0
+gameManager = NodePath("../../..")
+pivot = NodePath("..")
+trigger_pivot = true
 
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("8_n4811")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -14, 1, -12)

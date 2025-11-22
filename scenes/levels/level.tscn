@@ -71,7 +71,6 @@ transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.7071068, 0, -0.7071068, 0.7071
 
 [node name="Player" parent="." instance=ExtResource("3_d4w6o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-speedMultiplier = null
 
 [node name="Ladder" parent="." instance=ExtResource("4_mbbpy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -5)

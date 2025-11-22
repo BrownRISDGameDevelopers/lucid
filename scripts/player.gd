@@ -88,7 +88,6 @@ func _update_speed():
 
 
 func look_at_tile(tile: Tile):
-	print("Player: Look at Tile")
 	var dir = tile.get_my_active_edge_pos() - global_transform.origin
 	var target_rot = atan2(dir.x, dir.z)
 	rotation.y = lerp_angle(rotation.y, target_rot, 0.1)
@@ -154,7 +153,6 @@ func _input(event):
 @onready var TpEffectScene := preload("res://scenes/effects/teleport_2danim.tscn")
 
 func reached_tile(tile: Tile):
-	print("Reached tile")
 	deny_new_path = false
 #	Tell the gameManager we reached a tile (so it can tell the tileManager)	
 	
@@ -172,8 +170,6 @@ func reached_tile(tile: Tile):
 			e.position = global_position + Vector3(0,0.5,0)
 			#e.position = position + Vector3(0,-0.5,0)
 			get_parent().add_child(e)
-			
-			print("teleported!")
 			global_position = tile.teleport_tile.get_my_active_edge_pos() + player_offset
 			current = tile.teleport_tile
 #			We have reached the end of our path
