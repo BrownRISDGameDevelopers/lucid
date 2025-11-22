@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Lucid"
+run/main_scene="uid://g11i01j86edi"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="uid://b8u0flfhqivst"
 
@@ -19,6 +20,12 @@ config/icon="uid://b8u0flfhqivst"
 ChangeScene="*res://ui/change_scene.tscn"
 MusicController="*res://music/MusicController.tscn"
 Settingspause="*res://scenes/levels_final/settingspause.tscn"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/resizable=false
 
 [input]
 

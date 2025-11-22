@@ -1,20 +1,43 @@
 class_name ViewportManager
-extends Node
+extends Control
 
 @export var viewports: Array[Viewport] = []  # top → bottom
 @export var background: Texture2D  # Drag your image here in the Inspector
-@onready var background_rect: TextureRect = $TextureRect
+@onready var background_rect: TextureRect = $CanvasLayer/TextureRect
+
+
+@onready var camera_bg: Camera3D = $BackgroundViewport/SubViewport/CameraBG
+@onready var camera_behind: Camera3D = $ViewportBehindPlayer/SubViewport/CameraBehind
+@onready var camera_player: Camera3D = $PlayerViewport/SubViewport/CameraPlayer
+@onready var camera_foreground: Camera3D = $Foreground/SubViewport/CameraForeground
+
+
+func sync_all_cameras_to(reference: Camera3D) -> void:
+	var t := reference.global_transform
+
+	var cameras: Array = [
+		camera_bg,
+		camera_behind,
+		camera_player,
+		camera_foreground
+	]
+
+	for cam in cameras:
+		cam.global_transform = t
+
 
 func _ready() -> void:
 #	Set the fadeIn & fadeout visibility to true on runtime because otherwise editor is black
+	assert (background != null)
 	if background:
 		background_rect.texture = background
+	sync_all_cameras_to(camera_behind)
 		
 # We need information about the camera in order to place the animation correctly
 # at the mouse position
-@onready var background_camera: Camera3D = $BackgroundViewport/SubViewport/Background
 func getCamera() -> Camera3D:
-	return background_camera
+	return camera_bg
+
 
 func _input(event: InputEvent) -> void:
 	#print("ViewportManager: I got an input")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chvtf8swwgnhb"
-path="res://.godot/imported/level_0_bg.jpg-3b3137ba47aac8f1ab78b05abe40788e.ctex"
+uid="uid://ci8fipcm3ko6f"
+path="res://.godot/imported/rsz_tutorial_bg_1.jpg-55ec4822007bb16b294e13b895cad4d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_assets/backgrounds/level_0_bg.jpg"
-dest_files=["res://.godot/imported/level_0_bg.jpg-3b3137ba47aac8f1ab78b05abe40788e.ctex"]
+source_file="res://art_assets/backgrounds/rsz_tutorial_bg_1.jpg"
+dest_files=["res://.godot/imported/rsz_tutorial_bg_1.jpg-55ec4822007bb16b294e13b895cad4d5.ctex"]
 
 [params]
 
