@@ -1,5 +1,5 @@
 extends Control
-@onready var fade_out: Control = $FadeOut
+@onready var fade_out: Control = $AspectRatioContainer/FadeOut
 
 
 func _input(event: InputEvent) -> void:

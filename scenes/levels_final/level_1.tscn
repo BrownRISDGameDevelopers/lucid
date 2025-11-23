@@ -27,6 +27,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("2_stil2")
 
+[node name="ViewportBehindPlayer" parent="ViewportManager" index="2"]
+anchors_preset = 15
+
 [node name="Background" parent="ViewportManager/ViewportBehindPlayer/SubViewport" index="1"]
 transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 18, 22.99, 26.01)
 size = 21.976
@@ -37,7 +40,6 @@ endTile = NodePath("TileManager/EndTile/Tile")
 endPath = [NodePath("TileManager/EndTile/Tile"), NodePath("TileManager/EndTile/Tile2")]
 
 [node name="FadeIn" parent="GameManager" instance=ExtResource("3_jgjp7")]
-visible = false
 offset_left = -2.0
 offset_top = -2.0
 offset_right = -2.0
