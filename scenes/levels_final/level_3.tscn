@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://cyxclfcuei44u"]
 
-[ext_resource type="Script" path="res://scripts/player_tracker.gd" id="1_g01up"]
-[ext_resource type="Script" uid="uid://hwgrkcv2v446" path="res://scenes/levels_final/level_3.gd" id="1_jecn1"]
+[ext_resource type="Script" uid="uid://m8mjd0u88aow" path="res://scripts/player_tracker.gd" id="1_g01up"]
+[ext_resource type="Script" path="res://scenes/levels_final/level_3.gd" id="1_jecn1"]
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_g01up"]
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="3_c3qt3"]
 [ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="3_ni4vp"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="6_6dlra"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="7_0co5s"]
 [ext_resource type="Script" uid="uid://d3oeagq24crur" path="res://scripts/move_goal.gd" id="8_frfm7"]
-[ext_resource type="PackedScene" uid="uid://chrmyh0ov3ucn" path="res://scenes/tiles/moving_tile.tscn" id="9_70vga"]
+[ext_resource type="PackedScene" uid="uid://pu2rreyu3h07" path="res://scenes/tiles/moving_tile.tscn" id="9_70vga"]
 [ext_resource type="ArrayMesh" uid="uid://dt80ir60oa3np" path="res://art_assets/level_assets/level_3/Level3_Moving1.obj" id="11_5pw72"]
 [ext_resource type="Texture2D" uid="uid://n0ys0vw30ys5" path="res://art_assets/level_assets/level_3/level3_Moving1_0.png" id="12_c3qt3"]
 [ext_resource type="ArrayMesh" uid="uid://cv4fuf72w3nlr" path="res://art_assets/level_assets/level_3/Level3_Moving2.obj" id="13_ao8po"]
@@ -47,8 +47,13 @@ player = NodePath("../GameManager/Player")
 [node name="ViewportManager" parent="." instance=ExtResource("3_c3qt3")]
 background = Array[Texture2D]([ExtResource("4_ao8po")])
 
+[node name="TextureRect" parent="ViewportManager" index="1"]
+offset_right = 1733.3335
+offset_bottom = 975.0
+
 [node name="ViewportBehindPlayer" parent="ViewportManager" index="2"]
-anchors_preset = 15
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="DirectionalLight3D" parent="ViewportManager/ViewportBehindPlayer/SubViewport" index="0"]
 visible = false

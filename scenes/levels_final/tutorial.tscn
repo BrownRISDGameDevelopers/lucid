@@ -32,7 +32,6 @@ size_flags_vertical = 3
 texture = ExtResource("2_sowk6")
 
 [node name="ViewportBehindPlayer" parent="ViewportManager" index="2"]
-anchors_preset = 15
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -41,10 +40,11 @@ transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.577857
 size = 17.956
 
 [node name="film_grain" parent="ViewportManager" index="3"]
-offset_left = 108.0
-offset_top = -122.0
-offset_right = -1044.0
-offset_bottom = -770.0
+offset_left = -5.0
+offset_top = 3.0
+offset_right = -1157.0
+offset_bottom = -645.0
+scale = Vector2(1.82, 1.82)
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile", "endPath")]
 script = ExtResource("2_qxoke")
@@ -428,51 +428,51 @@ transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -14,
 current = NodePath("../TileManager/grp5/Tile64")
 
 [node name="PointAndClickPopup2" type="TextureRect" parent="."]
-offset_left = 230.99998
-offset_top = 144.0
-offset_right = 999.0
-offset_bottom = 345.0
-scale = Vector2(0.19651741, 0.19651741)
+offset_left = 499.99997
+offset_top = 320.00003
+offset_right = 1268.0
+offset_bottom = 521.0
+scale = Vector2(0.47651798, 0.47651798)
 texture = ExtResource("3_sowk6")
 
 [node name="PointAndClickPopup" type="TextureRect" parent="."]
-offset_left = 681.0
-offset_top = 87.0
-offset_right = 1449.0
-offset_bottom = 288.0
-scale = Vector2(0.19651741, 0.19651741)
+offset_left = 1490.0
+offset_top = 108.99999
+offset_right = 2258.0
+offset_bottom = 310.0
+scale = Vector2(0.61452496, 0.61452496)
 texture = ExtResource("3_sowk6")
 
 [node name="SpacebarPopup" type="TextureRect" parent="."]
-offset_left = 515.0
-offset_top = 193.99998
-offset_right = 1010.0
-offset_bottom = 395.0
-scale = Vector2(0.1517413, 0.1517413)
+offset_left = 1077.0001
+offset_top = 362.0
+offset_right = 1572.0001
+offset_bottom = 563.0
+scale = Vector2(0.59119904, 0.59119904)
 texture = ExtResource("4_r242y")
 
 [node name="ButtonIndicatorDefault" type="TextureRect" parent="."]
-offset_left = 299.0
-offset_top = 195.0
-offset_right = 422.0
-offset_bottom = 468.0
-scale = Vector2(0.21544716, 0.21544717)
+offset_left = 657.00006
+offset_top = 426.99997
+offset_right = 780.00006
+offset_bottom = 700.0
+scale = Vector2(0.45545262, 0.45545268)
 texture = ExtResource("17_4tfe6")
 
 [node name="FloorIndicatorDefault" type="TextureRect" parent="."]
-offset_left = 736.0
-offset_top = 111.0
-offset_right = 947.0
-offset_bottom = 339.0
-scale = Vector2(0.2014218, 0.20142177)
+offset_left = 1657.9999
+offset_top = 248.99997
+offset_right = 1868.9999
+offset_bottom = 477.0
+scale = Vector2(0.6298613, 0.6298612)
 texture = ExtResource("14_8cbr6")
 
 [node name="FloorIndicatorDefault2" type="TextureRect" parent="."]
-offset_left = 531.0
-offset_top = 228.0
-offset_right = 742.0
-offset_bottom = 456.0
-scale = Vector2(0.2014218, 0.20142177)
+offset_left = 1165.0
+offset_top = 492.0
+offset_right = 1376.0
+offset_bottom = 720.0
+scale = Vector2(0.56142056, 0.5614205)
 texture = ExtResource("14_8cbr6")
 
 [editable path="ViewportManager"]
