@@ -54,18 +54,18 @@ script = ExtResource("1_4834d")
 
 [node name="PlaceholderCutscene" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0)
-position = Vector2(582.8889, 327.5)
-scale = Vector2(0.600926, 0.6009259)
+position = Vector2(1279.5, 540)
+scale = Vector2(1.3328125, 1.0440006)
 texture = ExtResource("2_1kq18")
 
 [node name="ColorRect" type="ColorRect" parent="PlaceholderCutscene"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -966.0
-offset_top = -543.0
-offset_right = -966.0
-offset_bottom = -543.0
+offset_left = -1275.8733
+offset_top = -824.71216
+offset_right = -574.34937
+offset_bottom = 27.279053
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)

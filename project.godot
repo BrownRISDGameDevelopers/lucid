@@ -22,8 +22,9 @@ MusicController="*res://music/MusicController.tscn"
 
 [display]
 
+window/size/viewport_width=2560
+window/size/viewport_height=1440
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
 
 [input]
 
