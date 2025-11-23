@@ -35,7 +35,6 @@ func get_current_tile() -> Tile:
 	#player.set_path(path)	
 
 @onready var onClickAnim := preload("res://scenes/effects/onClick_anim.tscn")
-@onready var viewport_manager: ViewportManager = $"../ViewportManager"
 func add_animation_at_cursor():
 	var e = onClickAnim.instantiate()
 
