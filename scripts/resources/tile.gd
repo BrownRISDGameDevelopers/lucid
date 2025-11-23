@@ -49,34 +49,20 @@ func get_my_active_edge_pos() -> Vector3:
 	return point.global_position
 	
 func _ready():
-	original_mat = mesh_instance.get_active_material(0)
-	mesh_instance.set_layer_mask(cull_mask)
+	print(self)
+	#original_mat = mesh_instance.get_active_material(0)
 
 func turn_red():
-	var mesh = $StaticBody3D/MeshInstance3D
-	if original_mat:
-		var mat = original_mat.duplicate()
-		mat.albedo_color = Color.RED
-		mesh.set_surface_override_material(0, mat)
+	pass
 
 func turn_blue():
-	var mesh = $StaticBody3D/MeshInstance3D
-	if original_mat:
-		var mat = original_mat.duplicate()
-		mat.albedo_color = Color.BLUE
-		mesh.set_surface_override_material(0, mat)
+	pass
 
 func turn_orange():
-	var mesh = $StaticBody3D/MeshInstance3D
-	if original_mat:
-		var mat = original_mat.duplicate()
-		mat.albedo_color = Color.ORANGE
-		mesh.set_surface_override_material(0, mat)
+	pass
 		
 func reset_material():
-	var mesh = $StaticBody3D/MeshInstance3D
-	if original_mat:
-		mesh.set_surface_override_material(0, original_mat)
+	pass
 		
 func _apply_texture():
 	if not mesh_instance:

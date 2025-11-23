@@ -22,7 +22,7 @@ centered = false
 [node name="FadeOut" parent="." instance=ExtResource("3_8rfww")]
 visible = false
 layout_mode = 1
-next_scene_path = "res://scenes/levels_final/level_3.tscn"
+next_scene_path = "res://scenes/levels_final/level_2.tscn"
 
 [node name="FadeIn" parent="." instance=ExtResource("4_ddbfu")]
 layout_mode = 1

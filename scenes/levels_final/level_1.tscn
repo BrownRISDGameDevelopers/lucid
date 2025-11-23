@@ -68,7 +68,6 @@ endTile = NodePath("TileManager/EndTile/Tile")
 endPath = [NodePath("TileManager/EndTile/Tile"), NodePath("TileManager/EndTile/Tile2")]
 
 [node name="FadeIn" parent="GameManager" instance=ExtResource("3_jgjp7")]
-visible = false
 offset_left = -2.0
 offset_top = -2.0
 offset_right = -2.0
@@ -77,7 +76,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="FadeOut" parent="GameManager" instance=ExtResource("4_stil2")]
 visible = false
-next_scene_path = "res://scenes/levels_final/cutscene_1.tscn"
+next_scene_path = "res://scenes/levels_final/cutscene_2.tscn"
 metadata/_edit_use_anchors_ = true
 
 [node name="TileManager" type="Node" parent="GameManager"]

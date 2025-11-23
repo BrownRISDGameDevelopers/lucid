@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bl5elqblk7exp"]
+[gd_scene load_steps=26 format=3 uid="uid://bl5elqblk7exp"]
 
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_s6r6f"]
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_qxoke"]
@@ -13,12 +13,23 @@
 [ext_resource type="Script" uid="uid://ceswyojo8w7fl" path="res://scripts/button.gd" id="8_khtfd"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="8_n4811"]
 [ext_resource type="PackedScene" uid="uid://di6pbm4alu27" path="res://art_assets/level_assets/tutorial/Lucid_Tutorial_MovingPiece.fbx" id="8_qxoke"]
-[ext_resource type="Script" path="res://scripts/pivot.gd" id="9_3yli5"]
+[ext_resource type="Script" uid="uid://b2oer3vrrxc4p" path="res://scripts/pivot.gd" id="9_3yli5"]
 [ext_resource type="PackedScene" uid="uid://ch8q07lt0wpsl" path="res://scenes/tiles/SubtractEndTile.tscn" id="9_8cbr6"]
 [ext_resource type="Script" uid="uid://f3yj2hoadgke" path="res://art_assets/level_assets/tutorial/rotator.gd" id="11_benmj"]
+[ext_resource type="Script" uid="uid://dipwhcd5pofak" path="res://scripts/static_body_3d.gd" id="12_x8pvt"]
+[ext_resource type="Texture2D" uid="uid://defn03uoyh8p6" path="res://materials/PavingStones084_1K-JPG_Color.jpg" id="13_3a58j"]
 [ext_resource type="Texture2D" uid="uid://cpoke4eilx4e4" path="res://ui/tutorial/floor-indicator-default.png" id="14_8cbr6"]
+[ext_resource type="Script" uid="uid://bxnbdtrsvlbhm" path="res://scripts/editor_node.gd" id="14_fgcsx"]
 [ext_resource type="Script" uid="uid://c16bb3duxww08" path="res://scenes/levels_final/tutorial_popup_manager.gd" id="14_x4wrt"]
 [ext_resource type="Texture2D" uid="uid://d4bl34f3rohwe" path="res://ui/tutorial/button-indicator-default.png" id="17_4tfe6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hoq8d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ht65u"]
+albedo_texture = ExtResource("13_3a58j")
+
+[sub_resource type="BoxMesh" id="BoxMesh_6llsq"]
+material = SubResource("StandardMaterial3D_ht65u")
 
 [node name="Tutorial" type="Node"]
 
@@ -73,7 +84,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="FadeOut" parent="GameManager" instance=ExtResource("4_3yli5")]
 visible = false
-next_scene_path = "res://scenes/levels_final/cutscene_2.tscn"
+next_scene_path = "res://scenes/levels_final/cutscene_1.tscn"
 
 [node name="TileManager" type="Node" parent="GameManager"]
 script = ExtResource("5_benmj")
@@ -117,12 +128,39 @@ neighbors = [NodePath("../Tile8"), NodePath("../Tile12")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.075, 0.005, -0.015)
 neighbors = [NodePath("../Tile11"), NodePath("../Tile7"), NodePath("../Tile15")]
 
+[node name="Tile" parent="GameManager/TileManager/grp1/EndTile" index="0" node_paths=PackedStringArray("neighbors")]
+neighbors = [NodePath("../EndPathTile"), NodePath("../../Tile7"), NodePath("../../Tile11"), NodePath("../../Tile15")]
+
 [node name="EndPathTile" parent="GameManager/TileManager/grp1/EndTile" index="2" node_paths=PackedStringArray("neighbors")]
 neighbors = [NodePath("../Tile"), null, null]
 
+[node name="StaticBody3D2" type="StaticBody3D" parent="GameManager/TileManager/grp1/EndTile/EndPathTile" index="2"]
+script = ExtResource("12_x8pvt")
+
+[node name="CollisionShape3D" parent="GameManager/TileManager/grp1/EndTile/EndPathTile/StaticBody3D2" index="0"]
+shape = SubResource("BoxShape3D_hoq8d")
+debug_color = Color(0.1809377, 0.51587296, 1, 0.41960785)
+
+[node name="MeshInstance3D" parent="GameManager/TileManager/grp1/EndTile/EndPathTile/StaticBody3D2" index="1"]
+mesh = SubResource("BoxMesh_6llsq")
+skeleton = NodePath("../../StaticBody3D2")
+script = ExtResource("14_fgcsx")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="GameManager/TileManager/grp1/EndTile"]
+script = ExtResource("12_x8pvt")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="GameManager/TileManager/grp1/EndTile/StaticBody3D2"]
+shape = SubResource("BoxShape3D_hoq8d")
+debug_color = Color(0.1809377, 0.51587296, 1, 0.41960785)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="GameManager/TileManager/grp1/EndTile/StaticBody3D2"]
+mesh = SubResource("BoxMesh_6llsq")
+skeleton = NodePath("../../StaticBody3D2")
+script = ExtResource("14_fgcsx")
+
 [node name="Tile11" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.075, 0.005, -0.005)
-neighbors = [NodePath("../EndTile"), NodePath("../Tile8"), NodePath("../Tile14"), NodePath("../Tile12")]
+neighbors = [NodePath("../EndTile/Tile"), NodePath("../Tile8"), NodePath("../Tile14"), NodePath("../Tile12")]
 
 [node name="Tile12" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.075, 0.005, 0.005)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="1_b8m43"]
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_n1n45"]
-[ext_resource type="Script" uid="uid://ca4k8wgg14r22" path="res://scenes/levels_final/level_2.gd" id="1_tg2i7"]
+[ext_resource type="Script" path="res://scenes/levels_final/level_2.gd" id="1_tg2i7"]
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="2_l37hd"]
 [ext_resource type="PackedScene" uid="uid://bc1dnytj85k3q" path="res://scenes/tiles/tile2.tscn" id="2_ldr4v"]
 [ext_resource type="Texture2D" uid="uid://d2uie1gijknh0" path="res://art_assets/backgrounds/Level2_bg01.png" id="2_v713s"]
@@ -20,9 +20,9 @@
 [ext_resource type="PackedScene" uid="uid://cbeaqv8ov8nlg" path="res://art_assets/level_assets/level_2/Level2_Moving3.fbx" id="14_sglaa"]
 [ext_resource type="PackedScene" uid="uid://t0glmngiyj23" path="res://art_assets/level_assets/level_2/Level2_Moving4.fbx" id="15_v713s"]
 [ext_resource type="Script" uid="uid://cq1wyuk75a8oh" path="res://scenes/levels/water_movement_no_shader.gd" id="16_tg2i7"]
-[ext_resource type="Script" path="res://scenes/levels/waterfall_manager.gd" id="17_sglaa"]
-[ext_resource type="PackedScene" uid="uid://chrmyh0ov3ucn" path="res://scenes/tiles/moving_tile.tscn" id="19_ldr4v"]
-[ext_resource type="PackedScene" path="res://scenes/components/top_water.tscn" id="23_6eqly"]
+[ext_resource type="Script" uid="uid://uxltb4grdhg5" path="res://scenes/levels/waterfall_manager.gd" id="17_sglaa"]
+[ext_resource type="PackedScene" uid="uid://pu2rreyu3h07" path="res://scenes/tiles/moving_tile.tscn" id="19_ldr4v"]
+[ext_resource type="PackedScene" uid="uid://81hh1nbermtp" path="res://scenes/components/top_water.tscn" id="23_6eqly"]
 [ext_resource type="PackedScene" uid="uid://cb6xuogi2rgyh" path="res://art_assets/level_assets/level_2/Level2_Static_Edits.fbx" id="24_sglaa"]
 [ext_resource type="PackedScene" uid="uid://b6mavwkns3dkt" path="res://scenes/tiles/EndTile.tscn" id="24_v713s"]
 
@@ -305,7 +305,7 @@ visible = false
 
 [node name="FadeOut" parent="GameManager" instance=ExtResource("4_38kho")]
 visible = false
-next_scene_path = "res://scenes/levels_final/cutscene_2.tscn"
+next_scene_path = "res://scenes/levels_final/cutscene_3.tscn"
 
 [node name="TileManager" type="Node" parent="GameManager"]
 script = ExtResource("2_l37hd")
