@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://domtninoce46l" path="res://scenes/levels_final/pause_scene.gd" id="1_i4tar"]
 [ext_resource type="Script" uid="uid://dkgb0qv7w2sgn" path="res://ui/credits.gd" id="2_q0wae"]
-[ext_resource type="Texture2D" uid="uid://d2m45k8flei0t" path="res://ui/art assets/Credits Screen No Text.png" id="3_xsj2m"]
+[ext_resource type="Texture2D" uid="uid://cgk3srt7j5dqb" path="res://ui/art assets/credits-final.png" id="3_i4tar"]
 [ext_resource type="Texture2D" uid="uid://cxtaonypetc4i" path="res://ui/art assets/back-default.png" id="4_me6xl"]
 [ext_resource type="Texture2D" uid="uid://1lkghm61kdik" path="res://ui/art assets/back-pressed.png" id="5_q2p7t"]
 [ext_resource type="Texture2D" uid="uid://db52oltir2h3q" path="res://ui/art assets/back-hover.png" id="6_dbcpr"]
@@ -44,7 +44,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_xsj2m")
+texture = ExtResource("3_i4tar")
 expand_mode = 1
 
 [node name="Back" type="TextureButton" parent="Credits"]

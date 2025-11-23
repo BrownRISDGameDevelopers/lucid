@@ -1,8 +1,8 @@
 [gd_scene load_steps=20 format=3 uid="uid://bl5elqblk7exp"]
 
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_s6r6f"]
-[ext_resource type="Texture2D" uid="uid://chvtf8swwgnhb" path="res://art_assets/backgrounds/level_0_bg.jpg" id="2_4f1wj"]
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_qxoke"]
+[ext_resource type="Texture2D" uid="uid://fd3m1k2anjwr" path="res://art_assets/backgrounds/tutorial bg.jpg" id="2_r242y"]
 [ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="3_4f1wj"]
 [ext_resource type="Texture2D" uid="uid://blixubct3j8xt" path="res://ui/tutorial/Point and click-popup.png" id="3_sowk6"]
 [ext_resource type="PackedScene" uid="uid://cyw7cdjci5gg2" path="res://scenes/components/fade_out.tscn" id="4_3yli5"]
@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://ceswyojo8w7fl" path="res://scripts/button.gd" id="8_khtfd"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="8_n4811"]
 [ext_resource type="PackedScene" uid="uid://di6pbm4alu27" path="res://art_assets/level_assets/tutorial/Lucid_Tutorial_MovingPiece.fbx" id="8_qxoke"]
-[ext_resource type="Script" uid="uid://b2oer3vrrxc4p" path="res://scripts/pivot.gd" id="9_3yli5"]
+[ext_resource type="Script" path="res://scripts/pivot.gd" id="9_3yli5"]
 [ext_resource type="PackedScene" uid="uid://ch8q07lt0wpsl" path="res://scenes/tiles/SubtractEndTile.tscn" id="9_8cbr6"]
 [ext_resource type="Script" uid="uid://f3yj2hoadgke" path="res://art_assets/level_assets/tutorial/rotator.gd" id="11_benmj"]
 [ext_resource type="Texture2D" uid="uid://cpoke4eilx4e4" path="res://ui/tutorial/floor-indicator-default.png" id="14_8cbr6"]
@@ -23,7 +23,7 @@
 [node name="Tutorial" type="Node"]
 
 [node name="ViewportManager" parent="." instance=ExtResource("1_s6r6f")]
-background = ExtResource("2_4f1wj")
+background = Array[Texture2D]([ExtResource("2_r242y")])
 
 [node name="Background" parent="ViewportManager/BackgroundViewport/SubViewport" index="0"]
 transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 18, 23, 18.87)
@@ -45,7 +45,7 @@ size = 19.0
 transform = Transform3D(0.70710677, -0.40860698, 0.57709646, 0, 0.8161376, 0.57785755, -0.70710677, -0.40860698, 0.57709646, 18, 23, 18.87)
 size = 19.0
 
-[node name="film_grain" parent="ViewportManager" index="6"]
+[node name="film_grain" parent="ViewportManager" index="7"]
 offset_left = -37.0
 offset_top = 27.0
 offset_right = -1189.0
@@ -116,6 +116,9 @@ neighbors = [NodePath("../Tile8"), NodePath("../Tile12")]
 [node name="EndTile" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("9_8cbr6")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.075, 0.005, -0.015)
 neighbors = [NodePath("../Tile11"), NodePath("../Tile7"), NodePath("../Tile15")]
+
+[node name="EndPathTile" parent="GameManager/TileManager/grp1/EndTile" index="2" node_paths=PackedStringArray("neighbors")]
+neighbors = [NodePath("../Tile"), null, null]
 
 [node name="Tile11" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.075, 0.005, -0.005)

@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://domtninoce46l" path="res://scenes/levels_final/pause_scene.gd" id="1_u3xco"]
 [ext_resource type="Script" uid="uid://dkgb0qv7w2sgn" path="res://ui/credits.gd" id="2_h5etj"]
 [ext_resource type="Texture2D" uid="uid://cqatnrt214vsr" path="res://ui/pause assets/quit-default.png" id="2_u3xco"]
-[ext_resource type="Texture2D" uid="uid://d2m45k8flei0t" path="res://ui/art assets/Credits Screen No Text.png" id="3_4bl52"]
 [ext_resource type="Texture2D" uid="uid://4h1rs8xutb61" path="res://ui/pause assets/quit-pressed.png" id="3_saspj"]
 [ext_resource type="Texture2D" uid="uid://cxtaonypetc4i" path="res://ui/art assets/back-default.png" id="4_e7tt4"]
 [ext_resource type="Texture2D" uid="uid://whbec1kmmctw" path="res://ui/pause assets/quit-hover.png" id="4_l5ip4"]
@@ -19,6 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://pd1fwedsft5o" path="res://ui/pause assets/resume-default.png" id="11_26mtp"]
 [ext_resource type="Texture2D" uid="uid://vifefvfylqng" path="res://ui/pause assets/resume-pressed.png" id="12_lnl1o"]
 [ext_resource type="Texture2D" uid="uid://yqv10ljstfhk" path="res://ui/pause assets/resume-hover.png" id="13_ln16r"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1bagf"]
+load_path = "res://.godot/imported/Credits Screen No Text.png-759fec4774f3cfdcfc14e7e508658910.ctex"
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_u3xco")
@@ -43,7 +45,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_4bl52")
+texture = SubResource("CompressedTexture2D_1bagf")
 expand_mode = 1
 
 [node name="Back" type="TextureButton" parent="Credits"]

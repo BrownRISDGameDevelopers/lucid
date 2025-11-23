@@ -1,10 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://vc5e83umfvp5"]
 
 [ext_resource type="Script" uid="uid://dkgb0qv7w2sgn" path="res://ui/credits.gd" id="1_wglle"]
-[ext_resource type="Texture2D" uid="uid://d2m45k8flei0t" path="res://ui/art assets/Credits Screen No Text.png" id="2_krac2"]
 [ext_resource type="Texture2D" uid="uid://cxtaonypetc4i" path="res://ui/art assets/back-default.png" id="3_43o1a"]
 [ext_resource type="Texture2D" uid="uid://1lkghm61kdik" path="res://ui/art assets/back-pressed.png" id="4_myrvx"]
 [ext_resource type="Texture2D" uid="uid://db52oltir2h3q" path="res://ui/art assets/back-hover.png" id="5_l6tae"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1bagf"]
+load_path = "res://.godot/imported/Credits Screen No Text.png-759fec4774f3cfdcfc14e7e508658910.ctex"
 
 [node name="Credits" type="Control"]
 visible = false
@@ -25,7 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_krac2")
+texture = SubResource("CompressedTexture2D_1bagf")
 expand_mode = 1
 
 [node name="Back" type="TextureButton" parent="."]
