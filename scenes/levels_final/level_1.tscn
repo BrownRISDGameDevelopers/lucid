@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cdqy8xr822ecb"]
+[gd_scene load_steps=27 format=3 uid="uid://cdqy8xr822ecb"]
 
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_2vk4a"]
 [ext_resource type="Script" uid="uid://bgq1ie1r30gq" path="res://scenes/levels_final/level_1.gd" id="1_nfb17"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://ctwqggbt2dl0o" path="res://ui/pause assets/settings-pressed.png" id="15_3mg3d"]
 [ext_resource type="Texture2D" uid="uid://2f45062s7fg7" path="res://ui/pause assets/pause-screen-no-buttons.png" id="16_b0ee0"]
 [ext_resource type="Texture2D" uid="uid://mres1ec6htta" path="res://ui/pause assets/settings-hover.png" id="16_r5awb"]
+[ext_resource type="PackedScene" uid="uid://2efpp7045had" path="res://scenes/tiles/TeleportSquare.fbx" id="26_0pgt2"]
 
 [node name="Level2" type="Node"]
 script = ExtResource("1_nfb17")
@@ -787,6 +788,9 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 14.5
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("8_hect5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -1.755, 16.5)
 current = NodePath("../TileManager/aT1")
+
+[node name="TeleportSquare" parent="." instance=ExtResource("26_0pgt2")]
+transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, -8.845, 2.145, 1.945)
 
 [connection signal="pressed" from="ViewportManager/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="ViewportManager/UI/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
