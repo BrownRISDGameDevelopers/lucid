@@ -9,51 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="4_k76nu"]
 [ext_resource type="PackedScene" uid="uid://b8nhwpsguopu5" path="res://scenes/components/move_goal.tscn" id="8_ldr4v"]
 [ext_resource type="PackedScene" uid="uid://do48gbwqu8jmc" path="res://scenes/tiles/button.tscn" id="9_ldr4v"]
-<<<<<<< Updated upstream
-[ext_resource type="ArrayMesh" uid="uid://bdlthcgbx2m3y" path="res://art_assets/level_assets/level_2/Level2-Water2.obj" id="11_ldr4v"]
-[ext_resource type="ArrayMesh" uid="uid://dkhmf4k5orma5" path="res://art_assets/level_assets/level_2/Level2_Moving4.obj" id="12_btjvf"]
-[ext_resource type="ArrayMesh" uid="uid://c7e8n7sajiai5" path="res://art_assets/level_assets/level_2/Level2_Moving5.obj" id="13_r11qm"]
-[ext_resource type="ArrayMesh" uid="uid://ddxchv15uhed1" path="res://art_assets/level_assets/level_2/Level2_Water1.obj" id="15_sglaa"]
-[ext_resource type="ArrayMesh" uid="uid://d2fu4pnincafu" path="res://art_assets/level_assets/level_2/Level2_Moving1.obj" id="15_tg2i7"]
-[ext_resource type="ArrayMesh" uid="uid://bxmm3qymchqb7" path="res://art_assets/level_assets/level_2/Level2_Water3.obj" id="17_tg2i7"]
-[ext_resource type="ArrayMesh" uid="uid://dysmbfl30m44e" path="res://art_assets/level_assets/level_2/Level2_Water4.obj" id="18_mcx1i"]
-[ext_resource type="PackedScene" uid="uid://chrmyh0ov3ucn" path="res://scenes/tiles/moving_tile.tscn" id="19_ldr4v"]
-[ext_resource type="ArrayMesh" uid="uid://barhivcvbpyxn" path="res://art_assets/level_assets/level_2/Level2_Static(1).obj" id="19_soegq"]
-[ext_resource type="ArrayMesh" uid="uid://glvoa8t465lq" path="res://art_assets/level_assets/level_2/Level2_Water5.obj" id="19_uqwvf"]
-[ext_resource type="ArrayMesh" uid="uid://bea4cm0ag0x42" path="res://art_assets/level_assets/level_2/level2_Water6.obj" id="20_gbof1"]
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_30rbb"]
-_surfaces = [{
-"aabb": AABB(3, 7, -2, 2, 0.5, 2),
-"format": 34896613377,
-"index_count": 96,
-"index_data": PackedByteArray("CAABAAkACQABAAoAAQAIAAMAAQADAAoACQAKAAsACgADAAwACgAMAAIACwAKAAIAAwANAAwAAwAIAA0AAgAMAAcABwALAAIADAANAA4ADAAOAAcADQAIAAUADQAFAA4ABQAIAAAABwAOAA8ADwALAAcADgAFABAADgAQAA8ABQAAABAAAAAIABEAEAAAABEAEQAIAAkADwAQAAYAEAARAAYABgALAA8AEQAJAAQABgARAAQABAAJAAsABAALAAYA"),
-"lods": [0.00026261146, PackedByteArray("AAABAAIAAQADAAIAAQAAAAMABAAAAAIAAwAAAAUABgAAAAQABQAAAAYABAACAAYAAwAFAAcAAgADAAcABwAFAAYABgACAAcA")],
-"name": "standardSurface4SG",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 18,
-"vertex_data": PackedByteArray("////////AAAAAP////8AAAAA//8AAAAAAAAAAP//AAD/////AAAAAP//AAD//wAA//8AAAAAAAAAAAAAAAAAAP9//////wAA/3////9/AAAAAP///38AAP9///8AAAAAAAAAAP9/AAD/fwAA//8AAP9/AAD/fwAA/38AAAAAAAD//wAA/38AAP//////fwAA")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_fr3t1"]
-_surfaces = [{
-"aabb": AABB(3, 7, -2, 2, 0.5, 2),
-"attribute_data": PackedByteArray("HIfc3wgSeKBJbKMf9+UXgUW/swNox6EHUrGtJnm4WyQdj///HIfc3///b5z35ReBaMehB2zlgRt5uFskudGHOAgSeKAch9zfAAD4wh2P//8YzDU/UrGtJrnRhzh5uFskbk8qxRN6n4W6PLJcKrUItSSqAU341lgRIr+UFtLNzx/U2+spV8Q8Lpu2lBMiv5QWcMxA0Sq1CLVuTyrFtUE66Vm+UzRXxDwu"),
-"format": 34896613399,
-"index_count": 96,
-"index_data": PackedByteArray("GAABABkAGQABABoAGwAYABkAAAAYABsAGwAZAAMAAwAZABwAGQAaABwAHAAaAAIADAAdAB4AHgAdAB8AHQANAB8AHgAfAA4AHwANACAADgAfACEAHwAgACEAIQAgAA8ABAAFACIAIgAFACMAIgAjAAYABgAjAAcACAAJACQAJAAJACUAJAAlAAoACgAlAAsAEAAmABIAEgAmACcAJwAmABMAEwAmABEAFAAoABYAFgAoACkAKQAoABcAFwAoABUA"),
-"lods": [0.00026261146, PackedByteArray("AAABAAIAAwAAAAIABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA")],
-"name": "standardSurface4SG",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 42,
-"vertex_data": PackedByteArray("////////FcMAAP/////UwgAA//8AAAbE/////wAAXcUAAP////97ywAAAAD//+vLAAD//wAAwtgAAAAAAABW3f//AAD//+bD////////+MP//wAAAACVxf////8AAJ3FAAAAAP//SsP//wAA//+ywwAAAAAAAIHD//8AAAAAuMMAAP/////pk////////wmQAAAAAP//5pP//wAA///6jv////8AAP//AAD//wAA/////wAAAAD//wAAAAAAAP///3//////IMP/f////3/7wwAA////f2vD//////9/Z8T/f///AACkxP9/AAD//3jDAAAAAP9/WMP/fwAA/3+Fw///AAD/f7PD/38AAAAAosMAAP///3+KzQAAAAD/f5zP//8AAP9/xMT//////3/SxP9//////7KQ/38AAP//KZD/f///AAD///9/AAAAAP//s+hoUWHpxFKC5gdN/+MASI1cGrkmXEy4WVOypupQ1KE3mXAyX5nAMlycujhpnNM40Behr8YYjbFWGKuw0ximsf////////////////////9p3mpeksqSSjTeNF4G0AZQluguUZnmNU3c57pPveV7S0flkEpAGH+w8xfnr14YvLDHGI+xohhDscFagrUjWUey85rnNQybGTb//////////x3bHVsZ3hle")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_30rbb")
-=======
 [ext_resource type="PackedScene" uid="uid://bvt37p45blcef" path="res://art_assets/level_assets/level_2/Level2_Moving1.fbx" id="12_r11qm"]
 [ext_resource type="PackedScene" uid="uid://w73x1dabvbsj" path="res://art_assets/level_assets/level_2/Level2_Moving2.fbx" id="13_6eqly"]
 [ext_resource type="PackedScene" uid="uid://cbeaqv8ov8nlg" path="res://art_assets/level_assets/level_2/Level2_Moving3.fbx" id="14_sglaa"]
@@ -69,7 +24,6 @@ shadow_mesh = SubResource("ArrayMesh_30rbb")
 [ext_resource type="PackedScene" uid="uid://co7kdj3lxbv58" path="res://art_assets/level_assets/level_2/Level2_Water6.fbx" id="22_co1tg"]
 [ext_resource type="PackedScene" uid="uid://81hh1nbermtp" path="res://scenes/components/top_water.tscn" id="23_6eqly"]
 [ext_resource type="PackedScene" uid="uid://cb6xuogi2rgyh" path="res://art_assets/level_assets/level_2/Level2_Static_Edits.fbx" id="24_sglaa"]
->>>>>>> Stashed changes
 
 [node name="Level2" type="Node"]
 
