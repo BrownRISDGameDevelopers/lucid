@@ -15,8 +15,8 @@ grow_vertical = 2
 script = ExtResource("1_p31d0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(580.2288, 322.15994)
-scale = Vector2(0.595595, 0.6034075)
+position = Vector2(1300.5579, 732.65985)
+scale = Vector2(1.3459376, 1.3635925)
 texture = ExtResource("2_p31d0")
 metadata/_edit_use_anchors_ = true
 
