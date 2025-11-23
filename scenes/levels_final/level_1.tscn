@@ -1,33 +1,21 @@
-[gd_scene load_steps=27 format=3 uid="uid://cdqy8xr822ecb"]
+[gd_scene load_steps=15 format=3 uid="uid://cdqy8xr822ecb"]
 
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_2vk4a"]
 [ext_resource type="Script" uid="uid://bgq1ie1r30gq" path="res://scenes/levels_final/level_1.gd" id="1_nfb17"]
 [ext_resource type="Texture2D" uid="uid://bu11ytrhfxyxk" path="res://art_assets/backgrounds/level_1_bg.jpg" id="2_stil2"]
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_t3jqk"]
+[ext_resource type="PackedScene" uid="uid://ddcugk7opvc2s" path="res://scenes/levels_final/ui_pause_final.tscn" id="3_4mmjp"]
 [ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="3_jgjp7"]
 [ext_resource type="PackedScene" uid="uid://cyw7cdjci5gg2" path="res://scenes/components/fade_out.tscn" id="4_stil2"]
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="5_nfb17"]
-[ext_resource type="Texture2D" uid="uid://pd1fwedsft5o" path="res://ui/pause assets/resume-default.png" id="5_tlcqo"]
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="6_4mmjp"]
-[ext_resource type="Texture2D" uid="uid://vifefvfylqng" path="res://ui/pause assets/resume-pressed.png" id="6_h7g5c"]
 [ext_resource type="PackedScene" uid="uid://c4hedq5osxf2b" path="res://scenes/tiles/stairs.tscn" id="7_i5pa6"]
-[ext_resource type="Texture2D" uid="uid://yqv10ljstfhk" path="res://ui/pause assets/resume-hover.png" id="7_lhfvd"]
-[ext_resource type="Texture2D" uid="uid://cqatnrt214vsr" path="res://ui/pause assets/quit-default.png" id="8_b0ee0"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="8_hect5"]
 [ext_resource type="PackedScene" uid="uid://b6mavwkns3dkt" path="res://scenes/tiles/EndTile.tscn" id="8_t3jqk"]
-[ext_resource type="Texture2D" uid="uid://4h1rs8xutb61" path="res://ui/pause assets/quit-pressed.png" id="9_0pgt2"]
 [ext_resource type="PackedScene" uid="uid://j8h3rmyib35u" path="res://art_assets/level_assets/level_1/FOR_GODOT_level1_final.fbx" id="9_jgjp7"]
-[ext_resource type="Texture2D" uid="uid://whbec1kmmctw" path="res://ui/pause assets/quit-hover.png" id="10_ak438"]
-[ext_resource type="Texture2D" uid="uid://db83r1gsp5nqq" path="res://ui/pause assets/credits-default.png" id="11_6tg13"]
-[ext_resource type="Texture2D" uid="uid://blmq7ufbowg68" path="res://ui/pause assets/credits-pressed.png" id="12_a4jdd"]
-[ext_resource type="Texture2D" uid="uid://ckn5y85u33exq" path="res://ui/pause assets/credits-hover.png" id="13_28ip0"]
-[ext_resource type="Texture2D" uid="uid://c8n86ohf27352" path="res://ui/pause assets/settings-default.png" id="14_hw6d3"]
-[ext_resource type="Texture2D" uid="uid://ctwqggbt2dl0o" path="res://ui/pause assets/settings-pressed.png" id="15_3mg3d"]
-[ext_resource type="Texture2D" uid="uid://2f45062s7fg7" path="res://ui/pause assets/pause-screen-no-buttons.png" id="16_b0ee0"]
-[ext_resource type="Texture2D" uid="uid://mres1ec6htta" path="res://ui/pause assets/settings-hover.png" id="16_r5awb"]
 [ext_resource type="PackedScene" uid="uid://2efpp7045had" path="res://scenes/tiles/TeleportSquare.fbx" id="26_0pgt2"]
 
-[node name="Level2" type="Node"]
+[node name="Level1" type="Node"]
 script = ExtResource("1_nfb17")
 
 [node name="ViewportManager" parent="." instance=ExtResource("1_2vk4a")]
@@ -75,83 +63,7 @@ size = 20.0
 transform = Transform3D(0.70710677, -0.40860698, 0.57709646, 0, 0.8161376, 0.57785755, -0.70710677, -0.40860698, 0.57709646, 18, 22, 22)
 size = 20.0
 
-[node name="UI" type="CanvasLayer" parent="ViewportManager"]
-
-[node name="PauseMenu" type="TextureRect" parent="ViewportManager/UI"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("16_b0ee0")
-expand_mode = 3
-
-[node name="PauseButton" type="Button" parent="ViewportManager/UI"]
-anchors_preset = -1
-anchor_left = 0.92700005
-anchor_top = 0.034
-anchor_right = 0.975
-anchor_bottom = 0.082
-offset_left = 0.095947266
-offset_top = -0.032001495
-offset_right = -0.20007324
-offset_bottom = -0.13600159
-text = "Pause
-"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ViewportManager/UI"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -296.0
-offset_top = 70.0
-offset_right = 2674.0
-offset_bottom = 70.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.2, 0.2)
-size_flags_vertical = 3
-theme_override_constants/separation = -1210
-
-[node name="QuitButton" type="TextureButton" parent="ViewportManager/UI/VBoxContainer"]
-process_mode = 2
-layout_mode = 2
-size_flags_horizontal = 4
-texture_normal = ExtResource("8_b0ee0")
-texture_pressed = ExtResource("9_0pgt2")
-texture_hover = ExtResource("10_ak438")
-metadata/_edit_use_anchors_ = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ViewportManager/UI/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 794
-
-[node name="CreditsButton" type="TextureButton" parent="ViewportManager/UI/VBoxContainer/HBoxContainer"]
-process_mode = 2
-layout_mode = 2
-texture_normal = ExtResource("11_6tg13")
-texture_pressed = ExtResource("12_a4jdd")
-texture_hover = ExtResource("13_28ip0")
-metadata/_edit_use_anchors_ = true
-
-[node name="SettingsButton" type="TextureButton" parent="ViewportManager/UI/VBoxContainer/HBoxContainer"]
-process_mode = 2
-layout_mode = 2
-texture_normal = ExtResource("14_hw6d3")
-texture_pressed = ExtResource("15_3mg3d")
-texture_hover = ExtResource("16_r5awb")
-metadata/_edit_use_anchors_ = true
-
-[node name="ResumeButton" type="TextureButton" parent="ViewportManager/UI/VBoxContainer"]
-process_mode = 2
-layout_mode = 2
-size_flags_horizontal = 4
-texture_normal = ExtResource("5_tlcqo")
-texture_pressed = ExtResource("6_h7g5c")
-texture_hover = ExtResource("7_lhfvd")
-metadata/_edit_use_anchors_ = true
+[node name="UI" parent="ViewportManager" instance=ExtResource("3_4mmjp")]
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile", "endPath")]
 script = ExtResource("2_t3jqk")
@@ -791,12 +703,6 @@ current = NodePath("../TileManager/aT1")
 
 [node name="TeleportSquare" parent="." instance=ExtResource("26_0pgt2")]
 transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, -8.845, 2.145, 1.945)
-
-[connection signal="pressed" from="ViewportManager/UI/PauseButton" to="." method="_on_pause_button_pressed"]
-[connection signal="pressed" from="ViewportManager/UI/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="ViewportManager/UI/VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="ViewportManager/UI/VBoxContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="ViewportManager/UI/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 
 [editable path="ViewportManager"]
 [editable path="GameManager/TileManager/EndTile"]

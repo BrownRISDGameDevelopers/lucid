@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 [gd_scene load_steps=24 format=3 uid="uid://cyxclfcuei44u"]
 
 [ext_resource type="Script" path="res://scripts/player_tracker.gd" id="1_g01up"]
+=======
+[gd_scene load_steps=19 format=3 uid="uid://cyxclfcuei44u"]
+
+[ext_resource type="Script" path="res://scripts/player_tracker.gd" id="1_g01up"]
+[ext_resource type="Script" uid="uid://hwgrkcv2v446" path="res://scenes/levels_final/level_3.gd" id="1_jecn1"]
+>>>>>>> d81864c3173f11a01d2eca99cdce1fe1ae07b48e
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_g01up"]
 [ext_resource type="Script" uid="uid://dfw405aqqwl5d" path="res://scripts/viewport_manager.gd" id="2_rxvjb"]
 [ext_resource type="PackedScene" uid="uid://x34f43g4beul" path="res://scenes/components/film_grain.tscn" id="3_jecn1"]
@@ -10,10 +17,16 @@
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="6_6dlra"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="7_0co5s"]
 [ext_resource type="Script" uid="uid://d3oeagq24crur" path="res://scripts/move_goal.gd" id="8_frfm7"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://pu2rreyu3h07" path="res://scenes/tiles/moving_tile.tscn" id="9_70vga"]
 [ext_resource type="ArrayMesh" uid="uid://dt80ir60oa3np" path="res://art_assets/level_assets/level_3/Level3_Moving1.obj" id="11_5pw72"]
 [ext_resource type="Texture2D" uid="uid://n0ys0vw30ys5" path="res://art_assets/level_assets/level_3/level3_Moving1_0.png" id="12_c3qt3"]
 [ext_resource type="ArrayMesh" uid="uid://cv4fuf72w3nlr" path="res://art_assets/level_assets/level_3/Level3_Moving2.obj" id="13_ao8po"]
+=======
+[ext_resource type="PackedScene" uid="uid://chrmyh0ov3ucn" path="res://scenes/tiles/moving_tile.tscn" id="9_70vga"]
+[ext_resource type="PackedScene" uid="uid://bktfroucmp0rp" path="res://art_assets/level_assets/level_3/level3_Moving1.fbx" id="11_rxvjb"]
+[ext_resource type="PackedScene" uid="uid://bv383eca7vp8q" path="res://art_assets/level_assets/level_3/Level3_Moving2.fbx" id="12_jecn1"]
+>>>>>>> d81864c3173f11a01d2eca99cdce1fe1ae07b48e
 [ext_resource type="PackedScene" uid="uid://c4hedq5osxf2b" path="res://scenes/tiles/stairs.tscn" id="13_rxvjb"]
 [ext_resource type="Texture2D" uid="uid://bg862irj6sjb4" path="res://art_assets/level_assets/level_3/Level3_Moving2_0.png" id="14_7j0l5"]
 [ext_resource type="ArrayMesh" uid="uid://1cqdul2vt828" path="res://art_assets/level_assets/level_3/Level3_Moving3.obj" id="15_marfn"]
@@ -31,6 +44,7 @@ albedo_texture = ExtResource("14_7j0l5")
 albedo_texture = ExtResource("16_qnyam")
 
 [node name="Level3" type="Node"]
+script = ExtResource("1_jecn1")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 18, 18)

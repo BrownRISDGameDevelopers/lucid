@@ -19,7 +19,6 @@ config/icon="uid://b8u0flfhqivst"
 
 ChangeScene="*res://ui/change_scene.tscn"
 MusicController="*res://music/MusicController.tscn"
-Settingspause="*res://scenes/levels_final/settingspause.tscn"
 
 [input]
 

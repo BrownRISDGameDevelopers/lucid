@@ -12,6 +12,13 @@ func _on_exit_pressed() -> void:
 func _on_play_pressed() -> void:
 	ChangeScene.change_scene(ChangeScene.level1)
 
+@onready var title: TextureRect = $Title
+@onready var texture_rect: TextureRect = $TextureRect
+@onready var credits: Control = $Credits
+@onready var v_box_container: VBoxContainer = $VBoxContainer
 
 func _on_credits_pressed() -> void:
-	ChangeScene.change_scene(ChangeScene.credits)
+	title.visible = false
+	v_box_container.visible = false
+	texture_rect.visible = false
+	credits.visible = true

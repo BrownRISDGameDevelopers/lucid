@@ -1,0 +1,147 @@
+[gd_scene load_steps=20 format=3 uid="uid://dk618t4ajwg2x"]
+
+[ext_resource type="Texture2D" uid="uid://2f45062s7fg7" path="res://ui/pause assets/pause-screen-no-buttons.png" id="1_eu3q0"]
+[ext_resource type="Script" uid="uid://domtninoce46l" path="res://scenes/levels_final/pause_scene.gd" id="1_u3xco"]
+[ext_resource type="Script" uid="uid://dkgb0qv7w2sgn" path="res://ui/credits.gd" id="2_h5etj"]
+[ext_resource type="Texture2D" uid="uid://cqatnrt214vsr" path="res://ui/pause assets/quit-default.png" id="2_u3xco"]
+[ext_resource type="Texture2D" uid="uid://d2m45k8flei0t" path="res://ui/art assets/Credits Screen No Text.png" id="3_4bl52"]
+[ext_resource type="Texture2D" uid="uid://4h1rs8xutb61" path="res://ui/pause assets/quit-pressed.png" id="3_saspj"]
+[ext_resource type="Texture2D" uid="uid://cxtaonypetc4i" path="res://ui/art assets/back-default.png" id="4_e7tt4"]
+[ext_resource type="Texture2D" uid="uid://whbec1kmmctw" path="res://ui/pause assets/quit-hover.png" id="4_l5ip4"]
+[ext_resource type="Texture2D" uid="uid://db83r1gsp5nqq" path="res://ui/pause assets/credits-default.png" id="5_wjwla"]
+[ext_resource type="Texture2D" uid="uid://1lkghm61kdik" path="res://ui/art assets/back-pressed.png" id="5_wng6q"]
+[ext_resource type="Texture2D" uid="uid://db52oltir2h3q" path="res://ui/art assets/back-hover.png" id="6_26mtp"]
+[ext_resource type="Texture2D" uid="uid://blmq7ufbowg68" path="res://ui/pause assets/credits-pressed.png" id="6_perf4"]
+[ext_resource type="Texture2D" uid="uid://ckn5y85u33exq" path="res://ui/pause assets/credits-hover.png" id="7_h5etj"]
+[ext_resource type="Texture2D" uid="uid://c8n86ohf27352" path="res://ui/pause assets/settings-default.png" id="8_4bl52"]
+[ext_resource type="Texture2D" uid="uid://ctwqggbt2dl0o" path="res://ui/pause assets/settings-pressed.png" id="9_e7tt4"]
+[ext_resource type="Texture2D" uid="uid://mres1ec6htta" path="res://ui/pause assets/settings-hover.png" id="10_wng6q"]
+[ext_resource type="Texture2D" uid="uid://pd1fwedsft5o" path="res://ui/pause assets/resume-default.png" id="11_26mtp"]
+[ext_resource type="Texture2D" uid="uid://vifefvfylqng" path="res://ui/pause assets/resume-pressed.png" id="12_lnl1o"]
+[ext_resource type="Texture2D" uid="uid://yqv10ljstfhk" path="res://ui/pause assets/resume-hover.png" id="13_ln16r"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_u3xco")
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-1339.9999, 335)
+size_flags_vertical = 3
+script = ExtResource("2_h5etj")
+main_menu = true
+
+[node name="Credits Background" type="TextureRect" parent="Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_4bl52")
+expand_mode = 1
+
+[node name="Back" type="TextureButton" parent="Credits"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08680555
+anchor_top = 0.10185185
+anchor_right = 0.17065972
+anchor_bottom = 0.1574074
+offset_right = 386.4
+offset_bottom = 144.00002
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("4_e7tt4")
+texture_pressed = ExtResource("5_wng6q")
+texture_hover = ExtResource("6_26mtp")
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_eu3q0")
+expand_mode = 3
+
+[node name="PauseButton" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.92700005
+anchor_top = 0.034
+anchor_right = 0.975
+anchor_bottom = 0.082
+offset_left = 0.095947266
+offset_top = -0.032001495
+offset_right = -0.20007324
+offset_bottom = -0.13600159
+text = "Pause
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = 70.0
+offset_right = 2674.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+size_flags_vertical = 3
+theme_override_constants/separation = -1210
+
+[node name="QuitButton" type="TextureButton" parent="VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_u3xco")
+texture_pressed = ExtResource("3_saspj")
+texture_hover = ExtResource("4_l5ip4")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 794
+
+[node name="CreditsButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+process_mode = 2
+layout_mode = 2
+texture_normal = ExtResource("5_wjwla")
+texture_pressed = ExtResource("6_perf4")
+texture_hover = ExtResource("7_h5etj")
+metadata/_edit_use_anchors_ = true
+
+[node name="SettingsButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+process_mode = 2
+layout_mode = 2
+texture_normal = ExtResource("8_4bl52")
+texture_pressed = ExtResource("9_e7tt4")
+texture_hover = ExtResource("10_wng6q")
+metadata/_edit_use_anchors_ = true
+
+[node name="ResumeButton" type="TextureButton" parent="VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("11_26mtp")
+texture_pressed = ExtResource("12_lnl1o")
+texture_hover = ExtResource("13_ln16r")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Credits/Back" to="Credits" method="_on_back_pressed"]
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
