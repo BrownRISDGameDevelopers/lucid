@@ -98,5 +98,7 @@ func _physics_process(delta : float):
 		print(goal.global_position)
 		if (global_position == goal.global_position):
 			moving = false
-			gameManager.unlock_player()
+			#This if statement stops moving tiles from breaking the player flip animation
+			if gameManager.player.locked_path:
+				gameManager.unlock_player()
 			emit_signal("move_complete")

@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 	var current_blend: Vector2 = animation_tree.get("parameters/blend_position")
 	
 	var target_blend = Vector2(0, 0)
-	
+
 	if (player.target_tile != null and !player.deny_new_path and !player.locked_path):
 		target_blend = Vector2(-1, 0)
 	elif (player.deny_new_path and flipping):
@@ -52,8 +52,6 @@ func _physics_process(delta: float) -> void:
 	animation_tree.set("parameters/blend_position", new_blend)
 
 func do_flip() -> void:
-	#animation_tree.set("parameters/blend_position",Vector2(0, 1))
-	#suppress physics proccess while this is happening
 	flipping = true
 
 func flip_rotate(rot_speed: float) -> void:
