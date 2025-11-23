@@ -6,10 +6,22 @@ extends MeshInstance3D
 @export var height_max := 8.0
 
 var offset_y := 0.0
-var cutoff_value := 1.0   # this is what the tween will animate
+var cutoff_value := 1.0
+
+var mat : StandardMaterial3D
+
+
+func _ready() -> void:
+	# Make sure we have a unique material instance
+	mat = get_surface_override_material(0)
+	if mat:
+		mat = mat.duplicate()
+		set_surface_override_material(0, mat)
 
 
 func _process(delta: float) -> void:
-	get_surface_override_material(0).uv1_offset.y += delta * speed
-	if get_surface_override_material(0).uv1_offset.y >= 1:
-		get_surface_override_material(0).uv1_offset.y = 0.0
+	if not mat:
+		return
+
+	mat.uv1_offset.y += delta * speed
+	mat.uv1_offset.y = fposmod(mat.uv1_offset.y, 1.0)
