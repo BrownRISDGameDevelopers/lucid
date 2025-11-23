@@ -298,6 +298,8 @@ scale = Vector2(1, 1)
 
 [node name="ViewportBehindPlayer" parent="ViewportManager" index="2"]
 anchors_preset = 15
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Background" parent="ViewportManager/ViewportBehindPlayer/SubViewport" index="1"]
 transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 18.455, 27.41, 18.87)
@@ -310,7 +312,6 @@ endPath = [NodePath("TileManager/EndTile/Tile"), NodePath("TileManager/EndTile/T
 metadata/_custom_type_script = "uid://bwe2vxf3k3ib0"
 
 [node name="FadeIn" parent="GameManager" instance=ExtResource("3_hyymd")]
-visible = false
 
 [node name="FadeOut" parent="GameManager" instance=ExtResource("4_38kho")]
 visible = false

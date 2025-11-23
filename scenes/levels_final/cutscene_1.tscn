@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://lnkcoak4t5ik"]
 
-[ext_resource type="Script" uid="uid://2teijjct5xyg" path="res://scripts/cutscene.gd" id="1_7727v"]
+[ext_resource type="Script" path="res://scripts/cutscene_1.gd" id="1_7727v"]
 [ext_resource type="Texture2D" uid="uid://ci1514doe0fjx" path="res://art_assets/cutscene_imgs/lucid lv 1 cutscene.png" id="2_ncq23"]
 [ext_resource type="PackedScene" uid="uid://cyw7cdjci5gg2" path="res://scenes/components/fade_out.tscn" id="3_52bew"]
 [ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="5_064fv"]
@@ -30,6 +30,10 @@ expand_mode = 2
 visible = false
 layout_mode = 0
 anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 next_scene_path = "res://scenes/levels_final/level_1.tscn"
 
 [node name="FadeIn" parent="." instance=ExtResource("5_064fv")]
@@ -40,3 +44,5 @@ anchor_bottom = 0.0
 offset_top = 0.22280884
 offset_right = 1153.0
 offset_bottom = 648.7772
+grow_horizontal = 1
+grow_vertical = 1
