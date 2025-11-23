@@ -16,6 +16,7 @@ offset_bottom = 432.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.6, 0.6)
+expand_mode = 1
 
 [node name="BackgroundViewport" type="SubViewportContainer" parent="."]
 anchors_preset = -1
