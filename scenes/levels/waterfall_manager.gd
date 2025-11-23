@@ -22,6 +22,7 @@ func _ready() -> void:
 	#Reenables toggleability when the waterfall finishes falling
 	bottomWaterfall.shutoff_finish.connect(func(): canToggle = true)
 	bottomWaterfall.activation_finish.connect(func(): canToggle = true)
+	toggle_waterfall()
 
 
 

@@ -18,6 +18,7 @@ func _ready() -> void:
 	mat = material_override as ShaderMaterial
 	mat.set_shader_parameter("height_max", height_max)
 	mat.set_shader_parameter("height_min", height_min)
+	start_waterfall()
 
 
 func _process(delta: float) -> void:

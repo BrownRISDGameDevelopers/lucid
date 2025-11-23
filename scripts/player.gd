@@ -132,13 +132,9 @@ func flip():
 	animation_manager.do_flip()
 	
 	deny_new_path = true
-	
 #	Prevent the flip action from changing the direction the player is looking
 	deny_new_look = true
-
 	target_tile = current.gravity_path
-	
-	print(target_tile)
 	actual_speed = flip_speed
 	
 func _input(event):

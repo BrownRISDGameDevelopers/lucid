@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://81hh1nbermtp"]
+
+[ext_resource type="Shader" uid="uid://cheo1scjtllak" path="res://scenes/levels/waterfall.gdshader" id="1_ahf4s"]
+[ext_resource type="Texture2D" uid="uid://b4h2d7jfrl7eu" path="res://art_assets/waterfall/Water_Texture_Refined.png" id="2_c30dj"]
+[ext_resource type="ArrayMesh" uid="uid://ogdss2tn0qlr" path="res://art_assets/waterfall/Top_Water_3.obj" id="3_gm2v8"]
+[ext_resource type="Script" path="res://scenes/levels/water_movement.gd" id="4_abnl6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_08fey"]
+render_priority = 0
+shader = ExtResource("1_ahf4s")
+shader_parameter/cutoff = 0.0
+shader_parameter/reverse = true
+shader_parameter/height_min = 7.7
+shader_parameter/height_max = 14.0
+shader_parameter/waterfall_texture = ExtResource("2_c30dj")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="TopWater" type="MeshInstance3D"]
+material_override = SubResource("ShaderMaterial_08fey")
+mesh = ExtResource("3_gm2v8")
+skeleton = NodePath("../..")
+script = ExtResource("4_abnl6")
+height_min = 7.7
+height_max = 14.0

@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ch8q07lt0wpsl" path="res://scenes/tiles/SubtractEndTile.tscn" id="9_8cbr6"]
 [ext_resource type="Script" uid="uid://f3yj2hoadgke" path="res://art_assets/level_assets/tutorial/rotator.gd" id="11_benmj"]
 [ext_resource type="Texture2D" uid="uid://cpoke4eilx4e4" path="res://ui/tutorial/floor-indicator-default.png" id="14_8cbr6"]
-[ext_resource type="Script" path="res://scenes/levels_final/tutorial_popup_manager.gd" id="14_x4wrt"]
+[ext_resource type="Script" uid="uid://c16bb3duxww08" path="res://scenes/levels_final/tutorial_popup_manager.gd" id="14_x4wrt"]
 [ext_resource type="Texture2D" uid="uid://d4bl34f3rohwe" path="res://ui/tutorial/button-indicator-default.png" id="17_4tfe6"]
 
 [node name="Tutorial" type="Node"]
@@ -442,6 +442,7 @@ current = NodePath("../TileManager/grp5/Tile64")
 script = ExtResource("14_x4wrt")
 
 [node name="ButtonIndicatorDefault" type="TextureRect" parent="TutorialPopupManager"]
+visible = false
 offset_left = 240.00002
 offset_top = 190.00002
 offset_right = 363.0
@@ -450,6 +451,7 @@ scale = Vector2(0.17682931, 0.17682932)
 texture = ExtResource("17_4tfe6")
 
 [node name="FloorIndicatorDefault" type="TextureRect" parent="TutorialPopupManager"]
+visible = false
 offset_left = 651.0
 offset_top = 111.00001
 offset_right = 862.0

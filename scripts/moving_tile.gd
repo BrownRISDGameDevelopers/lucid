@@ -10,7 +10,7 @@ extends Tile
 # The starting position
 @export var goal : MoveGoal
 
-enum activation {CLICK, WAIT, BUTTON_PRESSED}
+enum activation {CLICK, WAIT, BUTTON_PRESSED, BUTTON_WAIT}
 
 signal move_complete()
 
@@ -38,6 +38,8 @@ func _ready():
 	if activation_cond == activation.WAIT:
 		connect("move_complete", _on_move_complete)
 		wait_loop()
+	if activation_cond == activation.BUTTON_WAIT:
+		connect("move_complete", _on_move_complete)
 	else: connect("move_complete", _on_move_complete_stop)
 		
 
@@ -45,7 +47,6 @@ func _ready():
 # will make the tile move when it's clicked with the player
 # standing on it
 func my_static_body3d_clicked():
-	print("Tile: my_static_body3d_clicked")
 	# Include this part to have the tile start moving when clicked with the player on it
 	if (gameManager.get_current_tile() == self && activation_cond == activation.CLICK):
 		activate()
@@ -88,17 +89,19 @@ func activate():
 		gameManager.lock_player(self, speed)
 		
 	moving = true
-	print(goal.global_position)
 
 # Only moves when moving is true, unlocking the player
 # and setting moving to false when it reaches a destination
 func _physics_process(delta : float):
 	if (moving):
 		global_position = global_position.move_toward(goal.global_position, delta * speed)
-		print(goal.global_position)
 		if (global_position == goal.global_position):
 			moving = false
+<<<<<<< Updated upstream
 			#This if statement stops moving tiles from breaking the player flip animation
 			if gameManager.player.locked_path:
+=======
+			if gameManager.get_current_tile() == self:
+>>>>>>> Stashed changes
 				gameManager.unlock_player()
 			emit_signal("move_complete")
