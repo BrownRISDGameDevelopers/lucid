@@ -1,13 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://du60ib3hbv1kx"]
+[gd_scene load_steps=6 format=3 uid="uid://du60ib3hbv1kx"]
 
-[ext_resource type="Script" uid="uid://lyi758c6ewbv" path="res://scenes/levels_final/settingspause.gd" id="1_b8pat"]
+[ext_resource type="Texture2D" uid="uid://cjyp7v1dckp01" path="res://ui/art assets/Settings Screen No Buttons.png" id="2_m0i2a"]
+[ext_resource type="Texture2D" uid="uid://cxtaonypetc4i" path="res://ui/art assets/back-default.png" id="3_ilyw4"]
+[ext_resource type="Texture2D" uid="uid://1lkghm61kdik" path="res://ui/art assets/back-pressed.png" id="4_r8jwa"]
+[ext_resource type="Texture2D" uid="uid://db52oltir2h3q" path="res://ui/art assets/back-hover.png" id="5_wjslg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4u22a"]
-bg_color = Color(0.58984005, 0.76036954, 0.9672136, 1)
+[sub_resource type="GDScript" id="GDScript_v5kg8"]
+script/source = "extends Control
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7kwmf"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pcnwc"]
+func _on_volume_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(0, value)
+	
+func _on_sfx_volume_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(0, value)
+	
+func _on_back_pressed() -> void:
+	ChangeScene.change_scene(ChangeScene.mainmenu)
+"
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -16,80 +25,53 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_b8pat")
+script = SubResource("GDScript_v5kg8")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_4u22a")
+texture = ExtResource("2_m0i2a")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="VBOX" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -380.0
-offset_top = -222.5
-offset_right = 380.0
-offset_bottom = 222.5
+anchors_preset = -1
+anchor_left = 0.15104167
+anchor_top = 0.45524693
+anchor_right = 0.8107639
+anchor_bottom = 0.89969134
+offset_bottom = -126.0
+theme_override_constants/separation = 160
+metadata/_edit_use_anchors_ = true
+
+[node name="Music Volume" type="HSlider" parent="VBOX"]
+layout_mode = 2
+
+[node name="SFX Volume" type="HSlider" parent="VBOX"]
+layout_mode = 2
+
+[node name="Back" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08680555
+anchor_top = 0.13580246
+anchor_right = 0.17065972
+anchor_bottom = 0.191358
+offset_right = 386.4
+offset_bottom = 144.00002
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("3_ilyw4")
+texture_pressed = ExtResource("4_r8jwa")
+texture_hover = ExtResource("5_wjslg")
+metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Vol_text" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Volume"
-
-[node name="Volume" type="HSlider" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Mute_text" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Mute"
-
-[node name="Mute" type="CheckBox" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_7kwmf")
-
-[node name="FullScreen" type="CheckButton" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_pcnwc")
-text = "Full Screen"
-alignment = 2
-
-[node name="Main Menu" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -78.0
-offset_top = -107.0
-offset_right = 78.0
-offset_bottom = -36.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 23
-text = "Main Menu"
-
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/Volume" to="." method="_on_volume_value_changed"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/Mute" to="." method="_on_check_box_toggled"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/FullScreen" to="." method="_on_fullscreen_toggled"]
-[connection signal="pressed" from="Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="value_changed" from="VBOX/Music Volume" to="." method="_on_volume_value_changed"]
+[connection signal="value_changed" from="VBOX/SFX Volume" to="." method="_on_sfx_volume_value_changed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
