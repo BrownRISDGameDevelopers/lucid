@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://bvt37p45blcef" path="res://art_assets/level_assets/level_2/Level2_Moving1.fbx" id="12_r11qm"]
 [ext_resource type="PackedScene" uid="uid://w73x1dabvbsj" path="res://art_assets/level_assets/level_2/Level2_Moving2.fbx" id="13_6eqly"]
 [ext_resource type="PackedScene" uid="uid://cbeaqv8ov8nlg" path="res://art_assets/level_assets/level_2/Level2_Moving3.fbx" id="14_sglaa"]
-[ext_resource type="PackedScene" uid="uid://ch8q07lt0wpsl" path="res://scenes/tiles/SubtractEndTile.tscn" id="15_btjvf"]
 [ext_resource type="PackedScene" uid="uid://t0glmngiyj23" path="res://art_assets/level_assets/level_2/Level2_Moving4.fbx" id="15_v713s"]
 [ext_resource type="PackedScene" uid="uid://bq5h1eh3hr0oa" path="res://art_assets/level_assets/level_2/Level2_Water1.fbx" id="17_mcx1i"]
 [ext_resource type="Script" uid="uid://uxltb4grdhg5" path="res://scenes/levels/waterfall_manager.gd" id="17_sglaa"]
@@ -24,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://co7kdj3lxbv58" path="res://art_assets/level_assets/level_2/Level2_Water6.fbx" id="22_co1tg"]
 [ext_resource type="PackedScene" uid="uid://81hh1nbermtp" path="res://scenes/components/top_water.tscn" id="23_6eqly"]
 [ext_resource type="PackedScene" uid="uid://cb6xuogi2rgyh" path="res://art_assets/level_assets/level_2/Level2_Static_Edits.fbx" id="24_sglaa"]
+[ext_resource type="PackedScene" uid="uid://b6mavwkns3dkt" path="res://scenes/tiles/EndTile.tscn" id="24_v713s"]
 
 [node name="Level2" type="Node"]
 
@@ -35,8 +35,8 @@ size = 20.92
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile", "endPath")]
 script = ExtResource("1_b8m43")
-endTile = NodePath("TileManager/EndTile/EndPathTile")
-endPath = [NodePath("TileManager/EndTile"), NodePath("TileManager/EndTile/EndPathTile")]
+endTile = NodePath("TileManager/EndTile/Tile")
+endPath = [NodePath("TileManager/EndTile/Tile"), NodePath("TileManager/EndTile/Tile2")]
 metadata/_custom_type_script = "uid://bwe2vxf3k3ib0"
 
 [node name="FadeIn" parent="GameManager" instance=ExtResource("3_hyymd")]
@@ -187,8 +187,8 @@ neighbors = [NodePath("../Tile10")]
 
 [node name="MovingTile3" parent="GameManager/TileManager" node_paths=PackedStringArray("goals", "goal") instance=ExtResource("19_ldr4v")]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -2, 7, 3)
-goals = [NodePath("../m3-2")]
-goal = NodePath("../m3-1")
+goals = [NodePath("../m3-1")]
+goal = NodePath("../m3-2")
 activation_cond = 1
 
 [node name="Level2_Moving1" parent="GameManager/TileManager/MovingTile3" instance=ExtResource("12_r11qm")]
@@ -245,23 +245,31 @@ transform = Transform3D(50, 0, 0, 0, 100, 0, 0, 0, 50, -4, -6.5, 4.5)
 [node name="Level2_Water5" parent="GameManager/TileManager/MovingTile4" instance=ExtResource("21_afbe2")]
 transform = Transform3D(50, 0, 0, 0, 100, 0, 0, 0, 50, -4, -6.5, 4.5)
 
-[node name="EndTile" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("15_btjvf")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 8, 6.5, -11)
-neighbors = [NodePath("../MovingTile4")]
-
-[node name="SubtractSide" parent="GameManager/TileManager/EndTile" index="3"]
-transform = Transform3D(-1.6785174e-08, 0.99999994, 5.507635e-08, 0, -4.3711385e-08, 1.26, 0.38400003, 4.3711385e-08, 2.4074637e-15, 0.3000002, 1, -1)
-
-[node name="SubtractTop" parent="GameManager/TileManager/EndTile" index="4"]
-transform = Transform3D(-1.8505656e-08, 0, 1.2599999, 0, 0.48, 0, -0.42336002, 0, -5.5076345e-08, 0.36399984, 2.5, -0.625)
-
 [node name="m4-1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("8_ldr4v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6.5, -9)
-neighbors = [NodePath("../EndTile")]
+neighbors = [NodePath("../EndTile/Tile")]
 
 [node name="m4-2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("8_ldr4v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, -9)
 neighbors = [NodePath("../Tile24")]
+
+[node name="EndTile" parent="GameManager/TileManager" instance=ExtResource("24_v713s")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 8, 6.5, -11)
+
+[node name="Tile" parent="GameManager/TileManager/EndTile" index="0" node_paths=PackedStringArray("neighbors")]
+neighbors = [NodePath("../Tile2"), NodePath("../../MovingTile4")]
+
+[node name="Tile2" parent="GameManager/TileManager/EndTile" index="1" node_paths=PackedStringArray("neighbors")]
+neighbors = [NodePath("../Tile")]
+
+[node name="MeshInstance3D" parent="GameManager/TileManager/EndTile" index="2"]
+transform = Transform3D(-0.24000001, 8.742277e-08, 4.8149274e-15, 0, -4.3711385e-08, 1.26, 2.0981467e-08, 0.99999994, 5.507635e-08, 0, 1, -0.5)
+
+[node name="SubtractSide" parent="GameManager/TileManager/EndTile" index="3"]
+transform = Transform3D(-2.0981467e-08, 0.99999994, -4.8149274e-15, -2.0981467e-08, 1.9106853e-15, 1.26, 0.48000002, 4.3711385e-08, 5.507635e-08, 0.2985134, 1, -1.2101889)
+
+[node name="SubtractTop" parent="GameManager/TileManager/EndTile" index="4"]
+transform = Transform3D(-1.7484556e-08, -3.642615e-08, -0.834, -1.748457e-08, 1.05, -2.8932769e-08, 0.4, 4.5896993e-08, -3.6455297e-08, -0.034319878, 2.517932, -0.9818773)
 
 [node name="tWaterFallManager" type="Node" parent="GameManager" node_paths=PackedStringArray("topWaterfall", "bottomWaterfall", "flowOver")]
 script = ExtResource("17_sglaa")
