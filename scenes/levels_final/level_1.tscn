@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_t3jqk"]
 [ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="3_jgjp7"]
 [ext_resource type="PackedScene" uid="uid://cyw7cdjci5gg2" path="res://scenes/components/fade_out.tscn" id="4_stil2"]
-[ext_resource type="PackedScene" uid="uid://m5hmurn8j32l" path="res://scenes/levels_final/pause.tscn" id="5_i5pa6"]
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="5_nfb17"]
 [ext_resource type="Texture2D" uid="uid://pd1fwedsft5o" path="res://ui/pause assets/resume-default.png" id="5_tlcqo"]
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="6_4mmjp"]
@@ -24,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://ckn5y85u33exq" path="res://ui/pause assets/credits-hover.png" id="13_28ip0"]
 [ext_resource type="Texture2D" uid="uid://c8n86ohf27352" path="res://ui/pause assets/settings-default.png" id="14_hw6d3"]
 [ext_resource type="Texture2D" uid="uid://ctwqggbt2dl0o" path="res://ui/pause assets/settings-pressed.png" id="15_3mg3d"]
+[ext_resource type="Texture2D" uid="uid://2f45062s7fg7" path="res://ui/pause assets/pause-screen-no-buttons.png" id="16_b0ee0"]
 [ext_resource type="Texture2D" uid="uid://mres1ec6htta" path="res://ui/pause assets/settings-hover.png" id="16_r5awb"]
 
 [node name="Level2" type="Node"]
@@ -133,6 +133,11 @@ texture_normal = ExtResource("14_hw6d3")
 texture_pressed = ExtResource("15_3mg3d")
 texture_hover = ExtResource("16_r5awb")
 metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" type="TextureRect" parent="ViewportManager/UI"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("16_b0ee0")
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile", "endPath")]
 script = ExtResource("2_t3jqk")
