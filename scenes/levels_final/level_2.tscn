@@ -16,7 +16,7 @@
 [ext_resource type="ArrayMesh" uid="uid://d2fu4pnincafu" path="res://art_assets/level_assets/level_2/Level2_Moving1.obj" id="15_tg2i7"]
 [ext_resource type="ArrayMesh" uid="uid://bxmm3qymchqb7" path="res://art_assets/level_assets/level_2/Level2_Water3.obj" id="17_tg2i7"]
 [ext_resource type="ArrayMesh" uid="uid://dysmbfl30m44e" path="res://art_assets/level_assets/level_2/Level2_Water4.obj" id="18_mcx1i"]
-[ext_resource type="PackedScene" uid="uid://pu2rreyu3h07" path="res://scenes/tiles/moving_tile.tscn" id="19_ldr4v"]
+[ext_resource type="PackedScene" uid="uid://chrmyh0ov3ucn" path="res://scenes/tiles/moving_tile.tscn" id="19_ldr4v"]
 [ext_resource type="ArrayMesh" uid="uid://barhivcvbpyxn" path="res://art_assets/level_assets/level_2/Level2_Static(1).obj" id="19_soegq"]
 [ext_resource type="ArrayMesh" uid="uid://glvoa8t465lq" path="res://art_assets/level_assets/level_2/Level2_Water5.obj" id="19_uqwvf"]
 [ext_resource type="ArrayMesh" uid="uid://bea4cm0ag0x42" path="res://art_assets/level_assets/level_2/level2_Water6.obj" id="20_gbof1"]
@@ -203,7 +203,7 @@ transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 1, -6.5, -1.5)
 mesh = ExtResource("11_ldr4v")
 
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("4_k76nu")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -12, 2.5, 8)
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, -12, 2.5, 8)
 current = NodePath("../TileManager/Tile5")
 
 [node name="Level2Moving4" type="MeshInstance3D" parent="."]
