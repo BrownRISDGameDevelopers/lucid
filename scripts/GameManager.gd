@@ -94,6 +94,7 @@ func player_reached_tile(tile: Tile):
 func execute_end_routine():
 	print("End routine")
 	player.set_path(endPath)
+	MusicController.play_level_end()
 	fade_out.do_fade_out()
 	
 # This function is called by the Player whenever they finish a path or they're given a new path.
