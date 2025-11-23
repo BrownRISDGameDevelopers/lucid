@@ -20,6 +20,11 @@ config/icon="uid://b8u0flfhqivst"
 ChangeScene="*res://ui/change_scene.tscn"
 MusicController="*res://music/MusicController.tscn"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [input]
 
 flip_gravity={

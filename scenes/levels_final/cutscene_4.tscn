@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://lgs7c0stewaa"]
 
-[ext_resource type="Script" path="res://scripts/cutscene_1.gd" id="1_nsrhg"]
+[ext_resource type="Script" uid="uid://2teijjct5xyg" path="res://scripts/cutscene.gd" id="1_nsrhg"]
 [ext_resource type="Texture2D" uid="uid://81t7fa0gtk3x" path="res://art_assets/cutscene_imgs/Lucid_Lv_3_Cutscene.png" id="2_ocsyb"]
 [ext_resource type="PackedScene" uid="uid://cyw7cdjci5gg2" path="res://scenes/components/fade_out.tscn" id="3_wskoy"]
 [ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="4_lrl1w"]
