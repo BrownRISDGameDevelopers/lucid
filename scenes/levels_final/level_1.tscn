@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cdqy8xr822ecb"]
+[gd_scene load_steps=26 format=3 uid="uid://cdqy8xr822ecb"]
 
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_2vk4a"]
 [ext_resource type="Script" uid="uid://bgq1ie1r30gq" path="res://scenes/levels_final/level_1.gd" id="1_nfb17"]
@@ -6,16 +6,25 @@
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_t3jqk"]
 [ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="3_jgjp7"]
 [ext_resource type="PackedScene" uid="uid://cyw7cdjci5gg2" path="res://scenes/components/fade_out.tscn" id="4_stil2"]
-[ext_resource type="PackedScene" uid="uid://3ap6eu053dhg" path="res://scenes/levels_final/pause.tscn" id="5_i5pa6"]
+[ext_resource type="PackedScene" uid="uid://m5hmurn8j32l" path="res://scenes/levels_final/pause.tscn" id="5_i5pa6"]
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="5_nfb17"]
 [ext_resource type="Texture2D" uid="uid://pd1fwedsft5o" path="res://ui/pause assets/resume-default.png" id="5_tlcqo"]
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="6_4mmjp"]
 [ext_resource type="Texture2D" uid="uid://vifefvfylqng" path="res://ui/pause assets/resume-pressed.png" id="6_h7g5c"]
 [ext_resource type="PackedScene" uid="uid://c4hedq5osxf2b" path="res://scenes/tiles/stairs.tscn" id="7_i5pa6"]
 [ext_resource type="Texture2D" uid="uid://yqv10ljstfhk" path="res://ui/pause assets/resume-hover.png" id="7_lhfvd"]
+[ext_resource type="Texture2D" uid="uid://cqatnrt214vsr" path="res://ui/pause assets/quit-default.png" id="8_b0ee0"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="8_hect5"]
-[ext_resource type="PackedScene" path="res://scenes/tiles/EndTile.tscn" id="8_t3jqk"]
+[ext_resource type="PackedScene" uid="uid://b6mavwkns3dkt" path="res://scenes/tiles/EndTile.tscn" id="8_t3jqk"]
+[ext_resource type="Texture2D" uid="uid://4h1rs8xutb61" path="res://ui/pause assets/quit-pressed.png" id="9_0pgt2"]
 [ext_resource type="PackedScene" uid="uid://j8h3rmyib35u" path="res://art_assets/level_assets/level_1/FOR_GODOT_level1_final.fbx" id="9_jgjp7"]
+[ext_resource type="Texture2D" uid="uid://whbec1kmmctw" path="res://ui/pause assets/quit-hover.png" id="10_ak438"]
+[ext_resource type="Texture2D" uid="uid://db83r1gsp5nqq" path="res://ui/pause assets/credits-default.png" id="11_6tg13"]
+[ext_resource type="Texture2D" uid="uid://blmq7ufbowg68" path="res://ui/pause assets/credits-pressed.png" id="12_a4jdd"]
+[ext_resource type="Texture2D" uid="uid://ckn5y85u33exq" path="res://ui/pause assets/credits-hover.png" id="13_28ip0"]
+[ext_resource type="Texture2D" uid="uid://c8n86ohf27352" path="res://ui/pause assets/settings-default.png" id="14_hw6d3"]
+[ext_resource type="Texture2D" uid="uid://ctwqggbt2dl0o" path="res://ui/pause assets/settings-pressed.png" id="15_3mg3d"]
+[ext_resource type="Texture2D" uid="uid://mres1ec6htta" path="res://ui/pause assets/settings-hover.png" id="16_r5awb"]
 
 [node name="Level2" type="Node"]
 script = ExtResource("1_nfb17")
@@ -64,17 +73,6 @@ size = 20.0
 
 [node name="UI" type="CanvasLayer" parent="ViewportManager"]
 
-[node name="Settings" parent="ViewportManager/UI"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-script = null
 [node name="PauseMenu" parent="ViewportManager/UI" instance=ExtResource("5_i5pa6")]
 
 [node name="PauseButton" type="Button" parent="ViewportManager/UI"]
@@ -85,19 +83,54 @@ offset_bottom = 53.0
 text = "Pause
 "
 
-[node name="ResumeButton" type="TextureButton" parent="ViewportManager/UI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ViewportManager/UI"]
+offset_left = 279.0
+offset_top = 134.0
+offset_right = 3249.0
+offset_bottom = 1344.0
+scale = Vector2(0.2, 0.2)
+theme_override_constants/separation = -1210
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ViewportManager/UI/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 694
+
+[node name="ResumeButton" type="TextureButton" parent="ViewportManager/UI/VBoxContainer/VBoxContainer"]
 process_mode = 2
-anchors_preset = -1
-anchor_right = 0.859375
-anchor_bottom = 0.9382716
-offset_left = 481.99997
-offset_top = 146.0
-offset_right = 482.0
-offset_bottom = 146.0
-scale = Vector2(0.19, 0.19)
+layout_mode = 2
 texture_normal = ExtResource("5_tlcqo")
 texture_pressed = ExtResource("6_h7g5c")
 texture_hover = ExtResource("7_lhfvd")
+metadata/_edit_use_anchors_ = true
+
+[node name="QuitButton" type="TextureButton" parent="ViewportManager/UI/VBoxContainer/VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+texture_normal = ExtResource("8_b0ee0")
+texture_pressed = ExtResource("9_0pgt2")
+texture_hover = ExtResource("10_ak438")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ViewportManager/UI/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 794
+
+[node name="CreditsButton" type="TextureButton" parent="ViewportManager/UI/VBoxContainer/HBoxContainer"]
+process_mode = 2
+layout_mode = 2
+texture_normal = ExtResource("11_6tg13")
+texture_pressed = ExtResource("12_a4jdd")
+texture_hover = ExtResource("13_28ip0")
+metadata/_edit_use_anchors_ = true
+
+[node name="SettingsButton" type="TextureButton" parent="ViewportManager/UI/VBoxContainer/HBoxContainer"]
+process_mode = 2
+layout_mode = 2
+texture_normal = ExtResource("14_hw6d3")
+texture_pressed = ExtResource("15_3mg3d")
+texture_hover = ExtResource("16_r5awb")
 metadata/_edit_use_anchors_ = true
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile", "endPath")]
@@ -737,7 +770,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -1.755, 16.5)
 current = NodePath("../TileManager/aT1")
 
 [connection signal="pressed" from="ViewportManager/UI/PauseButton" to="." method="_on_pause_button_pressed"]
-[connection signal="pressed" from="ViewportManager/UI/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="ViewportManager/UI/VBoxContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="ViewportManager/UI/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="ViewportManager/UI/VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="ViewportManager/UI/VBoxContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 
 [editable path="ViewportManager"]
 [editable path="GameManager/TileManager/EndTile"]
