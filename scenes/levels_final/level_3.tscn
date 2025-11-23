@@ -1,21 +1,22 @@
-[gd_scene load_steps=17 format=3 uid="uid://cyxclfcuei44u"]
+[gd_scene load_steps=18 format=3 uid="uid://cyxclfcuei44u"]
 
-[ext_resource type="PackedScene" uid="uid://cvkfyvc7onhn4" path="res://scenes/managers/Viewport_Dark.tscn" id="1_cji7n"]
-[ext_resource type="Script" path="res://scripts/player_tracker.gd" id="1_g01up"]
+[ext_resource type="Script" uid="uid://m8mjd0u88aow" path="res://scripts/player_tracker.gd" id="1_g01up"]
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_g01up"]
+[ext_resource type="Script" uid="uid://dfw405aqqwl5d" path="res://scripts/viewport_manager.gd" id="2_rxvjb"]
+[ext_resource type="PackedScene" uid="uid://x34f43g4beul" path="res://scenes/components/film_grain.tscn" id="3_jecn1"]
 [ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="3_ni4vp"]
 [ext_resource type="PackedScene" uid="uid://cyw7cdjci5gg2" path="res://scenes/components/fade_out.tscn" id="4_a5a75"]
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="5_a1djg"]
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="6_6dlra"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="7_0co5s"]
-[ext_resource type="ArrayMesh" uid="uid://dt80ir60oa3np" path="res://art_assets/level_assets/level_3/Level3_Moving1.obj" id="8_6dlra"]
-[ext_resource type="Script" path="res://scripts/move_goal.gd" id="8_frfm7"]
-[ext_resource type="ArrayMesh" uid="uid://cv4fuf72w3nlr" path="res://art_assets/level_assets/level_3/Level3_Moving2.obj" id="9_0co5s"]
+[ext_resource type="Script" uid="uid://d3oeagq24crur" path="res://scripts/move_goal.gd" id="8_frfm7"]
 [ext_resource type="PackedScene" uid="uid://pu2rreyu3h07" path="res://scenes/tiles/moving_tile.tscn" id="9_70vga"]
-[ext_resource type="ArrayMesh" uid="uid://1cqdul2vt828" path="res://art_assets/level_assets/level_3/Level3_Moving3.obj" id="10_esljl"]
-[ext_resource type="ArrayMesh" uid="uid://bqo6hj4muo4pm" path="res://art_assets/level_assets/level_3/Level3_Static.obj" id="11_frfm7"]
-[ext_resource type="PackedScene" uid="uid://ch8q07lt0wpsl" path="res://scenes/tiles/SubtractEndTile.tscn" id="13_70vga"]
+[ext_resource type="PackedScene" uid="uid://bktfroucmp0rp" path="res://art_assets/level_assets/level_3/level3_Moving1.fbx" id="11_rxvjb"]
+[ext_resource type="PackedScene" uid="uid://bv383eca7vp8q" path="res://art_assets/level_assets/level_3/Level3_Moving2.fbx" id="12_jecn1"]
 [ext_resource type="PackedScene" uid="uid://c4hedq5osxf2b" path="res://scenes/tiles/stairs.tscn" id="13_rxvjb"]
+[ext_resource type="PackedScene" uid="uid://djp61o88jcb24" path="res://art_assets/level_assets/level_3/level3_Moving3.fbx" id="13_y8y3y"]
+[ext_resource type="PackedScene" uid="uid://dshdruvdghkvt" path="res://art_assets/level_assets/level_3/Level3_Static.fbx" id="16_5pw72"]
+[ext_resource type="PackedScene" uid="uid://b6mavwkns3dkt" path="res://scenes/tiles/EndTile.tscn" id="16_70vga"]
 
 [node name="Level3" type="Node"]
 
@@ -27,15 +28,139 @@ spot_angle = 6.0
 script = ExtResource("1_g01up")
 player = NodePath("../GameManager/Player")
 
-[node name="ViewportDark" parent="." instance=ExtResource("1_cji7n")]
+[node name="ViewportManager" type="Node" parent="." node_paths=PackedStringArray("viewports")]
+script = ExtResource("2_rxvjb")
+viewports = [NodePath("Foreground/SubViewport"), NodePath("PlayerViewport/SubViewport"), NodePath("ViewportBehindPlayer/SubViewport"), NodePath("BackgroundViewport/SubViewport")]
 
-[node name="Background" parent="ViewportDark/ViewportBehindPlayer/SubViewport" index="0"]
-transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 17.86, 20.72, 15.125)
+[node name="TextureRect" type="TextureRect" parent="ViewportManager"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 768.0
+offset_bottom = 432.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+expand_mode = 1
+
+[node name="BackgroundViewport" type="SubViewportContainer" parent="ViewportManager"]
+anchors_preset = -1
+anchor_right = 1.001
+anchor_bottom = 1.0
+offset_right = -0.15209961
+offset_bottom = -5.0
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="ViewportManager/BackgroundViewport"]
+transparent_bg = true
+handle_input_locally = false
+msaa_3d = 3
+size = Vector2i(1153, 643)
+render_target_update_mode = 4
+
+[node name="Background" type="Camera3D" parent="ViewportManager/BackgroundViewport/SubViewport"]
+transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 15, 22, 15.5)
+cull_mask = 16
+projection = 1
 size = 22.0
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile")]
+[node name="ExtraViewport" type="SubViewportContainer" parent="ViewportManager"]
+anchors_preset = -1
+anchor_right = 1.001
+anchor_bottom = 1.0
+offset_right = -0.15209961
+offset_bottom = -5.0
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="ViewportManager/ExtraViewport"]
+transparent_bg = true
+handle_input_locally = false
+msaa_3d = 3
+size = Vector2i(1153, 643)
+render_target_update_mode = 4
+
+[node name="Background" type="Camera3D" parent="ViewportManager/ExtraViewport/SubViewport"]
+transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 15, 22, 15.5)
+cull_mask = 8
+projection = 1
+size = 22.0
+
+[node name="ViewportBehindPlayer" type="SubViewportContainer" parent="ViewportManager"]
+anchors_preset = -1
+anchor_right = 1.001
+anchor_bottom = 1.0
+offset_right = -0.15209961
+offset_bottom = -5.0
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="ViewportManager/ViewportBehindPlayer"]
+transparent_bg = true
+handle_input_locally = false
+msaa_3d = 3
+size = Vector2i(1153, 643)
+render_target_update_mode = 4
+
+[node name="Background" type="Camera3D" parent="ViewportManager/ViewportBehindPlayer/SubViewport"]
+transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 15, 22, 15.5)
+cull_mask = 1
+projection = 1
+size = 22.0
+
+[node name="PlayerViewport" type="SubViewportContainer" parent="ViewportManager"]
+anchors_preset = -1
+anchor_right = 0.5564236
+anchor_bottom = 0.20216049
+offset_right = 512.0
+offset_bottom = 512.0
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="ViewportManager/PlayerViewport"]
+transparent_bg = true
+handle_input_locally = false
+msaa_3d = 3
+size = Vector2i(1153, 643)
+render_target_update_mode = 4
+
+[node name="PlayerCamera" type="Camera3D" parent="ViewportManager/PlayerViewport/SubViewport"]
+transform = Transform3D(0.70710677, -0.40860698, 0.57709646, 0, 0.8161376, 0.57785755, -0.70710677, -0.40860698, 0.57709646, 15, 22, 15.5)
+cull_mask = 2
+projection = 1
+current = true
+size = 22.0
+
+[node name="Foreground" type="SubViewportContainer" parent="ViewportManager"]
+anchors_preset = -1
+anchor_right = 0.5564236
+anchor_bottom = 0.20216049
+offset_right = 512.0
+offset_bottom = 512.0
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="ViewportManager/Foreground"]
+transparent_bg = true
+handle_input_locally = false
+msaa_3d = 3
+size = Vector2i(1153, 643)
+render_target_update_mode = 4
+
+[node name="ForegroundCamera" type="Camera3D" parent="ViewportManager/Foreground/SubViewport"]
+transform = Transform3D(0.70710677, -0.40860698, 0.57709646, 0, 0.8161376, 0.57785755, -0.70710677, -0.40860698, 0.57709646, 15, 22, 15.5)
+cull_mask = 4
+projection = 1
+current = true
+size = 22.0
+
+[node name="film_grain" parent="ViewportManager" instance=ExtResource("3_jecn1")]
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile", "endPath")]
 script = ExtResource("2_g01up")
-endTile = NodePath("TileManager/jT115End")
+endTile = NodePath("../EndTile/Tile")
+endPath = [NodePath("../EndTile/Tile"), NodePath("../EndTile/Tile2")]
 clamp = true
 metadata/_custom_type_script = "uid://bwe2vxf3k3ib0"
 
@@ -90,13 +215,15 @@ neighbors = [NodePath("../aT8"), NodePath("../aT10")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 8.5, 7.5)
 neighbors = [NodePath("../aT9"), NodePath("../aT11")]
 
-[node name="aT11" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_6dlra")]
+[node name="aT11" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_6dlra")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 8.5, 7.5)
 neighbors = [NodePath("../aT10")]
+gravity_path = NodePath("../bT1")
 
-[node name="bT1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_6dlra")]
+[node name="bT1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_6dlra")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -7.5, 12.5, 7.5)
 neighbors = [NodePath("../bT2")]
+gravity_path = NodePath("../aT11")
 
 [node name="bT2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_6dlra")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -8.5, 12.5, 7.5)
@@ -122,13 +249,15 @@ neighbors = [NodePath("../bT5"), NodePath("../bT7")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -8.5, 12.5, 2.5)
 neighbors = [NodePath("../bT6"), NodePath("../bT8")]
 
-[node name="bT8" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_6dlra")]
+[node name="bT8" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_6dlra")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -8.5, 12.5, 1.5)
 neighbors = [NodePath("../bT7")]
+gravity_path = NodePath("../cT1")
 
-[node name="cT1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_6dlra")]
+[node name="cT1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_6dlra")]
 transform = Transform3D(-1, 8.742278e-08, -7.642742e-15, 8.742278e-08, 1, -8.742278e-08, 0, -8.742278e-08, -1, -6.5, 7.5, 3.5)
 neighbors = [NodePath("../cT2")]
+gravity_path = NodePath("../bT8")
 
 [node name="cT2" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_6dlra")]
 transform = Transform3D(-1, 8.742278e-08, -7.642742e-15, 8.742278e-08, 1, -8.742278e-08, 0, -8.742278e-08, -1, -6.5, 7.5, 2.5)
@@ -158,10 +287,8 @@ goals = [NodePath("../m1-2")]
 goal = NodePath("../m1-1")
 activation_cond = 1
 
-[node name="Level3Moving1" type="MeshInstance3D" parent="GameManager/TileManager/cdMovingTile"]
-transform = Transform3D(1, 0, 0, 0, -0.9659258, -0.2588191, 0, 0.2588191, -0.9659258, 3.5, 5.8, -10.2)
-mesh = ExtResource("8_6dlra")
-skeleton = NodePath("../..")
+[node name="level3_Moving1" parent="GameManager/TileManager/cdMovingTile" instance=ExtResource("11_rxvjb")]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 3.5, -7.5, 8.5)
 
 [node name="dT1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_6dlra")]
 transform = Transform3D(-1, 8.742278e-08, -7.642742e-15, 8.742278e-08, 1, -8.742278e-08, 0, -8.742278e-08, -1, -0.5, 7.5, 0.5)
@@ -187,10 +314,8 @@ goals = [NodePath("../m2-2"), NodePath("../m2-3"), NodePath("../m2-2"), NodePath
 goal = NodePath("../m2-1")
 activation_cond = 1
 
-[node name="Level3Moving2" type="MeshInstance3D" parent="GameManager/TileManager/deMovingTile"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -7.5, 4.5)
-mesh = ExtResource("9_0co5s")
-skeleton = NodePath("../..")
+[node name="Level3_Moving2" parent="GameManager/TileManager/deMovingTile" instance=ExtResource("12_jecn1")]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 1.5, -7.5, 4.5)
 
 [node name="eT1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_6dlra")]
 transform = Transform3D(-1, 8.742278e-08, -7.642742e-15, 8.742278e-08, 1, -8.742278e-08, 0, -8.742278e-08, -1, -3.5, 7.5, 4.5)
@@ -212,10 +337,8 @@ goals = [NodePath("../m3-1")]
 goal = NodePath("../m3-2")
 activation_cond = 1
 
-[node name="Level3Moving3" type="MeshInstance3D" parent="GameManager/TileManager/efMovingTile"]
-transform = Transform3D(0.9659258, -0.25881907, 0, 0.25881904, 0.96592593, 0, 0, 0, 1.0000001, 5.5, -6.5, 13.5)
-mesh = ExtResource("10_esljl")
-skeleton = NodePath("../..")
+[node name="level3_Moving3" parent="GameManager/TileManager/efMovingTile" instance=ExtResource("13_y8y3y")]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 3.5, -7.5, 13.5)
 
 [node name="fT1" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors", "gravity_path") instance=ExtResource("6_6dlra")]
 transform = Transform3D(-1, 8.742278e-08, -7.642742e-15, -8.742278e-08, -1, 0, -7.642742e-15, 0, 1, -1.5, 14.5, -2.5)
@@ -537,7 +660,7 @@ neighbors = [NodePath("../jT41"), NodePath("../jT43"), NodePath("../jT45")]
 
 [node name="jT43" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_6dlra")]
 transform = Transform3D(-1, 8.742278e-08, -7.642741e-15, 8.742278e-08, 1, 8.742278e-08, 1.5285482e-14, 8.742278e-08, -1, 0.5, 0.5, 2.5)
-neighbors = [NodePath("../jT40"), NodePath("../jT42"), NodePath("../jT44")]
+neighbors = [NodePath("../jT40"), NodePath("../jT42"), NodePath("../jT44"), NodePath("../jT58")]
 
 [node name="jT44" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_6dlra")]
 transform = Transform3D(-1, 8.742278e-08, -7.642741e-15, 8.742278e-08, 1, 8.742278e-08, 1.5285482e-14, 8.742278e-08, -1, 0.5, 0.5, 1.5)
@@ -591,9 +714,21 @@ neighbors = [NodePath("../jT21"), NodePath("../jT54")]
 transform = Transform3D(-1, 8.742278e-08, -7.642741e-15, 8.742278e-08, 1, 8.742278e-08, 1.5285482e-14, 8.742278e-08, -1, 1.5, 0.5, 4.5)
 neighbors = [NodePath("../jT57")]
 
+[node name="StaticBody3D" parent="GameManager/TileManager/jT56" index="0"]
+transform = Transform3D(1, 1.3362993e-21, 0, 1.3362993e-21, 1, 0, 0, 0, 1, 1.1920929e-07, 2.3841858e-07, 0)
+
+[node name="MeshInstance3D" parent="GameManager/TileManager/jT56/StaticBody3D" index="1"]
+transform = Transform3D(1, 1.3362993e-21, 0, 1.3362993e-21, 1, 0, 0, 0, 1, 0, 5.9604645e-08, 0)
+
 [node name="jT57" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_6dlra")]
 transform = Transform3D(-1, 8.742278e-08, -7.642741e-15, 8.742278e-08, 1, 8.742278e-08, 1.5285482e-14, 8.742278e-08, -1, 1.5, 0.5, 3.5)
 neighbors = [NodePath("../jT56"), NodePath("../jT58")]
+
+[node name="StaticBody3D" parent="GameManager/TileManager/jT57" index="0"]
+transform = Transform3D(1, 1.3362993e-21, 0, 1.3362993e-21, 1, 0, 0, 0, 1, 1.1920929e-07, 0, 4.7683716e-07)
+
+[node name="MeshInstance3D" parent="GameManager/TileManager/jT57/StaticBody3D" index="1"]
+transform = Transform3D(1, 1.3362993e-21, 0, 1.3362993e-21, 1, 0, 0, 0, 1, 0, 0, -2.3841858e-07)
 
 [node name="jT58" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_6dlra")]
 transform = Transform3D(-1, 8.742278e-08, -7.642741e-15, 8.742278e-08, 1, 8.742278e-08, 1.5285482e-14, 8.742278e-08, -1, 1.5, 0.5, 2.5)
@@ -603,9 +738,21 @@ neighbors = [NodePath("../jT43"), NodePath("../jT57"), NodePath("../jT59")]
 transform = Transform3D(-1, 8.742278e-08, -7.642741e-15, 8.742278e-08, 1, 8.742278e-08, 1.5285482e-14, 8.742278e-08, -1, 1.5, 0.5, 1.5)
 neighbors = [NodePath("../jT58"), NodePath("../jT60")]
 
+[node name="StaticBody3D" parent="GameManager/TileManager/jT59" index="0"]
+transform = Transform3D(1, 1.3362993e-21, 0, 1.3362993e-21, 1, 0, 0, 0, 1, 1.1920929e-07, 2.3841858e-07, 1.1920929e-07)
+
+[node name="MeshInstance3D" parent="GameManager/TileManager/jT59/StaticBody3D" index="1"]
+transform = Transform3D(1, 1.3362993e-21, 0, 1.3362993e-21, 1, 0, 0, 0, 1, 0, 0, 0)
+
 [node name="jT60" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_6dlra")]
 transform = Transform3D(-1, 8.742278e-08, -7.642741e-15, 8.742278e-08, 1, 8.742278e-08, 1.5285482e-14, 8.742278e-08, -1, 1.5, 0.5, 0.5)
 neighbors = [NodePath("../jT59"), NodePath("../jT61")]
+
+[node name="StaticBody3D" parent="GameManager/TileManager/jT60" index="0"]
+transform = Transform3D(1, 1.3362993e-21, 0, 1.3362993e-21, 1, 0, 0, 0, 1, 1.1920929e-07, 0, 0)
+
+[node name="MeshInstance3D" parent="GameManager/TileManager/jT60/StaticBody3D" index="1"]
+transform = Transform3D(1, 1.3362993e-21, 0, 1.3362993e-21, 1, 0, 0, 0, 1, 0, 5.9604645e-08, 0)
 
 [node name="jT61" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_6dlra")]
 transform = Transform3D(-1, 8.742278e-08, -7.642741e-15, 8.742278e-08, 1, 8.742278e-08, 1.5285482e-14, 8.742278e-08, -1, 1.5, 0.5, -0.5)
@@ -805,11 +952,7 @@ neighbors = [NodePath("../jT112"), NodePath("../jT114")]
 
 [node name="jT114" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_6dlra")]
 transform = Transform3D(-1, 8.742278e-08, -7.642741e-15, 8.742278e-08, 1, 8.742278e-08, 1.5285482e-14, 8.742278e-08, -1, 9.5, 4.5, -10.5)
-neighbors = [NodePath("../jT113"), NodePath("../jT115End")]
-
-[node name="jT115End" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("13_70vga")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 4.5, -11.5)
-neighbors = [NodePath("../jT114")]
+neighbors = [NodePath("../jT113"), NodePath("../../../EndTile/Tile")]
 
 [node name="gStair12" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("13_rxvjb")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 4.5, 10.5, -12.5)
@@ -847,12 +990,24 @@ neighbors = [NodePath("../gStair12"), NodePath("../gStair14")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 6.5, 8.5, -12.5)
 neighbors = [NodePath("../gStair13"), NodePath("../gT15")]
 
-[node name="Level3Static" type="MeshInstance3D" parent="GameManager/TileManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
-mesh = ExtResource("11_frfm7")
-
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("7_0co5s")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -8.5, 9.245, 10.5)
 current = NodePath("../TileManager/aT1")
 
-[editable path="ViewportDark"]
+[node name="Level3_Static" parent="." instance=ExtResource("16_5pw72")]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 9)
+
+[node name="EndTile" parent="." instance=ExtResource("16_70vga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 4.5, -11.5)
+
+[node name="Tile" parent="EndTile" index="0" node_paths=PackedStringArray("neighbors")]
+neighbors = [NodePath("../../GameManager/TileManager/jT114"), NodePath("../Tile2")]
+
+[node name="Tile2" parent="EndTile" index="1" node_paths=PackedStringArray("neighbors")]
+neighbors = [NodePath("../Tile")]
+
+[editable path="GameManager/TileManager/jT56"]
+[editable path="GameManager/TileManager/jT57"]
+[editable path="GameManager/TileManager/jT59"]
+[editable path="GameManager/TileManager/jT60"]
+[editable path="EndTile"]

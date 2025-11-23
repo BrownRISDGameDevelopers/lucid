@@ -48,7 +48,7 @@ func add_animation_at_cursor():
 # Called by TileManager. Contains the path that the TileManager wants the player
 # to traverse.
 func process_path_queue(path_queue: Array[Tile]):
-	if path_queue == null or path_queue.size() == 0 or (clamp == true and path_queue.size() > 4):
+	if path_queue == null or path_queue.size() == 0 or (clamp == true and path_queue.size() > 5):
 		return
 #	Our TileManager has found a valid path for us. 
 	
