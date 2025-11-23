@@ -2,10 +2,11 @@ extends Node
 #
 @onready var settings_pause := $ViewportManager/UI/PauseMenu
 @onready var settings_pause_button := $ViewportManager/UI/PauseButton
-@onready var settings_resume_button := $ViewportManager/UI/VBoxContainer/VBoxContainer/ResumeButton
-@onready var settings_quit_button := $ViewportManager/UI/VBoxContainer/VBoxContainer/QuitButton
-@onready var settings_credits_button := $ViewportManager/UI/VBoxContainer/HBoxContainer/CreditsButton
-@onready var settings_settings_button := $ViewportManager/UI/VBoxContainer/HBoxContainer/SettingsButton
+@onready var settings_resume_button: TextureButton = $ViewportManager/UI/VBoxContainer/ResumeButton
+@onready var settings_quit_button: TextureButton = $ViewportManager/UI/VBoxContainer/QuitButton
+@onready var settings_credits_button: TextureButton = $ViewportManager/UI/VBoxContainer/HBoxContainer/CreditsButton
+@onready var settings_settings_button: TextureButton = $ViewportManager/UI/VBoxContainer/HBoxContainer/SettingsButton
+
 #
 func _ready() -> void:
 	MusicController.bgm_play1()

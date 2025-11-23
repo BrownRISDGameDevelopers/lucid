@@ -77,54 +77,47 @@ size = 20.0
 [node name="UI" type="CanvasLayer" parent="ViewportManager"]
 
 [node name="PauseMenu" type="TextureRect" parent="ViewportManager/UI"]
-anchors_preset = -1
-anchor_left = -2.0
-anchor_top = -2.0
-anchor_right = 3.0
-anchor_bottom = 3.0
-offset_left = 2304.0
-offset_top = 1296.0
-offset_right = -2304.0
-offset_bottom = -1296.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("16_b0ee0")
-expand_mode = 1
-metadata/_edit_use_anchors_ = true
+expand_mode = 3
 
 [node name="PauseButton" type="Button" parent="ViewportManager/UI"]
-offset_left = 1068.0
-offset_top = 22.0
-offset_right = 1123.0
-offset_bottom = 53.0
+anchors_preset = -1
+anchor_left = 0.92700005
+anchor_top = 0.034
+anchor_right = 0.975
+anchor_bottom = 0.082
+offset_left = 0.095947266
+offset_top = -0.032001495
+offset_right = -0.20007324
+offset_bottom = -0.13600159
 text = "Pause
 "
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ViewportManager/UI"]
-offset_left = 279.0
-offset_top = 134.0
-offset_right = 3249.0
-offset_bottom = 1344.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = 70.0
+offset_right = 2674.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.2, 0.2)
+size_flags_vertical = 3
 theme_override_constants/separation = -1210
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ViewportManager/UI/VBoxContainer"]
+[node name="QuitButton" type="TextureButton" parent="ViewportManager/UI/VBoxContainer"]
+process_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 694
-
-[node name="ResumeButton" type="TextureButton" parent="ViewportManager/UI/VBoxContainer/VBoxContainer"]
-process_mode = 2
-layout_mode = 2
-texture_normal = ExtResource("5_tlcqo")
-texture_pressed = ExtResource("6_h7g5c")
-texture_hover = ExtResource("7_lhfvd")
-metadata/_edit_use_anchors_ = true
-
-[node name="QuitButton" type="TextureButton" parent="ViewportManager/UI/VBoxContainer/VBoxContainer"]
-process_mode = 2
-layout_mode = 2
 texture_normal = ExtResource("8_b0ee0")
 texture_pressed = ExtResource("9_0pgt2")
 texture_hover = ExtResource("10_ak438")
@@ -148,6 +141,15 @@ layout_mode = 2
 texture_normal = ExtResource("14_hw6d3")
 texture_pressed = ExtResource("15_3mg3d")
 texture_hover = ExtResource("16_r5awb")
+metadata/_edit_use_anchors_ = true
+
+[node name="ResumeButton" type="TextureButton" parent="ViewportManager/UI/VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("5_tlcqo")
+texture_pressed = ExtResource("6_h7g5c")
+texture_hover = ExtResource("7_lhfvd")
 metadata/_edit_use_anchors_ = true
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile", "endPath")]
@@ -787,10 +789,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -1.755, 16.5)
 current = NodePath("../TileManager/aT1")
 
 [connection signal="pressed" from="ViewportManager/UI/PauseButton" to="." method="_on_pause_button_pressed"]
-[connection signal="pressed" from="ViewportManager/UI/VBoxContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="ViewportManager/UI/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="ViewportManager/UI/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="ViewportManager/UI/VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="ViewportManager/UI/VBoxContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="ViewportManager/UI/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 
 [editable path="ViewportManager"]
 [editable path="GameManager/TileManager/EndTile"]
