@@ -18,23 +18,25 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_7727v")
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-layout_mode = 1
+[node name="Sprite2D" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = 0.22280884
 offset_right = 1153.0
-offset_bottom = 649.0
-ratio = 1.7778
-alignment_horizontal = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="Sprite2D" type="TextureRect" parent="AspectRatioContainer"]
-layout_mode = 2
+offset_bottom = 648.7772
 texture = ExtResource("2_ncq23")
 expand_mode = 2
 
-[node name="FadeOut" parent="AspectRatioContainer" instance=ExtResource("3_52bew")]
+[node name="FadeOut" parent="." instance=ExtResource("3_52bew")]
 visible = false
-layout_mode = 2
+layout_mode = 0
+anchors_preset = 0
 next_scene_path = "res://scenes/levels_final/level_1.tscn"
 
-[node name="FadeIn" parent="AspectRatioContainer" instance=ExtResource("5_064fv")]
-layout_mode = 2
+[node name="FadeIn" parent="." instance=ExtResource("5_064fv")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 0.22280884
+offset_right = 1153.0
+offset_bottom = 648.7772
