@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmcga5y0xwot"
-path.s3tc="res://.godot/imported/Level3_Static_10.png-13cac8b1dc2c432aafe9dd76dd10b6e6.s3tc.ctex"
+uid="uid://bupsgrsx342jt"
+path.s3tc="res://.godot/imported/Level3_Static_MORE_3.png-260d098c0bcf25f2ac3a9174d25691a6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "e5ec42434bdf4f03f9dac204a7e76585"
+"md5": "c09a113a73e4a9f468ca401b062b7851"
 }
 
 [deps]
 
-source_file="res://art_assets/level_assets/level_3/Level3_Static_10.png"
-dest_files=["res://.godot/imported/Level3_Static_10.png-13cac8b1dc2c432aafe9dd76dd10b6e6.s3tc.ctex"]
+source_file="res://art_assets/level_assets/level_3/Level3_Static_MORE_3.png"
+dest_files=["res://.godot/imported/Level3_Static_MORE_3.png-260d098c0bcf25f2ac3a9174d25691a6.s3tc.ctex"]
 
 [params]
 
