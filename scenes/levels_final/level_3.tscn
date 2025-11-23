@@ -1,13 +1,7 @@
-<<<<<<< HEAD
-[gd_scene load_steps=24 format=3 uid="uid://cyxclfcuei44u"]
+[gd_scene load_steps=25 format=3 uid="uid://cyxclfcuei44u"]
 
-[ext_resource type="Script" path="res://scripts/player_tracker.gd" id="1_g01up"]
-=======
-[gd_scene load_steps=19 format=3 uid="uid://cyxclfcuei44u"]
-
-[ext_resource type="Script" path="res://scripts/player_tracker.gd" id="1_g01up"]
-[ext_resource type="Script" uid="uid://hwgrkcv2v446" path="res://scenes/levels_final/level_3.gd" id="1_jecn1"]
->>>>>>> d81864c3173f11a01d2eca99cdce1fe1ae07b48e
+[ext_resource type="Script" uid="uid://m8mjd0u88aow" path="res://scripts/player_tracker.gd" id="1_g01up"]
+[ext_resource type="Script" path="res://scenes/levels_final/level_3.gd" id="1_jecn1"]
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_g01up"]
 [ext_resource type="Script" uid="uid://dfw405aqqwl5d" path="res://scripts/viewport_manager.gd" id="2_rxvjb"]
 [ext_resource type="PackedScene" uid="uid://x34f43g4beul" path="res://scenes/components/film_grain.tscn" id="3_jecn1"]
@@ -17,16 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="6_6dlra"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="7_0co5s"]
 [ext_resource type="Script" uid="uid://d3oeagq24crur" path="res://scripts/move_goal.gd" id="8_frfm7"]
-<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://pu2rreyu3h07" path="res://scenes/tiles/moving_tile.tscn" id="9_70vga"]
 [ext_resource type="ArrayMesh" uid="uid://dt80ir60oa3np" path="res://art_assets/level_assets/level_3/Level3_Moving1.obj" id="11_5pw72"]
 [ext_resource type="Texture2D" uid="uid://n0ys0vw30ys5" path="res://art_assets/level_assets/level_3/level3_Moving1_0.png" id="12_c3qt3"]
 [ext_resource type="ArrayMesh" uid="uid://cv4fuf72w3nlr" path="res://art_assets/level_assets/level_3/Level3_Moving2.obj" id="13_ao8po"]
-=======
-[ext_resource type="PackedScene" uid="uid://chrmyh0ov3ucn" path="res://scenes/tiles/moving_tile.tscn" id="9_70vga"]
-[ext_resource type="PackedScene" uid="uid://bktfroucmp0rp" path="res://art_assets/level_assets/level_3/level3_Moving1.fbx" id="11_rxvjb"]
-[ext_resource type="PackedScene" uid="uid://bv383eca7vp8q" path="res://art_assets/level_assets/level_3/Level3_Moving2.fbx" id="12_jecn1"]
->>>>>>> d81864c3173f11a01d2eca99cdce1fe1ae07b48e
 [ext_resource type="PackedScene" uid="uid://c4hedq5osxf2b" path="res://scenes/tiles/stairs.tscn" id="13_rxvjb"]
 [ext_resource type="Texture2D" uid="uid://bg862irj6sjb4" path="res://art_assets/level_assets/level_3/Level3_Moving2_0.png" id="14_7j0l5"]
 [ext_resource type="ArrayMesh" uid="uid://1cqdul2vt828" path="res://art_assets/level_assets/level_3/Level3_Moving3.obj" id="15_marfn"]
@@ -185,8 +173,8 @@ size = 22.0
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile", "endPath")]
 script = ExtResource("2_g01up")
-endTile = NodePath("../EndTile/Tile")
-endPath = [NodePath("../EndTile/Tile"), NodePath("../EndTile/Tile2")]
+endTile = NodePath("TileManager/EndTile/Tile")
+endPath = [NodePath("TileManager/EndTile/Tile"), NodePath("TileManager/EndTile/Tile2")]
 clamp = true
 metadata/_custom_type_script = "uid://bwe2vxf3k3ib0"
 
@@ -963,7 +951,7 @@ neighbors = [NodePath("../jT112"), NodePath("../jT114")]
 
 [node name="jT114" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("6_6dlra")]
 transform = Transform3D(-1, 8.742278e-08, -7.642741e-15, 8.742278e-08, 1, 8.742278e-08, 1.5285482e-14, 8.742278e-08, -1, 9.5, 4.5, -10.5)
-neighbors = [NodePath("../jT113"), NodePath("../../../EndTile/Tile")]
+neighbors = [NodePath("../jT113"), NodePath("../EndTile/Tile")]
 
 [node name="gStair12" parent="GameManager/TileManager" node_paths=PackedStringArray("neighbors") instance=ExtResource("13_rxvjb")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 4.5, 10.5, -12.5)
@@ -1001,20 +989,20 @@ neighbors = [NodePath("../gStair12"), NodePath("../gStair14")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 6.5, 8.5, -12.5)
 neighbors = [NodePath("../gStair13"), NodePath("../gT15")]
 
+[node name="EndTile" parent="GameManager/TileManager" instance=ExtResource("16_70vga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 4.5, -11.5)
+
+[node name="Tile" parent="GameManager/TileManager/EndTile" index="0" node_paths=PackedStringArray("neighbors")]
+neighbors = [NodePath("../../jT114"), NodePath("../Tile2")]
+
+[node name="Tile2" parent="GameManager/TileManager/EndTile" index="1" node_paths=PackedStringArray("neighbors")]
+neighbors = [NodePath("../Tile")]
+
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("7_0co5s")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -8.5, 9.245, 10.5)
 current = NodePath("../TileManager/aT1")
 
-[node name="EndTile" parent="." instance=ExtResource("16_70vga")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 4.5, -11.5)
-
-[node name="Tile" parent="EndTile" index="0" node_paths=PackedStringArray("neighbors")]
-neighbors = [NodePath("../../GameManager/TileManager/jT114"), NodePath("../Tile2")]
-
-[node name="Tile2" parent="EndTile" index="1" node_paths=PackedStringArray("neighbors")]
-neighbors = [NodePath("../Tile")]
-
 [node name="Level3_Static_MORE" parent="." instance=ExtResource("20_5pw72")]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 9)
 
-[editable path="EndTile"]
+[editable path="GameManager/TileManager/EndTile"]
