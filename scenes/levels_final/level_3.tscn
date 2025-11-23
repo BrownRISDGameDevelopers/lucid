@@ -1,10 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://cyxclfcuei44u"]
+[gd_scene load_steps=25 format=3 uid="uid://cyxclfcuei44u"]
 
-[ext_resource type="Script" uid="uid://m8mjd0u88aow" path="res://scripts/player_tracker.gd" id="1_g01up"]
-[ext_resource type="Script" path="res://scenes/levels_final/level_3.gd" id="1_jecn1"]
+[ext_resource type="Script" path="res://scripts/player_tracker.gd" id="1_g01up"]
+[ext_resource type="Script" uid="uid://hwgrkcv2v446" path="res://scenes/levels_final/level_3.gd" id="1_jecn1"]
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_g01up"]
-[ext_resource type="Script" uid="uid://dfw405aqqwl5d" path="res://scripts/viewport_manager.gd" id="2_rxvjb"]
-[ext_resource type="PackedScene" uid="uid://x34f43g4beul" path="res://scenes/components/film_grain.tscn" id="3_jecn1"]
+[ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="3_c3qt3"]
 [ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="3_ni4vp"]
 [ext_resource type="PackedScene" uid="uid://cyw7cdjci5gg2" path="res://scenes/components/fade_out.tscn" id="4_a5a75"]
 [ext_resource type="Texture2D" uid="uid://dxgye2tr2i3va" path="res://art_assets/backgrounds/level_3_bg.png" id="4_ao8po"]
@@ -12,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="6_6dlra"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="7_0co5s"]
 [ext_resource type="Script" uid="uid://d3oeagq24crur" path="res://scripts/move_goal.gd" id="8_frfm7"]
-[ext_resource type="PackedScene" uid="uid://pu2rreyu3h07" path="res://scenes/tiles/moving_tile.tscn" id="9_70vga"]
+[ext_resource type="PackedScene" uid="uid://chrmyh0ov3ucn" path="res://scenes/tiles/moving_tile.tscn" id="9_70vga"]
 [ext_resource type="ArrayMesh" uid="uid://dt80ir60oa3np" path="res://art_assets/level_assets/level_3/Level3_Moving1.obj" id="11_5pw72"]
 [ext_resource type="Texture2D" uid="uid://n0ys0vw30ys5" path="res://art_assets/level_assets/level_3/level3_Moving1_0.png" id="12_c3qt3"]
 [ext_resource type="ArrayMesh" uid="uid://cv4fuf72w3nlr" path="res://art_assets/level_assets/level_3/Level3_Moving2.obj" id="13_ao8po"]
@@ -45,45 +44,18 @@ spot_angle = 2.0
 script = ExtResource("1_g01up")
 player = NodePath("../GameManager/Player")
 
-[node name="ViewportManager" type="Node" parent="." node_paths=PackedStringArray("viewports")]
-script = ExtResource("2_rxvjb")
-viewports = [NodePath("ViewportBehindPlayer/SubViewport")]
+[node name="ViewportManager" parent="." instance=ExtResource("3_c3qt3")]
 background = Array[Texture2D]([ExtResource("4_ao8po")])
 
-[node name="TextureRect" type="TextureRect" parent="ViewportManager"]
+[node name="ViewportBehindPlayer" parent="ViewportManager" index="2"]
 anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 768.0
-offset_bottom = 432.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.6, 0.6)
-expand_mode = 1
 
-[node name="ViewportBehindPlayer" type="SubViewportContainer" parent="ViewportManager"]
-anchors_preset = -1
-anchor_right = 1.001
-anchor_bottom = 1.0
-offset_right = -0.15209961
-offset_bottom = -5.0
-stretch = true
-metadata/_edit_use_anchors_ = true
+[node name="DirectionalLight3D" parent="ViewportManager/ViewportBehindPlayer/SubViewport" index="0"]
+visible = false
 
-[node name="SubViewport" type="SubViewport" parent="ViewportManager/ViewportBehindPlayer"]
-transparent_bg = true
-handle_input_locally = false
-msaa_3d = 3
-size = Vector2i(1153, 643)
-render_target_update_mode = 4
-
-[node name="Background" type="Camera3D" parent="ViewportManager/ViewportBehindPlayer/SubViewport"]
-transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 15, 22, 15.5)
-cull_mask = 1
-projection = 1
-size = 22.0
-
-[node name="film_grain" parent="ViewportManager" instance=ExtResource("3_jecn1")]
+[node name="Background" parent="ViewportManager/ViewportBehindPlayer/SubViewport" index="1"]
+transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 18.455, 25.15, 18.87)
+size = 22.407
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile", "endPath")]
 script = ExtResource("2_g01up")
@@ -919,4 +891,5 @@ current = NodePath("../TileManager/aT1")
 [node name="Level3_Static_MORE" parent="." instance=ExtResource("20_5pw72")]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 9)
 
+[editable path="ViewportManager"]
 [editable path="GameManager/TileManager/EndTile"]

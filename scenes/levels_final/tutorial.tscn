@@ -1,69 +1,42 @@
-[gd_scene load_steps=20 format=3 uid="uid://bl5elqblk7exp"]
+[gd_scene load_steps=15 format=3 uid="uid://bl5elqblk7exp"]
 
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_s6r6f"]
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_qxoke"]
-[ext_resource type="Texture2D" uid="uid://fd3m1k2anjwr" path="res://art_assets/backgrounds/tutorial bg.jpg" id="2_r242y"]
+[ext_resource type="Texture2D" uid="uid://ci8fipcm3ko6f" path="res://art_assets/backgrounds/rsz_tutorial_bg_1.jpg" id="2_sowk6"]
 [ext_resource type="PackedScene" uid="uid://dpwb7y1v2j0ss" path="res://scenes/components/fade_in.tscn" id="3_4f1wj"]
-[ext_resource type="Texture2D" uid="uid://blixubct3j8xt" path="res://ui/tutorial/Point and click-popup.png" id="3_sowk6"]
 [ext_resource type="PackedScene" uid="uid://cyw7cdjci5gg2" path="res://scenes/components/fade_out.tscn" id="4_3yli5"]
-[ext_resource type="Texture2D" uid="uid://lam2hdoelgu8" path="res://ui/tutorial/Spacebar-popup.png" id="4_r242y"]
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="5_benmj"]
 [ext_resource type="PackedScene" uid="uid://dgc5d2rygfjws" path="res://art_assets/level_assets/tutorial/Lucid_Tutorial_StaticPieces.fbx" id="6_khtfd"]
 [ext_resource type="PackedScene" uid="uid://caun6mhxmr543" path="res://scenes/tiles/tile.tscn" id="7_8cbr6"]
 [ext_resource type="Script" uid="uid://ceswyojo8w7fl" path="res://scripts/button.gd" id="8_khtfd"]
 [ext_resource type="PackedScene" uid="uid://8rycyialk58q" path="res://scenes/components/player.tscn" id="8_n4811"]
 [ext_resource type="PackedScene" uid="uid://di6pbm4alu27" path="res://art_assets/level_assets/tutorial/Lucid_Tutorial_MovingPiece.fbx" id="8_qxoke"]
-[ext_resource type="Script" uid="uid://b2oer3vrrxc4p" path="res://scripts/pivot.gd" id="9_3yli5"]
+[ext_resource type="Script" path="res://scripts/pivot.gd" id="9_3yli5"]
 [ext_resource type="Script" uid="uid://f3yj2hoadgke" path="res://art_assets/level_assets/tutorial/rotator.gd" id="11_benmj"]
 [ext_resource type="PackedScene" uid="uid://b6mavwkns3dkt" path="res://scenes/tiles/EndTile.tscn" id="11_r242y"]
-[ext_resource type="Texture2D" uid="uid://cpoke4eilx4e4" path="res://ui/tutorial/floor-indicator-default.png" id="14_8cbr6"]
-[ext_resource type="Script" uid="uid://c16bb3duxww08" path="res://scenes/levels_final/tutorial_popup_manager.gd" id="14_x4wrt"]
-[ext_resource type="Texture2D" uid="uid://d4bl34f3rohwe" path="res://ui/tutorial/button-indicator-default.png" id="17_4tfe6"]
 
 [node name="Tutorial" type="Node"]
 
 [node name="ViewportManager" parent="." instance=ExtResource("1_s6r6f")]
-background = Array[Texture2D]([ExtResource("2_r242y")])
 
-[node name="Background" parent="ViewportManager/BackgroundViewport/SubViewport" index="0"]
-transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 18, 23, 18.87)
-size = 19.0
+[node name="TextureRect" parent="ViewportManager" index="1"]
+offset_right = 0.0
+offset_bottom = 0.0
+scale = Vector2(1, 1)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("2_sowk6")
 
-[node name="Background" parent="ViewportManager/ExtraViewport/SubViewport" index="0"]
-transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 18, 23, 18.87)
-size = 19.0
+[node name="ViewportBehindPlayer" parent="ViewportManager" index="2"]
+anchors_preset = 15
 
-[node name="Background" parent="ViewportManager/ViewportBehindPlayer/SubViewport" index="0"]
-transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 18, 23, 18.87)
-size = 19.0
-
-[node name="PlayerCamera" parent="ViewportManager/PlayerViewport/SubViewport" index="1"]
-transform = Transform3D(0.70710677, -0.40860698, 0.57709646, 0, 0.8161376, 0.57785755, -0.70710677, -0.40860698, 0.57709646, 18, 23, 18.87)
-size = 19.0
-
-[node name="ForegroundCamera" parent="ViewportManager/Foreground/SubViewport" index="0"]
-transform = Transform3D(0.70710677, -0.40860698, 0.57709646, 0, 0.8161376, 0.57785755, -0.70710677, -0.40860698, 0.57709646, 18, 23, 18.87)
-size = 19.0
-
-[node name="film_grain" parent="ViewportManager" index="7"]
-offset_left = -37.0
-offset_top = 27.0
-offset_right = -1189.0
-offset_bottom = -621.0
-
-[node name="PointAndClickPopup" type="Sprite2D" parent="ViewportManager/film_grain" index="1"]
-position = Vector2(286.99997, 142.00002)
-scale = Vector2(0.1735075, 0.17350744)
-texture = ExtResource("3_sowk6")
-
-[node name="SpacebarPopup" type="Sprite2D" parent="ViewportManager"]
-position = Vector2(479, 221)
-scale = Vector2(0.19092044, 0.19092046)
-texture = ExtResource("4_r242y")
+[node name="Background" parent="ViewportManager/ViewportBehindPlayer/SubViewport" index="1"]
+transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 18, 22.99, 26.01)
+size = 21.976
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile", "endPath")]
 script = ExtResource("2_qxoke")
-endTile = NodePath("")
+endTile = NodePath("TileManager/grp1/EndTile")
 endPath = [NodePath("TileManager/grp1/EndTile/Tile"), NodePath("TileManager/grp1/EndTile/Tile2")]
 metadata/_custom_type_script = "uid://bwe2vxf3k3ib0"
 
@@ -103,7 +76,7 @@ neighbors = [NodePath("../Tile5"), NodePath("../Tile8")]
 
 [node name="Tile7" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.065, 0.005, -0.015)
-neighbors = [NodePath("../Tile8"), NodePath("")]
+neighbors = [NodePath("../Tile8"), null]
 
 [node name="Tile8" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.065, 0.005, -0.005)
@@ -115,7 +88,7 @@ neighbors = [NodePath("../Tile8"), NodePath("../Tile12")]
 
 [node name="Tile11" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.075, 0.005, -0.005)
-neighbors = [NodePath(""), NodePath("../Tile8"), NodePath("../Tile14"), NodePath("../Tile12")]
+neighbors = [NodePath("../EndTile/Tile"), NodePath("../Tile8"), NodePath("../Tile14"), NodePath("../Tile12")]
 
 [node name="Tile12" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.075, 0.005, 0.005)
@@ -131,7 +104,7 @@ neighbors = [NodePath("../Tile11"), NodePath("../Tile13"), NodePath("../Tile15")
 
 [node name="Tile15" parent="GameManager/TileManager/grp1" node_paths=PackedStringArray("neighbors") instance=ExtResource("7_8cbr6")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.085, 0.005, -0.015)
-neighbors = [NodePath("../Tile14"), NodePath("")]
+neighbors = [NodePath("../Tile14"), null]
 
 [node name="EndTile" parent="GameManager/TileManager/grp1" instance=ExtResource("11_r242y")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.075, 0.005, -0.015)
@@ -442,32 +415,6 @@ trigger_pivot = true
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("current") instance=ExtResource("8_n4811")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -14, 1, -12)
 current = NodePath("../TileManager/grp5/Tile64")
-
-[node name="TutorialPopupManager" type="Node" parent="."]
-script = ExtResource("14_x4wrt")
-
-[node name="ButtonIndicatorDefault" type="TextureRect" parent="TutorialPopupManager"]
-visible = false
-offset_left = 240.00002
-offset_top = 190.00002
-offset_right = 363.0
-offset_bottom = 463.0
-scale = Vector2(0.17682931, 0.17682932)
-texture = ExtResource("17_4tfe6")
-
-[node name="FloorIndicatorDefault" type="TextureRect" parent="TutorialPopupManager"]
-visible = false
-offset_left = 651.0
-offset_top = 111.00001
-offset_right = 862.0
-offset_bottom = 339.0
-scale = Vector2(0.19668247, 0.19668244)
-texture = ExtResource("14_8cbr6")
-
-[node name="PointAndClickPopup" type="Sprite2D" parent="."]
-position = Vector2(673, 87)
-scale = Vector2(0.19527364, 0.19527362)
-texture = ExtResource("3_sowk6")
 
 [editable path="ViewportManager"]
 [editable path="GameManager/TileManager/Lucid_Tutorial_StaticPieces"]

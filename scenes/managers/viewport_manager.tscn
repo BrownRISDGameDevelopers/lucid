@@ -23,10 +23,8 @@ expand_mode = 1
 
 [node name="ViewportBehindPlayer" type="SubViewportContainer" parent="."]
 anchors_preset = -1
-anchor_right = 1.001
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -0.15209961
-offset_bottom = -5.0
 stretch = true
 metadata/_edit_use_anchors_ = true
 
@@ -34,7 +32,7 @@ metadata/_edit_use_anchors_ = true
 transparent_bg = true
 handle_input_locally = false
 msaa_3d = 3
-size = Vector2i(1153, 643)
+size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="ViewportBehindPlayer/SubViewport"]

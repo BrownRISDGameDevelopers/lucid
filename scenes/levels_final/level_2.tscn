@@ -1,8 +1,8 @@
-[gd_scene load_steps=44 format=4 uid="uid://dms5klekyhy1y"]
+[gd_scene load_steps=45 format=4 uid="uid://dms5klekyhy1y"]
 
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="1_b8m43"]
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_n1n45"]
-[ext_resource type="Script" path="res://scenes/levels_final/level_2.gd" id="1_tg2i7"]
+[ext_resource type="Script" uid="uid://ca4k8wgg14r22" path="res://scenes/levels_final/level_2.gd" id="1_tg2i7"]
 [ext_resource type="Script" uid="uid://cldm2bo1qftlf" path="res://scripts/TileManager.gd" id="2_l37hd"]
 [ext_resource type="PackedScene" uid="uid://bc1dnytj85k3q" path="res://scenes/tiles/tile2.tscn" id="2_ldr4v"]
 [ext_resource type="Texture2D" uid="uid://d2uie1gijknh0" path="res://art_assets/backgrounds/Level2_bg01.png" id="2_v713s"]
@@ -20,11 +20,12 @@
 [ext_resource type="PackedScene" uid="uid://cbeaqv8ov8nlg" path="res://art_assets/level_assets/level_2/Level2_Moving3.fbx" id="14_sglaa"]
 [ext_resource type="PackedScene" uid="uid://t0glmngiyj23" path="res://art_assets/level_assets/level_2/Level2_Moving4.fbx" id="15_v713s"]
 [ext_resource type="Script" uid="uid://cq1wyuk75a8oh" path="res://scenes/levels/water_movement_no_shader.gd" id="16_tg2i7"]
-[ext_resource type="Script" uid="uid://uxltb4grdhg5" path="res://scenes/levels/waterfall_manager.gd" id="17_sglaa"]
-[ext_resource type="PackedScene" uid="uid://pu2rreyu3h07" path="res://scenes/tiles/moving_tile.tscn" id="19_ldr4v"]
-[ext_resource type="PackedScene" uid="uid://81hh1nbermtp" path="res://scenes/components/top_water.tscn" id="23_6eqly"]
+[ext_resource type="Script" path="res://scenes/levels/waterfall_manager.gd" id="17_sglaa"]
+[ext_resource type="PackedScene" uid="uid://chrmyh0ov3ucn" path="res://scenes/tiles/moving_tile.tscn" id="19_ldr4v"]
+[ext_resource type="PackedScene" path="res://scenes/components/top_water.tscn" id="23_6eqly"]
 [ext_resource type="PackedScene" uid="uid://b6mavwkns3dkt" path="res://scenes/tiles/EndTile.tscn" id="24_v713s"]
 [ext_resource type="PackedScene" uid="uid://5h5t7id06noo" path="res://art_assets/level_assets/level_2/level2_DifferentRoof.fbx" id="25_v713s"]
+[ext_resource type="PackedScene" uid="uid://dq0aeak0hk56j" path="res://scenes/levels_final/TeleportSquare.fbx" id="26_tg2i7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yjlps"]
 resource_name = "Water"
@@ -290,9 +291,17 @@ script = ExtResource("1_tg2i7")
 [node name="ViewportManager" parent="." instance=ExtResource("1_n1n45")]
 background = Array[Texture2D]([ExtResource("2_v713s"), ExtResource("4_v713s"), ExtResource("5_tg2i7"), ExtResource("6_mcx1i")])
 
-[node name="Background" parent="ViewportManager/ViewportBehindPlayer/SubViewport" index="0"]
-transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 13.62, 21.315, 14.785)
-size = 20.92
+[node name="TextureRect" parent="ViewportManager" index="1"]
+offset_right = 0.0
+offset_bottom = 0.0
+scale = Vector2(1, 1)
+
+[node name="ViewportBehindPlayer" parent="ViewportManager" index="2"]
+anchors_preset = 15
+
+[node name="Background" parent="ViewportManager/ViewportBehindPlayer/SubViewport" index="1"]
+transform = Transform3D(0.7071068, -0.408607, 0.57709646, 0, 0.8161377, 0.57785755, -0.7071068, -0.408607, 0.57709646, 18.455, 27.41, 18.87)
+size = 21.914
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endTile", "endPath")]
 script = ExtResource("1_b8m43")
@@ -591,6 +600,9 @@ speed = -0.35
 
 [node name="level2_DifferentRoof" parent="." instance=ExtResource("25_v713s")]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+
+[node name="TeleportSquare" parent="." instance=ExtResource("26_tg2i7")]
+transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 0.58, 11.005, -2.575)
 
 [editable path="ViewportManager"]
 [editable path="GameManager/TileManager/EndTile"]
