@@ -15,7 +15,6 @@ extends CanvasLayer
 
 #
 func _ready() -> void:
-	MusicController.bgm_play1()
 	settings_pause.visible = false
 	settings_resume_button.visible = false
 	settings_quit_button.visible = false

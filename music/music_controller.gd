@@ -3,6 +3,7 @@ extends Node
 @onready var music_stream_player: AudioStreamPlayer = $MusicStreamPlayer
 @onready var sfx_stream_player: AudioStreamPlayer = $SfxStreamPlayer
 func bgm_play1():
+	print_stack()
 	music_stream_player.stream = preload("res://music/Level1.wav")
 	music_stream_player.play()
 	

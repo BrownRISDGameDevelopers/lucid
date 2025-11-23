@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdqy8xr822ecb"]
+[gd_scene load_steps=15 format=3 uid="uid://cdqy8xr822ecb"]
 
 [ext_resource type="PackedScene" uid="uid://qik6lcaqekwf" path="res://scenes/managers/viewport_manager.tscn" id="1_2vk4a"]
+[ext_resource type="Script" uid="uid://bgq1ie1r30gq" path="res://scenes/levels_final/level_1.gd" id="1_nfb17"]
 [ext_resource type="Texture2D" uid="uid://bu11ytrhfxyxk" path="res://art_assets/backgrounds/level_1_bg.jpg" id="2_stil2"]
 [ext_resource type="Script" uid="uid://bwe2vxf3k3ib0" path="res://scripts/GameManager.gd" id="2_t3jqk"]
 [ext_resource type="PackedScene" uid="uid://ddcugk7opvc2s" path="res://scenes/levels_final/ui_pause_final.tscn" id="3_4mmjp"]
@@ -15,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://2efpp7045had" path="res://scenes/tiles/TeleportSquare.fbx" id="26_0pgt2"]
 
 [node name="Level1" type="Node"]
+script = ExtResource("1_nfb17")
 
 [node name="ViewportManager" parent="." instance=ExtResource("1_2vk4a")]
 background = ExtResource("2_stil2")
